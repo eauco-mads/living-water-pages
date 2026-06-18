@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Water Club Card</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family:'Lato',sans-serif;
+  background:#0d1520;
+  color:white;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  padding: 40px 24px 60px;
+}
+
+/* ANIMATED BACKGROUND */
+.bg-orb {
+  position:fixed; border-radius:50%; filter:blur(80px);
+  animation: pulse 4s ease-in-out infinite alternate;
+  pointer-events:none; z-index:0;
+}
+.bg-orb-1 { width:300px; height:300px; top:-80px; left:-80px; }
+.bg-orb-2 { width:250px; height:250px; bottom:-60px; right:-60px; animation-delay:2s; }
+@keyframes pulse { from { opacity:0.3; transform:scale(1); } to { opacity:0.6; transform:scale(1.1); } }
+
+.content { position:relative; z-index:1; width:100%; max-width:400px; }
+
+.eyebrow {
+  text-align:center; font-size:11px; font-weight:700;
+  letter-spacing:3px; text-transform:uppercase;
+  margin-bottom:32px; opacity:0.6;
+}
+
+/* THE CARD */
+.card-wrap {
+  perspective: 1000px;
+  margin-bottom: 32px;
+}
+.card {
+  width:100%;
+  border-radius: 24px;
+  padding: 32px 28px;
+  position: relative;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  animation: floatCard 6s ease-in-out infinite;
+  cursor: pointer;
+}
+@keyframes floatCard {
+  0%, 100% { transform: translateY(0) rotateX(2deg); }
+  50% { transform: translateY(-8px) rotateX(-1deg); }
+}
+
+/* CARD SHIMMER */
+.card::before {
+  content:'';
+  position:absolute; inset:0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.12) 0%, transparent 50%, rgba(255,255,255,0.05) 100%);
+  z-index:1;
+}
+/* CARD GLOW BORDER */
+.card::after {
+  content:'';
+  position:absolute; inset:-2px;
+  border-radius:26px;
+  z-index:-1;
+}
+
+/* TIER SPECIFIC */
+.card.yellow {
+  background: linear-gradient(135deg, #1a1400 0%, #3d2e00 50%, #1a1400 100%);
+  box-shadow: 0 0 60px rgba(255,215,0,0.4), 0 20px 60px rgba(0,0,0,0.5);
+}
+.card.yellow::after { background: linear-gradient(135deg, #FFD700, #FFA500, #FFD700); }
+.card.teal {
+  background: linear-gradient(135deg, #001a1a 0%, #003d3d 50%, #001a1a 100%);
+  box-shadow: 0 0 60px rgba(6,102,100,0.6), 0 20px 60px rgba(0,0,0,0.5);
+}
+.card.teal::after { background: linear-gradient(135deg, #066664, #0adbd7, #066664); }
+.card.purple {
+  background: linear-gradient(135deg, #001a0d 0%, #003d1a 50%, #001a0d 100%);
+  box-shadow: 0 0 60px rgba(6,102,69,0.7), 0 20px 60px rgba(0,0,0,0.5);
+}
+.card.purple::after { background: linear-gradient(135deg, #066645, #00cc88, #066645); }
+
+/* CARD CONTENT */
+.card-top { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:32px; position:relative; z-index:2; }
+.card-logo { font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; opacity:0.7; }
+.card-logo span { display:block; font-size:16px; font-weight:900; letter-spacing:0; opacity:1; }
+.card-drop {
+  width:52px; height:52px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-size:26px;
+}
+.yellow .card-drop { background:radial-gradient(circle, #FFD700, #FFA500); box-shadow:0 0 20px rgba(255,215,0,0.6); }
+.teal .card-drop { background:radial-gradient(circle, #0adbd7, #066664); box-shadow:0 0 20px rgba(10,219,215,0.6); }
+.purple .card-drop { background:radial-gradient(circle, #00cc88, #066645); box-shadow:0 0 20px rgba(0,204,136,0.6); }
+
+.card-member-name { font-size:26px; font-weight:900; letter-spacing:0.5px; margin-bottom:4px; position:relative; z-index:2; }
+.card-tier { font-size:12px; font-weight:700; letter-spacing:2px; text-transform:uppercase; opacity:0.6; margin-bottom:28px; position:relative; z-index:2; }
+
+.card-bottom { display:flex; justify-content:space-between; align-items:flex-end; position:relative; z-index:2; }
+.card-detail-label { font-size:10px; font-weight:700; letter-spacing:1px; text-transform:uppercase; opacity:0.5; margin-bottom:4px; }
+.card-detail-value { font-size:14px; font-weight:700; }
+.card-status-badge {
+  padding:6px 16px; border-radius:50px;
+  font-size:11px; font-weight:700; letter-spacing:1px; text-transform:uppercase;
+}
+.yellow .card-status-badge { background:rgba(255,215,0,0.2); color:#FFD700; border:1px solid rgba(255,215,0,0.4); }
+.teal .card-status-badge { background:rgba(10,219,215,0.2); color:#0adbd7; border:1px solid rgba(10,219,215,0.4); }
+.purple .card-status-badge { background:rgba(0,204,136,0.15); color:#00cc88; border:1px solid rgba(0,204,136,0.4); }
+
+/* COLOR MONTH SECTION */
+.month-section {
+  background:rgba(255,255,255,0.05);
+  border-radius:16px; padding:20px;
+  margin-bottom:24px;
+  display:flex; align-items:center; gap:16px;
+}
+.month-glow {
+  width:56px; height:56px; border-radius:50%; min-width:56px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:24px;
+}
+.month-glow.yellow-glow { background:#FFD700; box-shadow:0 0 24px rgba(255,215,0,0.7); }
+.month-glow.orange-glow { background:#FF8C00; box-shadow:0 0 24px rgba(255,140,0,0.7); }
+.month-info h4 { font-size:16px; font-weight:900; margin-bottom:4px; }
+.month-info p { font-size:13px; opacity:0.6; line-height:1.5; }
+
+/* WHAT YOU CAN GET */
+.access-section { margin-bottom:24px; }
+.access-title { font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; opacity:0.5; margin-bottom:14px; }
+.access-items { display:flex; flex-direction:column; gap:10px; }
+.access-item {
+  display:flex; align-items:center; gap:12px;
+  background:rgba(255,255,255,0.05); border-radius:12px; padding:14px;
+}
+.access-check { font-size:16px; min-width:24px; }
+.access-text { font-size:14px; line-height:1.5; }
+.access-text strong { display:block; font-weight:700; margin-bottom:2px; }
+.access-text span { font-size:12px; opacity:0.6; }
+
+/* APPLE WALLET BTN */
+.wallet-btn {
+  width:100%; padding:18px; border-radius:16px;
+  background:black; border:none; cursor:pointer;
+  display:flex; align-items:center; justify-content:center; gap:12px;
+  font-family:'Lato',sans-serif; margin-bottom:12px;
+  transition: transform 0.15s, box-shadow 0.15s;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
+.wallet-btn:hover { transform:translateY(-2px); box-shadow:0 8px 28px rgba(0,0,0,0.5); }
+.wallet-icon { font-size:22px; }
+.wallet-text { text-align:left; }
+.wallet-text-top { font-size:11px; color:rgba(255,255,255,0.6); }
+.wallet-text-main { font-size:16px; font-weight:700; color:white; }
+
+.share-btn {
+  width:100%; padding:16px; border-radius:16px;
+  background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15);
+  color:white; cursor:pointer; font-family:'Lato',sans-serif;
+  font-size:15px; font-weight:700; letter-spacing:0.5px;
+  transition: background 0.2s;
+}
+.share-btn:hover { background:rgba(255,255,255,0.12); }
+
+.footer-note { text-align:center; font-size:12px; opacity:0.4; margin-top:24px; line-height:1.7; }
+
+/* TIER SWITCHER (demo only) */
+.demo-switcher { display:flex; gap:8px; margin-bottom:28px; }
+.tier-pill {
+  flex:1; padding:10px; border-radius:50px; border:none;
+  font-family:'Lato',sans-serif; font-size:13px; font-weight:700;
+  cursor:pointer; transition:all 0.2s;
+}
+.tier-pill.active-yellow { background:#FFD700; color:#1a1400; }
+.tier-pill.active-teal { background:#066664; color:white; }
+.tier-pill.active-purple { background:#066645; color:white; }
+.tier-pill.inactive { background:rgba(255,255,255,0.08); color:rgba(255,255,255,0.5); }
+</style>
+</head>
+<body>
+
+<!-- ANIMATED BG ORBS (color changes with tier) -->
+<div class="bg-orb bg-orb-1" id="orb1" style="background:#FFD700;"></div>
+<div class="bg-orb bg-orb-2" id="orb2" style="background:#FFA500;"></div>
+
+<div class="content">
+  <div class="eyebrow">The Living Water Project x Two Hounds Coffee</div>
+
+  <!-- DEMO SWITCHER - remove in production, card is generated per member -->
+  <div class="demo-switcher">
+    <button class="tier-pill active-yellow" onclick="setTier('yellow')">Free Share</button>
+    <button class="tier-pill inactive" onclick="setTier('teal')">$50 Club</button>
+    <button class="tier-pill inactive" onclick="setTier('purple')">$75 Club</button>
+  </div>
+
+  <!-- THE CARD -->
+  <div class="card-wrap">
+    <div class="card yellow" id="memberCard">
+      <div class="card-top">
+        <div class="card-logo">
+          Living Water<span>Two Hounds</span>
+        </div>
+        <div class="card-drop">💧</div>
+      </div>
+      <div class="card-member-name" id="cardName">Sarah M.</div>
+      <div class="card-tier" id="cardTier">Water Share Member</div>
+      <div class="card-bottom">
+        <div>
+          <div class="card-detail-label">Member since</div>
+          <div class="card-detail-value" id="cardSince">Jul 1, 2026</div>
+        </div>
+        <div>
+          <div class="card-detail-label">Expires</div>
+          <div class="card-detail-value" id="cardExpiry">Aug 1, 2026</div>
+        </div>
+        <div class="card-status-badge" id="cardStatus">✓ Active</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MONTHLY COLOR -->
+  <div class="month-section" id="monthSection">
+    <div class="month-glow yellow-glow" id="monthGlow">🟡</div>
+    <div class="month-info">
+      <h4 id="monthTitle">July color: Yellow</h4>
+      <p id="monthDesc">Show this card or say "yellow" at the counter. No lid? No problem - just show your card!</p>
+    </div>
+  </div>
+
+  <!-- ACCESS -->
+  <div class="access-section">
+    <div class="access-title">Your access this month</div>
+    <div class="access-items" id="accessItems">
+      <div class="access-item">
+        <div class="access-check">✅</div>
+        <div class="access-text">
+          <strong>Unlimited daily fill-ups</strong>
+          <span>9.0 pH structured alkaline drinking water</span>
+        </div>
+      </div>
+      <div class="access-item">
+        <div class="access-check">✅</div>
+        <div class="access-text">
+          <strong>Bring any clean jar</strong>
+          <span>Or ask for a yellow lid cup at the counter</span>
+        </div>
+      </div>
+      <div class="access-item">
+        <div class="access-check">🔒</div>
+        <div class="access-text">
+          <strong>Home cleaning waters</strong>
+          <span>Upgrade to $75/mo to unlock</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- APPLE WALLET -->
+  <button class="wallet-btn" onclick="addToWallet()">
+    <div class="wallet-icon">🍎</div>
+    <div class="wallet-text">
+      <div class="wallet-text-top">Add to</div>
+      <div class="wallet-text-main">Apple Wallet</div>
+    </div>
+  </button>
+  <button class="share-btn" onclick="shareCard()">Share My Card</button>
+
+  <p class="footer-note">
+    Show this card at Two Hounds Coffee counter for your daily fill.<br>
+    Questions? hello@eaucohub.com
+  </p>
+</div>
+
+<script>
+const tiers = {
+  yellow: {
+    cardClass: 'yellow',
+    tierLabel: 'Water Share Member',
+    orb1: '#FFD700', orb2: '#FFA500',
+    monthGlowClass: 'yellow-glow', monthEmoji: '🟡',
+    monthTitle: 'July color: Yellow',
+    monthDesc: 'Show this card or say "yellow" at the counter. No jar? Just show your card!',
+    access: [
+      { icon:'✅', title:'Unlimited daily fill-ups', sub:'9.0 pH structured alkaline drinking water' },
+      { icon:'✅', title:'Bring any clean jar', sub:'Or ask for a yellow lid cup at the counter' },
+      { icon:'🔒', title:'Home cleaning waters', sub:'Upgrade to $75/mo to unlock' },
+    ]
+  },
+  teal: {
+    cardClass: 'teal',
+    tierLabel: 'Hydration Club - $50/mo',
+    orb1: '#0adbd7', orb2: '#066664',
+    monthGlowClass: 'teal-glow', monthEmoji: '🩵',
+    monthTitle: 'Hydration Club - All drinking water',
+    monthDesc: 'Any pH: 8.5, 9.0, or 9.5. Bring your own jug or ask for a teal lid.',
+    access: [
+      { icon:'✅', title:'Unlimited daily fill-ups', sub:'Choose 8.5, 9.0, or 9.5 pH drinking water' },
+      { icon:'✅', title:'Bring any size jug', sub:'Teal lid identifies your membership tier' },
+      { icon:'🔒', title:'Home cleaning + beauty waters', sub:'Upgrade to $75/mo to unlock' },
+    ]
+  },
+  purple: {
+    cardClass: 'purple',
+    tierLabel: 'Total Wellness Club - $75/mo',
+    orb1: '#00cc88', orb2: '#066645',
+    monthGlowClass: 'orange-glow', monthEmoji: '🟢',
+    monthTitle: 'Total Wellness - Full access',
+    monthDesc: 'All waters unlocked. Drinking, cleaning, and beauty. Show your green card.',
+    access: [
+      { icon:'✅', title:'All drinking waters', sub:'8.5, 9.0, and 9.5 pH - unlimited daily fills' },
+      { icon:'✅', title:'Eco cleaning waters', sub:'pH 2.5 (sanitize) and 11.5 (degrease) for home' },
+      { icon:'✅', title:'Beauty Water pH 6.0', sub:'Skin toning and hair rinse water - unlocked!' },
+    ]
+  }
+};
+
+let currentTier = 'yellow';
+
+function setTier(tier) {
+  currentTier = tier;
+  const t = tiers[tier];
+
+  // Card class
+  const card = document.getElementById('memberCard');
+  card.className = 'card ' + t.cardClass;
+
+  // Orbs
+  document.getElementById('orb1').style.background = t.orb1;
+  document.getElementById('orb2').style.background = t.orb2;
+
+  // Tier label
+  document.getElementById('cardTier').textContent = t.tierLabel;
+
+  // Month section
+  const glow = document.getElementById('monthGlow');
+  glow.className = 'month-glow ' + t.monthGlowClass;
+  glow.textContent = t.monthEmoji;
+  document.getElementById('monthTitle').textContent = t.monthTitle;
+  document.getElementById('monthDesc').textContent = t.monthDesc;
+
+  // Access items
+  document.getElementById('accessItems').innerHTML = t.access.map(a => `
+    <div class="access-item">
+      <div class="access-check">${a.icon}</div>
+      <div class="access-text">
+        <strong>${a.title}</strong>
+        <span>${a.sub}</span>
+      </div>
+    </div>`).join('');
+
+  // Switcher pills
+  document.querySelectorAll('.tier-pill').forEach(p => p.className = 'tier-pill inactive');
+  const pills = document.querySelectorAll('.tier-pill');
+  const activeClasses = { yellow:'active-yellow', teal:'active-teal', purple:'active-purple' };
+  const idx = { yellow:0, teal:1, purple:2 };
+  pills[idx[tier]].className = 'tier-pill ' + activeClasses[tier];
+}
+
+function addToWallet() {
+  // In production: call your backend to generate a .pkpass file
+  // The backend needs: Apple Developer cert, pass.json, and member data
+  // Services like PassKit.com or WalletPass.io can do this without building your own backend
+  alert('Apple Wallet integration! \n\nIn production, connect to PassKit.com or WalletPass.io - they generate the .pkpass file automatically from your member data. Costs ~$39/mo and handles all Apple cert requirements. Members tap once and it lives in their wallet forever!');
+}
+
+function shareCard() {
+  if (navigator.share) {
+    navigator.share({
+      title: 'My Water Club Card - Two Hounds',
+      text: 'My Living Water membership card',
+      url: window.location.href
+    });
+  } else {
+    navigator.clipboard.writeText(window.location.href);
+    alert('Card link copied to clipboard!');
+  }
+}
+</script>
+</body>
+</html>

@@ -215,6 +215,7 @@ hr { border: none; border-top: 1px solid var(--border); margin: 18px 0; }
 
 <nav class="tab-nav">
   <button class="tab-btn active" onclick="showTab('command',this)">🎯 Command Center</button>
+  <button class="tab-btn" onclick="showTab('facebook',this)">📘 Facebook Launch</button>
   <button class="tab-btn" onclick="showTab('pitchpages',this)">🏢 B2B Pitch Pages</button>
   <button class="tab-btn" onclick="showTab('twohounds',this)">💧 Two Hounds</button>
   <button class="tab-btn" onclick="showTab('content',this)">📱 Content & IG</button>
@@ -340,6 +341,299 @@ hr { border: none; border-top: 1px solid var(--border); margin: 18px 0; }
       <p>Everyone who replies, every story CTA → send them the link. One resource.</p>
     </div>
   </div>
+
+</div>
+
+<!-- ════════════════════════════════════════
+     TAB: FACEBOOK LAUNCH
+════════════════════════════════════════ -->
+<div id="tab-facebook" class="tab-content">
+
+  <div style="display:flex;align-items:flex-start;gap:16px;margin-bottom:24px;flex-wrap:wrap;">
+    <div>
+      <div style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--orange);margin-bottom:4px;">Living Water · Facebook Strategy</div>
+      <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;margin:0;color:var(--navy);">10-Day Launch Sequence</h3>
+      <p style="font-size:0.84rem;color:var(--muted);margin-top:6px;">Warm your audience, establish authority, and open the conversation — before you ever ask for anything.</p>
+    </div>
+    <div style="margin-left:auto;">
+      <div style="font-size:0.72rem;color:var(--muted);margin-bottom:4px;text-align:right;">Content Progress</div>
+      <div class="progress-bar" style="width:160px;"><div class="progress-fill" id="fb-prog-bar" style="width:0%"></div></div>
+      <div style="font-size:0.78rem;color:var(--orange);margin-top:4px;text-align:right;" id="fb-prog-text">0 of 10 posted</div>
+    </div>
+  </div>
+
+  <div class="info-box"><strong>The strategy:</strong> Facebook loves personal, slightly longer posts. Your network there skews 30–55 — exactly the demographic who can afford a $4k machine or own a business. Warm them up with story + education first. Never pitch until Day 10.</div>
+
+  <div class="section-title">Profile Setup — Do First</div>
+  <ul class="cr-checklist">
+    <li onclick="crCheck(this,'fb-p0')"><div class="check-box"><span class="check-icon">✓</span></div><div style="flex:1;"><div class="cr-title">Update Facebook bio / About section</div><div class="cr-sub">Add: "Certified Enagic distributor · Helping people upgrade their water and their health · DM me for a free sample 💧"</div></div><span class="cr-tag cr-tag-urgent">Today</span></li>
+    <li onclick="crCheck(this,'fb-p1')"><div class="check-box"><span class="check-icon">✓</span></div><div style="flex:1;"><div class="cr-title">Pin a welcome post to your profile</div><div class="cr-sub">Once Day 1 post goes live, pin it so new profile visitors see it first</div></div><span class="cr-tag cr-tag-quick">Day 1</span></li>
+    <li onclick="crCheck(this,'fb-p2')"><div class="check-box"><span class="check-icon">✓</span></div><div style="flex:1;"><div class="cr-title">Add link in bio → your member card or water share page</div><div class="cr-sub">eauco-mads.github.io/living-water-pages/member-card-DEMO.html</div></div><span class="cr-tag cr-tag-quick">Today</span></li>
+    <li onclick="crCheck(this,'fb-p3')"><div class="check-box"><span class="check-icon">✓</span></div><div style="flex:1;"><div class="cr-title">Join 3 local Facebook groups where ideal clients hang out</div><div class="cr-sub">Ideas: local wellness groups, women entrepreneurs, business owners in your city, health-focused moms</div></div><span class="cr-tag cr-tag-quick">This week</span></li>
+    <li onclick="crCheck(this,'fb-p4')"><div class="check-box"><span class="check-icon">✓</span></div><div style="flex:1;"><div class="cr-title">Update profile photo + cover photo</div><div class="cr-sub">Profile: clean, warm, smiling. Cover: something wellness/travel. You want to look like someone whose content is worth following</div></div><span class="cr-tag cr-tag-quick">Today</span></li>
+  </ul>
+
+  <div class="section-title">10-Day Content Sequence</div>
+  <p style="font-size:0.82rem;color:var(--muted);margin-bottom:20px;">Post once per day. Mark each one complete when it goes live. You can schedule these in advance in Meta Business Suite — just adjust the caption to feel real-time if needed.</p>
+
+  <!-- DAY 1 -->
+  <div class="card" style="border-left:3px solid var(--teal);">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;">
+      <div><span style="font-size:0.68rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--orange);">Day 1 · Reintroduction</span><h4 style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:400;color:var(--navy);margin:4px 0 0;letter-spacing:0.01em;">The Re-Entrance</h4></div>
+      <label style="display:flex;align-items:center;gap:6px;cursor:pointer;font-size:0.78rem;color:var(--muted);">
+        <input type="checkbox" onchange="fbCheck(this,'fb0')" id="fb0" style="accent-color:var(--teal)"> Posted
+      </label>
+    </div>
+    <div class="copy-block" style="margin-top:12px;">I've been quiet on here for a while. Not because nothing was happening — actually the opposite.
+
+Over the past several months I've gone pretty deep down a rabbit hole that started with a simple question: why do I feel like garbage when I drink enough water?
+
+Turns out the answer has everything to do with what's IN the water. And what my body can actually USE.
+
+I'm not going to dump it all on you today. But I am going to be talking about it a lot more. And if you've ever dealt with low energy, brain fog, inflammation, or just felt like your body wasn't quite cooperating — I think you're going to want to follow along.
+
+More soon. 💧</div>
+    <div style="font-size:0.78rem;color:var(--muted);">📌 <strong>Pin this post.</strong> Curiosity hook — no pitch, just a door opening. Works best as a text post or paired with a water/lifestyle photo.</div>
+  </div>
+
+  <!-- DAY 2 -->
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;">
+      <div><span style="font-size:0.68rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--orange);">Day 2 · Education</span><h4 style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:400;color:var(--navy);margin:4px 0 0;letter-spacing:0.01em;">What I Didn't Know About Water</h4></div>
+      <label style="display:flex;align-items:center;gap:6px;cursor:pointer;font-size:0.78rem;color:var(--muted);">
+        <input type="checkbox" onchange="fbCheck(this,'fb1')" id="fb1" style="accent-color:var(--teal)"> Posted
+      </label>
+    </div>
+    <div class="copy-block" style="margin-top:12px;">Here's something I didn't know until recently:
+
+Tap water in the US has an average pH of 7. Filtered water can actually drop BELOW 7 (acidic). Most bottled water sits around 6.5–7.
+
+And your body — your blood especially — works hard to stay at 7.35 to 7.45. When your water is acidic, your body has to work overtime just to neutralize it before it can actually hydrate you.
+
+The result? You drink plenty of water. But you're still tired, still inflamed, still running on empty.
+
+This is the thing nobody talks about. We've been told to "drink more water" but never told what the water itself is doing to us.
+
+I'll be sharing more about what I've switched to and why. Stay tuned. 💧
+
+Drop a 💧 if you want to learn more about what you're actually drinking.</div>
+    <div style="font-size:0.78rem;color:var(--muted);">💡 Pair with a graphic showing pH scale. The 💧 CTA collects engagement without asking for anything.</div>
+  </div>
+
+  <!-- DAY 3 -->
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;">
+      <div><span style="font-size:0.68rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--orange);">Day 3 · Personal Story</span><h4 style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:400;color:var(--navy);margin:4px 0 0;letter-spacing:0.01em;">The Moment It Clicked</h4></div>
+      <label style="display:flex;align-items:center;gap:6px;cursor:pointer;font-size:0.78rem;color:var(--muted);">
+        <input type="checkbox" onchange="fbCheck(this,'fb2')" id="fb2" style="accent-color:var(--teal)"> Posted
+      </label>
+    </div>
+    <div class="copy-block" style="margin-top:12px;">I want to tell you about the moment I actually got it.
+
+I was handed a glass of water. Just a glass of water. And I drank it and just... felt it differently. Not dramatic. Not a lightning bolt. But there was this clarity — like my body went "oh, THAT's what I needed."
+
+That glass came from a Kangen machine. I didn't know what it was yet. I just knew it tasted different, felt different, and within 20 minutes I felt more awake and focused than I had in months.
+
+I went home and spent the next two weeks obsessing over the research. Hydrogen content. Antioxidant potential. Electrolysis technology. The science is real, it's been studied, and it's not new — Japan has been using this medically for 50+ years.
+
+I'll talk more about the science soon. But sometimes the body knows before the brain catches up.
+
+Do you trust that? Tell me in the comments. 👇</div>
+    <div style="font-size:0.78rem;color:var(--muted);">❤️ Share a candid photo of yourself with the machine or just a good wellness photo. Vulnerability builds trust.</div>
+  </div>
+
+  <!-- DAY 4 -->
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;">
+      <div><span style="font-size:0.68rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--orange);">Day 4 · Social Proof</span><h4 style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:400;color:var(--navy);margin:4px 0 0;letter-spacing:0.01em;">What a Coffee Shop in Alaska Knows</h4></div>
+      <label style="display:flex;align-items:center;gap:6px;cursor:pointer;font-size:0.78rem;color:var(--muted);">
+        <input type="checkbox" onchange="fbCheck(this,'fb3')" id="fb3" style="accent-color:var(--teal)"> Posted
+      </label>
+    </div>
+    <div class="copy-block" style="margin-top:12px;">There's a coffee shop in Kenai, Alaska called Two Hounds Coffee.
+
+They switched their espresso machine water to Kangen ionized water last year. Within weeks, customers started commenting unprompted that the coffee tasted better, smoother, less bitter — without changing a single bean or process.
+
+Water is 96–98.5% of a cup of coffee. The water IS the drink.
+
+Now they have a member card program, monthly water subscribers, and customers coming in specifically because of the water.
+
+This is what I mean when I say this isn't just personal health. It's a business model. It's a community. It's a whole ecosystem built around something as simple as the water you drink every day.
+
+More on this soon. 💧 Two Hounds is the proof I point to when people ask if this is real.</div>
+    <div style="font-size:0.78rem;color:var(--muted);">📸 Use the Two Hounds logo/photo if you have it. Business owner proof converts differently than personal testimony.</div>
+  </div>
+
+  <!-- DAY 5 -->
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;">
+      <div><span style="font-size:0.68rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--orange);">Day 5 · Education 2</span><h4 style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:400;color:var(--navy);margin:4px 0 0;letter-spacing:0.01em;">The 5 Waters Your Machine Makes</h4></div>
+      <label style="display:flex;align-items:center;gap:6px;cursor:pointer;font-size:0.78rem;color:var(--muted);">
+        <input type="checkbox" onchange="fbCheck(this,'fb4')" id="fb4" style="accent-color:var(--teal)"> Posted
+      </label>
+    </div>
+    <div class="copy-block" style="margin-top:12px;">People think a Kangen machine just makes "alkaline water." Here's what it actually does:
+
+💧 pH 9.5 — drinking water. High antioxidant potential, hydrogen-rich, what you actually drink.
+
+💧 pH 7.0 — neutral water. For medications and baby formula where you want pure neutral pH.
+
+💧 pH 6.0 — beauty water. Tones skin, closes pores, used post-facial or post-procedure.
+
+💧 pH 2.5 — strong acidic water. EPA-recognized disinfectant. Kills bacteria and viruses on contact. NO chemicals.
+
+💧 pH 11.5 — strong alkaline. Emulsifies oil, strips pesticides off produce, replaces dozens of cleaning products.
+
+One machine. One water line. Five different waters for five different needs. No chemicals needed. No plastic bottles. No subscription fees.
+
+The math on what you save each month will surprise you. I'll break it down this week. Stay tuned. 💧</div>
+    <div style="font-size:0.78rem;color:var(--muted);">💡 This one does well as a graphic or carousel. Or just a clean text post — the list format makes it easy to read.</div>
+  </div>
+
+  <!-- DAY 6 -->
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;">
+      <div><span style="font-size:0.68rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--orange);">Day 6 · Objection Handling</span><h4 style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:400;color:var(--navy);margin:4px 0 0;letter-spacing:0.01em;">"Isn't All Water Just Water?"</h4></div>
+      <label style="display:flex;align-items:center;gap:6px;cursor:pointer;font-size:0.78rem;color:var(--muted);">
+        <input type="checkbox" onchange="fbCheck(this,'fb5')" id="fb5" style="accent-color:var(--teal)"> Posted
+      </label>
+    </div>
+    <div class="copy-block" style="margin-top:12px;">I used to think that too. Honest.
+
+"Water is water. H₂O. How different can it be?"
+
+Here's what changed my mind:
+
+You wouldn't say "food is food" — a bag of chips and a salmon fillet are both food, but what they do to your body is completely different.
+
+Water has a structure. It has a pH. It carries dissolved minerals and chemicals and byproducts of treatment processes. The water that comes out of your tap was engineered to not make you immediately sick — not to help your cells function optimally.
+
+The difference between "not harmful" and "actively beneficial" is huge. And most people are spending their whole lives in the "not harmful" zone, wondering why they still feel off.
+
+I'm not saying tap water is poison. I'm saying there's a better version. And once you feel the difference, you can't unfeel it.
+
+Have you ever felt different drinking water from certain places? Some spring, some city, some well? Comment below — I want to hear it. 👇</div>
+    <div style="font-size:0.78rem;color:var(--muted);">🎯 This one kills the "it's just marketing" objection. Invite stories to boost engagement.</div>
+  </div>
+
+  <!-- DAY 7 -->
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;">
+      <div><span style="font-size:0.68rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--orange);">Day 7 · Rest / Engagement</span><h4 style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:400;color:var(--navy);margin:4px 0 0;letter-spacing:0.01em;">Questions from the Week</h4></div>
+      <label style="display:flex;align-items:center;gap:6px;cursor:pointer;font-size:0.78rem;color:var(--muted);">
+        <input type="checkbox" onchange="fbCheck(this,'fb6')" id="fb6" style="accent-color:var(--teal)"> Posted
+      </label>
+    </div>
+    <div class="copy-block" style="margin-top:12px;">A few questions I've gotten in DMs this week — answering them here since I figure others are wondering the same things:
+
+"Is this an MLM?"
+No. Enagic is a direct sales company with a 52-year history and ISO certifications. You buy a machine, you can earn on referrals. It's not a recruit-to-earn model.
+
+"How much does the machine cost?"
+The K8 (the one I use and recommend) is around $4,980. There's financing available. It typically pays for itself within 12–18 months in what you save on supplements, cleaning products, and bottles.
+
+"Can I try it first?"
+Yes — I offer free samples. Just DM me your address and I'll get water to you.
+
+"What's the actual catch?"
+There isn't one. The machine is built in Japan, comes with a 3-year warranty, and has been independently tested by researchers worldwide for decades.
+
+DM me with anything else. I answer every message. 💧</div>
+    <div style="font-size:0.78rem;color:var(--muted);">📥 Use REAL DM questions if you have them. Makes it feel authentic and shows people are already interested.</div>
+  </div>
+
+  <!-- DAY 8 -->
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;">
+      <div><span style="font-size:0.68nm;text-transform:uppercase;letter-spacing:0.1em;color:var(--orange);">Day 8 · B2B Angle</span><h4 style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:400;color:var(--navy);margin:4px 0 0;letter-spacing:0.01em;">For the Business Owners</h4></div>
+      <label style="display:flex;align-items:center;gap:6px;cursor:pointer;font-size:0.78rem;color:var(--muted);">
+        <input type="checkbox" onchange="fbCheck(this,'fb7')" id="fb7" style="accent-color:var(--teal)"> Posted
+      </label>
+    </div>
+    <div class="copy-block" style="margin-top:12px;">If you own a spa, salon, coffee shop, restaurant, or tattoo studio — this one's for you.
+
+The water you use in your business is either working for your clients or against them. Most businesses never think about it. The ones who do?
+
+✅ Spas using pH 6.0 water post-treatment see faster healing and less irritation — clients come back faster and spend more
+✅ Coffee shops using ionized water report smoother, less bitter espresso without changing a single bean
+✅ Tattoo studios using pH 2.5 water have EPA-recognized sanitation at zero chemical cost
+✅ Restaurants replacing cleaning chemicals with strong alkaline water save $2,200–$6,400 per year
+
+And there's an income model built in. When you install a Kangen system, you can offer monthly water memberships to your clients and earn recurring revenue — before, during, and after their appointments.
+
+This is what I help businesses set up. If you own a business and you're even mildly curious — shoot me a DM. Takes 15 minutes to see if it makes sense for you. 📩</div>
+    <div style="font-size:0.78rem;color:var(--muted);">🏢 Tag local business owners if appropriate. This one is your B2B pitch in social format.</div>
+  </div>
+
+  <!-- DAY 9 -->
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;">
+      <div><span style="font-size:0.68rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--orange);">Day 9 · Income Story</span><h4 style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:400;color:var(--navy);margin:4px 0 0;letter-spacing:0.01em;">The Part I Didn't Expect</h4></div>
+      <label style="display:flex;align-items:center;gap:6px;cursor:pointer;font-size:0.78rem;color:var(--muted);">
+        <input type="checkbox" onchange="fbCheck(this,'fb8')" id="fb8" style="accent-color:var(--teal)"> Posted
+      </label>
+    </div>
+    <div class="copy-block" style="margin-top:12px;">When I got my Kangen machine, I got it because I wanted to feel better. Full stop.
+
+The income side wasn't even on my radar. But then something kept happening:
+
+I'd talk about my water. Someone would ask. I'd explain. They'd want to try it. They'd feel the difference. They'd want a machine. And I'd earn a commission — because that's built into how Enagic works.
+
+The first time I earned $285 just from talking about water I already loved, I thought — okay, wait. What is this.
+
+Right now I'm building a whole system around it. Water share memberships, recurring income from member clubs, B2B partnerships with local businesses. It's not passive income yet, but it's becoming a real thing.
+
+I'm not going to pretend the machine is cheap. It's not. But when I see what people spend on supplements, filtered pitchers, plastic bottle subscriptions, cleaning products, AND spa treatments every month — the machine often pays for itself within a year.
+
+If you want to see the income math, DM me. I'll send it over without any pressure. 💧</div>
+    <div style="font-size:0.78rem;color:var(--muted);">💰 Honest and specific beats hyped and vague. Let them ask for the comp plan rather than leading with it.</div>
+  </div>
+
+  <!-- DAY 10 -->
+  <div class="card" style="border-left:3px solid var(--orange);">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;">
+      <div><span style="font-size:0.68rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--orange);">Day 10 · Call to Action</span><h4 style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:400;color:var(--navy);margin:4px 0 0;letter-spacing:0.01em;">Here's What I'm Offering</h4></div>
+      <label style="display:flex;align-items:center;gap:6px;cursor:pointer;font-size:0.78rem;color:var(--muted);">
+        <input type="checkbox" onchange="fbCheck(this,'fb9')" id="fb9" style="accent-color:var(--teal)"> Posted
+      </label>
+    </div>
+    <div class="copy-block" style="margin-top:12px;">This is Day 10 of me talking about water, and I realize I've never actually told you what I offer. So here it is, clearly:
+
+💧 Free water sample — DM me your address and I'll get you Kangen water to try
+💧 Free 15-minute call — We'll look at your health goals, your budget, and whether this makes sense for you. Zero pressure.
+💧 Water Share Membership ($50–75/mo) — For people who want the water without the machine. Community delivery.
+💧 Full machine setup — If you want your own K8, I'll walk you through everything. Financing available.
+💧 Business partnership — If you own a spa, café, restaurant, or studio and want to build a water revenue stream, that's a different conversation and I'd love to have it.
+
+I answer every DM. I'm not a hard-closer. I'm just genuinely passionate about this and I want people to feel better.
+
+If any of this past 10 days resonated — this is your sign. Shoot me a message. 💧
+
+(And if you know someone who this might help — share this. I'd appreciate it more than you know.)</div>
+    <div style="font-size:0.78rem;color:var(--muted);">🎯 The BIG ask. Include a share request. This is the post you'll boost if you ever run Facebook ads.</div>
+  </div>
+
+  <div class="section-title">After the 10 Days</div>
+  <div class="grid-3">
+    <div class="phase-card">
+      <div class="phase-label">Week 3+</div>
+      <h4>Testimonials</h4>
+      <p>Start collecting. Screenshot DMs. Ask early buyers for a quick video or written review. One real testimonial per week keeps the social proof rolling.</p>
+    </div>
+    <div class="phase-card">
+      <div class="phase-label">Ongoing</div>
+      <h4>Group Participation</h4>
+      <p>Spend 15 min/day in the groups you joined. Comment helpfully, answer health questions, share a tip. Never pitch in groups — earn trust first, then let curiosity do the work.</p>
+    </div>
+    <div class="phase-card">
+      <div class="phase-label">Month 2</div>
+      <h4>Go Live</h4>
+      <p>A 10–15 min Facebook Live — you, your machine, pouring different waters, doing the pH drop demo. Lives get 6x more reach than regular posts. No perfection needed.</p>
+    </div>
+  </div>
+
+  <div class="section-title">Notes</div>
+  <textarea class="notes-area" id="note-facebook" style="min-height:90px;" placeholder="DM responses, people who asked questions, who to follow up with..." oninput="saveNote('facebook',this.value)"></textarea>
 
 </div>
 
@@ -1454,6 +1748,29 @@ function cp(url, btn) {
   });
 }
 
+// ─── FACEBOOK: Post checkboxes ─────────────────────────────────────────────
+function fbCheck(el, key) {
+  localStorage.setItem('eau_fb_' + key, el.checked ? '1' : '0');
+  updateFbProgress();
+}
+function updateFbProgress() {
+  const checks = document.querySelectorAll('[id^="fb"][type="checkbox"]');
+  const done = [...checks].filter(c => c.checked).length;
+  const bar = document.getElementById('fb-prog-bar');
+  const txt = document.getElementById('fb-prog-text');
+  if (bar) bar.style.width = (done / 10 * 100) + '%';
+  if (txt) txt.textContent = done + ' of 10 posted';
+}
+function initFb() {
+  const note = document.getElementById('note-facebook');
+  if (note) note.value = localStorage.getItem('eau_note_facebook') || '';
+  for (let i = 0; i < 10; i++) {
+    const el = document.getElementById('fb' + i);
+    if (el && localStorage.getItem('eau_fb_fb' + i) === '1') el.checked = true;
+  }
+  updateFbProgress();
+}
+
 // ─── CREATOR: Checklists ───────────────────────────────────────────────────
 function crCheck(el, key) {
   el.classList.toggle('checked');
@@ -1530,6 +1847,7 @@ initPersist();
 initLive();
 initTH();
 initNotes();
+initFb();
 initCrChecks();
 initGrid();
 initPitches();

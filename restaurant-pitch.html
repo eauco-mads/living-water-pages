@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+<title>Kangen Water for Your Restaurant — The Living Water Project</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+:root { color-scheme: light only; }
+html { background:#FAF8F4 !important; }
+body { font-family:'Lato',sans-serif; background:#FAF8F4; color:#2a2a2a; -webkit-text-size-adjust:100%; }
+.container { max-width:640px; margin:0 auto; padding:0 24px; }
+.label { font-size:10px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#066664; margin-bottom:10px; display:block; }
+
+/* HERO */
+.hero { background:#1a2240; padding:56px 24px 52px; text-align:center; position:relative; overflow:hidden; }
+.hero::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 20% 70%, rgba(6,102,100,0.4) 0%, transparent 60%), radial-gradient(ellipse at 85% 20%, rgba(253,187,137,0.12) 0%, transparent 50%); }
+.hero-inner { position:relative; z-index:1; max-width:500px; margin:0 auto; }
+.hero-pill { display:inline-flex; align-items:center; gap:8px; border:1px solid rgba(177,233,232,0.25); border-radius:50px; padding:7px 16px; margin-bottom:28px; font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:rgba(177,233,232,0.65); }
+.hero-pill-dot { width:6px; height:6px; border-radius:50%; background:#FDBB89; animation:blink 2s ease-in-out infinite; }
+@keyframes blink { 0%,100%{opacity:1}50%{opacity:0.4} }
+.hero h1 { font-family:'Cormorant Garamond',serif; font-size:clamp(36px,8vw,54px); font-weight:300; color:#FAF8F4; line-height:1.12; margin-bottom:20px; }
+.hero h1 em { font-style:italic; color:#B1E9E8; }
+.hero-sub { font-size:15px; color:rgba(250,248,244,0.65); font-weight:300; max-width:420px; margin:0 auto 36px; line-height:1.9; }
+.hero-btns { display:flex; flex-direction:column; gap:10px; }
+.btn-primary { display:block; background:#FDBB89; color:#1a2240; font-weight:900; font-size:14px; padding:15px 28px; border-radius:6px; text-decoration:none; }
+.btn-ghost { display:block; background:transparent; color:rgba(177,233,232,0.8); font-weight:700; font-size:13px; padding:13px 28px; border-radius:6px; text-decoration:none; border:1px solid rgba(177,233,232,0.25); }
+
+/* STAT BAR */
+.stat-bar { background:#066664; padding:28px 24px; }
+.stat-bar-label { font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:rgba(177,233,232,0.55); margin-bottom:16px; text-align:center; }
+.stat-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; max-width:640px; margin:0 auto; }
+.stat-box { background:rgba(255,255,255,0.1); border-radius:8px; padding:16px 10px; text-align:center; }
+.stat-num { font-size:20px; font-weight:900; color:#FAF8F4; }
+.stat-lbl { font-size:10px; color:rgba(177,233,232,0.6); line-height:1.5; margin-top:4px; }
+
+/* SECTIONS */
+.sect { padding:56px 0; }
+.sect.alt { background:#F5F2EC; }
+.sect h2 { font-family:'Cormorant Garamond',serif; font-size:clamp(28px,6vw,40px); font-weight:400; color:#1a2240; line-height:1.2; }
+.sect-sub { font-size:14px; color:#888; line-height:1.8; max-width:480px; }
+
+/* HOW IT WORKS */
+.steps { display:flex; flex-direction:column; gap:0; margin-top:32px; }
+.step { display:flex; gap:18px; padding-bottom:32px; position:relative; }
+.step:not(:last-child)::after { content:''; position:absolute; left:15px; top:34px; bottom:0; width:1px; background:#EAE6DF; }
+.step-num { width:32px; height:32px; min-width:32px; border-radius:50%; background:#FDBB89; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:900; color:#1a2240; position:relative; z-index:1; }
+.step-body { padding-top:4px; }
+.step-tag { font-size:10px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:#066664; margin-bottom:5px; display:block; }
+.step-body h4 { font-size:15px; font-weight:900; color:#1a2240; margin-bottom:5px; }
+.step-body p { font-size:13px; color:#777; line-height:1.7; }
+
+/* KITCHEN USES — ICON GRID */
+.use-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:28px; }
+.use-card { background:#FAF8F4; border:1px solid #EAE6DF; border-radius:10px; padding:18px; }
+.use-card.dark { background:#1a2240; border-color:#1a2240; }
+.use-icon { font-size:22px; margin-bottom:8px; }
+.use-ph { display:inline-block; font-size:10px; font-weight:700; letter-spacing:1px; padding:2px 8px; border-radius:50px; margin-bottom:8px; }
+.use-card:not(.dark) .use-ph { background:rgba(6,102,100,0.08); color:#066664; }
+.use-card.dark .use-ph { background:rgba(253,187,137,0.15); color:#FDBB89; }
+.use-card h5 { font-size:13px; font-weight:900; color:#1a2240; margin-bottom:4px; }
+.use-card.dark h5 { color:#FAF8F4; }
+.use-card p { font-size:12px; color:#888; line-height:1.6; }
+.use-card.dark p { color:rgba(177,233,232,0.65); }
+
+/* INCOME STREAMS */
+.streams { display:flex; flex-direction:column; gap:12px; margin-top:32px; }
+.stream { background:#FAF8F4; border:1px solid #EAE6DF; border-radius:10px; padding:22px 20px; }
+.stream.featured { background:#1a2240; border-color:#1a2240; }
+.stream-top { display:flex; align-items:flex-start; justify-content:space-between; gap:12px; margin-bottom:10px; }
+.stream-icon { font-size:22px; }
+.stream-badge { font-size:10px; font-weight:700; letter-spacing:1px; text-transform:uppercase; padding:4px 10px; border-radius:50px; }
+.stream:not(.featured) .stream-badge { background:rgba(6,102,100,0.1); color:#066664; }
+.stream.featured .stream-badge { background:rgba(253,187,137,0.2); color:#FDBB89; }
+.stream h4 { font-size:15px; font-weight:900; color:#1a2240; margin-bottom:6px; }
+.stream.featured h4 { color:#FAF8F4; }
+.stream p { font-size:13px; color:#777; line-height:1.7; }
+.stream.featured p { color:rgba(177,233,232,0.75); }
+.stream-eg { font-size:12px; font-weight:700; color:#066664; margin-top:10px; display:block; }
+.stream.featured .stream-eg { color:#FDBB89; }
+
+/* SAVINGS CALC */
+.savings-box { background:#1a2240; border-radius:12px; padding:28px 24px; margin-top:28px; }
+.savings-label { font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:rgba(177,233,232,0.45); margin-bottom:16px; }
+.srow { display:flex; justify-content:space-between; align-items:center; padding:10px 0; border-bottom:1px solid rgba(255,255,255,0.07); }
+.srow:last-of-type { border:none; }
+.srow-lbl { font-size:12px; color:rgba(177,233,232,0.65); }
+.srow-val { font-size:13px; font-weight:700; color:#FAF8F4; }
+.srow-val.strike { text-decoration:line-through; color:rgba(177,233,232,0.3); font-weight:400; font-size:12px; }
+.s-total { margin-top:14px; padding:14px; background:rgba(253,187,137,0.1); border-radius:8px; display:flex; justify-content:space-between; align-items:center; border:1px solid rgba(253,187,137,0.2); }
+.s-total-lbl { font-size:12px; font-weight:700; color:#FDBB89; }
+.s-total-val { font-size:18px; font-weight:900; color:#FDBB89; }
+.s-note { font-size:11px; color:rgba(177,233,232,0.35); margin-top:12px; line-height:1.6; font-style:italic; }
+
+/* TESTIMONIALS */
+.testimonials { display:flex; flex-direction:column; gap:14px; margin-top:28px; }
+.testi { background:#FAF8F4; border:1px solid #EAE6DF; border-radius:10px; padding:22px 20px; }
+.testi-quote { font-size:13px; color:#555; line-height:1.85; font-style:italic; margin-bottom:14px; }
+.testi-author { display:flex; align-items:flex-start; gap:10px; }
+.testi-dot { width:8px; height:8px; min-width:8px; border-radius:50%; background:#066664; margin-top:4px; }
+.testi-name { font-size:12px; font-weight:900; color:#1a2240; }
+.testi-biz { font-size:11px; color:#aaa; margin-top:2px; }
+
+/* WATERS */
+.waters { display:flex; flex-direction:column; gap:10px; margin-top:28px; }
+.wrow { display:flex; align-items:flex-start; gap:14px; background:#FAF8F4; border:1px solid #EAE6DF; border-radius:10px; padding:18px; }
+.wrow-ph { min-width:52px; text-align:center; }
+.wrow-ph-num { font-size:15px; font-weight:900; color:#1a2240; }
+.wrow-ph-lbl { font-size:9px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:#aaa; }
+.wrow-div { width:1px; background:#EAE6DF; align-self:stretch; min-height:40px; }
+.wrow-body h5 { font-size:13px; font-weight:900; color:#1a2240; margin-bottom:4px; }
+.wrow-body p { font-size:12px; color:#888; line-height:1.6; }
+.wrow-tags { display:flex; flex-wrap:wrap; gap:5px; margin-top:8px; }
+.wrow-tag { font-size:10px; font-weight:700; padding:2px 8px; border-radius:50px; background:rgba(6,102,100,0.08); color:#066664; }
+
+/* CERTIFICATIONS */
+.certs { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-top:24px; }
+.cert-box { background:#FAF8F4; border:1px solid #EAE6DF; border-radius:8px; padding:14px 10px; text-align:center; }
+.cert-badge { font-size:18px; margin-bottom:6px; }
+.cert-name { font-size:10px; font-weight:900; color:#1a2240; margin-bottom:3px; }
+.cert-desc { font-size:10px; color:#aaa; line-height:1.4; }
+
+/* FAQ */
+details { border:1px solid #EAE6DF; border-radius:8px; background:#FAF8F4; overflow:hidden; margin-bottom:8px; }
+details[open] { border-color:#B1E9E8; }
+summary { padding:16px 18px; font-size:13px; font-weight:700; color:#1a2240; cursor:pointer; list-style:none; display:flex; justify-content:space-between; align-items:center; gap:12px; }
+summary::-webkit-details-marker { display:none; }
+.arr { color:#066664; font-size:16px; min-width:18px; text-align:center; transition:transform 0.2s; }
+details[open] .arr { transform:rotate(45deg); }
+.det-body { padding:4px 18px 18px; font-size:13px; color:#666; line-height:1.85; }
+.det-body a { color:#066664; font-weight:700; text-decoration:none; border-bottom:1px solid #B1E9E8; }
+
+/* CTA */
+.cta { background:#1a2240; padding:68px 24px; text-align:center; position:relative; overflow:hidden; }
+.cta::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 70% 40%, rgba(6,102,100,0.35) 0%, transparent 55%); }
+.cta-inner { position:relative; z-index:1; max-width:440px; margin:0 auto; }
+.cta h2 { font-family:'Cormorant Garamond',serif; font-size:clamp(30px,7vw,44px); font-weight:300; color:#FAF8F4; line-height:1.2; margin-bottom:14px; }
+.cta h2 em { font-style:italic; color:#B1E9E8; }
+.cta p { font-size:14px; color:rgba(250,248,244,0.6); line-height:1.9; margin-bottom:32px; }
+.cta-primary { display:block; background:#FDBB89; color:#1a2240; font-weight:900; font-size:15px; padding:17px 28px; border-radius:6px; text-decoration:none; margin-bottom:12px; }
+.cta-or { font-size:11px; color:rgba(255,255,255,0.25); margin-bottom:12px; }
+.cta-sms { display:block; color:rgba(177,233,232,0.65); font-size:14px; font-weight:700; text-decoration:none; }
+
+footer { background:#F5F2EC; border-top:1px solid #EAE6DF; padding:22px 24px; text-align:center; font-size:12px; color:#bbb; }
+footer a { color:#066664; text-decoration:none; }
+
+.cta-intro { font-size:14px; color:rgba(250,248,244,0.6); line-height:1.9; margin-bottom:24px; }
+.cta-box { background:rgba(255,255,255,0.05); border:1px solid rgba(177,233,232,0.15); border-radius:10px; padding:22px; margin-bottom:10px; }
+.cta-box-label { font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:rgba(177,233,232,0.45); margin-bottom:8px; }
+.cta-box-title { font-size:14px; font-weight:900; color:#FAF8F4; margin-bottom:6px; }
+.cta-box-desc { font-size:12px; color:rgba(177,233,232,0.6); line-height:1.7; margin-bottom:14px; }
+.cta-box-btn { display:block; background:#FDBB89; color:#1a2240; font-weight:900; font-size:14px; padding:13px 22px; border-radius:6px; text-decoration:none; text-align:center; }
+.cta-box.secondary .cta-box-btn { background:transparent; color:rgba(177,233,232,0.8); border:1px solid rgba(177,233,232,0.25); }
+.cta-divider { font-size:11px; color:rgba(255,255,255,0.2); margin:8px 0; text-align:center; }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-pill"><div class="hero-pill-dot"></div>The Living Water Project — Restaurants</div>
+    <h1>Your kitchen runs<br>on water.<br><em>Make it count.</em></h1>
+    <p class="hero-sub">Replace your cleaning chemicals. Elevate your cooking. Upgrade your guests' experience. And earn a new income stream — all from one machine that connects to your existing water line.</p>
+    <div class="hero-btns">
+      <a href="#yes" class="btn-primary">Book a Free Demo →</a>
+      <a href="#kitchen" class="btn-ghost">See how it works in your kitchen</a>
+    </div>
+  </div>
+</div>
+
+<!-- STAT BAR -->
+<div class="stat-bar">
+  <div class="stat-bar-label">The numbers behind the machine</div>
+  <div class="stat-grid">
+    <div class="stat-box"><div class="stat-num">30,000+</div><div class="stat-lbl">restaurants in Japan already using it</div></div>
+    <div class="stat-box"><div class="stat-num">25+ yrs</div><div class="stat-lbl">machine lifespan — one-time investment</div></div>
+    <div class="stat-box"><div class="stat-num">7</div><div class="stat-lbl">water types from one line connection</div></div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<div class="sect">
+  <div class="container">
+    <span class="label">How it works</span>
+    <h2>Invest once.<br>Earn for decades.</h2>
+    <p class="sect-sub" style="margin-top:8px;">You invest in your own machine, become a distributor, and unlock multiple income streams — while your kitchen runs cleaner, your food tastes better, and your guests notice.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <span class="step-tag">Invest</span>
+          <h4>Get your own Kangen K8</h4>
+          <p>The machine connects directly to your existing water line — no renovation, no plumber, no downtime. Setup takes under an hour and every water type is available immediately. Qualifies as an end-of-year tax write-off.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <span class="step-tag">Register</span>
+          <h4>Become an Enagic distributor</h4>
+          <p>You get your own distributor ID. Every machine you sell to a guest, staff member, or other business owner earns you direct commission. Your restaurant becomes a living product demo — people taste the water and want it at home.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <span class="step-tag">Save</span>
+          <h4>Cut your chemical budget</h4>
+          <p>pH 2.5 replaces bleach and disinfecting sprays. pH 11.5 replaces your degreaser and laundry detergent. FDA, EPA, and USDA approved for food handling, sanitation, and chemical-free cleaning. The machine pays for itself.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <span class="step-tag">Earn</span>
+          <h4>Add a water share membership</h4>
+          <p>Offer premium hydrogen water to the community. Members pay monthly to fill up daily. You earn recurring membership income AND direct sales commissions from people who want a machine for their home.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- KITCHEN USES -->
+<div class="sect alt" id="kitchen">
+  <div class="container">
+    <span class="label">In your kitchen</span>
+    <h2>Every station.<br>Every shift.</h2>
+    <p class="sect-sub" style="margin-top:8px;">The machine runs your kitchen differently from the moment it's installed. Staff pick it up in minutes — it speaks 7 languages and walks through its own maintenance.</p>
+    <div class="use-grid">
+      <div class="use-card dark">
+        <div class="use-icon">🍳</div>
+        <div class="use-ph">8.5–9.5 pH</div>
+        <h5>Cooking + Sauces</h5>
+        <p>Food absorbs chlorine from tap water, altering flavor. Alkaline water boils faster and pulls out more of the natural flavor compounds — no chlorine interference. Rice and grains come out light and fluffy.</p>
+      </div>
+      <div class="use-card">
+        <div class="use-icon">🥬</div>
+        <div class="use-ph">11.5 pH</div>
+        <h5>Produce Cleaning</h5>
+        <p>pH 11.5 emulsifies oil-based pesticides and herbicides — even on organic produce. Tap water can't do this. No residue, no aftertaste. Extends shelf life and reduces food waste.</p>
+      </div>
+      <div class="use-card">
+        <div class="use-icon">🧼</div>
+        <div class="use-ph">2.5 pH</div>
+        <h5>Surface Sanitation</h5>
+        <p>Hypochlorous acid at 2.5 pH is 100x more effective at killing pathogens than chlorine bleach. FDA/EPA/USDA approved for food handling. No fumes, no protective gear, no residue.</p>
+      </div>
+      <div class="use-card">
+        <div class="use-icon">👕</div>
+        <div class="use-ph">11.5 pH</div>
+        <h5>Linens + Aprons</h5>
+        <p>Soak aprons, kitchen towels, and chef coats in 11.5 pH during shift — replaces detergent and bleach. No chemicals means longer fabric life. Save on laundry costs every week.</p>
+      </div>
+      <div class="use-card">
+        <div class="use-icon">🍸</div>
+        <div class="use-ph">8.5–9.5 pH</div>
+        <h5>Brewing + Cocktails</h5>
+        <p>Smaller water cluster size means more efficient extraction. Use fewer coffee grinds, brew cold brew faster, give more color and aroma to teas. Alkaline ice cubes balance cocktail acidity — smoother drinks, less hangover effect.</p>
+      </div>
+      <div class="use-card dark">
+        <div class="use-icon">🤲</div>
+        <div class="use-ph">2.5 pH</div>
+        <h5>Hand Sanitizer</h5>
+        <p>Add a couple drops of essential oil to a spray bottle of 2.5 pH water. Non-toxic, safe on skin, effective against bacteria. Offer it at tables as a premium touch. Costs pennies to make.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- GUEST EXPERIENCE -->
+<div class="sect">
+  <div class="container">
+    <span class="label">Your guests notice</span>
+    <h2>Water on the table<br>should be premium.</h2>
+    <p class="sect-sub" style="margin-top:8px;">Most restaurants put tap or bottled water in front of guests without a second thought. The ones that are switching to Kangen water are seeing something different happen.</p>
+    <div class="use-grid" style="margin-top:24px;">
+      <div class="use-card">
+        <div class="use-icon">🍽️</div>
+        <h5>Stronger Appetite</h5>
+        <p>Kangen water is absorbed at the cellular level so quickly that guests don't feel full or bloated from water. Appetite stays strong. Guests eat more — and order more.</p>
+      </div>
+      <div class="use-card">
+        <div class="use-icon">🍷</div>
+        <h5>Better Bar Experience</h5>
+        <p>Molecular hydrogen reduces the inflammatory response from alcohol. Guests feel better the next morning. Your bar becomes known as the place where you don't pay for it the next day.</p>
+      </div>
+      <div class="use-card">
+        <div class="use-icon">😊</div>
+        <h5>Happier Staff</h5>
+        <p>"Our employees love the water. They're happier employees." — Lynn Mikelatos, The Greek at the Harbor. Staff who drink it daily notice improved energy and recovery. High-demand kitchen work takes a toll; this helps.</p>
+      </div>
+      <div class="use-card">
+        <div class="use-icon">🏆</div>
+        <h5>The Differentiator</h5>
+        <p>You can say: "We cook with structured alkaline water. We sanitize with pharmaceutical-grade hypochlorous acid. We serve living water at the table." No other restaurant in your market has that story.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- INCOME STREAMS -->
+<div class="sect alt">
+  <div class="container">
+    <span class="label">Your income</span>
+    <h2>Two ways to earn<br>beyond your plates.</h2>
+    <div class="streams">
+      <div class="stream featured">
+        <div class="stream-top"><div class="stream-icon">💧</div><span class="stream-badge">Recurring monthly</span></div>
+        <h4>Water Share Memberships</h4>
+        <p>Offer your community a membership to fill up with living water daily. Your regulars become daily visitors even on days they're not dining. The system is automated — digital member cards, QR sign-up, staff verification. No admin work.</p>
+        <span class="stream-eg">Free share → $50 Hydration Club → $75 Total Wellness</span>
+      </div>
+      <div class="stream">
+        <div class="stream-top"><div class="stream-icon">⚡</div><span class="stream-badge">Direct sales</span></div>
+        <h4>Machine Sales Commission</h4>
+        <p>Your restaurant is a daily demo. Guests try the water, staff drinks it, regulars feel it. When someone wants a machine at home — and they will — you're the distributor. You earn the commission from Enagic directly.</p>
+        <span class="stream-eg">Restaurants are the perfect tasting room for the product.</span>
+      </div>
+    </div>
+
+    <!-- SAVINGS CALC -->
+    <div class="savings-box">
+      <div class="savings-label">What the machine replaces (annual cost estimate)</div>
+      <div class="srow"><div class="srow-lbl">Bleach + disinfecting products</div><div class="srow-val">$800–2,400/yr</div></div>
+      <div class="srow"><div class="srow-lbl">Laundry detergent (linens/aprons)</div><div class="srow-val">$600–1,200/yr</div></div>
+      <div class="srow"><div class="srow-lbl">Produce cleaning sprays/vinegars</div><div class="srow-val">$300–800/yr</div></div>
+      <div class="srow"><div class="srow-lbl">Bottled water (staff + table water)</div><div class="srow-val">$500–2,000/yr</div></div>
+      <div class="s-total">
+        <div class="s-total-lbl">Annual savings in supply costs alone</div>
+        <div class="s-total-val">$2,200–6,400/yr</div>
+      </div>
+      <div class="s-note">Machine maintenance: filter changes 1–2x/year (~$100–135 each), E-cleaning supplies (~$25/2 years), electrolysis enhancer (~$75–150/year). Net savings significant — on top of membership income and distributor commissions.</div>
+    </div>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<div class="sect">
+  <div class="container">
+    <span class="label">Real restaurants. Real results.</span>
+    <h2>What owners are<br>saying.</h2>
+    <div class="testimonials">
+      <div class="testi">
+        <div class="testi-quote">"Having the water in the restaurant is just amazing. It really saves you money and you're really doing a service to your customers and to your employees. I love the fact that our employees love the water. They're happier employees! I think when you care about your customers and you care about their health they know that. It's good business practice to give your customers the best water available, and that's definitely Kangen Water."</div>
+        <div class="testi-author"><div class="testi-dot"></div><div><div class="testi-name">Lynn Mikelatos</div><div class="testi-biz">Owner, The Greek at the Harbor — Ventura, CA</div></div></div>
+      </div>
+      <div class="testi">
+        <div class="testi-quote">"I was introduced to the Kangen Water by my business partner. At first I was skeptical, but I tried it and the food tasted better. We clean the floors with it and the restaurant with it. The water affects the restaurant in every single phase of what we do, all our operations. It becomes part of routine — what we do every day, what the chef does every day. Here at L'Opera quality means everything to us and I really feel that Kangen Water elevates the quality of what we do."</div>
+        <div class="testi-author"><div class="testi-dot"></div><div><div class="testi-name">Enzo DeMuro</div><div class="testi-biz">Owner, L'Opera — Long Beach, CA</div></div></div>
+      </div>
+      <div class="testi">
+        <div class="testi-quote">"I tried the water by cooking a beef stew — one using tap water with spices and seasonings, and one with Kangen Water using no spices or seasonings at all. The stew with Kangen Water tasted better than the stew with tap water and my wife could not believe that I used only Kangen Water for that stew. As a restauranteur, this remarkable water ionizer has helped my restaurant business."</div>
+        <div class="testi-author"><div class="testi-dot"></div><div><div class="testi-name">Fidel Mehmedi</div><div class="testi-biz">Owner, Gill's Diner — Machesney Park, IL</div></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- THE WATERS -->
+<div class="sect alt">
+  <div class="container">
+    <span class="label">Seven waters. One machine.</span>
+    <h2>The full picture<br>of what you get.</h2>
+    <div class="waters">
+      <div class="wrow">
+        <div class="wrow-ph"><div class="wrow-ph-num">11.5</div><div class="wrow-ph-lbl">pH</div></div>
+        <div class="wrow-div"></div>
+        <div class="wrow-body"><h5>Strong Alkaline — The Degreaser</h5><p>Emulsifies oil-based pesticides, grease, and stains. Replaces degreaser, produce spray, detergent, and floor cleaner. FDA/USDA approved for food handling and food surface cleaning.</p><div class="wrow-tags"><span class="wrow-tag">Produce wash</span><span class="wrow-tag">Laundry</span><span class="wrow-tag">Floor cleaning</span><span class="wrow-tag">Degreaser</span></div></div>
+      </div>
+      <div class="wrow">
+        <div class="wrow-ph"><div class="wrow-ph-num">9.5</div><div class="wrow-ph-lbl">pH</div></div>
+        <div class="wrow-div"></div>
+        <div class="wrow-body"><h5>Strong Kangen — Premium Cooking + Drinking</h5><p>Highest hydrogen concentration. Best for cooking proteins, sauces, and grains. Serves as the top-tier membership water. No chlorine flavor transfer to food.</p><div class="wrow-tags"><span class="wrow-tag">Cooking</span><span class="wrow-tag">Member water</span><span class="wrow-tag">Guest service</span></div></div>
+      </div>
+      <div class="wrow">
+        <div class="wrow-ph"><div class="wrow-ph-num">8.5–9.0</div><div class="wrow-ph-lbl">pH</div></div>
+        <div class="wrow-div"></div>
+        <div class="wrow-body"><h5>Kangen Drinking Water</h5><p>Daily drinking water for staff and guests. Boils faster than tap. Enhances flavor in everything from pasta water to tea. Members fill up with this daily.</p><div class="wrow-tags"><span class="wrow-tag">Staff hydration</span><span class="wrow-tag">Table water</span><span class="wrow-tag">Brewing</span></div></div>
+      </div>
+      <div class="wrow">
+        <div class="wrow-ph"><div class="wrow-ph-num">7.0</div><div class="wrow-ph-lbl">pH</div></div>
+        <div class="wrow-div"></div>
+        <div class="wrow-body"><h5>Neutral Clean Water</h5><p>Filtered, contaminant-free water for medications, baby food preparation, or any application where pH-neutral is preferred.</p><div class="wrow-tags"><span class="wrow-tag">Medications</span><span class="wrow-tag">Neutral prep</span></div></div>
+      </div>
+      <div class="wrow">
+        <div class="wrow-ph"><div class="wrow-ph-num">6.0</div><div class="wrow-ph-lbl">pH</div></div>
+        <div class="wrow-div"></div>
+        <div class="wrow-body"><h5>Beauty Water</h5><p>Matches skin's natural pH. Soothes and tightens. For restaurants: rinse fruits like strawberries and grapes to enhance color and extend shelf life. Hardboil eggs — shells peel easier.</p><div class="wrow-tags"><span class="wrow-tag">Produce rinse</span><span class="wrow-tag">Egg prep</span><span class="wrow-tag">Staff skincare</span></div></div>
+      </div>
+      <div class="wrow">
+        <div class="wrow-ph"><div class="wrow-ph-num">2.5</div><div class="wrow-ph-lbl">pH</div></div>
+        <div class="wrow-div"></div>
+        <div class="wrow-body"><h5>Strong Acidic — The Sanitizer</h5><p>Hypochlorous acid (HOCl) — 100x more effective at killing pathogens than bleach. FDA/EPA/USDA approved. Non-toxic, no fumes, no protective gear. Replaces your bleach bucket, Windex, cutting board spray, and table sanitizer.</p><div class="wrow-tags"><span class="wrow-tag">Cutting boards</span><span class="wrow-tag">Tables</span><span class="wrow-tag">Knives</span><span class="wrow-tag">Replaces bleach</span></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CERTIFICATIONS -->
+<div class="sect">
+  <div class="container">
+    <span class="label">The credentials</span>
+    <h2>Certified.<br>Documented.<br>Global standard.</h2>
+    <p class="sect-sub" style="margin-top:8px;">Enagic has been manufacturing water ionizers for 50+ years. The machine carries medical device certification and three ISO quality standards.</p>
+    <div class="certs">
+      <div class="cert-box"><div class="cert-badge">🏥</div><div class="cert-name">ISO 13485</div><div class="cert-desc">Medical device quality management certification</div></div>
+      <div class="cert-box"><div class="cert-badge">✅</div><div class="cert-name">ISO 9001</div><div class="cert-desc">Quality management system — audited and certified</div></div>
+      <div class="cert-box"><div class="cert-badge">🌿</div><div class="cert-name">ISO 14001</div><div class="cert-desc">Environmental management — recognized globally</div></div>
+    </div>
+    <div style="margin-top:12px; font-size:12px; color:#aaa; text-align:center;">FDA, EPA, and USDA approved for food handling, food surface sanitation, and chemical-free cleaning.</div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="sect alt">
+  <div class="container">
+    <span class="label">Questions</span>
+    <h2>What you're probably<br>wondering.</h2>
+    <div style="margin-top:24px;">
+
+      <details>
+        <summary>How does it connect to my kitchen? <span class="arr">+</span></summary>
+        <div class="det-body">The K8 connects directly to your existing water faucet — no plumber, no renovation, no downtime. It installs and uninstalls easily, speaks 7 languages, walks itself through monthly cleaning (set it and forget it), and alerts you if anything needs attention. Every staff member can use it from day one.</div>
+      </details>
+
+      <details>
+        <summary>Is the pH 2.5 sanitizer actually legal for food service? <span class="arr">+</span></summary>
+        <div class="det-body">Yes. The FDA, EPA, and USDA have all approved pH 2.5 hypochlorous acid (HOCl) for food handling and food contact surface sanitation. It's the same compound used in hospital sanitation and food processing facilities. It's 100x more effective at killing microbial pathogens than chlorine bleach — and produces no toxic fumes, no residue, and requires no protective equipment.</div>
+      </details>
+
+      <details>
+        <summary>Does it really replace bleach, detergent, and produce spray? <span class="arr">+</span></summary>
+        <div class="det-body">Yes. pH 2.5 replaces bleach, disinfecting sprays, vinegar, and Windex. pH 11.5 replaces degreaser, produce cleaning spray, laundry detergent, and floor cleaner. A one-time investment replaces ongoing supply costs across multiple product categories for the 25+ year life of the machine. The net savings across a restaurant are typically in the thousands per year.</div>
+      </details>
+
+      <details>
+        <summary>What does it actually do to food flavor? <span class="arr">+</span></summary>
+        <div class="det-body">Tap water contains chlorine and other compounds that food literally absorbs during cooking — it alters and restricts natural flavor. Kangen water at 8.5–9.5 pH has no chlorine, and its smaller molecular cluster size means it penetrates food more readily, extracting more of the natural aromatic compounds. Water also boils faster at alkaline pH. Multiple restaurateurs describe doing a blind side-by-side on day one and immediately noticing the difference in the same dish.</div>
+      </details>
+
+      <details>
+        <summary>What does maintenance actually look like? <span class="arr">+</span></summary>
+        <div class="det-body">Filter changes 1–2x per year (the machine tells you when) at $100–135 each. E-cleaning every 3–4 weeks: the machine runs a 3-hour overnight cleaning cycle automatically, requiring ~60g of food-grade citric acid (~$25 on Amazon, lasts 2+ years). Annual professional deep cleaning is available. Electrolysis enhancer for producing 2.5 and 11.5 pH waters runs ~$75–150/year. Total maintenance: well under $500/year for a machine that replaces thousands in supplies.</div>
+      </details>
+
+      <details>
+        <summary>What's the investment and can I write it off? <span class="arr">+</span></summary>
+        <div class="det-body">Machine investment ranges from $5,000–7,300 depending on model. Yes — as a business appliance directly used in your restaurant operations, it qualifies as a tax write-off. Combined with the supply cost savings and new income from memberships and distributor commissions, most restaurants see the machine pay for itself within the first year or two. Let's talk through the specific numbers for your operation.</div>
+      </details>
+
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta" id="yes">
+  <div class="cta-inner">
+    <h2>Ready to see it<br>in your <em>kitchen?</em></h2>
+    <p class="cta-intro">Two ways to start — pick what feels right.</p>
+    <div class="cta-box">
+      <div class="cta-box-label">Start here — most popular</div>
+      <div class="cta-box-title">The $99 Discovery Process</div>
+      <div class="cta-box-desc">Everything you need to make a real decision: the full comp plan, certifications, income structure, and exactly how the machine integrates into your restaurant. <strong style="color:#FDBB89;">Invest in the machine within 72 hours and the $99 is fully refunded.</strong></div>
+      <a href="mailto:maddie@elevatealign.com?subject=Discovery Process — Restaurant&body=Hi Maddie,%0A%0AI'm interested in the $99 Discovery Process for my restaurant. Let's connect.%0A%0A" class="cta-box-btn">Start the Discovery Process →</a>
+    </div>
+    <div class="cta-divider">or</div>
+    <div class="cta-box secondary">
+      <div class="cta-box-label">Already ready to talk</div>
+      <div class="cta-box-title">Book a Free Demo</div>
+      <div class="cta-box-desc">I'll walk you through the machine and all seven waters specific to your kitchen. No pitch, just real information.</div>
+      <a href="mailto:maddie@elevatealign.com?subject=Free Demo — Restaurant Living Water&body=Hi Maddie,%0A%0AI'm interested in a free demo for my restaurant. Let's connect.%0A%0A" class="cta-box-btn">Book a Free Demo</a>
+    </div>
+    <a href="sms:+19075139717" class="cta-sms" style="display:block;margin-top:14px;">Or text (907) 513-9717 — Maddison</a>
+  </div>
+</div>
+
+<footer>
+  <p>The Living Water Project &nbsp;·&nbsp; Powered by <a href="https://eaucohub.com">Eau Co Hub</a> &nbsp;·&nbsp; <a href="https://stopdrinkingacid.com">The science →</a></p>
+</footer>
+
+</body>
+</html>

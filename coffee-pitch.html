@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+<title>Add a Living Water Bar to Your Coffee Shop — The Living Water Project</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+:root { color-scheme: light only; }
+html { background:#FAF8F4 !important; }
+body { font-family:'Lato',sans-serif; background:#FAF8F4; color:#2a2a2a; -webkit-text-size-adjust:100%; }
+.container { max-width:640px; margin:0 auto; padding:0 24px; }
+.label { font-size:10px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#066664; margin-bottom:10px; display:block; }
+
+.hero { background:#1a2240; padding:56px 24px 52px; text-align:center; position:relative; overflow:hidden; }
+.hero::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 30% 60%, rgba(6,102,100,0.4) 0%, transparent 60%), radial-gradient(ellipse at 80% 20%, rgba(253,187,137,0.1) 0%, transparent 50%); }
+.hero-inner { position:relative; z-index:1; max-width:500px; margin:0 auto; }
+.hero-pill { display:inline-flex; align-items:center; gap:8px; border:1px solid rgba(177,233,232,0.25); border-radius:50px; padding:7px 16px; margin-bottom:28px; font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:rgba(177,233,232,0.65); }
+.hero-pill-dot { width:6px; height:6px; border-radius:50%; background:#FDBB89; animation:blink 2s ease-in-out infinite; }
+@keyframes blink { 0%,100%{opacity:1}50%{opacity:0.4} }
+.hero h1 { font-family:'Cormorant Garamond',serif; font-size:clamp(36px,8vw,54px); font-weight:300; color:#FAF8F4; line-height:1.12; margin-bottom:20px; }
+.hero h1 em { font-style:italic; color:#B1E9E8; }
+.hero-sub { font-size:15px; color:rgba(250,248,244,0.65); font-weight:300; max-width:400px; margin:0 auto 36px; line-height:1.9; }
+.hero-btns { display:flex; flex-direction:column; gap:10px; }
+.btn-primary { display:block; background:#FDBB89; color:#1a2240; font-weight:900; font-size:14px; padding:15px 28px; border-radius:6px; text-decoration:none; }
+.btn-ghost { display:block; background:transparent; color:rgba(177,233,232,0.8); font-weight:700; font-size:13px; padding:13px 28px; border-radius:6px; text-decoration:none; border:1px solid rgba(177,233,232,0.25); }
+
+.income-bar { background:#066664; padding:28px 24px; }
+.income-bar-inner { max-width:640px; margin:0 auto; }
+.income-bar-label { font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:rgba(177,233,232,0.6); margin-bottom:16px; text-align:center; }
+.income-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+.income-box { background:rgba(255,255,255,0.1); border-radius:8px; padding:16px 10px; text-align:center; }
+.income-num { font-size:20px; font-weight:900; color:#FAF8F4; }
+.income-lbl { font-size:10px; color:rgba(177,233,232,0.6); line-height:1.5; margin-top:4px; }
+
+.sect { padding:56px 0; }
+.sect.alt { background:#F5F2EC; }
+.sect h2 { font-family:'Cormorant Garamond',serif; font-size:clamp(28px,6vw,40px); font-weight:400; color:#1a2240; line-height:1.2; margin-bottom:8px; }
+.sect-sub { font-size:14px; color:#888; line-height:1.8; max-width:460px; }
+
+/* COFFEE UPGRADE */
+.upgrade-box { background:#1a2240; border-radius:12px; padding:28px 24px; margin-top:28px; }
+.upgrade-label { font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:rgba(177,233,232,0.45); margin-bottom:16px; }
+.upgrade-body { font-size:14px; color:rgba(177,233,232,0.8); line-height:1.85; margin-bottom:20px; }
+.upgrade-body strong { color:#FAF8F4; }
+.upgrade-row { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+.upgrade-item { background:rgba(255,255,255,0.07); border-radius:8px; padding:14px; }
+.upgrade-item h5 { font-size:12px; font-weight:900; color:#FAF8F4; margin-bottom:5px; }
+.upgrade-item p { font-size:11px; color:rgba(177,233,232,0.6); line-height:1.55; }
+
+.steps { display:flex; flex-direction:column; gap:0; margin-top:32px; }
+.step { display:flex; gap:18px; padding-bottom:32px; position:relative; }
+.step:not(:last-child)::after { content:''; position:absolute; left:15px; top:34px; bottom:0; width:1px; background:#EAE6DF; }
+.step-num { width:32px; height:32px; min-width:32px; border-radius:50%; background:#FDBB89; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:900; color:#1a2240; position:relative; z-index:1; }
+.step-body { padding-top:4px; }
+.step-tag { font-size:10px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:#066664; margin-bottom:5px; display:block; }
+.step-body h4 { font-size:15px; font-weight:900; color:#1a2240; margin-bottom:5px; }
+.step-body p { font-size:13px; color:#777; line-height:1.7; }
+
+.streams { display:flex; flex-direction:column; gap:12px; margin-top:32px; }
+.stream { background:#FAF8F4; border:1px solid #EAE6DF; border-radius:10px; padding:22px 20px; }
+.stream.featured { background:#1a2240; border-color:#1a2240; }
+.stream-top { display:flex; align-items:flex-start; justify-content:space-between; gap:12px; margin-bottom:10px; }
+.stream-icon { font-size:22px; }
+.stream-badge { font-size:10px; font-weight:700; letter-spacing:1px; text-transform:uppercase; padding:4px 10px; border-radius:50px; }
+.stream:not(.featured) .stream-badge { background:rgba(6,102,100,0.1); color:#066664; }
+.stream.featured .stream-badge { background:rgba(253,187,137,0.2); color:#FDBB89; }
+.stream h4 { font-size:15px; font-weight:900; color:#1a2240; margin-bottom:6px; }
+.stream.featured h4 { color:#FAF8F4; }
+.stream p { font-size:13px; color:#777; line-height:1.7; }
+.stream.featured p { color:rgba(177,233,232,0.75); }
+.stream-eg { font-size:12px; font-weight:700; color:#066664; margin-top:10px; display:block; }
+.stream.featured .stream-eg { color:#FDBB89; }
+
+.math-box { background:#1a2240; border-radius:12px; padding:28px 24px; margin-top:20px; }
+.math-box-label { font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:rgba(177,233,232,0.5); margin-bottom:20px; }
+.math-row { display:flex; justify-content:space-between; align-items:center; padding:12px 0; border-bottom:1px solid rgba(255,255,255,0.08); }
+.math-row:last-of-type { border:none; }
+.math-row-label { font-size:13px; color:rgba(177,233,232,0.7); }
+.math-row-val { font-size:14px; font-weight:900; color:#FAF8F4; }
+.math-total { margin-top:16px; padding:16px; background:rgba(253,187,137,0.12); border-radius:8px; display:flex; justify-content:space-between; align-items:center; border:1px solid rgba(253,187,137,0.2); }
+.math-total-label { font-size:12px; font-weight:700; color:#FDBB89; }
+.math-total-val { font-size:20px; font-weight:900; color:#FDBB89; }
+.math-note { font-size:11px; color:rgba(177,233,232,0.4); margin-top:12px; line-height:1.6; font-style:italic; }
+
+.demo-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:28px; }
+.demo-card { background:#FAF8F4; border:1px solid #EAE6DF; border-radius:10px; padding:20px; text-decoration:none; display:block; transition:border-color 0.2s; }
+.demo-card:hover { border-color:#066664; }
+.demo-icon { font-size:24px; margin-bottom:10px; }
+.demo-card h4 { font-size:13px; font-weight:900; color:#1a2240; margin-bottom:5px; }
+.demo-card p { font-size:12px; color:#888; line-height:1.6; margin-bottom:8px; }
+.demo-card span { font-size:11px; font-weight:700; color:#066664; }
+.demo-note { font-size:12px; color:#aaa; margin-top:14px; line-height:1.7; font-style:italic; }
+
+.flyer-cards { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:28px; }
+.flyer-card { background:#FAF8F4; border:1px solid #EAE6DF; border-radius:10px; padding:20px; text-align:center; }
+.flyer-preview { height:90px; border-radius:6px; margin-bottom:12px; display:flex; align-items:center; justify-content:center; font-size:28px; }
+.flyer-preview.teal { background:linear-gradient(135deg, #066664, #0adbd7); }
+.flyer-preview.orange { background:linear-gradient(135deg, #1a2240, #FDBB89); }
+.flyer-card h5 { font-size:12px; font-weight:900; color:#1a2240; margin-bottom:4px; }
+.flyer-card p { font-size:11px; color:#aaa; line-height:1.5; margin-bottom:10px; }
+.flyer-badge { display:inline-block; font-size:10px; font-weight:700; letter-spacing:1px; text-transform:uppercase; padding:3px 10px; border-radius:50px; }
+.flyer-badge.included { background:rgba(6,102,100,0.1); color:#066664; }
+.flyer-badge.custom { background:rgba(253,187,137,0.2); color:#c47a3a; }
+
+.proof-card { background:#1a2240; border-radius:12px; padding:28px 24px; margin-top:28px; }
+.proof-card-label { font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:rgba(177,233,232,0.4); margin-bottom:14px; }
+.proof-card h4 { font-size:17px; font-weight:900; color:#FAF8F4; margin-bottom:8px; }
+.proof-card p { font-size:13px; color:rgba(177,233,232,0.7); line-height:1.8; margin-bottom:18px; }
+.proof-stats { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; }
+.ps { background:rgba(255,255,255,0.07); border-radius:8px; padding:14px 8px; text-align:center; }
+.ps-num { font-size:17px; font-weight:900; color:#FDBB89; }
+.ps-lbl { font-size:10px; color:rgba(177,233,232,0.4); margin-top:3px; line-height:1.4; }
+
+details { border:1px solid #EAE6DF; border-radius:8px; background:#FAF8F4; overflow:hidden; margin-bottom:8px; }
+details[open] { border-color:#B1E9E8; }
+summary { padding:16px 18px; font-size:13px; font-weight:700; color:#1a2240; cursor:pointer; list-style:none; display:flex; justify-content:space-between; align-items:center; gap:12px; }
+summary::-webkit-details-marker { display:none; }
+.arr { color:#066664; font-size:16px; min-width:18px; text-align:center; transition:transform 0.2s; }
+details[open] .arr { transform:rotate(45deg); }
+.det-body { padding:4px 18px 18px; font-size:13px; color:#666; line-height:1.85; }
+.det-body a { color:#066664; font-weight:700; text-decoration:none; border-bottom:1px solid #B1E9E8; }
+
+.cta { background:#1a2240; padding:68px 24px; text-align:center; position:relative; overflow:hidden; }
+.cta::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 70% 40%, rgba(6,102,100,0.35) 0%, transparent 55%); }
+.cta-inner { position:relative; z-index:1; max-width:440px; margin:0 auto; }
+.cta h2 { font-family:'Cormorant Garamond',serif; font-size:clamp(30px,7vw,44px); font-weight:300; color:#FAF8F4; line-height:1.2; margin-bottom:14px; }
+.cta h2 em { font-style:italic; color:#B1E9E8; }
+.cta p { font-size:14px; color:rgba(250,248,244,0.6); line-height:1.9; margin-bottom:32px; }
+.cta-primary { display:block; background:#FDBB89; color:#1a2240; font-weight:900; font-size:15px; padding:17px 28px; border-radius:6px; text-decoration:none; margin-bottom:12px; }
+.cta-or { font-size:11px; color:rgba(255,255,255,0.25); margin-bottom:12px; }
+.cta-sms { display:block; color:rgba(177,233,232,0.65); font-size:14px; font-weight:700; text-decoration:none; }
+
+footer { background:#F5F2EC; border-top:1px solid #EAE6DF; padding:22px 24px; text-align:center; font-size:12px; color:#bbb; }
+footer a { color:#066664; text-decoration:none; }
+
+.cta-intro { font-size:14px; color:rgba(250,248,244,0.6); line-height:1.9; margin-bottom:24px; }
+.cta-box { background:rgba(255,255,255,0.05); border:1px solid rgba(177,233,232,0.15); border-radius:10px; padding:22px; margin-bottom:10px; }
+.cta-box-label { font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:rgba(177,233,232,0.45); margin-bottom:8px; }
+.cta-box-title { font-size:14px; font-weight:900; color:#FAF8F4; margin-bottom:6px; }
+.cta-box-desc { font-size:12px; color:rgba(177,233,232,0.6); line-height:1.7; margin-bottom:14px; }
+.cta-box-btn { display:block; background:#FDBB89; color:#1a2240; font-weight:900; font-size:14px; padding:13px 22px; border-radius:6px; text-decoration:none; text-align:center; }
+.cta-box.secondary .cta-box-btn { background:transparent; color:rgba(177,233,232,0.8); border:1px solid rgba(177,233,232,0.25); }
+.cta-divider { font-size:11px; color:rgba(255,255,255,0.2); margin:8px 0; text-align:center; }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-pill"><div class="hero-pill-dot"></div>The Living Water Project — Coffee Shops</div>
+    <h1>Better water.<br><em>Better coffee.</em><br>Real income.</h1>
+    <p class="hero-sub">Add a living water bar to your shop. Your coffee gets smoother, your clients come back daily, and you earn from memberships and direct sales — with minimal extra work.</p>
+    <div class="hero-btns">
+      <a href="#yes" class="btn-primary">I Want This In My Shop →</a>
+      <a href="#system" class="btn-ghost">See the system first</a>
+    </div>
+  </div>
+</div>
+
+<!-- INCOME BAR -->
+<div class="income-bar">
+  <div class="income-bar-inner">
+    <div class="income-bar-label">Your income streams</div>
+    <div class="income-grid">
+      <div class="income-box"><div class="income-num">$50–75</div><div class="income-lbl">per member/month from water shares</div></div>
+      <div class="income-box"><div class="income-num">+$</div><div class="income-lbl">commission on direct machine sales</div></div>
+      <div class="income-box"><div class="income-num">Daily</div><div class="income-lbl">members returning every day to fill up</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- COFFEE UPGRADE -->
+<div class="sect">
+  <div class="container">
+    <span class="label">The coffee angle</span>
+    <h2>Your water shapes<br>your coffee.</h2>
+    <div class="upgrade-box">
+      <div class="upgrade-label">What baristas already know</div>
+      <div class="upgrade-body">Water is <strong>96% of an espresso shot</strong> and <strong>98.5% of drip coffee</strong>. The minerals, pH, and structure of your water directly affect extraction, bitterness, and mouthfeel. Kangen water at 8.5–9.5 pH extracts differently — pulling more of the aromatic compounds and less of the harsh bitters. Most shops notice it immediately when they brew a side-by-side.</div>
+      <div class="upgrade-row">
+        <div class="upgrade-item"><h5>Smoother extraction</h5><p>Alkaline water reduces harsh bitterness and brightens natural coffee flavors</p></div>
+        <div class="upgrade-item"><h5>Better mouthfeel</h5><p>Structured water changes the texture of the drink — noticeably rounder and cleaner</p></div>
+        <div class="upgrade-item"><h5>Less milk needed</h5><p>Clients who find regular espresso too harsh often don't with Kangen water</p></div>
+        <div class="upgrade-item"><h5>A story to tell</h5><p>"We brew with structured alkaline water" is a differentiator no one else in your market has</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<div class="sect alt">
+  <div class="container">
+    <span class="label">How it works</span>
+    <h2>Four steps.<br>Then it runs itself.</h2>
+    <p class="sect-sub" style="margin-top:8px;">You invest in the machine, get your distributor ID, and plug into a system that's already built and running.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <span class="step-tag">Invest</span>
+          <h4>Get your own Kangen K8</h4>
+          <p>You invest in the machine. It connects to your existing water line — the same line you're already using for your espresso machine. No renovation, no plumber. Setup takes under an hour and your coffee is running on living water the same day.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <span class="step-tag">Register</span>
+          <h4>Get your distributor ID</h4>
+          <p>You become an official Enagic distributor. Every time a client or friend wants their own machine — because they tried your water — you earn the commission. The water does the selling. You just have to be the one who introduced it.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <span class="step-tag">Launch</span>
+          <h4>Plug into the system</h4>
+          <p>You get the complete Living Water membership system: digital member cards, QR code sign-up, staff verification app, automated emails, and printable flyers. Everything already built. You just plug your shop in.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <span class="step-tag">Earn</span>
+          <h4>Hang flyers. Share water. Get paid.</h4>
+          <p>Customers sign up via QR code, pay monthly, and come in daily to fill their jar or jug. Their membership income lands automatically. When they want a machine at home, you earn the sale. Most shops have members before the first week is up.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- INCOME STREAMS -->
+<div class="sect">
+  <div class="container">
+    <span class="label">Your money</span>
+    <h2>Two ways<br>to earn.</h2>
+    <div class="streams">
+      <div class="stream featured">
+        <div class="stream-top"><div class="stream-icon">💧</div><span class="stream-badge">Recurring monthly</span></div>
+        <h4>Water Share Memberships</h4>
+        <p>Members pay monthly for unlimited daily fill-ups. The digital system tracks everything automatically. You don't manage it — it manages itself.</p>
+        <span class="stream-eg">Free share → $50 Hydration Club → $75 Total Wellness</span>
+      </div>
+      <div class="stream">
+        <div class="stream-top"><div class="stream-icon">⚡</div><span class="stream-badge">Direct sales</span></div>
+        <h4>Machine Sales Commission</h4>
+        <p>Coffee shop regulars are the perfect market. They taste the water every morning. When they want it at home — for their family, their kitchen, their health routine — you're already their trusted source. You earn the sale.</p>
+        <span class="stream-eg">The water sells itself. You just have to be the introducer.</span>
+      </div>
+      <div class="stream">
+        <div class="stream-top"><div class="stream-icon">☕</div><span class="stream-badge">Indirect</span></div>
+        <h4>Daily Foot Traffic</h4>
+        <p>Members come back every single day to fill up. Daily touchpoints = more coffee sales, more pastry sales, more loyalty. Your regulars become your most regular regulars.</p>
+        <span class="stream-eg">They come for water. They stay for coffee.</span>
+      </div>
+    </div>
+
+    <div class="math-box">
+      <div class="math-box-label">The math — modest start</div>
+      <div class="math-row"><div class="math-row-label">10 Hydration Club members ($50/mo)</div><div class="math-row-val">$500/mo</div></div>
+      <div class="math-row"><div class="math-row-label">5 Total Wellness members ($75/mo)</div><div class="math-row-val">$375/mo</div></div>
+      <div class="math-row"><div class="math-row-label">1 machine sale/mo (varies by rank)</div><div class="math-row-val">$285–1,800+</div></div>
+      <div class="math-total"><div class="math-total-label">Monthly income from water</div><div class="math-total-val">$1,160+</div></div>
+      <div class="math-note">15 members is conservative for a coffee shop. Your regulars are already coming in daily — converting them to water members is a short conversation at the counter.</div>
+    </div>
+  </div>
+</div>
+
+<!-- THE SYSTEM -->
+<div class="sect alt" id="system">
+  <div class="container">
+    <span class="label">What you get — already built</span>
+    <h2>The whole system<br>is ready for you.</h2>
+    <p class="sect-sub" style="margin-top:8px;">Live and running right now at Two Hounds Coffee in Kenai, Alaska. You don't build anything — you plug in.</p>
+    <div class="demo-grid">
+      <a href="https://healingh2eau.co/watershare" target="_blank" class="demo-card">
+        <div class="demo-icon">📱</div>
+        <h4>Member Sign-Up</h4>
+        <p>Customers scan the QR code on your counter, claim their free water share in 30 seconds. Done.</p>
+        <span>See it live →</span>
+      </a>
+      <a href="https://eauco-mads.github.io/living-water-pages/member-card-DEMO.html" target="_blank" class="demo-card">
+        <div class="demo-icon">💳</div>
+        <h4>Member Card</h4>
+        <p>Each member gets a personalized digital card with their name and tier. Saves to Apple Wallet.</p>
+        <span>See a card →</span>
+      </a>
+      <a href="https://eauco-mads.github.io/living-water-pages/water-club-STAFF.html" target="_blank" class="demo-card">
+        <div class="demo-icon">⚡</div>
+        <h4>Staff Verify</h4>
+        <p>Your barista types a name, instantly sees their tier and color. No confusion, no holdups at the counter.</p>
+        <span>Try "Sarah" →</span>
+      </a>
+      <div class="demo-card" style="cursor:default;">
+        <div class="demo-icon">✉️</div>
+        <h4>Automated Emails</h4>
+        <p>New members get their card automatically. Paid members get their perks. No follow-up from you needed.</p>
+        <span style="color:#aaa;">Included with setup</span>
+      </div>
+    </div>
+    <p class="demo-note">All of this comes with your setup — plus QR codes, printable flyers, and onboarding support from Maddison.</p>
+  </div>
+</div>
+
+<!-- FLYERS -->
+<div class="sect">
+  <div class="container">
+    <span class="label">Marketing made easy</span>
+    <h2>Hang this.<br>Share water.<br>Get paid.</h2>
+    <p class="sect-sub" style="margin-top:8px;">Your marketing job: put up a flyer near the machine or on the counter. The water does the rest. Branded flyers are included — or order a custom design made for your shop.</p>
+    <div class="flyer-cards">
+      <div class="flyer-card">
+        <div class="flyer-preview teal">💧</div>
+        <h5>Living Water Bar Flyer</h5>
+        <p>Standard counter flyer explaining the free water share and how to sign up via QR code.</p>
+        <span class="flyer-badge included">Included with setup</span>
+      </div>
+      <div class="flyer-card">
+        <div class="flyer-preview orange">☕</div>
+        <h5>Custom Shop Flyer</h5>
+        <p>Designed for your coffee shop — your name, your brand colors, your QR code. Stands out.</p>
+        <span class="flyer-badge custom">Custom order available</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROOF -->
+<div class="sect alt">
+  <div class="container">
+    <span class="label">Already running</span>
+    <h2>See it live at<br>Two Hounds Coffee.</h2>
+    <div class="proof-card">
+      <div class="proof-card-label">Live Location — The Living Water Bar</div>
+      <h4>Two Hounds Coffee &amp; Wellness Bar, Kenai AK</h4>
+      <p>The system is live. Members sign up via QR code on the counter, get their digital card, and come in daily. Baristas pull up a name on their phone to verify tier. Membership income is automatic. Clients who fall in love with the water ask about getting their own machine — the shop earns that sale too.</p>
+      <div class="proof-stats">
+        <div class="ps"><div class="ps-num">3</div><div class="ps-lbl">Membership tiers</div></div>
+        <div class="ps"><div class="ps-num">Jul 1</div><div class="ps-lbl">Launch date</div></div>
+        <div class="ps"><div class="ps-num">✓</div><div class="ps-lbl">Full system live</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="sect">
+  <div class="container">
+    <span class="label">Questions</span>
+    <h2>The ones<br>you're thinking.</h2>
+    <p class="sect-sub" style="margin-top:8px; margin-bottom:24px;"></p>
+
+    <details>
+      <summary>Does this actually make my coffee taste better? <span class="arr">+</span></summary>
+      <div class="det-body">Yes — and you'll taste it immediately. Water makes up 96–98.5% of a coffee drink. The pH, mineral content, and structure of your water directly affects extraction. Kangen water at 8.5–9.5 pH extracts more of the aromatic compounds and fewer of the harsh bitter notes. Most shops do a side-by-side the first day and notice it right away. Your regulars will too.</div>
+    </details>
+
+    <details>
+      <summary>What is molecular hydrogen and why does it matter? <span class="arr">+</span></summary>
+      <div class="det-body">Molecular hydrogen (H₂) is the smallest molecule in existence — it crosses into every cell in the body, including through the blood-brain barrier. It's a selective antioxidant that neutralizes the most harmful free radicals without disrupting beneficial processes. Over 1,000 peer-reviewed studies link it to reduced inflammation, faster recovery, and improved cognitive function. Clients who drink it daily notice the difference in how they feel — and they come back for it.<br><br><a href="https://stopdrinkingacid.com" target="_blank">See the studies →</a></div>
+    </details>
+
+    <details>
+      <summary>What exactly am I investing in? <span class="arr">+</span></summary>
+      <div class="det-body">The Enagic Kangen K8 — the same machine used at Two Hounds Coffee. It holds ISO 13485 medical device certification, ISO 9001 quality management, and ISO 14001 environmental management. It connects directly to your existing water line and produces 7 distinct water types at precise pH levels. No filters to buy weekly, no chemicals, no maintenance contracts. It's built to last decades and comes with Maddison's full onboarding support.</div>
+    </details>
+
+    <details>
+      <summary>How does the distributor ID work? <span class="arr">+</span></summary>
+      <div class="det-body">When you invest in the machine through us, you become an official Enagic distributor. This means any time someone buys a machine through you — a loyal customer, a family member, another business owner — you earn a direct commission from Enagic. The commission structure is generous and stacks with rank. Your coffee shop becomes a living product demonstration every day. The people who love the water are the people most likely to want it at home.</div>
+    </details>
+
+    <details>
+      <summary>How much time does this add to my team's workload? <span class="arr">+</span></summary>
+      <div class="det-body">Almost none. The membership system is digital and automated — sign-ups happen via QR code, payments are automatic, member cards are sent via email, and staff verification is one screen on a phone. Your team's job at the counter is: someone asks for water → look up their name → fill their jar → done. We set everything up before launch. You don't manage any of the backend.</div>
+    </details>
+
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta" id="yes">
+  <div class="cta-inner">
+    <h2>Ready to make<br>your shop<br><em>the water shop?</em></h2>
+    <p class="cta-intro">Two ways to start — pick what feels right.</p>
+    <div class="cta-box">
+      <div class="cta-box-label">Start here — most popular</div>
+      <div class="cta-box-title">The $99 Discovery Process</div>
+      <div class="cta-box-desc">Everything you need to make a real decision: the full comp plan, certifications, income structure, and exactly how the system works for your shop. <strong style="color:#FDBB89;">Invest in the machine within 72 hours and the $99 is fully refunded.</strong></div>
+      <a href="mailto:maddie@elevatealign.com?subject=Discovery Process — Coffee Shop&body=Hi Maddie,%0A%0AI'm interested in the $99 Discovery Process for my coffee shop. Let's connect.%0A%0A" class="cta-box-btn">Start the Discovery Process →</a>
+    </div>
+    <div class="cta-divider">or</div>
+    <div class="cta-box secondary">
+      <div class="cta-box-label">Already ready to talk</div>
+      <div class="cta-box-title">Book a Free Call</div>
+      <div class="cta-box-desc">Walk through your specific shop, ask questions, see if it fits. No pitch, no pressure.</div>
+      <a href="mailto:maddie@elevatealign.com?subject=Free Call — Coffee Shop Water Bar&body=Hi Maddie,%0A%0AI'm interested in learning more about the living water system for my coffee shop. Let's connect.%0A%0A" class="cta-box-btn">Book a Free Call</a>
+    </div>
+    <a href="sms:+19075139717" class="cta-sms" style="display:block;margin-top:14px;">Or text (907) 513-9717 — Maddison</a>
+  </div>
+</div>
+
+<footer>
+  <p>The Living Water Project &nbsp;·&nbsp; Powered by <a href="https://eaucohub.com">Eau Co Hub</a> &nbsp;·&nbsp; <a href="https://stopdrinkingacid.com">stopdrinkingacid.com</a></p>
+</footer>
+
+</body>
+</html>

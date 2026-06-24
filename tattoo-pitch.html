@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+<title>Living Water for Tattoo Studios — The Living Water Project</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+:root { color-scheme: light only; }
+html { background:#FAF8F4 !important; }
+body { font-family:'Lato',sans-serif; background:#FAF8F4; color:#2a2a2a; -webkit-text-size-adjust:100%; }
+.container { max-width:640px; margin:0 auto; padding:0 24px; }
+.label { font-size:10px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#066664; margin-bottom:10px; display:block; }
+
+/* HERO */
+.hero { background:#1a2240; padding:56px 24px 52px; text-align:center; position:relative; overflow:hidden; }
+.hero::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 20% 70%, rgba(6,102,100,0.45) 0%, transparent 60%), radial-gradient(ellipse at 85% 20%, rgba(253,187,137,0.1) 0%, transparent 50%); }
+.hero-inner { position:relative; z-index:1; max-width:500px; margin:0 auto; }
+.hero-pill { display:inline-flex; align-items:center; gap:8px; border:1px solid rgba(177,233,232,0.25); border-radius:50px; padding:7px 16px; margin-bottom:28px; font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:rgba(177,233,232,0.65); }
+.hero-pill-dot { width:6px; height:6px; border-radius:50%; background:#FDBB89; animation:blink 2s ease-in-out infinite; }
+@keyframes blink { 0%,100%{opacity:1}50%{opacity:0.4} }
+.hero h1 { font-family:'Cormorant Garamond',serif; font-size:clamp(36px,8vw,52px); font-weight:300; color:#FAF8F4; line-height:1.12; margin-bottom:20px; }
+.hero h1 em { font-style:italic; color:#B1E9E8; }
+.hero-sub { font-size:15px; color:rgba(250,248,244,0.65); font-weight:300; max-width:420px; margin:0 auto 36px; line-height:1.9; }
+.hero-btns { display:flex; flex-direction:column; gap:10px; }
+.btn-primary { display:block; background:#FDBB89; color:#1a2240; font-weight:900; font-size:14px; padding:15px 28px; border-radius:6px; text-decoration:none; }
+.btn-ghost { display:block; background:transparent; color:rgba(177,233,232,0.8); font-weight:700; font-size:13px; padding:13px 28px; border-radius:6px; text-decoration:none; border:1px solid rgba(177,233,232,0.25); }
+
+/* STERILITY BAR */
+.sterile-bar { background:#066664; padding:24px 24px; }
+.sterile-inner { max-width:640px; margin:0 auto; display:flex; align-items:center; gap:16px; }
+.sterile-icon { font-size:28px; min-width:40px; text-align:center; }
+.sterile-text { font-size:13px; color:rgba(177,233,232,0.85); line-height:1.7; }
+.sterile-text strong { color:#FAF8F4; }
+
+/* SECTIONS */
+.sect { padding:56px 0; }
+.sect.alt { background:#F5F2EC; }
+.sect h2 { font-family:'Cormorant Garamond',serif; font-size:clamp(28px,6vw,40px); font-weight:400; color:#1a2240; line-height:1.2; }
+.sect-sub { font-size:14px; color:#888; line-height:1.8; max-width:480px; }
+
+/* USE CARDS */
+.use-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:28px; }
+.use-card { background:#FAF8F4; border:1px solid #EAE6DF; border-radius:10px; padding:18px; }
+.use-card.dark { background:#1a2240; border-color:#1a2240; }
+.use-card.accent { background:#FAF8F4; border:1px solid #B1E9E8; }
+.use-icon { font-size:22px; margin-bottom:8px; }
+.use-ph { display:inline-block; font-size:10px; font-weight:700; letter-spacing:1px; padding:2px 8px; border-radius:50px; margin-bottom:8px; }
+.use-card:not(.dark) .use-ph { background:rgba(6,102,100,0.08); color:#066664; }
+.use-card.dark .use-ph { background:rgba(253,187,137,0.15); color:#FDBB89; }
+.use-card.accent .use-ph { background:rgba(177,233,232,0.2); color:#066664; }
+.use-card h5 { font-size:13px; font-weight:900; color:#1a2240; margin-bottom:5px; }
+.use-card.dark h5 { color:#FAF8F4; }
+.use-card p { font-size:12px; color:#888; line-height:1.65; }
+.use-card.dark p { color:rgba(177,233,232,0.65); }
+
+/* STEPS */
+.steps { display:flex; flex-direction:column; gap:0; margin-top:32px; }
+.step { display:flex; gap:18px; padding-bottom:32px; position:relative; }
+.step:not(:last-child)::after { content:''; position:absolute; left:15px; top:34px; bottom:0; width:1px; background:#EAE6DF; }
+.step-num { width:32px; height:32px; min-width:32px; border-radius:50%; background:#FDBB89; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:900; color:#1a2240; position:relative; z-index:1; }
+.step-body { padding-top:4px; }
+.step-tag { font-size:10px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:#066664; margin-bottom:5px; display:block; }
+.step-body h4 { font-size:15px; font-weight:900; color:#1a2240; margin-bottom:5px; }
+.step-body p { font-size:13px; color:#777; line-height:1.7; }
+
+/* INCOME STREAMS */
+.streams { display:flex; flex-direction:column; gap:12px; margin-top:28px; }
+.stream { background:#FAF8F4; border:1px solid #EAE6DF; border-radius:10px; padding:22px 20px; }
+.stream.featured { background:#1a2240; border-color:#1a2240; }
+.stream-top { display:flex; align-items:flex-start; justify-content:space-between; gap:12px; margin-bottom:10px; }
+.stream-icon { font-size:22px; }
+.stream-badge { font-size:10px; font-weight:700; letter-spacing:1px; text-transform:uppercase; padding:4px 10px; border-radius:50px; }
+.stream:not(.featured) .stream-badge { background:rgba(6,102,100,0.1); color:#066664; }
+.stream.featured .stream-badge { background:rgba(253,187,137,0.2); color:#FDBB89; }
+.stream h4 { font-size:15px; font-weight:900; color:#1a2240; margin-bottom:6px; }
+.stream.featured h4 { color:#FAF8F4; }
+.stream p { font-size:13px; color:#777; line-height:1.7; }
+.stream.featured p { color:rgba(177,233,232,0.75); }
+.stream-eg { font-size:12px; font-weight:700; color:#066664; margin-top:10px; display:block; }
+.stream.featured .stream-eg { color:#FDBB89; }
+
+/* MATH BOX */
+.math-box { background:#1a2240; border-radius:12px; padding:28px 24px; margin-top:20px; }
+.math-box-label { font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:rgba(177,233,232,0.5); margin-bottom:20px; }
+.math-row { display:flex; justify-content:space-between; align-items:center; padding:11px 0; border-bottom:1px solid rgba(255,255,255,0.07); }
+.math-row:last-of-type { border:none; }
+.math-row-label { font-size:13px; color:rgba(177,233,232,0.7); }
+.math-row-val { font-size:14px; font-weight:900; color:#FAF8F4; }
+.math-total { margin-top:16px; padding:15px; background:rgba(253,187,137,0.12); border-radius:8px; display:flex; justify-content:space-between; align-items:center; border:1px solid rgba(253,187,137,0.2); }
+.math-total-label { font-size:12px; font-weight:700; color:#FDBB89; }
+.math-total-val { font-size:20px; font-weight:900; color:#FDBB89; }
+.math-note { font-size:11px; color:rgba(177,233,232,0.35); margin-top:12px; line-height:1.6; font-style:italic; }
+
+/* DEMO SYSTEM */
+.demo-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:28px; }
+.demo-card { background:#FAF8F4; border:1px solid #EAE6DF; border-radius:10px; padding:18px; text-decoration:none; display:block; transition:border-color 0.2s; }
+.demo-card:hover { border-color:#066664; }
+.demo-icon { font-size:22px; margin-bottom:8px; }
+.demo-card h4 { font-size:13px; font-weight:900; color:#1a2240; margin-bottom:4px; }
+.demo-card p { font-size:11px; color:#888; line-height:1.6; margin-bottom:8px; }
+.demo-card span { font-size:11px; font-weight:700; color:#066664; }
+.demo-note { font-size:12px; color:#aaa; margin-top:14px; line-height:1.7; font-style:italic; }
+
+/* TRUST STRIP */
+.trust-strip { background:#F5F2EC; padding:28px 24px; }
+.trust-inner { max-width:640px; margin:0 auto; }
+.trust-label { font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#aaa; margin-bottom:16px; text-align:center; }
+.trust-row { display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; }
+.trust-item { text-align:center; }
+.trust-item-icon { font-size:20px; margin-bottom:4px; }
+.trust-item-text { font-size:11px; color:#888; line-height:1.5; }
+.trust-item-text strong { display:block; color:#1a2240; font-weight:900; font-size:12px; margin-bottom:2px; }
+.trust-links { text-align:center; margin-top:18px; font-size:12px; color:#aaa; }
+.trust-links a { color:#066664; font-weight:700; text-decoration:none; border-bottom:1px solid #B1E9E8; }
+
+/* DP CTA BOX */
+.dp-cta { background:#FAF8F4; border:2px solid #B1E9E8; border-radius:12px; padding:28px 24px; margin-top:28px; }
+.dp-cta-label { font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#066664; margin-bottom:12px; }
+.dp-cta h3 { font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:400; color:#1a2240; margin-bottom:10px; }
+.dp-cta p { font-size:13px; color:#666; line-height:1.8; margin-bottom:20px; }
+.dp-cta-buttons { display:flex; flex-direction:column; gap:8px; }
+.dp-btn-main { display:block; background:#1a2240; color:#FAF8F4; font-weight:900; font-size:14px; padding:15px 22px; border-radius:6px; text-decoration:none; text-align:center; }
+.dp-btn-or { font-size:11px; color:#ccc; text-align:center; }
+.dp-btn-secondary { display:block; background:transparent; color:#066664; font-weight:700; font-size:13px; padding:12px 22px; border-radius:6px; text-decoration:none; text-align:center; border:1px solid #B1E9E8; }
+.dp-refund { font-size:11px; color:#aaa; margin-top:12px; line-height:1.6; text-align:center; font-style:italic; }
+
+/* MAIN CTA */
+.cta { background:#1a2240; padding:68px 24px; text-align:center; position:relative; overflow:hidden; }
+.cta::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 70% 40%, rgba(6,102,100,0.35) 0%, transparent 55%); }
+.cta-inner { position:relative; z-index:1; max-width:460px; margin:0 auto; }
+.cta h2 { font-family:'Cormorant Garamond',serif; font-size:clamp(30px,7vw,44px); font-weight:300; color:#FAF8F4; line-height:1.2; margin-bottom:14px; }
+.cta h2 em { font-style:italic; color:#B1E9E8; }
+.cta-intro { font-size:14px; color:rgba(250,248,244,0.6); line-height:1.9; margin-bottom:28px; }
+.cta-box { background:rgba(255,255,255,0.05); border:1px solid rgba(177,233,232,0.15); border-radius:10px; padding:22px; margin-bottom:14px; }
+.cta-box-label { font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:rgba(177,233,232,0.45); margin-bottom:8px; }
+.cta-box-title { font-size:14px; font-weight:900; color:#FAF8F4; margin-bottom:6px; }
+.cta-box-desc { font-size:12px; color:rgba(177,233,232,0.6); line-height:1.7; margin-bottom:14px; }
+.cta-box-btn { display:block; background:#FDBB89; color:#1a2240; font-weight:900; font-size:14px; padding:13px 22px; border-radius:6px; text-decoration:none; }
+.cta-box.secondary .cta-box-btn { background:transparent; color:rgba(177,233,232,0.8); border:1px solid rgba(177,233,232,0.25); }
+.cta-divider { font-size:11px; color:rgba(255,255,255,0.2); margin:8px 0; }
+.cta-sms { display:block; color:rgba(177,233,232,0.55); font-size:13px; font-weight:700; text-decoration:none; margin-top:14px; }
+
+footer { background:#F5F2EC; border-top:1px solid #EAE6DF; padding:22px 24px; text-align:center; font-size:12px; color:#bbb; }
+footer a { color:#066664; text-decoration:none; }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-pill"><div class="hero-pill-dot"></div>The Living Water Project — Tattoo Studios</div>
+    <h1>Your studio is<br>built on <em>sterility.</em><br>The water should be too.</h1>
+    <p class="hero-sub">Replace your chemical sanitizers. Upgrade your aftercare protocol. Give clients something to talk about. And earn from memberships and direct sales — on top of your ink.</p>
+    <div class="hero-btns">
+      <a href="#yes" class="btn-primary">Learn How It Works →</a>
+      <a href="#waters" class="btn-ghost">See the water breakdown</a>
+    </div>
+  </div>
+</div>
+
+<!-- STERILITY BAR -->
+<div class="sterile-bar">
+  <div class="sterile-inner">
+    <div class="sterile-icon">🏥</div>
+    <div class="sterile-text"><strong>pH 2.5 Hypochlorous Acid (HOCl)</strong> — the same compound used in hospital sanitation, FDA and EPA approved, 100x more effective against pathogens than chlorine bleach. Non-toxic, no fumes, no protective gear required. Your studio already holds itself to a high standard. This is the chemistry to match it.</div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<div class="sect">
+  <div class="container">
+    <span class="label">How it works</span>
+    <h2>Same model.<br>Unique fit.</h2>
+    <p class="sect-sub" style="margin-top:8px;">You invest in your own machine, become a distributor, and unlock income streams that run alongside your studio — while your sanitation gets cleaner and your client experience levels up.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <span class="step-tag">Invest</span>
+          <h4>Get your own Kangen K8</h4>
+          <p>Connects to your existing water line in under an hour. No renovation. Produces seven distinct water types at precise pH levels — each with a different job in your studio. Built to last 25+ years. Qualifies as a tax write-off.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <span class="step-tag">Register</span>
+          <h4>Get your distributor ID</h4>
+          <p>You become an official Enagic distributor. Clients who fall in love with the water during their session or healing process — and want it at home — become your direct sales. You earn the commission from Enagic.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <span class="step-tag">Upgrade</span>
+          <h4>Build it into your studio experience</h4>
+          <p>pH 2.5 replaces your chemical sanitizers. pH 6.0 becomes part of your aftercare protocol. Hydrogen water goes on the counter for clients sitting in the chair. Your studio becomes the one people talk about — not just for the art.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <span class="step-tag">Earn</span>
+          <h4>Add a water share membership</h4>
+          <p>Open a community water bar in your studio. Members pay monthly, come in daily to fill up with premium hydrogen water. Recurring income, daily foot traffic, people constantly seeing your work on the walls.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STUDIO USES -->
+<div class="sect alt" id="waters">
+  <div class="container">
+    <span class="label">In your studio</span>
+    <h2>Seven waters.<br>Every one earns<br>its place.</h2>
+    <div class="use-grid">
+      <div class="use-card dark">
+        <div class="use-icon">🧼</div>
+        <div class="use-ph">2.5 pH — Sanitation</div>
+        <h5>Replace Your Chemical Sanitizers</h5>
+        <p>Hypochlorous acid (HOCl) — FDA and EPA approved, non-toxic, no fumes, safe on skin. Spray surfaces, equipment, and stations. Kills bacteria, viruses, and pathogens on contact. No PPE required. Your clients see this and trust your standards.</p>
+      </div>
+      <div class="use-card accent">
+        <div class="use-icon">💧</div>
+        <div class="use-ph">6.0 pH — Aftercare</div>
+        <h5>The Aftercare Water</h5>
+        <p>pH 6.0 matches the skin's natural pH (4.5–6.5). Soothes inflammation, reduces redness, and supports healing without disrupting the skin's acid mantle. Build it into your aftercare protocol — it's something no other studio near you is doing.</p>
+      </div>
+      <div class="use-card">
+        <div class="use-icon">🌿</div>
+        <div class="use-ph">11.5 pH — Cleanup</div>
+        <h5>Ink Off Surfaces + Aprons</h5>
+        <p>pH 11.5 is a strong oil emulsifier. Breaks down ink and pigment from surfaces, trays, aprons, and towels without harsh chemicals. Extends the life of your fabrics — no bleach degrading the fibers.</p>
+      </div>
+      <div class="use-card">
+        <div class="use-icon">⚡</div>
+        <div class="use-ph">8.5–9.5 pH — Drinking</div>
+        <h5>Water for Artists + Clients</h5>
+        <p>Long sessions are physically demanding — for both parties. Hydrogen-rich water at 8.5–9.5 pH hydrates at the cellular level, reduces inflammation, and keeps energy steady. Offer it in the chair. Artists who drink it notice the difference in how their hands and body feel at the end of a 6-hour session.</p>
+      </div>
+    </div>
+
+    <!-- CLIENT EXPERIENCE CALLOUT -->
+    <div style="background:#1a2240; border-radius:12px; padding:24px; margin-top:14px;">
+      <div style="font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:rgba(177,233,232,0.45); margin-bottom:12px;">The client experience difference</div>
+      <div style="font-size:14px; color:rgba(177,233,232,0.85); line-height:1.9;">
+        Picture this: a client walks in, you hand them a glass of hydrogen water, tell them it reduces the inflammatory response during healing. You do their tattoo. At the end, you use pH 6.0 to gently rinse the fresh piece — calms redness, helps the skin reset. You send them home with a QR code for free water share access so they can keep supporting their healing.
+        <div style="margin-top:14px; font-size:13px; color:rgba(177,233,232,0.55); font-style:italic;">That's a completely different experience. And it becomes your reputation.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- INCOME -->
+<div class="sect">
+  <div class="container">
+    <span class="label">Your income</span>
+    <h2>Two ways to earn<br>beyond the chair.</h2>
+    <div class="streams">
+      <div class="stream featured">
+        <div class="stream-top"><div class="stream-icon">💧</div><span class="stream-badge">Recurring monthly</span></div>
+        <h4>Water Share Memberships</h4>
+        <p>Your studio becomes a community water bar. Members pay monthly to come fill up daily. Automated system handles everything — digital member cards, QR sign-up, staff verification, automated emails. You just have a machine running in the corner making you money.</p>
+        <span class="stream-eg">Free share → $50 Hydration Club → $75 Total Wellness</span>
+      </div>
+      <div class="stream">
+        <div class="stream-top"><div class="stream-icon">⚡</div><span class="stream-badge">Direct sales</span></div>
+        <h4>Machine Sales Commission</h4>
+        <p>Tattoo clients are an ideal market for this machine. They are intentional about their body, already investing in something permanent, and often health-conscious. When they fall in love with the water in your studio and want it at home — you're the distributor. You earn directly from Enagic.</p>
+        <span class="stream-eg">The chair is a 1–6 hour product demo. Let the water do the work.</span>
+      </div>
+    </div>
+
+    <div class="math-box">
+      <div class="math-box-label">The math — modest start</div>
+      <div class="math-row"><div class="math-row-label">10 Hydration Club members ($50/mo)</div><div class="math-row-val">$500/mo</div></div>
+      <div class="math-row"><div class="math-row-label">5 Total Wellness members ($75/mo)</div><div class="math-row-val">$375/mo</div></div>
+      <div class="math-row"><div class="math-row-label">1 machine sale/mo (commission varies)</div><div class="math-row-val">$285–1,800+</div></div>
+      <div class="math-total"><div class="math-total-label">Monthly income alongside your bookings</div><div class="math-total-val">$1,160+</div></div>
+      <div class="math-note">Your clients sit in your chair for hours. They hear about the water. They feel the difference. The conversion rate on curious people who've already experienced it in person is not small.</div>
+    </div>
+  </div>
+</div>
+
+<!-- SYSTEM DEMO -->
+<div class="sect alt">
+  <div class="container">
+    <span class="label">What's already built for you</span>
+    <h2>The membership system<br>comes with it.</h2>
+    <p class="sect-sub" style="margin-top:8px;">Live at Two Hounds Coffee in Kenai, Alaska right now. You don't build anything — you plug your studio in.</p>
+    <div class="demo-grid">
+      <a href="https://healingh2eau.co/watershare" target="_blank" class="demo-card">
+        <div class="demo-icon">📱</div>
+        <h4>Member Sign-Up</h4>
+        <p>Clients scan your QR code and claim their free water share in under a minute.</p>
+        <span>See it live →</span>
+      </a>
+      <a href="https://eauco-mads.github.io/living-water-pages/member-card-DEMO.html" target="_blank" class="demo-card">
+        <div class="demo-icon">💳</div>
+        <h4>Member Card</h4>
+        <p>Each member gets a personalized digital card. Saves to Apple Wallet.</p>
+        <span>See a card →</span>
+      </a>
+      <a href="https://eauco-mads.github.io/living-water-pages/water-club-STAFF.html" target="_blank" class="demo-card">
+        <div class="demo-icon">⚡</div>
+        <h4>Staff Verify</h4>
+        <p>Type a name on your phone screen, see their tier instantly. Done.</p>
+        <span>Try "Sarah" →</span>
+      </a>
+      <div class="demo-card" style="cursor:default;">
+        <div class="demo-icon">✉️</div>
+        <h4>Automated Emails</h4>
+        <p>New members get their card automatically. No follow-up from you needed.</p>
+        <span style="color:#aaa;">Included with setup</span>
+      </div>
+    </div>
+    <p class="demo-note">QR codes, printable flyers, and onboarding support included with your machine setup through Maddison.</p>
+  </div>
+</div>
+
+<!-- TRUST STRIP -->
+<div class="trust-strip">
+  <div class="trust-inner">
+    <div class="trust-label">Why it's legit</div>
+    <div class="trust-row">
+      <div class="trust-item"><div class="trust-item-icon">🏥</div><div class="trust-item-text"><strong>ISO 13485</strong>Medical device quality certification</div></div>
+      <div class="trust-item"><div class="trust-item-icon">✅</div><div class="trust-item-text"><strong>ISO 9001 + 14001</strong>Quality + environmental standards</div></div>
+      <div class="trust-item"><div class="trust-item-icon">50+</div><div class="trust-item-text"><strong>Years</strong>Enagic has manufactured ionizers since the 1970s</div></div>
+    </div>
+    <div class="trust-links">Want to go deeper on the science? <a href="https://stopdrinkingacid.com" target="_blank">stopdrinkingacid.com</a> &nbsp;·&nbsp; <a href="https://eaucohub.com" target="_blank">eaucohub.com</a></div>
+  </div>
+</div>
+
+<!-- CTA / DISCOVERY PROCESS -->
+<div class="cta" id="yes">
+  <div class="cta-inner">
+    <h2>Ready to bring<br><em>living water</em><br>into your studio?</h2>
+    <p class="cta-intro">Two ways to get started — pick what makes sense for where you're at.</p>
+
+    <div class="cta-box">
+      <div class="cta-box-label">Most popular — start here</div>
+      <div class="cta-box-title">The $99 Discovery Process</div>
+      <div class="cta-box-desc">Everything in one place: the full compensation plan, product lineup, certifications, income structure, and exactly how the machine fits your business. Self-paced. You'll know everything you need to make a real decision. <strong style="color:#FDBB89;">If you invest in the machine within 72 hours, the $99 is fully refunded.</strong></div>
+      <a href="mailto:maddie@elevatealign.com?subject=Discovery Process — Tattoo Studio&body=Hi Maddie,%0A%0AI'm interested in the $99 Discovery Process for my tattoo studio. Let's connect.%0A%0A" class="cta-box-btn">Start the Discovery Process →</a>
+    </div>
+
+    <div class="cta-divider">or</div>
+
+    <div class="cta-box secondary">
+      <div class="cta-box-label">Already ready to talk</div>
+      <div class="cta-box-title">Book a Free Call</div>
+      <div class="cta-box-desc">Talk through your specific studio setup, ask questions, and see if this is the right fit. No pitch, no pressure.</div>
+      <a href="mailto:maddie@elevatealign.com?subject=Free Call — Tattoo Studio Water Bar&body=Hi Maddie,%0A%0AI'm interested in learning more about the living water system for my tattoo studio. Let's connect.%0A%0A" class="cta-box-btn">Book a Free Call</a>
+    </div>
+
+    <a href="sms:+19075139717" class="cta-sms">Or text (907) 513-9717 — Maddison</a>
+  </div>
+</div>
+
+<footer>
+  <p>The Living Water Project &nbsp;·&nbsp; <a href="https://stopdrinkingacid.com">stopdrinkingacid.com</a> &nbsp;·&nbsp; <a href="https://eaucohub.com">eaucohub.com</a></p>
+</footer>
+
+</body>
+</html>

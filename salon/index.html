@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+<title>Your Clients Will Feel It Before They Leave the Chair — The Living Water Project</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+:root { color-scheme: light only; }
+html { background:#FAF8F4 !important; }
+body { font-family:'Lato',sans-serif; background:#FAF8F4; color:#2a2a2a; -webkit-text-size-adjust:100%; }
+.container { max-width:640px; margin:0 auto; padding:0 24px; }
+.label { font-size:10px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#066664; margin-bottom:10px; display:block; }
+
+/* HERO */
+.hero { background:#1a2240; padding:56px 24px 52px; text-align:center; position:relative; overflow:hidden; }
+.hero::before {
+  content:''; position:absolute; inset:0;
+  background:radial-gradient(ellipse at 30% 65%, rgba(6,102,100,0.4) 0%, transparent 60%),
+              radial-gradient(ellipse at 80% 20%, rgba(253,187,137,0.08) 0%, transparent 50%);
+}
+.hero-inner { position:relative; z-index:1; max-width:500px; margin:0 auto; }
+.hero-pill { display:inline-flex; align-items:center; gap:8px; border:1px solid rgba(177,233,232,0.25); border-radius:50px; padding:7px 16px; margin-bottom:28px; font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:rgba(177,233,232,0.65); }
+.hero-pill-dot { width:6px; height:6px; border-radius:50%; background:#FDBB89; animation:blink 2s ease-in-out infinite; }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.4} }
+.hero h1 { font-family:'Cormorant Garamond',serif; font-size:clamp(36px,8vw,54px); font-weight:300; color:#FAF8F4; line-height:1.12; margin-bottom:20px; letter-spacing:-0.5px; }
+.hero h1 em { font-style:italic; color:#B1E9E8; }
+.hero-sub { font-size:15px; color:rgba(250,248,244,0.65); font-weight:300; max-width:420px; margin:0 auto 36px; line-height:1.9; }
+.hero-btns { display:flex; flex-direction:column; gap:10px; }
+.btn-primary { display:block; background:#FDBB89; color:#1a2240; font-weight:900; font-size:14px; padding:15px 28px; border-radius:6px; text-decoration:none; letter-spacing:0.5px; }
+.btn-ghost { display:block; background:transparent; color:rgba(177,233,232,0.8); font-weight:700; font-size:13px; padding:13px 28px; border-radius:6px; text-decoration:none; border:1px solid rgba(177,233,232,0.25); }
+
+/* INCOME BAR */
+.income-bar { background:#066664; padding:28px 24px; }
+.income-bar-inner { max-width:640px; margin:0 auto; }
+.income-bar-label { font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:rgba(177,233,232,0.6); margin-bottom:16px; text-align:center; }
+.income-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+.income-box { background:rgba(255,255,255,0.1); border-radius:8px; padding:16px 10px; text-align:center; }
+.income-num { font-size:20px; font-weight:900; color:#FAF8F4; }
+.income-lbl { font-size:10px; color:rgba(177,233,232,0.6); line-height:1.5; margin-top:4px; }
+
+/* SECTIONS */
+.sect { padding:56px 0; }
+.sect.alt { background:#F5F2EC; }
+.sect h2 { font-family:'Cormorant Garamond',serif; font-size:clamp(28px,6vw,42px); font-weight:400; color:#1a2240; line-height:1.2; margin-bottom:8px; }
+.sect-sub { font-size:14px; color:#888; line-height:1.8; max-width:460px; }
+
+/* HOOK CARDS */
+.hook-grid { display:grid; grid-template-columns:1fr; gap:10px; margin-top:28px; }
+.hook-card { background:#FAF8F4; border:1px solid #EAE6DF; border-radius:10px; padding:22px 20px; display:flex; gap:16px; align-items:flex-start; }
+.hook-card.featured { background:#1a2240; border-color:#1a2240; }
+.hook-icon { font-size:24px; min-width:32px; margin-top:2px; }
+.hook-body h4 { font-size:14px; font-weight:900; color:#1a2240; margin-bottom:6px; }
+.hook-card.featured .hook-body h4 { color:#FAF8F4; }
+.hook-body p { font-size:13px; color:#777; line-height:1.7; }
+.hook-card.featured .hook-body p { color:rgba(177,233,232,0.75); }
+.hook-tag { display:inline-block; font-size:10px; font-weight:700; letter-spacing:1px; text-transform:uppercase; padding:3px 9px; border-radius:50px; margin-bottom:8px; background:rgba(6,102,100,0.1); color:#066664; }
+.hook-card.featured .hook-tag { background:rgba(253,187,137,0.2); color:#FDBB89; }
+
+/* STEPS */
+.steps { display:flex; flex-direction:column; gap:0; margin-top:32px; }
+.step { display:flex; gap:18px; padding-bottom:32px; position:relative; }
+.step:not(:last-child)::after { content:''; position:absolute; left:15px; top:34px; bottom:0; width:1px; background:#EAE6DF; }
+.step-num { width:32px; height:32px; min-width:32px; border-radius:50%; background:#FDBB89; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:900; color:#1a2240; position:relative; z-index:1; }
+.step-body { padding-top:4px; }
+.step-tag { font-size:10px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:#066664; margin-bottom:5px; display:block; }
+.step-body h4 { font-size:15px; font-weight:900; color:#1a2240; margin-bottom:5px; }
+.step-body p { font-size:13px; color:#777; line-height:1.7; }
+
+/* WATERS */
+.waters { display:flex; flex-direction:column; gap:10px; margin-top:28px; }
+.wrow { display:flex; align-items:flex-start; gap:14px; background:#FAF8F4; border:1px solid #EAE6DF; border-radius:10px; padding:18px; }
+.wrow.highlight { border-color:#B1E9E8; background:rgba(177,233,232,0.08); }
+.wrow-ph { min-width:56px; text-align:center; }
+.wrow-ph-num { font-size:15px; font-weight:900; color:#1a2240; }
+.wrow-ph-lbl { font-size:9px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:#aaa; }
+.wrow-div { width:1px; background:#EAE6DF; align-self:stretch; min-height:40px; }
+.wrow-body h5 { font-size:13px; font-weight:900; color:#1a2240; margin-bottom:4px; }
+.wrow-body p { font-size:12px; color:#888; line-height:1.6; }
+.wrow-tags { display:flex; flex-wrap:wrap; gap:5px; margin-top:8px; }
+.wrow-tag { font-size:10px; font-weight:700; padding:2px 8px; border-radius:50px; background:rgba(6,102,100,0.08); color:#066664; }
+
+/* BUSINESS TABS */
+.biz-tabs { margin-top:24px; }
+.biz-tab { border:1px solid #EAE6DF; border-radius:10px; overflow:hidden; margin-bottom:10px; }
+.biz-tab-header { display:flex; align-items:center; gap:12px; padding:16px 18px; background:#FAF8F4; cursor:pointer; }
+.biz-tab-icon { font-size:20px; }
+.biz-tab-title { font-size:14px; font-weight:900; color:#1a2240; flex:1; }
+.biz-tab-arr { color:#066664; font-size:16px; transition:transform 0.2s; }
+.biz-tab.open .biz-tab-arr { transform:rotate(45deg); }
+.biz-tab-body { padding:0 18px 18px; background:#FAF8F4; display:none; }
+.biz-tab.open .biz-tab-body { display:block; }
+.biz-tab.open { border-color:#066664; }
+.biz-tab-body ul { list-style:none; display:flex; flex-direction:column; gap:8px; margin-top:12px; }
+.biz-tab-body ul li { font-size:13px; color:#555; line-height:1.65; padding-left:18px; position:relative; }
+.biz-tab-body ul li::before { content:"✓"; position:absolute; left:0; color:#066664; font-weight:900; font-size:11px; top:2px; }
+
+/* INCOME */
+.streams { display:flex; flex-direction:column; gap:12px; margin-top:32px; }
+.stream { background:#FAF8F4; border:1px solid #EAE6DF; border-radius:10px; padding:22px 20px; }
+.stream.featured { background:#1a2240; border-color:#1a2240; }
+.stream-top { display:flex; align-items:flex-start; justify-content:space-between; gap:12px; margin-bottom:10px; }
+.stream-icon { font-size:22px; }
+.stream-badge { font-size:10px; font-weight:700; letter-spacing:1px; text-transform:uppercase; padding:4px 10px; border-radius:50px; }
+.stream:not(.featured) .stream-badge { background:rgba(6,102,100,0.1); color:#066664; }
+.stream.featured .stream-badge { background:rgba(253,187,137,0.2); color:#FDBB89; }
+.stream h4 { font-size:15px; font-weight:900; color:#1a2240; margin-bottom:6px; }
+.stream.featured h4 { color:#FAF8F4; }
+.stream p { font-size:13px; color:#777; line-height:1.7; }
+.stream.featured p { color:rgba(177,233,232,0.75); }
+.stream-eg { font-size:12px; font-weight:700; color:#066664; margin-top:10px; display:block; }
+.stream.featured .stream-eg { color:#FDBB89; }
+
+/* MATH BOX */
+.math-box { background:#1a2240; border-radius:12px; padding:28px 24px; margin-top:28px; }
+.math-box-label { font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:rgba(177,233,232,0.5); margin-bottom:20px; }
+.math-row { display:flex; justify-content:space-between; align-items:center; padding:12px 0; border-bottom:1px solid rgba(255,255,255,0.08); }
+.math-row:last-of-type { border:none; }
+.math-row-label { font-size:13px; color:rgba(177,233,232,0.7); }
+.math-row-val { font-size:14px; font-weight:900; color:#FAF8F4; }
+.math-total { margin-top:16px; padding:16px; background:rgba(253,187,137,0.12); border-radius:8px; display:flex; justify-content:space-between; align-items:center; border:1px solid rgba(253,187,137,0.2); }
+.math-total-label { font-size:12px; font-weight:700; color:#FDBB89; }
+.math-total-val { font-size:20px; font-weight:900; color:#FDBB89; }
+.math-note { font-size:11px; color:rgba(177,233,232,0.4); margin-top:12px; line-height:1.6; font-style:italic; }
+
+/* SYSTEM DEMO */
+.demo-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:28px; }
+.demo-card { background:#FAF8F4; border:1px solid #EAE6DF; border-radius:10px; padding:20px; text-decoration:none; display:block; transition:border-color 0.2s; }
+.demo-card:hover { border-color:#066664; }
+.demo-icon { font-size:24px; margin-bottom:10px; }
+.demo-card h4 { font-size:13px; font-weight:900; color:#1a2240; margin-bottom:5px; }
+.demo-card p { font-size:12px; color:#888; line-height:1.6; margin-bottom:8px; }
+.demo-card span { font-size:11px; font-weight:700; color:#066664; }
+.demo-note { font-size:12px; color:#aaa; margin-top:14px; line-height:1.7; font-style:italic; }
+
+/* PROOF */
+.proof-card { background:#1a2240; border-radius:12px; padding:28px 24px; margin-top:28px; }
+.proof-card-label { font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:rgba(177,233,232,0.4); margin-bottom:14px; }
+.proof-card h4 { font-size:17px; font-weight:900; color:#FAF8F4; margin-bottom:8px; }
+.proof-card p { font-size:13px; color:rgba(177,233,232,0.7); line-height:1.8; margin-bottom:18px; }
+.proof-stats { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; }
+.ps { background:rgba(255,255,255,0.07); border-radius:8px; padding:14px 8px; text-align:center; }
+.ps-num { font-size:17px; font-weight:900; color:#FDBB89; }
+.ps-lbl { font-size:10px; color:rgba(177,233,232,0.4); margin-top:3px; line-height:1.4; }
+
+/* FAQ */
+.faq { padding:56px 0; }
+.faq h2 { font-family:'Cormorant Garamond',serif; font-size:clamp(26px,5vw,36px); font-weight:400; color:#1a2240; line-height:1.2; margin-bottom:8px; }
+details { border:1px solid #EAE6DF; border-radius:8px; background:#FAF8F4; overflow:hidden; margin-bottom:8px; }
+details[open] { border-color:#B1E9E8; }
+summary { padding:16px 18px; font-size:13px; font-weight:700; color:#1a2240; cursor:pointer; list-style:none; display:flex; justify-content:space-between; align-items:center; gap:12px; }
+summary::-webkit-details-marker { display:none; }
+.arr { color:#066664; font-size:16px; min-width:18px; text-align:center; transition:transform 0.2s; }
+details[open] .arr { transform:rotate(45deg); }
+.det-body { padding:4px 18px 18px; font-size:13px; color:#666; line-height:1.85; }
+.det-body a { color:#066664; font-weight:700; text-decoration:none; border-bottom:1px solid #B1E9E8; }
+
+/* CTA */
+.cta { background:#1a2240; padding:68px 24px; text-align:center; position:relative; overflow:hidden; }
+.cta::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 70% 40%, rgba(6,102,100,0.35) 0%, transparent 55%); }
+.cta-inner { position:relative; z-index:1; max-width:440px; margin:0 auto; }
+.cta h2 { font-family:'Cormorant Garamond',serif; font-size:clamp(30px,7vw,44px); font-weight:300; color:#FAF8F4; line-height:1.2; margin-bottom:14px; }
+.cta h2 em { font-style:italic; color:#B1E9E8; }
+.cta-intro { font-size:14px; color:rgba(250,248,244,0.6); line-height:1.9; margin-bottom:24px; }
+.cta-box { background:rgba(255,255,255,0.05); border:1px solid rgba(177,233,232,0.15); border-radius:10px; padding:22px; margin-bottom:10px; text-align:left; }
+.cta-box-label { font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:rgba(177,233,232,0.45); margin-bottom:8px; }
+.cta-box-title { font-size:14px; font-weight:900; color:#FAF8F4; margin-bottom:6px; }
+.cta-box-desc { font-size:12px; color:rgba(177,233,232,0.6); line-height:1.7; margin-bottom:14px; }
+.cta-box-btn { display:block; background:#FDBB89; color:#1a2240; font-weight:900; font-size:14px; padding:13px 22px; border-radius:6px; text-decoration:none; text-align:center; }
+.cta-box.secondary .cta-box-btn { background:transparent; color:rgba(177,233,232,0.8); border:1px solid rgba(177,233,232,0.25); }
+.cta-divider { font-size:11px; color:rgba(255,255,255,0.2); margin:8px 0; text-align:center; }
+.cta-sms { display:block; color:rgba(177,233,232,0.65); font-size:14px; font-weight:700; text-decoration:none; margin-top:14px; }
+
+footer { background:#F5F2EC; border-top:1px solid #EAE6DF; padding:22px 24px; text-align:center; font-size:12px; color:#bbb; }
+footer a { color:#066664; text-decoration:none; }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-pill"><div class="hero-pill-dot"></div>The Living Water Project</div>
+    <h1>Your clients will feel it<br>before they<br><em>leave the chair.</em></h1>
+    <p class="hero-sub">Add structured hydrogen water to your salon. Rinse with pH 6.0 for hair that closes at the cuticle. Sanitize with pH 2.5 that's cleaner than bleach. Earn recurring income from members who fill up daily.</p>
+    <div class="hero-btns">
+      <a href="#yes" class="btn-primary">Add This to My Salon →</a>
+      <a href="#how" class="btn-ghost">See how it works first</a>
+    </div>
+  </div>
+</div>
+
+<!-- INCOME BAR -->
+<div class="income-bar">
+  <div class="income-bar-inner">
+    <div class="income-bar-label">What you earn on top of every service</div>
+    <div class="income-grid">
+      <div class="income-box"><div class="income-num">$50–75</div><div class="income-lbl">per member/month<br>recurring</div></div>
+      <div class="income-box"><div class="income-num">$285+</div><div class="income-lbl">per machine sale<br>commission</div></div>
+      <div class="income-box"><div class="income-num">Daily</div><div class="income-lbl">members returning<br>between appointments</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- WHY IT WORKS -->
+<div class="sect" id="how">
+  <div class="container">
+    <span class="label">Why salon & beauty spaces</span>
+    <h2>Water is already<br>at the center<br>of what you do.</h2>
+    <p class="sect-sub" style="margin-top:8px;">You rinse, you soak, you sanitize. You're already using water on every single client. The only question is whether that water is working for you — or against you.</p>
+    <div class="hook-grid" style="margin-top:28px;">
+      <div class="hook-card featured">
+        <div class="hook-icon">✂️</div>
+        <div class="hook-body">
+          <span class="hook-tag">Hair Salons</span>
+          <h4>One pH 6.0 rinse and your clients leave with hair they've never felt before</h4>
+          <p>Tap water sits at pH 7–8.5. Hair's natural state is slightly acidic — around 4.5–5.5. Every rinse with tap water swells the cuticle open, leaving hair frizzy, dull, and porous. pH 6.0 beauty water closes the cuticle on contact. Clients notice it before they leave the chair. It becomes your signature move.</p>
+        </div>
+      </div>
+      <div class="hook-card">
+        <div class="hook-icon">💅</div>
+        <div class="hook-body">
+          <span class="hook-tag">Nail Salons</span>
+          <h4>pH 2.5 is a cleaner sanitizer than anything you're using right now</h4>
+          <p>Electrolyzed water at pH 2.5 (hypochlorous acid) kills bacteria, fungi, and viruses on contact in under 30 seconds. No fumes. No residue. Safe on skin. Used in hospitals and dental offices. Replace your chemical sanitizer entirely — same standard, no chemicals in the air your clients breathe for an hour.</p>
+        </div>
+      </div>
+      <div class="hook-card">
+        <div class="hook-icon">💧</div>
+        <div class="hook-body">
+          <span class="hook-tag">Both</span>
+          <h4>Your waiting area becomes a daily destination</h4>
+          <p>Set up a small water bar near reception. Offer a free fill while clients wait. Let them taste it. Sign them up for a monthly membership with a QR code on the counter. Members who pay $50/month come back every single day — that's daily contact with your business between appointments.</p>
+        </div>
+      </div>
+      <div class="hook-card">
+        <div class="hook-icon">🌿</div>
+        <div class="hook-body">
+          <span class="hook-tag">Behind the scenes</span>
+          <h4>pH 11.5 cleans your tools and laundry without chemical detergents</h4>
+          <p>Strong alkaline water at pH 11.5 emulsifies oil-based buildup from brushes, bowls, combs, and towels. No chemical shampoo needed. Fresher towels, cleaner tools, and a product cost you stop paying every month.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- THE WATERS -->
+<div class="sect alt">
+  <div class="container">
+    <span class="label">What the machine produces</span>
+    <h2>Seven waters.<br>Built for exactly<br>what you do.</h2>
+    <p class="sect-sub" style="margin-top:8px;">One machine. Connects to your existing water line. Produces seven distinct outputs — each one with a direct application in your salon.</p>
+    <div class="waters">
+      <div class="wrow highlight">
+        <div class="wrow-ph"><div class="wrow-ph-num">6.0</div><div class="wrow-ph-lbl">pH</div></div>
+        <div class="wrow-div"></div>
+        <div class="wrow-body">
+          <h5>✨ Beauty Water — your secret weapon at the shampoo bowl</h5>
+          <p>Slightly acidic water that matches the natural state of both hair and skin. Closes the hair cuticle for smoothness and shine, tightens scalp pores, locks in color treatment. Used as the final rinse after every shampoo, color, or treatment — clients notice it immediately.</p>
+          <div class="wrow-tags"><span class="wrow-tag">Final rinse</span><span class="wrow-tag">Color sealing</span><span class="wrow-tag">Frizz reduction</span><span class="wrow-tag">Scalp care</span><span class="wrow-tag">Nail soak</span></div>
+        </div>
+      </div>
+      <div class="wrow highlight">
+        <div class="wrow-ph"><div class="wrow-ph-num">2.5</div><div class="wrow-ph-lbl">pH</div></div>
+        <div class="wrow-div"></div>
+        <div class="wrow-body">
+          <h5>🛡️ Strong Acidic — hospital-grade sanitation with no chemicals</h5>
+          <p>Kills bacteria, viruses, and fungi on contact in under 30 seconds. FDA and EPA recognized. No fumes, no residue, safe for skin contact. Replace your chemical sanitizing spray at nail stations, shampoo bowls, combs, clippers, and surfaces. Cleaner air. Cleaner tools. Lower costs.</p>
+          <div class="wrow-tags"><span class="wrow-tag">Nail station sanitation</span><span class="wrow-tag">Clippers & combs</span><span class="wrow-tag">Surface spray</span><span class="wrow-tag">No fumes</span><span class="wrow-tag">FDA recognized</span></div>
+        </div>
+      </div>
+      <div class="wrow">
+        <div class="wrow-ph"><div class="wrow-ph-num">8.5–9.5</div><div class="wrow-ph-lbl">pH</div></div>
+        <div class="wrow-div"></div>
+        <div class="wrow-body">
+          <h5>💧 Hydrogen Drinking Water — your membership income stream</h5>
+          <p>Rich in molecular hydrogen (H₂). Reduces inflammation, supports hydration at the cellular level, tastes noticeably cleaner. Offer in the waiting area, set up a fill station, sign clients up for water share memberships. This is your recurring monthly income.</p>
+          <div class="wrow-tags"><span class="wrow-tag">Water memberships</span><span class="wrow-tag">Waiting area</span><span class="wrow-tag">Client experience</span></div>
+        </div>
+      </div>
+      <div class="wrow">
+        <div class="wrow-ph"><div class="wrow-ph-num">11.5</div><div class="wrow-ph-lbl">pH</div></div>
+        <div class="wrow-div"></div>
+        <div class="wrow-body">
+          <h5>🌿 Strong Alkaline — chemical-free tool and laundry cleaning</h5>
+          <p>Emulsifies oil, product buildup, and grease without detergents. Use on brushes, color bowls, towels, and floor surfaces. Replaces most of your cleaning product spend.</p>
+          <div class="wrow-tags"><span class="wrow-tag">Brush & tool cleaning</span><span class="wrow-tag">Laundry</span><span class="wrow-tag">Product buildup</span><span class="wrow-tag">Floor cleaning</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BY BUSINESS TYPE -->
+    <div style="margin-top:48px;">
+      <span class="label">By salon type</span>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(24px,5vw,36px);font-weight:400;color:#1a2240;line-height:1.2;margin-bottom:8px;">What this looks like<br>in your specific space.</h2>
+      <div class="biz-tabs">
+
+        <div class="biz-tab open" onclick="toggleTab(this)">
+          <div class="biz-tab-header">
+            <div class="biz-tab-icon">✂️</div>
+            <div class="biz-tab-title">Hair Salons & Stylists</div>
+            <div class="biz-tab-arr">+</div>
+          </div>
+          <div class="biz-tab-body">
+            <ul>
+              <li>Use pH 6.0 as the final rinse after every shampoo, color, or treatment — the cuticle closes, the shine is immediate</li>
+              <li>Clients notice it before they leave your chair. It becomes a talking point every single visit</li>
+              <li>Position it on your service menu: "Living Water Rinse — complimentary with every service" or charge a $5 upgrade</li>
+              <li>pH 11.5 for cleaning color bowls, brushes, and tools — no more chemical buildup residue</li>
+              <li>Water bar in the waiting area: offer a free taste, QR code sign-up, memberships sign themselves up</li>
+              <li>Stylists who believe in it naturally share it with clients who ask about getting their own machine at home — you earn that sale commission</li>
+              <li>Booth renters can each benefit from the same machine — collective buy-in makes the membership pitch easy</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="biz-tab" onclick="toggleTab(this)">
+          <div class="biz-tab-header">
+            <div class="biz-tab-icon">💅</div>
+            <div class="biz-tab-title">Nail Salons & Nail Techs</div>
+            <div class="biz-tab-arr">+</div>
+          </div>
+          <div class="biz-tab-body">
+            <ul>
+              <li>pH 2.5 is a direct replacement for the chemical sanitizers you're currently using at every station</li>
+              <li>Same kill rate as hospital-grade disinfectants — but no fumes, no residue, no harsh smell in the air clients breathe for 45–90 minutes</li>
+              <li>Use pH 6.0 for soaking fingertips and cuticle care — the slightly acidic pH is ideal for softening without over-drying</li>
+              <li>Nail clients sit in your space for a long time — a glass of hydrogen water during service is a premium touch that no competitor is offering</li>
+              <li>Water memberships are an easy upsell: "Come fill up between appointments for $50/month"</li>
+              <li>Clients who are health-conscious (and willing to pay for quality nails) are already open to functional water — the conversion to membership is natural</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="biz-tab" onclick="toggleTab(this)">
+          <div class="biz-tab-header">
+            <div class="biz-tab-icon">💈</div>
+            <div class="biz-tab-title">Barbershops</div>
+            <div class="biz-tab-arr">+</div>
+          </div>
+          <div class="biz-tab-body">
+            <ul>
+              <li>pH 2.5 for blade and clipper sanitation between clients — cleaner than chemical spray, faster, and no chemical smell in the shop</li>
+              <li>pH 6.0 as a post-shave toner — calms razor irritation, closes pores, soothes skin without product residue</li>
+              <li>Hydrogen drinking water at the waiting area — regulars who come in weekly develop the habit fast</li>
+              <li>Barbershops build intense client loyalty — water memberships fit that culture naturally</li>
+              <li>Regulars who ask about getting it at home give you a direct commission sale</li>
+              <li>pH 11.5 for cleaning towels and laundry — chemical-free, fresh every time</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<div class="sect" id="steps">
+  <div class="container">
+    <span class="label">How it works</span>
+    <h2>Four steps.<br>Then the system<br>runs itself.</h2>
+    <p class="sect-sub" style="margin-top:8px;">You invest in the machine, get your distributor ID, and plug into a complete membership and sales system that's already fully built.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <span class="step-tag">Invest</span>
+          <h4>Get your own Kangen K8</h4>
+          <p>The machine connects to your existing water line — no plumber, no renovation. Most setups take under an hour. The same machine running live at Two Hounds Coffee in Kenai, Alaska.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <span class="step-tag">Register</span>
+          <h4>Become an Enagic distributor</h4>
+          <p>Your distributor ID means every machine sale you refer earns you a commission. Your clients who fall in love and want it at home — you earn that sale. The water does the demo work for you.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <span class="step-tag">Launch</span>
+          <h4>Plug into the full system</h4>
+          <p>Digital member cards, QR sign-up at your counter, staff verification app, automated emails, printable flyers. All already built. You don't create anything — you plug in.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <span class="step-tag">Earn</span>
+          <h4>Members pay monthly. Machine sales pay per referral.</h4>
+          <p>Membership income lands automatically. When a client wants their own machine, you earn the commission. Your salon becomes the place where clients fall in love with their water.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- INCOME -->
+<div class="sect alt">
+  <div class="container">
+    <span class="label">Your income</span>
+    <h2>New revenue.<br>Same hours.<br>Same space.</h2>
+    <div class="streams">
+      <div class="stream featured">
+        <div class="stream-top">
+          <div class="stream-icon">💧</div>
+          <span class="stream-badge">Recurring monthly</span>
+        </div>
+        <h4>Water Share Memberships</h4>
+        <p>Members pay monthly to fill their jar daily at your counter. The digital system handles everything — sign-up, member cards, verification. Income lands automatically while you focus on services.</p>
+        <span class="stream-eg">Free Water Share → $50 Hydration Club → $75 Total Wellness</span>
+      </div>
+      <div class="stream">
+        <div class="stream-top">
+          <div class="stream-icon">⚡</div>
+          <span class="stream-badge">Direct sales</span>
+        </div>
+        <h4>Machine Sales Commission</h4>
+        <p>Clients who use pH 6.0 on their hair every visit want it at home. When they ask — you earn the commission as their distributor. Your chair is the best demo room in the world.</p>
+        <span class="stream-eg">$285–1,800+ per machine sale</span>
+      </div>
+      <div class="stream">
+        <div class="stream-top">
+          <div class="stream-icon">🚶</div>
+          <span class="stream-badge">Indirect value</span>
+        </div>
+        <h4>Daily Foot Traffic</h4>
+        <p>Water members come back every day to fill up. Your salon becomes part of their daily routine between appointments — more visibility, more rebooks, more word of mouth.</p>
+        <span class="stream-eg">Daily fill-ups = daily touchpoints with your brand.</span>
+      </div>
+    </div>
+    <div class="math-box">
+      <div class="math-box-label">The math — conservative example</div>
+      <div class="math-row"><div class="math-row-label">10 Hydration Club members ($50/mo)</div><div class="math-row-val">$500/mo</div></div>
+      <div class="math-row"><div class="math-row-label">5 Total Wellness members ($75/mo)</div><div class="math-row-val">$375/mo</div></div>
+      <div class="math-row"><div class="math-row-label">1 machine sale referral/month</div><div class="math-row-val">$285–1,800+</div></div>
+      <div class="math-total">
+        <div class="math-total-label">Monthly income from water</div>
+        <div class="math-total-val">$1,160+</div>
+      </div>
+      <div class="math-note">Salon clients are loyal — the same people sit in your chair every 4–8 weeks. Once they taste the water and feel the rinse, the membership is an easy yes. 15 members is a slow month. Growth is word-of-mouth.</div>
+    </div>
+  </div>
+</div>
+
+<!-- THE SYSTEM -->
+<div class="sect">
+  <div class="container">
+    <span class="label">What you get — already built</span>
+    <h2>The whole system<br>is live and ready.</h2>
+    <p class="sect-sub" style="margin-top:8px;">Running live right now at Two Hounds Coffee in Kenai, Alaska. You plug in and it's yours.</p>
+    <div class="demo-grid">
+      <a href="https://healingh2eau.co/watershare" target="_blank" class="demo-card">
+        <div class="demo-icon">📱</div>
+        <h4>Member Sign-Up</h4>
+        <p>Clients scan a QR code, claim their free water share in 30 seconds. Goes straight into the system.</p>
+        <span>See it live →</span>
+      </a>
+      <a href="https://eauco-mads.github.io/living-water-pages/member-card-DEMO.html" target="_blank" class="demo-card">
+        <div class="demo-icon">💳</div>
+        <h4>Digital Member Card</h4>
+        <p>Each member gets a personalized card with their name and tier. Saves to Apple Wallet.</p>
+        <span>See a card →</span>
+      </a>
+      <a href="https://eauco-mads.github.io/living-water-pages/water-club-STAFF.html" target="_blank" class="demo-card">
+        <div class="demo-icon">⚡</div>
+        <h4>Staff Verify App</h4>
+        <p>Staff types a name, instantly sees their tier and color. No confusion at the counter.</p>
+        <span>Try "Sarah" →</span>
+      </a>
+      <div class="demo-card" style="cursor:default;">
+        <div class="demo-icon">✉️</div>
+        <h4>Automated Emails</h4>
+        <p>New members get their card instantly. Paid members get their perks explained. Zero follow-up needed.</p>
+        <span style="color:#aaa;">Included with setup</span>
+      </div>
+    </div>
+    <p class="demo-note">All of this comes with your setup — plus QR codes, printable flyers, and onboarding support from Maddison.</p>
+  </div>
+</div>
+
+<!-- PROOF -->
+<div class="sect alt">
+  <div class="container">
+    <span class="label">Already running</span>
+    <h2>See it live<br>in Kenai, Alaska.</h2>
+    <div class="proof-card">
+      <div class="proof-card-label">Live Location — The Living Water Bar at Two Hounds Coffee</div>
+      <h4>Two Hounds Coffee & Wellness Bar, Kenai AK</h4>
+      <p>The system is live. Members sign up via QR code, get their digital card, and come in daily to fill up. Staff pulls up a name on their phone to verify their tier. The business earns membership income automatically — no spreadsheets, no manual tracking. When a client wants their own machine, the owner earns the commission.</p>
+      <div class="proof-stats">
+        <div class="ps"><div class="ps-num">3</div><div class="ps-lbl">Membership tiers live</div></div>
+        <div class="ps"><div class="ps-num">Jul 1</div><div class="ps-lbl">Official launch</div></div>
+        <div class="ps"><div class="ps-num">✓</div><div class="ps-lbl">Full system running</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="faq">
+  <div class="container">
+    <span class="label">Questions</span>
+    <h2>What your clients<br>will ask.</h2>
+    <p class="sect-sub" style="margin-top:8px; margin-bottom:24px;">The questions that come up at the shampoo bowl and the nail table — answered.</p>
+
+    <details>
+      <summary>Why does pH 6.0 make hair feel so different? <span class="arr">+</span></summary>
+      <div class="det-body">Hair's natural pH sits between 4.5 and 5.5. The cuticle — the outer protective layer of each strand — opens when exposed to alkaline water (like tap water at pH 7–8.5) and closes under mildly acidic conditions. Open cuticles mean frizz, porosity, dullness, and faster color fade. pH 6.0 beauty water closes the cuticle on contact. The result: smoother texture, more shine, better color retention, and less frizz — without adding a single product. Clients feel it before they leave the chair.</div>
+    </details>
+
+    <details>
+      <summary>Is pH 2.5 actually safe to use at nail stations? <span class="arr">+</span></summary>
+      <div class="det-body">Yes. Electrolyzed water at pH 2.5 contains hypochlorous acid (HOCl) — the same compound your immune system produces to kill pathogens. It's recognized by the FDA and EPA as safe and effective for surface disinfection, kills bacteria, fungi, and viruses in under 30 seconds, leaves no chemical residue, has no harmful fumes, and is safe for skin contact. It's already used in hospitals, dental offices, and food prep facilities. For a nail salon, it replaces quats and bleach-based sanitizers entirely — same or better kill rate, none of the chemical exposure for clients or techs.</div>
+    </details>
+
+    <details>
+      <summary>What does the membership system actually look like at the counter? <span class="arr">+</span></summary>
+      <div class="det-body">You put a small QR code placard near your reception desk or shampoo station. A client scans it, fills out a short form on their phone, and gets their free Water Share in about 30 seconds. They receive an automated email with their personalized digital member card. When they come back to fill up, a staff member types their name into the verification app and sees their tier color instantly. No spreadsheets, no manual tracking, no extra admin. The whole thing runs in the background while you focus on services.</div>
+    </details>
+
+    <details>
+      <summary>What is molecular hydrogen and why would clients want it? <span class="arr">+</span></summary>
+      <div class="det-body">Molecular hydrogen (H₂) is the smallest molecule in existence — small enough to cross into every cell, including through the blood-brain barrier. It acts as a selective antioxidant, neutralizing the most damaging free radicals without disrupting the ones your body needs. Over 1,000 peer-reviewed studies link it to reduced inflammation, faster recovery, improved cellular function, and better energy. In plain language: it tastes cleaner than anything out of a tap or a bottle, and the clients who drink it regularly report feeling the difference. That experience is what converts them to paid members.<br><br><a href="https://stopdrinkingacid.com" target="_blank">See the research →</a></div>
+    </details>
+
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta" id="yes">
+  <div class="cta-inner">
+    <h2>Ready to bring<br><em>living water</em><br>into your salon?</h2>
+    <p class="cta-intro">Two ways to move forward — pick what feels right.</p>
+    <div class="cta-box">
+      <div class="cta-box-label">Start here — most popular</div>
+      <div class="cta-box-title">The $99 Discovery Process</div>
+      <div class="cta-box-desc">Everything you need to make a real decision: the full comp plan, income structure, certifications, and exactly how the system integrates with your salon. <strong style="color:#FDBB89;">Invest in the machine within 72 hours and the $99 is fully refunded.</strong></div>
+      <a href="mailto:maddie@elevatealign.com?subject=Discovery Process — Salon&body=Hi Maddie,%0A%0AI'm interested in the $99 Discovery Process for my salon. Let's connect.%0A%0A" class="cta-box-btn">Start the Discovery Process →</a>
+    </div>
+    <div class="cta-divider">or</div>
+    <div class="cta-box secondary">
+      <div class="cta-box-label">Already ready to talk</div>
+      <div class="cta-box-title">Book a Free Call</div>
+      <div class="cta-box-desc">Walk through your specific space, ask questions, see if it fits. No pitch, no pressure.</div>
+      <a href="mailto:maddie@elevatealign.com?subject=Free Call — Living Water Salon&body=Hi Maddie,%0A%0AI'm interested in learning more about the living water system for my salon. Let's connect.%0A%0A" class="cta-box-btn">Book a Free Call</a>
+    </div>
+    <a href="sms:+19075139717" class="cta-sms">Or text (907) 513-9717 — Maddison</a>
+  </div>
+</div>
+
+<footer>
+  <p>The Living Water Project &nbsp;·&nbsp; Powered by <a href="https://eaucohub.com">Eau Co Hub</a> &nbsp;·&nbsp; <a href="https://stopdrinkingacid.com">stopdrinkingacid.com</a></p>
+</footer>
+
+<script>
+function toggleTab(el) {
+  const isOpen = el.classList.contains('open');
+  document.querySelectorAll('.biz-tab').forEach(t => t.classList.remove('open'));
+  if (!isOpen) el.classList.add('open');
+}
+</script>
+</body>
+</html>

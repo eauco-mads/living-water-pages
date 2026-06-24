@@ -697,44 +697,70 @@ If any of this past 10 days resonated — this is your sign. Shoot me a message.
 ════════════════════════════════════════ -->
 <div id="tab-pitchpages" class="tab-content">
 
-  <div class="urgent">
-    ⚡ <div><strong>June 27 DEADLINE:</strong> Spa page must be live in GHL at <code>/spa</code> before tanning salon pop-up. All files are in your Downloads folder.</div>
+  <div style="background:rgba(5,150,105,0.08);border:1px solid rgba(5,150,105,0.25);border-radius:8px;padding:14px 16px;display:flex;gap:10px;align-items:flex-start;font-size:0.85rem;color:var(--text);margin-bottom:16px;">
+    ✅ <div><strong>All 6 pitch pages are LIVE on GitHub Pages.</strong> Share any link directly. To get on <code>healingh2eau.co/[slug]</code>: GHL → Sites → Funnels → add page with slug → add Custom HTML block → paste the file content → publish.</div>
   </div>
 
   <div class="grid-2">
 
-    <!-- SPA -->
+    <!-- WELLNESS SPA -->
+    <div class="pitch-card">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
+        <div class="pitch-vertical">Medical Wellness</div>
+        <span class="badge badge-live">Live 🌐</span>
+      </div>
+      <h3>Wellness Spas & Medical Aesthetics</h3>
+      <p class="pitch-hook">"IV therapy + H₂ water amplifies every outcome. pH 6.0 post-procedure skin care. pH 2.5 replaces chemical sanitizer. Health-forward clients already spending — this is their next yes."</p>
+      <div style="margin-bottom:12px;">
+        <span class="meta-tag">wellness-spa-pitch.html</span>
+        <span class="meta-tag">IV · Massage · Botox · Laser</span>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:6px;">
+        <a href="https://eauco-mads.github.io/living-water-pages/wellness-spa/" target="_blank" class="btn-sm" style="text-decoration:none;">Open Live Page →</a>
+        <button class="collapse-toggle" onclick="toggle('wspa-emails',this)">▶ Cold Email Notes</button>
+      </div>
+      <div id="wspa-emails" class="collapse-body">
+        <div class="info-box"><strong>Cold email sequence for wellness spa — needs building.</strong> Ask Claude: "Build me a 3-email cold outreach sequence for IV bars and medical aesthetics — angle: protocol upgrade that amplifies their existing services."</div>
+      </div>
+    </div>
+
+    <!-- SALON -->
+    <div class="pitch-card">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
+        <div class="pitch-vertical">Beauty & Style</div>
+        <span class="badge badge-live">Live 🌐</span>
+      </div>
+      <h3>Hair & Nail Salons</h3>
+      <p class="pitch-hook">"pH 6.0 closes the cuticle before clients leave the chair. pH 2.5 replaces every chemical sanitizer at the nail station. Members come back daily between appointments."</p>
+      <div style="margin-bottom:12px;">
+        <span class="meta-tag">salon-pitch.html</span>
+        <span class="meta-tag">Hair · Nail · Barbershop</span>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:6px;">
+        <a href="https://eauco-mads.github.io/living-water-pages/salon/" target="_blank" class="btn-sm" style="text-decoration:none;">Open Live Page →</a>
+        <button class="collapse-toggle" onclick="toggle('salon-emails',this)">▶ Cold Email Notes</button>
+      </div>
+      <div id="salon-emails" class="collapse-body">
+        <div class="info-box"><strong>Cold email sequence for salons — needs building.</strong> Ask Claude: "Build me a 3-email cold outreach sequence for hair and nail salon owners — angle: the pH 6.0 rinse clients feel before they leave the chair."</div>
+      </div>
+    </div>
+
+    <!-- SPA (general) -->
     <div class="pitch-card">
       <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
         <div class="pitch-vertical">Wellness & Beauty</div>
-        <span id="badge-spa" class="badge badge-urgent">⚡ Upload Now</span>
+        <span id="badge-spa" class="badge badge-live">Live 🌐</span>
       </div>
-      <h3>Spa / Wellness Studios</h3>
+      <h3>Spa / Wellness Studios (General)</h3>
       <p class="pitch-hook">"pH 2.5 replaces your bleach. pH 6.0 replaces your toner. pH 9.5 fills member cups. Your next income stream is already built."</p>
       <div style="margin-bottom:12px;">
-        <span class="meta-tag">GHL: /spa</span>
         <span class="meta-tag">spa-pitch.html</span>
         <span class="meta-tag">Tanning · Botox · IV · Hair</span>
       </div>
       <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px;">
-        <button class="btn-sm" onclick="markLive('spa')">Mark Live ✓</button>
-        <button class="collapse-toggle" onclick="toggle('spa-steps',this)">▶ GHL Upload Steps</button>
+        <a href="https://eauco-mads.github.io/living-water-pages/spa/" target="_blank" class="btn-sm" style="text-decoration:none;">Open Live Page →</a>
         <button class="collapse-toggle" onclick="toggle('spa-video',this)">▶ Video Script</button>
         <button class="collapse-toggle" onclick="toggle('spa-emails',this)">▶ Cold Email Notes</button>
-      </div>
-
-      <div id="spa-steps" class="collapse-body">
-        <div class="info-box">
-          <strong>Upload to GHL:</strong>
-          <ol style="margin-top:8px;padding-left:16px;font-size:0.83rem;line-height:1.9;">
-            <li>GHL → Sites → Funnels → open your main funnel</li>
-            <li>Click "+ Add Page" → name: Spa Pitch → slug: <code>/spa</code></li>
-            <li>Edit page → add a "Custom HTML" block</li>
-            <li>Open <code>spa-pitch.html</code> in TextEdit → Select All → Copy</li>
-            <li>Paste into the Custom HTML block → Save → Publish</li>
-            <li>Test live at: <code>healingh2eau.co/spa</code></li>
-          </ol>
-        </div>
       </div>
 
       <div id="spa-video" class="collapse-body">
@@ -758,17 +784,16 @@ If any of this past 10 days resonated — this is your sign. Shoot me a message.
     <div class="pitch-card">
       <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
         <div class="pitch-vertical">Coffee & Beverage</div>
-        <span id="badge-coffee" class="badge badge-pending">Needs Upload</span>
+        <span id="badge-coffee" class="badge badge-live">Live 🌐</span>
       </div>
       <h3>Coffee Shops</h3>
       <p class="pitch-hook">"Water is 96–98.5% of your espresso shot. If you're sourcing great beans but pouring tap water — you're working against yourself."</p>
       <div style="margin-bottom:12px;">
-        <span class="meta-tag">GHL: /coffee</span>
         <span class="meta-tag">coffee-pitch.html</span>
         <span class="meta-tag">Two Hounds = live proof</span>
       </div>
       <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px;">
-        <button class="btn-sm" onclick="markLive('coffee')">Mark Live ✓</button>
+        <a href="https://eauco-mads.github.io/living-water-pages/coffee/" target="_blank" class="btn-sm" style="text-decoration:none;">Open Live Page →</a>
         <button class="collapse-toggle" onclick="toggle('coffee-video',this)">▶ Video Script</button>
       </div>
 
@@ -790,18 +815,17 @@ If any of this past 10 days resonated — this is your sign. Shoot me a message.
     <div class="pitch-card">
       <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
         <div class="pitch-vertical">Food Service</div>
-        <span id="badge-restaurant" class="badge badge-pending">Needs Upload</span>
+        <span id="badge-restaurant" class="badge badge-live">Live 🌐</span>
       </div>
       <h3>Restaurants</h3>
       <p class="pitch-hook">"30,000+ restaurants in Japan run on this water. Chemical replacement savings of $2,200–$6,400/yr — before a single membership."</p>
       <div style="margin-bottom:12px;">
-        <span class="meta-tag">GHL: /restaurants</span>
         <span class="meta-tag">restaurant-pitch.html</span>
         <span class="meta-tag">Lynn · Enzo · Fidel ✓</span>
       </div>
       <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px;">
-        <button class="btn-sm" onclick="markLive('restaurant')">Mark Live ✓</button>
-        <button class="collapse-toggle" onclick="toggle('rest-emails',this)">▶ Email Sequence</button>
+        <a href="https://eauco-mads.github.io/living-water-pages/restaurant/" target="_blank" class="btn-sm" style="text-decoration:none;">Open Live Page →</a>
+        <button class="collapse-toggle" onclick="toggle('rest-emails',this)">▶ Email Sequence ✅</button>
       </div>
       <div id="rest-emails" class="collapse-body">
         <div class="info-box"><strong>Done ✅</strong> — 3 cold outreach emails (Day 1: chemical cost angle, Day 4: beef stew story, Day 10: income angle) + 4-email GHL automation + SMS. Open <code>restaurant-email-sequence.html</code> in browser to see all copy.</div>
@@ -812,17 +836,16 @@ If any of this past 10 days resonated — this is your sign. Shoot me a message.
     <div class="pitch-card">
       <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
         <div class="pitch-vertical">Body Art</div>
-        <span id="badge-tattoo" class="badge badge-pending">Needs Upload</span>
+        <span id="badge-tattoo" class="badge badge-live">Live 🌐</span>
       </div>
       <h3>Tattoo Studios</h3>
       <p class="pitch-hook">"Your studio is built on sterility. The water should be too. pH 2.5 = hospital-grade HOCl — 100x more effective than bleach. This is already your standard."</p>
       <div style="margin-bottom:12px;">
-        <span class="meta-tag">GHL: /tattoo</span>
         <span class="meta-tag">tattoo-pitch.html</span>
         <span class="meta-tag">pH 2.5 · pH 6.0 aftercare</span>
       </div>
       <div style="display:flex;gap:8px;flex-wrap:wrap;">
-        <button class="btn-sm" onclick="markLive('tattoo')">Mark Live ✓</button>
+        <a href="https://eauco-mads.github.io/living-water-pages/tattoo/" target="_blank" class="btn-sm" style="text-decoration:none;">Open Live Page →</a>
       </div>
     </div>
   </div>
@@ -832,17 +855,17 @@ If any of this past 10 days resonated — this is your sign. Shoot me a message.
     <div class="card" style="padding:16px;">
       <div class="badge badge-building" style="margin-bottom:10px;">Building</div>
       <h4>Demo Video</h4>
-      <p style="font-size:0.84rem;color:var(--muted);">5–7 min machine walkthrough to embed on all pages. Shot lists above are ready. Film this first — biggest single conversion lever.</p>
+      <p style="font-size:0.84rem;color:var(--muted);">5–7 min machine walkthrough to embed on all pages. Shot lists in the Spa card are ready. Film this first — biggest single conversion lever across all 6 pages.</p>
     </div>
     <div class="card" style="padding:16px;">
       <div class="badge badge-building" style="margin-bottom:10px;">Building</div>
       <h4>B2B Discovery Process</h4>
-      <p style="font-size:0.84rem;color:var(--muted);">Current DP is for aspiring distributors (mindset content). Need a "Business Owner Walkthrough" — comp plan, income math, setup. Under 30 min.</p>
+      <p style="font-size:0.84rem;color:var(--muted);">Current DP is for aspiring distributors. Need a "Business Owner Walkthrough" — comp plan, income math, setup. Under 30 min. $99 refundable on machine purchase.</p>
     </div>
     <div class="card" style="padding:16px;">
       <div class="badge badge-building" style="margin-bottom:10px;">Building</div>
       <h4>Cold Email Sequences</h4>
-      <p style="font-size:0.84rem;color:var(--muted);">Restaurant done ✅. Still needed: spa, coffee, tattoo outreach email sequences + GHL automations.</p>
+      <p style="font-size:0.84rem;color:var(--muted);">Restaurant ✅ done. Still needed: wellness spa, salon, coffee, tattoo sequences + GHL automations for each.</p>
     </div>
   </div>
 

@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Living Water Hub | EAU Co.</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #1a2240;
+  --teal: #066664;
+  --light-teal: #B1E9E8;
+  --orange: #FDBB89;
+  --cream: #FAF8F4;
+  --navy-light: #243060;
+  --teal-dark: #044b4a;
+  --muted: #8a99b8;
+  --success: #4ade80;
+  --warning: #fbbf24;
+  --danger: #f87171;
+  --purple: #c084fc;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--navy); color: var(--cream); font-family: 'Lato', sans-serif; font-size: 15px; line-height: 1.6; min-height: 100vh; }
+h1,h2,h3,h4 { font-family: 'Cormorant Garamond', serif; font-weight: 400; letter-spacing: 0.02em; }
+
+/* TOP BAR */
+.top-bar { background: rgba(26,34,64,0.98); border-bottom: 1px solid rgba(177,233,232,0.15); padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; backdrop-filter: blur(8px); }
+.logo { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; color: var(--light-teal); letter-spacing: 0.15em; text-transform: uppercase; }
+.date-badge { font-size: 0.78rem; color: var(--muted); letter-spacing: 0.05em; }
+
+/* TABS */
+.tab-nav { display: flex; gap: 2px; padding: 0 24px; background: rgba(255,255,255,0.02); border-bottom: 1px solid rgba(177,233,232,0.1); overflow-x: auto; scrollbar-width: none; }
+.tab-nav::-webkit-scrollbar { display: none; }
+.tab-btn { background: none; border: none; color: var(--muted); font-family: 'Lato', sans-serif; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 12px 16px 14px; cursor: pointer; border-bottom: 2px solid transparent; white-space: nowrap; transition: all 0.2s; }
+.tab-btn:hover { color: var(--light-teal); }
+.tab-btn.active { color: var(--light-teal); border-bottom-color: var(--teal); }
+.tab-content { display: none; padding: 28px 24px; max-width: 1100px; margin: 0 auto; }
+.tab-content.active { display: block; }
+
+/* CARDS */
+.card { background: rgba(255,255,255,0.04); border: 1px solid rgba(177,233,232,0.12); border-radius: 12px; padding: 22px; margin-bottom: 18px; }
+.card h3 { font-size: 1.25rem; color: var(--cream); margin-bottom: 14px; }
+.card h4 { font-family: 'Lato', sans-serif; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--orange); margin-bottom: 10px; }
+
+/* BADGES */
+.badge { display: inline-flex; align-items: center; gap: 5px; padding: 3px 10px; border-radius: 20px; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+.badge-live { background: rgba(74,222,128,0.12); color: var(--success); border: 1px solid rgba(74,222,128,0.3); }
+.badge-urgent { background: rgba(248,113,113,0.12); color: var(--danger); border: 1px solid rgba(248,113,113,0.3); }
+.badge-pending { background: rgba(251,191,36,0.12); color: var(--warning); border: 1px solid rgba(251,191,36,0.3); }
+.badge-done { background: rgba(6,102,100,0.3); color: var(--light-teal); border: 1px solid rgba(177,233,232,0.2); }
+.badge-building { background: rgba(253,187,137,0.12); color: var(--orange); border: 1px solid rgba(253,187,137,0.3); }
+
+/* GRIDS */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
+.grid-4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; }
+@media (max-width: 768px) { .grid-2,.grid-3,.grid-4 { grid-template-columns: 1fr; } }
+
+/* STATS */
+.stat-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(177,233,232,0.1); border-radius: 10px; padding: 16px; text-align: center; }
+.stat-num { font-family: 'Cormorant Garamond', serif; font-size: 2rem; color: var(--light-teal); line-height: 1; margin-bottom: 4px; }
+.stat-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+
+/* CHECKLISTS */
+.checklist { list-style: none; }
+.checklist li { display: flex; align-items: flex-start; gap: 12px; padding: 9px 0; border-bottom: 1px solid rgba(255,255,255,0.04); cursor: pointer; transition: opacity 0.15s; }
+.checklist li:last-child { border-bottom: none; }
+.checklist li.done { opacity: 0.4; text-decoration: line-through; }
+.check-box { width: 19px; height: 19px; border: 1.5px solid rgba(177,233,232,0.35); border-radius: 4px; flex-shrink: 0; margin-top: 3px; display: flex; align-items: center; justify-content: center; transition: all 0.15s; }
+.checklist li.done .check-box { background: var(--teal); border-color: var(--teal); }
+.check-icon { display: none; color: white; font-size: 11px; font-weight: 700; }
+.checklist li.done .check-icon { display: block; }
+
+/* PROGRESS */
+.progress-bar { height: 4px; background: rgba(255,255,255,0.08); border-radius: 2px; overflow: hidden; margin: 6px 0; }
+.progress-fill { height: 100%; background: linear-gradient(to right, var(--teal), var(--light-teal)); border-radius: 2px; transition: width 0.4s ease; }
+
+/* SECTION TITLES */
+.section-title { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; color: var(--cream); margin: 28px 0 16px; display: flex; align-items: center; gap: 12px; }
+.section-title::after { content: ''; flex: 1; height: 1px; background: rgba(177,233,232,0.12); }
+
+/* URGENT BANNER */
+.urgent { background: rgba(248,113,113,0.07); border: 1px solid rgba(248,113,113,0.25); border-radius: 10px; padding: 13px 18px; margin-bottom: 18px; font-size: 0.87rem; display: flex; align-items: flex-start; gap: 10px; }
+.urgent strong { color: var(--danger); }
+
+/* INFO BOX */
+.info-box { background: rgba(6,102,100,0.15); border: 1px solid rgba(177,233,232,0.18); border-radius: 8px; padding: 13px 16px; font-size: 0.84rem; margin-bottom: 14px; }
+.info-box strong { color: var(--light-teal); }
+
+/* LINKS */
+a { color: var(--light-teal); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* TABLES */
+table { width: 100%; border-collapse: collapse; }
+th { text-align: left; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); padding: 9px 12px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+td { padding: 11px 12px; font-size: 0.86rem; border-bottom: 1px solid rgba(255,255,255,0.04); vertical-align: middle; }
+tr:last-child td { border-bottom: none; }
+
+/* BUTTONS */
+.btn-sm { background: none; border: 1px solid rgba(177,233,232,0.2); color: var(--muted); font-size: 0.7rem; padding: 4px 10px; border-radius: 6px; cursor: pointer; transition: all 0.15s; }
+.btn-sm:hover { background: rgba(177,233,232,0.08); color: var(--cream); }
+.btn-sm.done-btn { color: var(--success); border-color: var(--success); }
+
+/* COLLAPSE */
+.collapse-toggle { background: none; border: none; color: var(--light-teal); font-size: 0.75rem; cursor: pointer; padding: 5px 0; display: inline-flex; align-items: center; gap: 5px; letter-spacing: 0.06em; text-transform: uppercase; }
+.collapse-body { display: none; margin-top: 12px; }
+.collapse-body.open { display: block; }
+
+/* CODE */
+code { background: rgba(177,233,232,0.1); color: var(--light-teal); font-size: 0.8em; padding: 2px 6px; border-radius: 4px; font-family: 'Courier New', monospace; word-break: break-all; }
+.code-block { background: rgba(0,0,0,0.3); border: 1px solid rgba(177,233,232,0.15); border-radius: 8px; padding: 12px 14px; font-family: 'Courier New', monospace; font-size: 0.78rem; color: var(--light-teal); word-break: break-all; line-height: 1.6; margin: 8px 0; }
+
+/* STEPS */
+.steps { list-style: none; }
+.steps li { display: flex; gap: 12px; padding: 8px 0; font-size: 0.86rem; align-items: flex-start; }
+.step-num { background: rgba(6,102,100,0.4); color: var(--light-teal); width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.68rem; font-weight: 700; flex-shrink: 0; margin-top: 2px; }
+
+/* NOTES */
+.notes-area { width: 100%; background: rgba(255,255,255,0.04); border: 1px solid rgba(177,233,232,0.12); border-radius: 8px; color: var(--cream); font-family: 'Lato', sans-serif; font-size: 0.85rem; padding: 11px; resize: vertical; min-height: 70px; }
+.notes-area::placeholder { color: var(--muted); }
+
+/* PITCH CARDS */
+.pitch-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(177,233,232,0.12); border-radius: 12px; padding: 20px; }
+.pitch-vertical { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--orange); margin-bottom: 6px; }
+.pitch-card h3 { font-size: 1.3rem; margin-bottom: 6px; }
+.pitch-hook { font-size: 0.84rem; color: var(--muted); font-style: italic; line-height: 1.5; margin-bottom: 12px; }
+.meta-tag { background: rgba(6,102,100,0.2); color: var(--light-teal); font-size: 0.72rem; padding: 3px 9px; border-radius: 20px; font-family: monospace; display: inline-block; margin: 2px; }
+
+/* SHOT LIST */
+.shot { display: flex; gap: 13px; padding: 11px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.shot:last-child { border-bottom: none; }
+.shot-n { background: var(--teal); color: white; width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.72rem; font-weight: 700; flex-shrink: 0; margin-top: 2px; }
+.shot-title { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--orange); margin-bottom: 3px; }
+.shot-line { font-size: 0.85rem; line-height: 1.5; }
+.shot-note { font-size: 0.76rem; color: var(--muted); font-style: italic; margin-top: 3px; }
+
+/* LINK HUB */
+.link-group-title { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--orange); margin-bottom: 10px; }
+.link-row { display: flex; align-items: center; gap: 12px; padding: 9px 13px; background: rgba(255,255,255,0.03); border: 1px solid rgba(177,233,232,0.07); border-radius: 8px; margin-bottom: 5px; transition: all 0.15s; }
+.link-row:hover { background: rgba(177,233,232,0.05); border-color: rgba(177,233,232,0.18); }
+.link-name { font-size: 0.8rem; font-weight: 700; color: var(--cream); min-width: 170px; }
+.link-url { font-size: 0.78rem; color: var(--light-teal); font-family: monospace; flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.copy-btn { margin-left: auto; background: none; border: 1px solid rgba(177,233,232,0.18); color: var(--muted); font-size: 0.68rem; padding: 3px 9px; border-radius: 5px; cursor: pointer; flex-shrink: 0; transition: all 0.15s; }
+.copy-btn:hover { background: rgba(177,233,232,0.1); color: var(--cream); }
+
+/* PHASE CARDS */
+.phase-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(177,233,232,0.09); border-radius: 10px; padding: 16px; }
+.phase-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--orange); margin-bottom: 4px; }
+.phase-card h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; margin-bottom: 5px; color: var(--cream); }
+.phase-card p { font-size: 0.81rem; color: var(--muted); line-height: 1.5; }
+
+/* DM COUNTER */
+.dm-counter-row { display: flex; gap: 8px; align-items: center; margin-top: 6px; }
+.dm-btn { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); color: var(--cream); width: 30px; height: 30px; border-radius: 6px; cursor: pointer; font-size: 1rem; display: flex; align-items: center; justify-content: center; }
+.dm-big { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; color: var(--light-teal); min-width: 50px; text-align: center; line-height: 1; }
+
+hr { border: none; border-top: 1px solid rgba(177,233,232,0.08); margin: 18px 0; }
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <div class="logo">EAU Co · Living Water Hub</div>
+  <div class="date-badge" id="date-display"></div>
+</div>
+
+<nav class="tab-nav">
+  <button class="tab-btn active" onclick="showTab('command',this)">🎯 Command Center</button>
+  <button class="tab-btn" onclick="showTab('pitchpages',this)">🏢 B2B Pitch Pages</button>
+  <button class="tab-btn" onclick="showTab('twohounds',this)">💧 Two Hounds</button>
+  <button class="tab-btn" onclick="showTab('content',this)">📱 Content & IG</button>
+  <button class="tab-btn" onclick="showTab('pipeline',this)">🤝 Lead Pipeline</button>
+  <button class="tab-btn" onclick="showTab('links',this)">🔗 Link Hub</button>
+</nav>
+
+<!-- ════════════════════════════════════════
+     TAB 1 · COMMAND CENTER
+════════════════════════════════════════ -->
+<div id="tab-command" class="tab-content active">
+
+  <div class="grid-4" style="margin-bottom:20px;">
+    <div class="stat-card">
+      <div class="stat-num">4</div>
+      <div class="stat-label">Pitch Pages Built</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" id="live-count">0</div>
+      <div class="stat-label">Live in GHL</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">✅</div>
+      <div class="stat-label">Two Hounds Active</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" id="stat-dms">0</div>
+      <div class="stat-label">DMs Today</div>
+    </div>
+  </div>
+
+  <div class="urgent">
+    ⚡ <div><strong>URGENT — June 27:</strong> Spa pitch page must go live in GHL at <code>/spa</code> before the tanning salon pop-up. Open the B2B Pitch Pages tab for upload steps.</div>
+  </div>
+
+  <div class="grid-2">
+
+    <div class="card">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
+        <h3 style="margin:0;">Daily Non-Negotiables</h3>
+        <button class="btn-sm" onclick="resetDaily()">Reset</button>
+      </div>
+      <div style="font-size:0.72rem;color:var(--muted);margin-bottom:10px;" id="reset-note"></div>
+      <ul class="checklist" id="daily-list">
+        <li onclick="toggleDaily(this,'d0')"><div class="check-box"><span class="check-icon">✓</span></div><div>Post 1 main feed post (reel or carousel)</div></li>
+        <li onclick="toggleDaily(this,'d1')"><div class="check-box"><span class="check-icon">✓</span></div><div>Post 5 story frames (see Content tab for template)</div></li>
+        <li onclick="toggleDaily(this,'d2')"><div class="check-box"><span class="check-icon">✓</span></div><div>Start 15–30 new DM conversations</div></li>
+        <li onclick="toggleDaily(this,'d3')"><div class="check-box"><span class="check-icon">✓</span></div><div>Follow up on all open threads</div></li>
+        <li onclick="toggleDaily(this,'d4')"><div class="check-box"><span class="check-icon">✓</span></div><div>Update GHL pipeline at end of day</div></li>
+      </ul>
+      <div style="margin-top:12px;">
+        <div style="display:flex;justify-content:space-between;margin-bottom:5px;">
+          <span style="font-size:0.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;">Progress</span>
+          <span style="font-size:0.8rem;color:var(--light-teal);" id="daily-prog-text">0/5</span>
+        </div>
+        <div class="progress-bar"><div class="progress-fill" id="daily-prog-bar" style="width:0%"></div></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Today's 5 Story Frames</h3>
+      <ul class="checklist" id="story-list">
+        <li onclick="toggleDaily(this,'s0')"><div class="check-box"><span class="check-icon">✓</span></div><div><strong>Frame 1</strong> — Morning/life moment (authentic, grounded)</div></li>
+        <li onclick="toggleDaily(this,'s1')"><div class="check-box"><span class="check-icon">✓</span></div><div><strong>Frame 2</strong> — Value or education (1 thing they didn't know)</div></li>
+        <li onclick="toggleDaily(this,'s2')"><div class="check-box"><span class="check-icon">✓</span></div><div><strong>Frame 3</strong> — Re-share today's feed post</div></li>
+        <li onclick="toggleDaily(this,'s3')"><div class="check-box"><span class="check-icon">✓</span></div><div><strong>Frame 4</strong> — Social proof, win, or result</div></li>
+        <li onclick="toggleDaily(this,'s4')"><div class="check-box"><span class="check-icon">✓</span></div><div><strong>Frame 5</strong> — CTA: "DM me WATER" / "Link in bio" / poll</div></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>DM Tracker</h3>
+    <div class="grid-3">
+      <div>
+        <div style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);margin-bottom:8px;">New Conversations Today</div>
+        <div class="dm-counter-row">
+          <button class="dm-btn" onclick="changeDM(-1)">−</button>
+          <span class="dm-big" id="dm-big">0</span>
+          <button class="dm-btn" onclick="changeDM(1)">+</button>
+          <span style="font-size:0.8rem;color:var(--muted);">/ 30</span>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);margin-bottom:6px;">Who Replied / Follow Up</div>
+        <textarea class="notes-area" id="note-dms" placeholder="Name · what they said · next step..." oninput="saveNote('dms',this.value)"></textarea>
+      </div>
+      <div>
+        <div style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);margin-bottom:6px;">Today's Priority Lead</div>
+        <textarea class="notes-area" id="note-lead" placeholder="Name + what matters to them + next step..." oninput="saveNote('lead',this.value)"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>This Week's Focus</h3>
+    <textarea class="notes-area" id="note-week" style="min-height:90px;" placeholder="What's the #1 thing to move forward this week?" oninput="saveNote('week',this.value)"></textarea>
+  </div>
+
+  <div class="section-title">Content Ratio Rule</div>
+  <div class="grid-3">
+    <div class="phase-card">
+      <div class="phase-label">9 out of 10 posts</div>
+      <h4>Water · Health · Education</h4>
+      <p>Build trust before selling. Teach, share, connect. Let results speak.</p>
+    </div>
+    <div class="phase-card">
+      <div class="phase-label">1 out of 10 posts</div>
+      <h4>Business / Income</h4>
+      <p>Subtle. "Here's how I recouped the cost of my machine." Never a hard pitch.</p>
+    </div>
+    <div class="phase-card">
+      <div class="phase-label">Always</div>
+      <h4>DM → stopdrinkingacid.com</h4>
+      <p>Everyone who replies, every story CTA → send them the link. One resource.</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- ════════════════════════════════════════
+     TAB 2 · B2B PITCH PAGES
+════════════════════════════════════════ -->
+<div id="tab-pitchpages" class="tab-content">
+
+  <div class="urgent">
+    ⚡ <div><strong>June 27 DEADLINE:</strong> Spa page must be live in GHL at <code>/spa</code> before tanning salon pop-up. All files are in your Downloads folder.</div>
+  </div>
+
+  <div class="grid-2">
+
+    <!-- SPA -->
+    <div class="pitch-card">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
+        <div class="pitch-vertical">Wellness & Beauty</div>
+        <span id="badge-spa" class="badge badge-urgent">⚡ Upload Now</span>
+      </div>
+      <h3>Spa / Wellness Studios</h3>
+      <p class="pitch-hook">"pH 2.5 replaces your bleach. pH 6.0 replaces your toner. pH 9.5 fills member cups. Your next income stream is already built."</p>
+      <div style="margin-bottom:12px;">
+        <span class="meta-tag">GHL: /spa</span>
+        <span class="meta-tag">spa-pitch.html</span>
+        <span class="meta-tag">Tanning · Botox · IV · Hair</span>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px;">
+        <button class="btn-sm" onclick="markLive('spa')">Mark Live ✓</button>
+        <button class="collapse-toggle" onclick="toggle('spa-steps',this)">▶ GHL Upload Steps</button>
+        <button class="collapse-toggle" onclick="toggle('spa-video',this)">▶ Video Script</button>
+        <button class="collapse-toggle" onclick="toggle('spa-emails',this)">▶ Cold Email Notes</button>
+      </div>
+
+      <div id="spa-steps" class="collapse-body">
+        <div class="info-box">
+          <strong>Upload to GHL:</strong>
+          <ol style="margin-top:8px;padding-left:16px;font-size:0.83rem;line-height:1.9;">
+            <li>GHL → Sites → Funnels → open your main funnel</li>
+            <li>Click "+ Add Page" → name: Spa Pitch → slug: <code>/spa</code></li>
+            <li>Edit page → add a "Custom HTML" block</li>
+            <li>Open <code>spa-pitch.html</code> in TextEdit → Select All → Copy</li>
+            <li>Paste into the Custom HTML block → Save → Publish</li>
+            <li>Test live at: <code>healingh2eau.co/spa</code></li>
+          </ol>
+        </div>
+      </div>
+
+      <div id="spa-video" class="collapse-body">
+        <div style="font-size:0.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:10px;">Shot List · ~5 min · Shoot vertical</div>
+        <div class="shot"><div class="shot-n">1</div><div><div class="shot-title">Hook — 15 sec | Face to camera</div><div class="shot-line">"If you own a tanning salon, botox suite, spa, or hair studio — I want to show you something that will change how you think about water in your business. 5-minute demo. Watch all of it."</div></div></div>
+        <div class="shot"><div class="shot-n">2</div><div><div class="shot-title">The Machine — 30 sec | Show K8</div><div class="shot-line">"This is the Kangen K8. Connects to your existing water line. Took me 45 min. No plumber. Produces seven different water types — every one has a job in your space."</div></div></div>
+        <div class="shot"><div class="shot-n">3</div><div><div class="shot-title">pH 2.5 — 60 sec | Spray on surface, wipe</div><div class="shot-line">"pH 2.5 — Hypochlorous acid. FDA and EPA approved. Same compound hospitals use. 100x more effective than bleach. No fumes. Safe on skin. This replaces every cleaning product on your station."</div></div></div>
+        <div class="shot"><div class="shot-n">4</div><div><div class="shot-title">pH 6.0 — 45 sec | Mist on hand or face</div><div class="shot-line">"pH 6.0 — beauty water. Skin's natural pH is 4.5–6.5. This matches it. Use post-tan, post-procedure, post-injection, at the shampoo bowl as a final rinse. Calms redness, tightens pores."</div><div class="shot-note">Real reaction on camera</div></div></div>
+        <div class="shot"><div class="shot-n">5</div><div><div class="shot-title">pH 9.5 — 30 sec | Pour and taste</div><div class="shot-line">"This is the one people sign up for a membership to fill up with every day. pH 9.5, rich in molecular hydrogen. Anti-inflammatory, absorbs fast, no bloating."</div><div class="shot-note">Real reaction on camera</div></div></div>
+        <div class="shot"><div class="shot-n">6</div><div><div class="shot-title">Member System — 45 sec | Show phone</div><div class="shot-line">"Someone falls in love with the water → they scan a QR code on your counter → get a digital member card that saves to Apple Wallet → staff looks them up in 2 seconds. System is already built."</div><div class="shot-note">Show member card + QR page + staff lookup on phone</div></div></div>
+        <div class="shot"><div class="shot-n">7</div><div><div class="shot-title">Income — 60 sec | Face to camera</div><div class="shot-line">"You invest once, get your distributor ID. Every $50–75/mo member is recurring income that runs automatically. Every client who wants a machine at home — you earn that commission from Enagic. I have clients earning $1,000+/mo from water alone."</div></div></div>
+        <div class="shot"><div class="shot-n">8</div><div><div class="shot-title">CTA — 30 sec | Face to camera</div><div class="shot-line">"$99 Discovery Process — comp plan, income breakdown, full setup. Invest in the machine within 72 hours and the $99 is fully refunded. Or text me: (907) 513-9717. Link below."</div></div></div>
+      </div>
+
+      <div id="spa-emails" class="collapse-body">
+        <div class="info-box"><strong>Cold email sequence for spa:</strong> Still needs to be built. Ask Claude: "Build me a 3-email cold outreach sequence for spa and salon owners — same format as the restaurant sequence."</div>
+      </div>
+    </div>
+
+    <!-- COFFEE -->
+    <div class="pitch-card">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
+        <div class="pitch-vertical">Coffee & Beverage</div>
+        <span id="badge-coffee" class="badge badge-pending">Needs Upload</span>
+      </div>
+      <h3>Coffee Shops</h3>
+      <p class="pitch-hook">"Water is 96–98.5% of your espresso shot. If you're sourcing great beans but pouring tap water — you're working against yourself."</p>
+      <div style="margin-bottom:12px;">
+        <span class="meta-tag">GHL: /coffee</span>
+        <span class="meta-tag">coffee-pitch.html</span>
+        <span class="meta-tag">Two Hounds = live proof</span>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px;">
+        <button class="btn-sm" onclick="markLive('coffee')">Mark Live ✓</button>
+        <button class="collapse-toggle" onclick="toggle('coffee-video',this)">▶ Video Script</button>
+      </div>
+
+      <div id="coffee-video" class="collapse-body">
+        <div style="font-size:0.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:10px;">Shot List · ~5 min · Film at Two Hounds if possible!</div>
+        <div class="shot"><div class="shot-n">1</div><div><div class="shot-title">Hook — 20 sec | Near espresso machine</div><div class="shot-line">"Water is 98% of your espresso shot. Whatever you're doing to source great beans — if your water is tap, you're working against yourself. Let me show you."</div></div></div>
+        <div class="shot"><div class="shot-n">2</div><div><div class="shot-title">Side-by-Side Brew — 60 sec | ★ Pull this as a standalone reel too</div><div class="shot-line">"Same beans. Same grind. Same time. Tap vs. Kangen 9.5 pH — no chlorine, smaller molecular clusters, pulls more aromatics, less bitterness."</div><div class="shot-note">Make 2 shots/pour-overs. Taste both on camera. Real reaction.</div></div></div>
+        <div class="shot"><div class="shot-n">3</div><div><div class="shot-title">The Machine — 30 sec</div><div class="shot-line">"One machine, connects to your water line. Seven water types. Your espresso and cold brew run on this. But it also does this—"</div></div></div>
+        <div class="shot"><div class="shot-n">4</div><div><div class="shot-title">pH 2.5 — 30 sec | Counter spray</div><div class="shot-line">"pH 2.5 — replaces your bleach spray. FDA approved, non-toxic, hospital-grade. No fumes for your baristas."</div></div></div>
+        <div class="shot"><div class="shot-n">5</div><div><div class="shot-title">pH 11.5 — 30 sec | Cloth or produce</div><div class="shot-line">"pH 11.5 — replaces your degreaser. Produce, aprons, equipment. No chemicals, no residue."</div></div></div>
+        <div class="shot"><div class="shot-n">6</div><div><div class="shot-title">Water Share / Foot Traffic — 45 sec | Show phone</div><div class="shot-line">"QR code on your counter → customers scan → join water share → get a digital member card → come back every day to fill their jar. Daily foot traffic from people who aren't buying coffee — but they're walking past your pastry case."</div></div></div>
+        <div class="shot"><div class="shot-n">7</div><div><div class="shot-title">Income — 60 sec | Face to camera</div><div class="shot-line">"Invest once, get your distributor ID, earn two ways. Memberships at $50–75/mo, recurring and automated. Plus direct sales — the person who drinks your water every morning for 3 months and wants it at home? You're already their trusted source."</div></div></div>
+        <div class="shot"><div class="shot-n">8</div><div><div class="shot-title">Two Hounds Proof — 20 sec</div><div class="shot-line">"This is live right now at Two Hounds Coffee in Kenai, Alaska. Members sign up, staff verifies, memberships run automatically. It works."</div><div class="shot-note">Show Two Hounds page or film there in person</div></div></div>
+        <div class="shot"><div class="shot-n">9</div><div><div class="shot-title">CTA — 30 sec</div><div class="shot-line">"$99 Discovery Process — link below. Machine investment within 72 hours and the $99 is fully refunded. Or text me: (907) 513-9717."</div></div></div>
+      </div>
+    </div>
+
+    <!-- RESTAURANT -->
+    <div class="pitch-card">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
+        <div class="pitch-vertical">Food Service</div>
+        <span id="badge-restaurant" class="badge badge-pending">Needs Upload</span>
+      </div>
+      <h3>Restaurants</h3>
+      <p class="pitch-hook">"30,000+ restaurants in Japan run on this water. Chemical replacement savings of $2,200–$6,400/yr — before a single membership."</p>
+      <div style="margin-bottom:12px;">
+        <span class="meta-tag">GHL: /restaurants</span>
+        <span class="meta-tag">restaurant-pitch.html</span>
+        <span class="meta-tag">Lynn · Enzo · Fidel ✓</span>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px;">
+        <button class="btn-sm" onclick="markLive('restaurant')">Mark Live ✓</button>
+        <button class="collapse-toggle" onclick="toggle('rest-emails',this)">▶ Email Sequence</button>
+      </div>
+      <div id="rest-emails" class="collapse-body">
+        <div class="info-box"><strong>Done ✅</strong> — 3 cold outreach emails (Day 1: chemical cost angle, Day 4: beef stew story, Day 10: income angle) + 4-email GHL automation + SMS. Open <code>restaurant-email-sequence.html</code> in browser to see all copy.</div>
+      </div>
+    </div>
+
+    <!-- TATTOO -->
+    <div class="pitch-card">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
+        <div class="pitch-vertical">Body Art</div>
+        <span id="badge-tattoo" class="badge badge-pending">Needs Upload</span>
+      </div>
+      <h3>Tattoo Studios</h3>
+      <p class="pitch-hook">"Your studio is built on sterility. The water should be too. pH 2.5 = hospital-grade HOCl — 100x more effective than bleach. This is already your standard."</p>
+      <div style="margin-bottom:12px;">
+        <span class="meta-tag">GHL: /tattoo</span>
+        <span class="meta-tag">tattoo-pitch.html</span>
+        <span class="meta-tag">pH 2.5 · pH 6.0 aftercare</span>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;">
+        <button class="btn-sm" onclick="markLive('tattoo')">Mark Live ✓</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-title">Still Needs Building</div>
+  <div class="grid-3">
+    <div class="card" style="padding:16px;">
+      <div class="badge badge-building" style="margin-bottom:10px;">Building</div>
+      <h4>Demo Video</h4>
+      <p style="font-size:0.84rem;color:var(--muted);">5–7 min machine walkthrough to embed on all pages. Shot lists above are ready. Film this first — biggest single conversion lever.</p>
+    </div>
+    <div class="card" style="padding:16px;">
+      <div class="badge badge-building" style="margin-bottom:10px;">Building</div>
+      <h4>B2B Discovery Process</h4>
+      <p style="font-size:0.84rem;color:var(--muted);">Current DP is for aspiring distributors (mindset content). Need a "Business Owner Walkthrough" — comp plan, income math, setup. Under 30 min.</p>
+    </div>
+    <div class="card" style="padding:16px;">
+      <div class="badge badge-building" style="margin-bottom:10px;">Building</div>
+      <h4>Cold Email Sequences</h4>
+      <p style="font-size:0.84rem;color:var(--muted);">Restaurant done ✅. Still needed: spa, coffee, tattoo outreach email sequences + GHL automations.</p>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:4px;">
+    <h3>Income Math — Use on Every Call</h3>
+    <div class="grid-3" style="margin-top:14px;">
+      <div style="text-align:center;padding:14px;background:rgba(255,255,255,0.03);border-radius:8px;">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;color:var(--light-teal);">$500</div>
+        <div style="font-size:0.75rem;color:var(--muted);margin-top:4px;">10 Hydration Club members @ $50/mo</div>
+      </div>
+      <div style="text-align:center;padding:14px;background:rgba(255,255,255,0.03);border-radius:8px;">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;color:var(--light-teal);">$375</div>
+        <div style="font-size:0.75rem;color:var(--muted);margin-top:4px;">5 Total Wellness members @ $75/mo</div>
+      </div>
+      <div style="text-align:center;padding:14px;background:rgba(255,255,255,0.03);border-radius:8px;">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;color:var(--orange);">$285–$1,800+</div>
+        <div style="font-size:0.75rem;color:var(--muted);margin-top:4px;">Per machine sale commission (Enagic)</div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:14px;padding:10px;background:rgba(6,102,100,0.2);border-radius:8px;font-size:0.9rem;">
+      <strong>~$1,160+/mo alongside their existing business</strong>
+    </div>
+  </div>
+
+</div>
+
+<!-- ════════════════════════════════════════
+     TAB 3 · TWO HOUNDS
+════════════════════════════════════════ -->
+<div id="tab-twohounds" class="tab-content">
+
+  <div class="section-title">Two Hounds Coffee · Kenai, Alaska</div>
+
+  <div class="card">
+    <h3>Live Pages ✅</h3>
+    <table>
+      <thead><tr><th>Page</th><th>URL</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Pitch Page</strong></td>
+          <td><a href="https://healingh2eau.co/twohounds" target="_blank">healingh2eau.co/twohounds</a></td>
+          <td><span class="badge badge-live">Live ✅</span></td>
+        </tr>
+        <tr>
+          <td><strong>Registration</strong></td>
+          <td><a href="https://healingh2eau.co/watershare" target="_blank">healingh2eau.co/watershare</a></td>
+          <td><span class="badge badge-live">Live ✅</span></td>
+        </tr>
+        <tr>
+          <td><strong>Member Card</strong></td>
+          <td><a href="https://eauco-mads.github.io/living-water-pages/member-card-DEMO.html" target="_blank">eauco-mads.github.io · member-card-DEMO</a></td>
+          <td><span class="badge badge-live">Live ✅</span></td>
+        </tr>
+        <tr>
+          <td><strong>Staff Lookup</strong></td>
+          <td><a href="https://eauco-mads.github.io/living-water-pages/water-club-STAFF.html" target="_blank">eauco-mads.github.io · water-club-STAFF</a></td>
+          <td><span class="badge badge-live">Live ✅</span></td>
+        </tr>
+        <tr>
+          <td><strong>Backup Registration</strong></td>
+          <td><a href="https://eauco-mads.github.io/living-water-pages/water-share-REGISTER.html" target="_blank">eauco-mads.github.io · water-share-REGISTER</a></td>
+          <td><span id="badge-gh" class="badge badge-pending">Needs GitHub Upload</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section-title">Pending GHL Tasks</div>
+
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
+      <h3 style="margin:0;">1. Fix Member Card Link in Free Tier Email</h3>
+      <button id="th-btn-email" class="btn-sm" onclick="thDone('email',this)">Mark Done ✓</button>
+    </div>
+    <ul class="steps">
+      <li><div class="step-num">1</div>GHL → Automations → "Water Share - New Member Flow"</li>
+      <li><div class="step-num">2</div>Find the welcome email step (the one that fired Mon Jun 22)</li>
+      <li><div class="step-num">3</div>Find the "View My Member Card" button → edit URL</li>
+      <li><div class="step-num">4</div>Replace with the URL below:
+        <div class="code-block" style="margin-top:6px;">https://eauco-mads.github.io/living-water-pages/member-card-DEMO.html?name={{contact.first_name}}+{{contact.last_name}}&tier=yellow</div>
+      </li>
+      <li><div class="step-num">5</div>Save → send yourself a test to verify the personalized link works</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
+      <h3 style="margin:0;">2. Build $50 Hydration Club Workflow</h3>
+      <button id="th-btn-hydration" class="btn-sm" onclick="thDone('hydration',this)">Mark Done ✓</button>
+    </div>
+    <ul class="steps">
+      <li><div class="step-num">1</div>GHL → Automations → Create New Workflow</li>
+      <li><div class="step-num">2</div>Name: <code>Water Share - Hydration Club Activated</code></li>
+      <li><div class="step-num">3</div>Trigger: Order Submitted → Product = "Hydration Club - Two Hounds Wellness Bar"</li>
+      <li><div class="step-num">4</div>Step 1: Add tags → <code>water-share-hydration</code> + <code>water-share-active</code></li>
+      <li><div class="step-num">5</div>Step 2: Email immediately — member card link uses <code>tier=teal</code></li>
+      <li><div class="step-num">6</div>Step 3: Wait 2 hours → SMS</li>
+      <li><div class="step-num">7</div>Step 4: Wait 3 days → check-in email</li>
+      <li><div class="step-num">8</div>Ask Claude: <em>"Give me the Hydration Club workflow email copy"</em> for full content</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
+      <h3 style="margin:0;">3. Build $75 Total Wellness Workflow</h3>
+      <button id="th-btn-wellness" class="btn-sm" onclick="thDone('wellness',this)">Mark Done ✓</button>
+    </div>
+    <ul class="steps">
+      <li><div class="step-num">1</div>GHL → Automations → Create New Workflow</li>
+      <li><div class="step-num">2</div>Name: <code>Water Share - Total Wellness Activated</code></li>
+      <li><div class="step-num">3</div>Trigger: Order Submitted → Product = "Total Wellness Club - Two Hounds"</li>
+      <li><div class="step-num">4</div>Step 1: Tags → <code>water-share-total</code> + <code>water-share-active</code> / Remove: <code>water-share-hydration</code></li>
+      <li><div class="step-num">5</div>Step 2: Email immediately — member card link uses <code>tier=purple</code></li>
+      <li><div class="step-num">6</div>Step 3: Wait 2 hours → SMS</li>
+      <li><div class="step-num">7</div>Step 4: Wait 3 days → education email (cleaning + beauty waters)</li>
+      <li><div class="step-num">8</div>Ask Claude: <em>"Give me the Total Wellness workflow email copy"</em> for full content</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
+      <h3 style="margin:0;">4. Upload Backup Registration Page to GitHub</h3>
+      <button id="th-btn-github" class="btn-sm" onclick="thDone('github',this)">Mark Done ✓</button>
+    </div>
+    <ul class="steps">
+      <li><div class="step-num">1</div>Go to: <a href="https://github.com/eauco-mads/living-water-pages" target="_blank">github.com/eauco-mads/living-water-pages</a></li>
+      <li><div class="step-num">2</div>Click "Add file" → "Upload files"</li>
+      <li><div class="step-num">3</div>Drag in <code>water-share-REGISTER.html</code> from Downloads</li>
+      <li><div class="step-num">4</div>Click "Commit changes"</li>
+      <li><div class="step-num">5</div>Verify live at the backup registration URL</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>Membership Tiers · Quick Reference</h3>
+    <div class="grid-3" style="margin-top:14px;">
+      <div style="padding:14px;background:rgba(251,191,36,0.05);border:1px solid rgba(251,191,36,0.2);border-radius:10px;text-align:center;">
+        <div style="font-size:1.1rem;margin-bottom:6px;">🌊</div>
+        <div style="font-weight:700;color:var(--warning);margin-bottom:4px;">Yellow — Free Fill</div>
+        <div style="font-size:0.8rem;color:var(--muted);">9.5 pH alkaline water<br>Fill your own bottle<br><code>tier=yellow</code></div>
+      </div>
+      <div style="padding:14px;background:rgba(6,102,100,0.1);border:1px solid rgba(177,233,232,0.2);border-radius:10px;text-align:center;">
+        <div style="font-size:1.1rem;margin-bottom:6px;">💧</div>
+        <div style="font-weight:700;color:var(--light-teal);margin-bottom:4px;">Teal — Hydration Club</div>
+        <div style="font-size:0.8rem;color:var(--muted);">$50/month<br>Daily fills + bonus perks<br><code>tier=teal</code></div>
+      </div>
+      <div style="padding:14px;background:rgba(147,51,234,0.1);border:1px solid rgba(192,132,252,0.25);border-radius:10px;text-align:center;">
+        <div style="font-size:1.1rem;margin-bottom:6px;">✨</div>
+        <div style="font-weight:700;color:var(--purple);margin-bottom:4px;">Purple — Total Wellness</div>
+        <div style="font-size:0.8rem;color:var(--muted);">$75/month<br>All waters + max perks<br><code>tier=purple</code></div>
+      </div>
+    </div>
+    <div style="margin-top:14px;font-size:0.8rem;color:var(--muted);">
+      <strong style="color:var(--light-teal);">Member card URL pattern:</strong><br>
+      <div class="code-block" style="margin-top:6px;">https://eauco-mads.github.io/living-water-pages/member-card-DEMO.html?name={{contact.first_name}}+{{contact.last_name}}&tier=[yellow|teal|purple]</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ════════════════════════════════════════
+     TAB 4 · CONTENT & IG
+════════════════════════════════════════ -->
+<div id="tab-content" class="tab-content">
+
+  <div class="section-title">Instagram Bio</div>
+  <div class="grid-2">
+    <div class="card" style="border-color:rgba(177,233,232,0.3);">
+      <h4>Option A — Recommended</h4>
+      <div style="font-size:0.82rem;color:var(--muted);margin-bottom:6px;">Name field: <strong style="color:var(--cream);">Maddie | Water + Wellness</strong></div>
+      <div style="font-size:0.9rem;line-height:1.8;font-style:italic;background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;">
+        Feel Better. Think Clearer. Live Richer.<br>
+        Water · nervous system · cellular health<br>
+        Building from the root 🌿<br>
+        ↓ Start here<br>
+        <span style="color:var(--light-teal);">stopdrinkingacid.com</span>
+      </div>
+    </div>
+    <div class="card">
+      <h4>Option B — Bolder</h4>
+      <div style="font-size:0.82rem;color:var(--muted);margin-bottom:6px;">Name field: <strong style="color:var(--cream);">Maddie Galloway | EAU</strong></div>
+      <div style="font-size:0.9rem;line-height:1.8;font-style:italic;background:rgba(255,255,255,0.03);padding:12px;border-radius:8px;">
+        Not another wellness account.<br>
+        Your inputs shape everything.<br>
+        It starts with your water. ↓<br>
+        Free breakdown below 📲<br>
+        <span style="color:var(--light-teal);">stopdrinkingacid.com</span>
+      </div>
+    </div>
+  </div>
+  <div class="info-box">Business is NOT front-and-center in the bio — it lives in the Business highlight only. eaucohub.com goes in the Business story highlight, not the main link.</div>
+
+  <div class="section-title">Day 0 Setup Checklist</div>
+  <div class="grid-2">
+    <div class="card">
+      <h4>Profile & Highlights</h4>
+      <ul class="checklist">
+        <li onclick="togglePersist(this,'p0')"><div class="check-box"><span class="check-icon">✓</span></div><div>Bio updated (Option A or B)</div></li>
+        <li onclick="togglePersist(this,'p1')"><div class="check-box"><span class="check-icon">✓</span></div><div>Link in bio → stopdrinkingacid.com</div></li>
+        <li onclick="togglePersist(this,'p2')"><div class="check-box"><span class="check-icon">✓</span></div><div>9 Highlight covers created in Canva (teal/navy/orange)</div></li>
+        <li onclick="togglePersist(this,'p3')"><div class="check-box"><span class="check-icon">✓</span></div><div>START HERE highlight built (3–4 stories)</div></li>
+        <li onclick="togglePersist(this,'p4')"><div class="check-box"><span class="check-icon">✓</span></div><div>MY STORY highlight built (3–4 stories)</div></li>
+        <li onclick="togglePersist(this,'p5')"><div class="check-box"><span class="check-icon">✓</span></div><div>Pin Post 1 to profile grid immediately after posting</div></li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>GHL & Pipeline</h4>
+      <ul class="checklist">
+        <li onclick="togglePersist(this,'g0')"><div class="check-box"><span class="check-icon">✓</span></div><div>GHL pipeline created: "💧 Water Leads — Launch 2026" (8 stages)</div></li>
+        <li onclick="togglePersist(this,'g1')"><div class="check-box"><span class="check-icon">✓</span></div><div>6 custom fields added (Source, Pain Point, Funnel Page, Touch Count, Call Date, Notes)</div></li>
+        <li onclick="togglePersist(this,'g2')"><div class="check-box"><span class="check-icon">✓</span></div><div>Google Sheets sync workflow built and tested</div></li>
+        <li onclick="togglePersist(this,'g3')"><div class="check-box"><span class="check-icon">✓</span></div><div>Existing leads (100+) imported and tagged in GHL</div></li>
+        <li onclick="togglePersist(this,'g4')"><div class="check-box"><span class="check-icon">✓</span></div><div>"Comment WATER" auto-DM automation set up</div></li>
+        <li onclick="togglePersist(this,'g5')"><div class="check-box"><span class="check-icon">✓</span></div><div>Booking link live and working</div></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section-title">9 Story Highlights</div>
+  <div class="grid-3">
+    <div class="card" style="padding:16px;">
+      <h4>1. Start Here <span style="color:var(--muted);font-weight:400;">· Deep teal</span></h4>
+      <p style="font-size:0.82rem;color:var(--muted);margin-bottom:10px;">First stop for anyone new. DM CTA: "DM me WATER anytime."</p>
+      <ul class="checklist">
+        <li onclick="togglePersist(this,'h1a')"><div class="check-box"><span class="check-icon">✓</span></div><div>30-sec talking head: what this account IS and ISN'T</div></li>
+        <li onclick="togglePersist(this,'h1b')"><div class="check-box"><span class="check-icon">✓</span></div><div>Inputs → body → life. It starts with your water.</div></li>
+        <li onclick="togglePersist(this,'h1c')"><div class="check-box"><span class="check-icon">✓</span></div><div>Link sticker → stopdrinkingacid.com</div></li>
+      </ul>
+    </div>
+    <div class="card" style="padding:16px;">
+      <h4>2. My Story <span style="color:var(--muted);font-weight:400;">· Soft teal</span></h4>
+      <p style="font-size:0.82rem;color:var(--muted);margin-bottom:10px;">Build trust. End with DM CTA.</p>
+      <ul class="checklist">
+        <li onclick="togglePersist(this,'h2a')"><div class="check-box"><span class="check-icon">✓</span></div><div>"I thought I was doing everything right..."</div></li>
+        <li onclick="togglePersist(this,'h2b')"><div class="check-box"><span class="check-icon">✓</span></div><div>What actually shifted (changing inputs, starting with water)</div></li>
+        <li onclick="togglePersist(this,'h2c')"><div class="check-box"><span class="check-icon">✓</span></div><div>End: "DM me if any of this sounds familiar"</div></li>
+      </ul>
+    </div>
+    <div class="card" style="padding:16px;">
+      <h4>3. Water 101 <span style="color:var(--muted);font-weight:400;">· Navy</span></h4>
+      <p style="font-size:0.82rem;color:var(--muted);margin-bottom:10px;">Education entry point. Use EWG.org to check their city.</p>
+      <ul class="checklist">
+        <li onclick="togglePersist(this,'h3a')"><div class="check-box"><span class="check-icon">✓</span></div><div>Tap water reality check → ewg.org</div></li>
+        <li onclick="togglePersist(this,'h3b')"><div class="check-box"><span class="check-icon">✓</span></div><div>Bottled water myth (pH drops, plastic leaching, no regulation)</div></li>
+        <li onclick="togglePersist(this,'h3c')"><div class="check-box"><span class="check-icon">✓</span></div><div>What actually matters: ionization, hydrogen, minerals</div></li>
+      </ul>
+    </div>
+    <div class="card" style="padding:16px;">
+      <h4>4. H₂ Science <span style="color:var(--muted);font-weight:400;">· Deep teal</span></h4>
+      <p style="font-size:0.82rem;color:var(--muted);margin-bottom:6px;">For the curious ones. ATP, free radicals, blood-brain barrier.</p>
+    </div>
+    <div class="card" style="padding:16px;">
+      <h4>5. H₂ Wins <span style="color:var(--muted);font-weight:400;">· Orange</span></h4>
+      <p style="font-size:0.82rem;color:var(--muted);margin-bottom:6px;">Social proof hub — add weekly. Testimonials, DM screenshots, before/afters.</p>
+    </div>
+    <div class="card" style="padding:16px;">
+      <h4>6. Planet <span style="color:var(--muted);font-weight:400;">· Deep green</span></h4>
+      <p style="font-size:0.82rem;color:var(--muted);margin-bottom:6px;">50B plastic bottles/year in the US. One machine = no more single-use. Link → stopdrinkingacid.com/planet</p>
+    </div>
+    <div class="card" style="padding:16px;">
+      <h4>7. What I Use <span style="color:var(--muted);font-weight:400;">· Light teal</span></h4>
+      <p style="font-size:0.82rem;color:var(--muted);margin-bottom:6px;">Show K8 in your kitchen, real not staged. Daily water routine. Pennies/day vs. bottled.</p>
+    </div>
+    <div class="card" style="padding:16px;">
+      <h4>8. Free Tools <span style="color:var(--muted);font-weight:400;">· Navy</span></h4>
+      <p style="font-size:0.82rem;color:var(--muted);margin-bottom:6px;">findasspring.com, ewg.org, glass/stainless swaps, prefilter options. "None of this costs money."</p>
+    </div>
+    <div class="card" style="padding:16px;">
+      <h4>9. Business <span style="color:var(--muted);font-weight:400;">· Deep navy · Keep subtle</span></h4>
+      <p style="font-size:0.82rem;color:var(--muted);margin-bottom:6px;">"How I recouped the cost of my machine." High-level income, no claims. Link → eaucohub.com. DM CTA.</p>
+    </div>
+  </div>
+
+  <div class="section-title">60-Day Campaign Phases</div>
+  <div class="grid-3">
+    <div class="phase-card">
+      <div class="phase-label">Phase 1 · Days 1–15</div>
+      <h4>Awareness</h4>
+      <p>Build identity, trust, start conversations. 15–20 new DMs/day from warm audience. Anchor post pinned. Day 14: full pipeline sweep.</p>
+    </div>
+    <div class="phase-card">
+      <div class="phase-label">Phase 2 · Days 16–30</div>
+      <h4>Education</h4>
+      <p>Introduce the machine, book first calls. 25–30 DMs/day. Run "Comment WATER" lead magnet. Day 28: DM every question sticker reply. Day 29: send booking link to anyone warm 7+ days.</p>
+    </div>
+    <div class="phase-card">
+      <div class="phase-label">Phase 3 · Days 31–60</div>
+      <h4>Momentum & Proof</h4>
+      <p>Conversions, testimonials, referral asks from Phase 1–2 buyers. 25–30 DMs/day. Full pipeline review sweep at Day 30.</p>
+    </div>
+  </div>
+
+  <div class="section-title">First 3 Posts to Create & Schedule</div>
+  <div class="grid-3">
+    <div class="card" style="padding:16px;">
+      <div class="badge badge-urgent" style="margin-bottom:10px;">Pin to Grid Immediately</div>
+      <h4>Post 1 — Profile Anchor</h4>
+      <p style="font-size:0.83rem;margin-bottom:8px;">Carousel · Hook: <em>"This account is about one thing. Building from the root."</em></p>
+      <p style="font-size:0.83rem;color:var(--muted);">Slides: Start Here → Not quick fixes → Body first → Everything connected → Feel Better. Think Clearer. Live Richer.<br><br>CTA: "Comment START if you want to know where to begin."</p>
+    </div>
+    <div class="card" style="padding:16px;">
+      <div class="badge badge-done" style="margin-bottom:10px;">Day 1</div>
+      <h4>Post 2 — Identity Reel</h4>
+      <p style="font-size:0.83rem;margin-bottom:8px;">Talking head · 30–45 sec · Hook: <em>"I'm not using 'thin' as my health metric anymore."</em></p>
+      <p style="font-size:0.83rem;color:var(--muted);">Stopped chasing the aesthetic → Does my body feel good → Energy over appearance → Function over aesthetics<br><br>Caption: "If you feel this, you're in the right place."</p>
+    </div>
+    <div class="card" style="padding:16px;">
+      <div class="badge badge-done" style="margin-bottom:10px;">Day 2–3</div>
+      <h4>Post 3 — Awareness Carousel</h4>
+      <p style="font-size:0.83rem;margin-bottom:8px;">Carousel · Hook: <em>"You're not unmotivated. You're overstimulated."</em></p>
+      <p style="font-size:0.83rem;color:var(--muted);">Not lazy → Overstimulated → Nervous system overloaded → Body protecting you → Motivation comes after regulation<br><br>CTA: "Save this for when you need the reminder."</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- ════════════════════════════════════════
+     TAB 5 · LEAD PIPELINE
+════════════════════════════════════════ -->
+<div id="tab-pipeline" class="tab-content">
+
+  <div class="section-title">GHL Water Leads Pipeline</div>
+  <div class="info-box"><strong>Pipeline name:</strong> 💧 Water Leads — Launch 2026 · GHL → Pipelines → Add Pipeline</div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>8 Pipeline Stages</h3>
+      <table>
+        <thead><tr><th>#</th><th>Stage</th><th>What it means</th></tr></thead>
+        <tbody>
+          <tr><td style="color:var(--muted);">1</td><td><strong>NEW LEAD</strong></td><td style="color:var(--muted);font-size:0.82rem;">Just came in — story reply, comment, cold DM</td></tr>
+          <tr><td style="color:var(--muted);">2</td><td><strong>WARM</strong></td><td style="color:var(--muted);font-size:0.82rem;">Replied positively or expressed interest</td></tr>
+          <tr><td style="color:var(--muted);">3</td><td><strong>RESOURCE SENT</strong></td><td style="color:var(--muted);font-size:0.82rem;">Received stopdrinkingacid.com or water breakdown</td></tr>
+          <tr><td style="color:var(--muted);">4</td><td><strong>CALL BOOKED</strong></td><td style="color:var(--muted);font-size:0.82rem;">Calendar link sent and confirmed</td></tr>
+          <tr><td style="color:var(--muted);">5</td><td><strong>CALL HELD</strong></td><td style="color:var(--muted);font-size:0.82rem;">Call happened — add notes to contact record</td></tr>
+          <tr><td style="color:var(--muted);">6</td><td><strong>SOLD ✅</strong></td><td style="color:var(--muted);font-size:0.82rem;">Order placed with Enagic</td></tr>
+          <tr><td style="color:var(--muted);">7</td><td><strong>ONBOARDING</strong></td><td style="color:var(--muted);font-size:0.82rem;">Machine in transit, not yet arrived</td></tr>
+          <tr><td style="color:var(--muted);">8</td><td><strong>COMPLETE + REFERRAL ASK</strong></td><td style="color:var(--muted);font-size:0.82rem;">Machine in use — referral request sent</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <h3>6 Custom Fields Per Contact</h3>
+      <table>
+        <thead><tr><th>Field</th><th>Options</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Source</strong></td><td style="font-size:0.8rem;color:var(--muted);">IG organic / referral / warm market / existing lead / re-engage</td></tr>
+          <tr><td><strong>Pain Point</strong></td><td style="font-size:0.8rem;color:var(--muted);">fatigue / hormones / gut / inflammation / brain fog / skin / general</td></tr>
+          <tr><td><strong>Funnel Page Sent</strong></td><td style="font-size:0.8rem;color:var(--muted);">Which stopdrinkingacid.com page they received</td></tr>
+          <tr><td><strong>Touch Count</strong></td><td style="font-size:0.8rem;color:var(--muted);">1 through 5</td></tr>
+          <tr><td><strong>Call Date</strong></td><td style="font-size:0.8rem;color:var(--muted);">Date of discovery call</td></tr>
+          <tr><td><strong>Notes</strong></td><td style="font-size:0.8rem;color:var(--muted);">Free text — what they said, what matters to them</td></tr>
+        </tbody>
+      </table>
+      <hr>
+      <h4 style="margin-bottom:8px;">DM Volume by Phase</h4>
+      <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);font-size:0.84rem;"><span>Days 1–5</span><span style="color:var(--light-teal);">15 new/day</span></div>
+      <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);font-size:0.84rem;"><span>Days 6–15</span><span style="color:var(--light-teal);">20 new/day</span></div>
+      <div style="display:flex;justify-content:space-between;padding:8px 0;font-size:0.84rem;"><span>Days 16–60</span><span style="color:var(--light-teal);">25–30 new/day</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Re-engage Your Existing 100+ Leads</h3>
+    <p style="font-size:0.85rem;color:var(--muted);margin-bottom:14px;">These people already know who you are — fastest path to early sales.</p>
+    <ul class="steps">
+      <li><div class="step-num">1</div>Create CSV: First Name, Last Name, Phone/Email, Source, Pain Point</li>
+      <li><div class="step-num">2</div>GHL → Contacts → Import → Upload CSV</li>
+      <li><div class="step-num">3</div>Tag all: <code>Existing Lead — Re-engage Phase 1</code></li>
+      <li><div class="step-num">4</div>Set all stages to NEW LEAD · Set Touch Count to 0</li>
+      <li><div class="step-num">5</div>Add note per contact: "Previous warm contact — re-engage with Phase 1 content"</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>Key Pipeline Moments</h3>
+    <table>
+      <thead><tr><th>Day</th><th>Action</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Day 14</strong></td><td style="font-size:0.84rem;">Full pipeline review sweep — who's stalled? Who's warm but hasn't been asked?</td></tr>
+        <tr><td><strong>Day 28</strong></td><td style="font-size:0.84rem;">Post a question sticker on stories. DM every single person who replies. Best lead-gen story of the month.</td></tr>
+        <tr><td><strong>Day 29</strong></td><td style="font-size:0.84rem;">Anyone warm for 7+ days who hasn't booked → send the booking link today.</td></tr>
+        <tr><td><strong>Day 30</strong></td><td style="font-size:0.84rem;">Full pipeline review + start referral outreach prep for Phase 3.</td></tr>
+        <tr><td><strong>Day 31+</strong></td><td style="font-size:0.84rem;">Start referral asks from Phase 1–2 buyers who have the machine.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+<!-- ════════════════════════════════════════
+     TAB 6 · LINK HUB
+════════════════════════════════════════ -->
+<div id="tab-links" class="tab-content">
+
+  <div class="section-title">Link Hub</div>
+
+  <div class="grid-2">
+
+    <div>
+      <div class="link-group-title">Live Websites</div>
+      <div class="link-row"><span class="link-name">Stop Drinking Acid</span><a class="link-url" href="https://stopdrinkingacid.com" target="_blank">stopdrinkingacid.com</a><button class="copy-btn" onclick="cp('https://stopdrinkingacid.com',this)">Copy</button></div>
+      <div class="link-row"><span class="link-name">EAU Co Hub</span><a class="link-url" href="https://eaucohub.com" target="_blank">eaucohub.com</a><button class="copy-btn" onclick="cp('https://eaucohub.com',this)">Copy</button></div>
+      <div class="link-row"><span class="link-name">Elevate Align</span><a class="link-url" href="https://elevatealign.com" target="_blank">elevatealign.com</a><button class="copy-btn" onclick="cp('https://elevatealign.com',this)">Copy</button></div>
+      <div class="link-row"><span class="link-name">Healing H2 EAU (GHL root)</span><a class="link-url" href="https://healingh2eau.co" target="_blank">healingh2eau.co</a><button class="copy-btn" onclick="cp('https://healingh2eau.co',this)">Copy</button></div>
+    </div>
+
+    <div>
+      <div class="link-group-title">Send to B2B Leads</div>
+      <div class="link-row"><span class="link-name">→ Spa / Salon Owner</span><a class="link-url" href="https://healingh2eau.co/spa" target="_blank">healingh2eau.co/spa</a><button class="copy-btn" onclick="cp('https://healingh2eau.co/spa',this)">Copy</button></div>
+      <div class="link-row"><span class="link-name">→ Coffee Shop</span><a class="link-url" href="https://healingh2eau.co/coffee" target="_blank">healingh2eau.co/coffee</a><button class="copy-btn" onclick="cp('https://healingh2eau.co/coffee',this)">Copy</button></div>
+      <div class="link-row"><span class="link-name">→ Restaurant</span><a class="link-url" href="https://healingh2eau.co/restaurants" target="_blank">healingh2eau.co/restaurants</a><button class="copy-btn" onclick="cp('https://healingh2eau.co/restaurants',this)">Copy</button></div>
+      <div class="link-row"><span class="link-name">→ Tattoo Studio</span><a class="link-url" href="https://healingh2eau.co/tattoo" target="_blank">healingh2eau.co/tattoo</a><button class="copy-btn" onclick="cp('https://healingh2eau.co/tattoo',this)">Copy</button></div>
+    </div>
+
+    <div>
+      <div class="link-group-title">Two Hounds System</div>
+      <div class="link-row"><span class="link-name">Pitch Page</span><a class="link-url" href="https://healingh2eau.co/twohounds" target="_blank">healingh2eau.co/twohounds</a><button class="copy-btn" onclick="cp('https://healingh2eau.co/twohounds',this)">Copy</button></div>
+      <div class="link-row"><span class="link-name">Sign Up / Register</span><a class="link-url" href="https://healingh2eau.co/watershare" target="_blank">healingh2eau.co/watershare</a><button class="copy-btn" onclick="cp('https://healingh2eau.co/watershare',this)">Copy</button></div>
+      <div class="link-row"><span class="link-name">Member Card (demo)</span><a class="link-url" href="https://eauco-mads.github.io/living-water-pages/member-card-DEMO.html" target="_blank">GitHub · member-card-DEMO</a><button class="copy-btn" onclick="cp('https://eauco-mads.github.io/living-water-pages/member-card-DEMO.html',this)">Copy</button></div>
+      <div class="link-row"><span class="link-name">Staff Lookup</span><a class="link-url" href="https://eauco-mads.github.io/living-water-pages/water-club-STAFF.html" target="_blank">GitHub · water-club-STAFF</a><button class="copy-btn" onclick="cp('https://eauco-mads.github.io/living-water-pages/water-club-STAFF.html',this)">Copy</button></div>
+    </div>
+
+    <div>
+      <div class="link-group-title">Send to Consumer / IG Leads</div>
+      <div class="link-row"><span class="link-name">→ Water Education</span><a class="link-url" href="https://stopdrinkingacid.com" target="_blank">stopdrinkingacid.com</a><button class="copy-btn" onclick="cp('https://stopdrinkingacid.com',this)">Copy</button></div>
+      <div class="link-row"><span class="link-name">→ Business Curious</span><a class="link-url" href="https://eaucohub.com" target="_blank">eaucohub.com</a><button class="copy-btn" onclick="cp('https://eaucohub.com',this)">Copy</button></div>
+      <div class="link-row"><span class="link-name">→ Water Hub (Members)</span><a class="link-url" href="https://members.eaucohub.com" target="_blank">members.eaucohub.com</a><button class="copy-btn" onclick="cp('https://members.eaucohub.com',this)">Copy</button></div>
+      <div class="link-row"><span class="link-name">→ Check Your Water</span><a class="link-url" href="https://www.ewg.org/tapwater/" target="_blank">ewg.org/tapwater</a><button class="copy-btn" onclick="cp('https://www.ewg.org/tapwater/',this)">Copy</button></div>
+      <div class="link-row"><span class="link-name">→ Find A Spring</span><a class="link-url" href="https://www.findasspring.com" target="_blank">findasspring.com</a><button class="copy-btn" onclick="cp('https://www.findasspring.com',this)">Copy</button></div>
+    </div>
+
+    <div>
+      <div class="link-group-title">Tools & Platforms</div>
+      <div class="link-row"><span class="link-name">GoHighLevel</span><a class="link-url" href="https://app.gohighlevel.com" target="_blank">app.gohighlevel.com</a><button class="copy-btn" onclick="cp('https://app.gohighlevel.com',this)">Copy</button></div>
+      <div class="link-row"><span class="link-name">GitHub Repo</span><a class="link-url" href="https://github.com/eauco-mads/living-water-pages" target="_blank">github.com/eauco-mads/living-water-pages</a><button class="copy-btn" onclick="cp('https://github.com/eauco-mads/living-water-pages',this)">Copy</button></div>
+      <div class="link-row"><span class="link-name">Google Drive</span><a class="link-url" href="https://drive.google.com" target="_blank">drive.google.com</a><button class="copy-btn" onclick="cp('https://drive.google.com',this)">Copy</button></div>
+    </div>
+
+    <div>
+      <div class="link-group-title">Planning Docs</div>
+      <div class="link-row"><span class="link-name">Day 0 Setup Guide</span><a class="link-url" href="https://docs.google.com/document/d/1VbdenOD9Hp0qIUxcNXwtqHJ9FGYQCwC3nahLNpKr1jw" target="_blank">Google Doc · Day 0</a><button class="copy-btn" onclick="cp('https://docs.google.com/document/d/1VbdenOD9Hp0qIUxcNXwtqHJ9FGYQCwC3nahLNpKr1jw',this)">Copy</button></div>
+      <div class="link-row"><span class="link-name">60-Day Campaign Calendar</span><a class="link-url" href="https://docs.google.com/document/d/12QAIrIXMjb3jg9Zo7v4JYWsP5rj7as913U1WhGrF5YE" target="_blank">Google Doc · 60-Day</a><button class="copy-btn" onclick="cp('https://docs.google.com/document/d/12QAIrIXMjb3jg9Zo7v4JYWsP5rj7as913U1WhGrF5YE',this)">Copy</button></div>
+      <div class="link-row"><span class="link-name">This Hub (local)</span><a class="link-url" href="#" target="_blank">living-water-hub.html · Downloads</a><button class="copy-btn" onclick="cp('~/Downloads/living-water-hub.html',this)">Copy</button></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     JAVASCRIPT
+════════════════════════════════════════ -->
+<script>
+// Date
+const now = new Date();
+document.getElementById('date-display').textContent = now.toLocaleDateString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+const TODAY = now.toISOString().slice(0,10);
+
+// Tabs
+function showTab(name, btn) {
+  document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  btn.classList.add('active');
+}
+
+// Daily checklist (resets each day)
+const DAILY_KEY = 'eau_daily_' + TODAY;
+function initDaily() {
+  const saved = JSON.parse(localStorage.getItem(DAILY_KEY) || '{}');
+  document.querySelectorAll('#daily-list li, #story-list li').forEach(li => {
+    const id = getID(li);
+    if (id && saved[id]) li.classList.add('done');
+  });
+  updateDailyBar();
+  const note = document.getElementById('reset-note');
+  if (note) note.textContent = 'Auto-resets each morning · ' + now.toLocaleDateString('en-US',{month:'short',day:'numeric'});
+}
+function getID(li) {
+  const m = (li.getAttribute('onclick')||'').match(/'([^']+)'\)/);
+  return m ? m[1] : null;
+}
+function toggleDaily(li, id) {
+  li.classList.toggle('done');
+  const saved = JSON.parse(localStorage.getItem(DAILY_KEY) || '{}');
+  li.classList.contains('done') ? (saved[id] = 1) : delete saved[id];
+  localStorage.setItem(DAILY_KEY, JSON.stringify(saved));
+  updateDailyBar();
+}
+function updateDailyBar() {
+  const items = document.querySelectorAll('#daily-list li');
+  const done = document.querySelectorAll('#daily-list li.done').length;
+  const pct = Math.round(done/items.length*100);
+  const bar = document.getElementById('daily-prog-bar');
+  const txt = document.getElementById('daily-prog-text');
+  const stat = document.getElementById('stat-dms'); // reuse slot
+  if (bar) bar.style.width = pct + '%';
+  if (txt) txt.textContent = done + '/' + items.length;
+}
+function resetDaily() {
+  localStorage.removeItem(DAILY_KEY);
+  document.querySelectorAll('#daily-list li, #story-list li').forEach(li => li.classList.remove('done'));
+  updateDailyBar();
+}
+
+// Persistent checklist (setup items, doesn't reset)
+const PERSIST_KEY = 'eau_persist';
+function initPersist() {
+  const saved = JSON.parse(localStorage.getItem(PERSIST_KEY) || '{}');
+  document.querySelectorAll('[onclick^="togglePersist"]').forEach(li => {
+    const m = (li.getAttribute('onclick')||'').match(/'([^']+)'\)/);
+    if (m && saved[m[1]]) li.classList.add('done');
+  });
+}
+function togglePersist(li, id) {
+  li.classList.toggle('done');
+  const saved = JSON.parse(localStorage.getItem(PERSIST_KEY) || '{}');
+  li.classList.contains('done') ? (saved[id] = 1) : delete saved[id];
+  localStorage.setItem(PERSIST_KEY, JSON.stringify(saved));
+}
+
+// Mark pitch pages live
+function markLive(v) {
+  const b = document.getElementById('badge-' + v);
+  if (b) { b.className = 'badge badge-live'; b.textContent = 'Live ✅'; }
+  localStorage.setItem('eau_live_' + v, '1');
+  updateLiveCount();
+}
+function initLive() {
+  ['spa','coffee','restaurant','tattoo'].forEach(v => {
+    if (localStorage.getItem('eau_live_' + v)) {
+      const b = document.getElementById('badge-' + v);
+      if (b) { b.className = 'badge badge-live'; b.textContent = 'Live ✅'; }
+    }
+  });
+  updateLiveCount();
+}
+function updateLiveCount() {
+  const n = ['spa','coffee','restaurant','tattoo'].filter(v => localStorage.getItem('eau_live_' + v)).length;
+  const el = document.getElementById('live-count');
+  if (el) el.textContent = n + '/4';
+}
+
+// Two Hounds task done
+function thDone(id, btn) {
+  btn.textContent = 'Done ✅'; btn.disabled = true; btn.style.color = 'var(--success)'; btn.style.borderColor = 'var(--success)';
+  localStorage.setItem('eau_th_' + id, '1');
+  if (id === 'github') { const b = document.getElementById('badge-gh'); if (b) { b.className = 'badge badge-live'; b.textContent = 'Live ✅'; } }
+}
+function initTH() {
+  ['email','hydration','wellness','github'].forEach(id => {
+    if (localStorage.getItem('eau_th_' + id)) {
+      const btn = document.getElementById('th-btn-' + id);
+      if (btn) { btn.textContent = 'Done ✅'; btn.disabled = true; btn.style.color = 'var(--success)'; btn.style.borderColor = 'var(--success)'; }
+      if (id === 'github') { const b = document.getElementById('badge-gh'); if (b) { b.className = 'badge badge-live'; b.textContent = 'Live ✅'; } }
+    }
+  });
+}
+
+// Collapse
+function toggle(id, btn) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.classList.toggle('open');
+  btn.textContent = btn.textContent.replace(/[▶▼]/g, el.classList.contains('open') ? '▼' : '▶');
+}
+
+// DM counter
+let dms = parseInt(localStorage.getItem('eau_dms_' + TODAY) || '0');
+function changeDM(n) {
+  dms = Math.max(0, dms + n);
+  localStorage.setItem('eau_dms_' + TODAY, dms);
+  const b = document.getElementById('dm-big'); if (b) b.textContent = dms;
+  const s = document.getElementById('stat-dms'); if (s) s.textContent = dms;
+}
+(function(){ const b = document.getElementById('dm-big'); if(b) b.textContent = dms; const s = document.getElementById('stat-dms'); if(s) s.textContent = dms; })();
+
+// Notes
+function saveNote(k, v) { localStorage.setItem('eau_note_' + k, v); }
+function initNotes() {
+  ['dms','lead','week'].forEach(k => {
+    const el = document.getElementById('note-' + k);
+    if (el) el.value = localStorage.getItem('eau_note_' + k) || '';
+  });
+}
+
+// Copy
+function cp(url, btn) {
+  navigator.clipboard.writeText(url).then(() => {
+    const orig = btn.textContent;
+    btn.textContent = 'Copied!'; btn.style.color = 'var(--success)';
+    setTimeout(() => { btn.textContent = orig; btn.style.color = ''; }, 1500);
+  });
+}
+
+// INIT ALL
+initDaily();
+initPersist();
+initLive();
+initTH();
+initNotes();
+</script>
+</body>
+</html>

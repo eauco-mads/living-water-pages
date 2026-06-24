@@ -10,46 +10,47 @@
   --navy: #1a2240;
   --teal: #066664;
   --light-teal: #B1E9E8;
-  --orange: #FDBB89;
+  --orange: #c47a3a;
   --cream: #FAF8F4;
-  --navy-light: #243060;
-  --teal-dark: #044b4a;
-  --muted: #8a99b8;
-  --success: #4ade80;
-  --warning: #fbbf24;
-  --danger: #f87171;
-  --purple: #c084fc;
+  --bg: #F5F2EC;
+  --border: #EAE6DF;
+  --text: #2a2a2a;
+  --muted: #999;
+  --success: #059669;
+  --warning: #d97706;
+  --danger: #dc2626;
+  --purple: #7c3aed;
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { background: var(--navy); color: var(--cream); font-family: 'Lato', sans-serif; font-size: 15px; line-height: 1.6; min-height: 100vh; }
+body { background: var(--bg); color: var(--text); font-family: 'Lato', sans-serif; font-size: 15px; line-height: 1.6; min-height: 100vh; }
 h1,h2,h3,h4 { font-family: 'Cormorant Garamond', serif; font-weight: 400; letter-spacing: 0.02em; }
 
 /* TOP BAR */
-.top-bar { background: rgba(26,34,64,0.98); border-bottom: 1px solid rgba(177,233,232,0.15); padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; backdrop-filter: blur(8px); }
+.top-bar { background: var(--navy); border-bottom: 1px solid rgba(177,233,232,0.12); padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
 .logo { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; color: var(--light-teal); letter-spacing: 0.15em; text-transform: uppercase; }
-.date-badge { font-size: 0.78rem; color: var(--muted); letter-spacing: 0.05em; }
+.date-badge { font-size: 0.78rem; color: rgba(177,233,232,0.45); letter-spacing: 0.05em; }
 
 /* TABS */
-.tab-nav { display: flex; gap: 2px; padding: 0 24px; background: rgba(255,255,255,0.02); border-bottom: 1px solid rgba(177,233,232,0.1); overflow-x: auto; scrollbar-width: none; }
+.tab-nav { display: flex; gap: 2px; padding: 0 24px; background: var(--cream); border-bottom: 1px solid var(--border); overflow-x: auto; scrollbar-width: none; }
 .tab-nav::-webkit-scrollbar { display: none; }
 .tab-btn { background: none; border: none; color: var(--muted); font-family: 'Lato', sans-serif; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 12px 16px 14px; cursor: pointer; border-bottom: 2px solid transparent; white-space: nowrap; transition: all 0.2s; }
-.tab-btn:hover { color: var(--light-teal); }
-.tab-btn.active { color: var(--light-teal); border-bottom-color: var(--teal); }
+.tab-btn:hover { color: var(--teal); }
+.tab-btn.active { color: var(--teal); border-bottom-color: var(--teal); }
 .tab-content { display: none; padding: 28px 24px; max-width: 1100px; margin: 0 auto; }
 .tab-content.active { display: block; }
 
 /* CARDS */
-.card { background: rgba(255,255,255,0.04); border: 1px solid rgba(177,233,232,0.12); border-radius: 12px; padding: 22px; margin-bottom: 18px; }
-.card h3 { font-size: 1.25rem; color: var(--cream); margin-bottom: 14px; }
+.card { background: var(--cream); border: 1px solid var(--border); border-radius: 12px; padding: 22px; margin-bottom: 18px; }
+.card h3 { font-size: 1.25rem; color: var(--navy); margin-bottom: 14px; }
 .card h4 { font-family: 'Lato', sans-serif; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--orange); margin-bottom: 10px; }
 
 /* BADGES */
 .badge { display: inline-flex; align-items: center; gap: 5px; padding: 3px 10px; border-radius: 20px; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
-.badge-live { background: rgba(74,222,128,0.12); color: var(--success); border: 1px solid rgba(74,222,128,0.3); }
-.badge-urgent { background: rgba(248,113,113,0.12); color: var(--danger); border: 1px solid rgba(248,113,113,0.3); }
-.badge-pending { background: rgba(251,191,36,0.12); color: var(--warning); border: 1px solid rgba(251,191,36,0.3); }
-.badge-done { background: rgba(6,102,100,0.3); color: var(--light-teal); border: 1px solid rgba(177,233,232,0.2); }
-.badge-building { background: rgba(253,187,137,0.12); color: var(--orange); border: 1px solid rgba(253,187,137,0.3); }
+.badge-live { background: rgba(5,150,105,0.1); color: var(--success); border: 1px solid rgba(5,150,105,0.25); }
+.badge-urgent { background: rgba(220,38,38,0.08); color: var(--danger); border: 1px solid rgba(220,38,38,0.2); }
+.badge-pending { background: rgba(217,119,6,0.1); color: var(--warning); border: 1px solid rgba(217,119,6,0.2); }
+.badge-done { background: rgba(6,102,100,0.1); color: var(--teal); border: 1px solid rgba(6,102,100,0.2); }
+.badge-building { background: rgba(196,122,58,0.1); color: var(--orange); border: 1px solid rgba(196,122,58,0.2); }
 
 /* GRIDS */
 .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
@@ -58,78 +59,78 @@ h1,h2,h3,h4 { font-family: 'Cormorant Garamond', serif; font-weight: 400; letter
 @media (max-width: 768px) { .grid-2,.grid-3,.grid-4 { grid-template-columns: 1fr; } }
 
 /* STATS */
-.stat-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(177,233,232,0.1); border-radius: 10px; padding: 16px; text-align: center; }
-.stat-num { font-family: 'Cormorant Garamond', serif; font-size: 2rem; color: var(--light-teal); line-height: 1; margin-bottom: 4px; }
+.stat-card { background: var(--cream); border: 1px solid var(--border); border-radius: 10px; padding: 16px; text-align: center; }
+.stat-num { font-family: 'Cormorant Garamond', serif; font-size: 2rem; color: var(--teal); line-height: 1; margin-bottom: 4px; }
 .stat-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
 
 /* CHECKLISTS */
 .checklist { list-style: none; }
-.checklist li { display: flex; align-items: flex-start; gap: 12px; padding: 9px 0; border-bottom: 1px solid rgba(255,255,255,0.04); cursor: pointer; transition: opacity 0.15s; }
+.checklist li { display: flex; align-items: flex-start; gap: 12px; padding: 9px 0; border-bottom: 1px solid var(--border); cursor: pointer; transition: opacity 0.15s; }
 .checklist li:last-child { border-bottom: none; }
-.checklist li.done { opacity: 0.4; text-decoration: line-through; }
-.check-box { width: 19px; height: 19px; border: 1.5px solid rgba(177,233,232,0.35); border-radius: 4px; flex-shrink: 0; margin-top: 3px; display: flex; align-items: center; justify-content: center; transition: all 0.15s; }
+.checklist li.done { opacity: 0.45; text-decoration: line-through; }
+.check-box { width: 19px; height: 19px; border: 1.5px solid rgba(6,102,100,0.3); border-radius: 4px; flex-shrink: 0; margin-top: 3px; display: flex; align-items: center; justify-content: center; transition: all 0.15s; }
 .checklist li.done .check-box { background: var(--teal); border-color: var(--teal); }
 .check-icon { display: none; color: white; font-size: 11px; font-weight: 700; }
 .checklist li.done .check-icon { display: block; }
 
 /* PROGRESS */
-.progress-bar { height: 4px; background: rgba(255,255,255,0.08); border-radius: 2px; overflow: hidden; margin: 6px 0; }
+.progress-bar { height: 4px; background: var(--border); border-radius: 2px; overflow: hidden; margin: 6px 0; }
 .progress-fill { height: 100%; background: linear-gradient(to right, var(--teal), var(--light-teal)); border-radius: 2px; transition: width 0.4s ease; }
 
 /* SECTION TITLES */
-.section-title { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; color: var(--cream); margin: 28px 0 16px; display: flex; align-items: center; gap: 12px; }
-.section-title::after { content: ''; flex: 1; height: 1px; background: rgba(177,233,232,0.12); }
+.section-title { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; color: var(--navy); margin: 28px 0 16px; display: flex; align-items: center; gap: 12px; }
+.section-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
 
 /* URGENT BANNER */
-.urgent { background: rgba(248,113,113,0.07); border: 1px solid rgba(248,113,113,0.25); border-radius: 10px; padding: 13px 18px; margin-bottom: 18px; font-size: 0.87rem; display: flex; align-items: flex-start; gap: 10px; }
+.urgent { background: rgba(220,38,38,0.05); border: 1px solid rgba(220,38,38,0.18); border-radius: 10px; padding: 13px 18px; margin-bottom: 18px; font-size: 0.87rem; display: flex; align-items: flex-start; gap: 10px; }
 .urgent strong { color: var(--danger); }
 
 /* INFO BOX */
-.info-box { background: rgba(6,102,100,0.15); border: 1px solid rgba(177,233,232,0.18); border-radius: 8px; padding: 13px 16px; font-size: 0.84rem; margin-bottom: 14px; }
-.info-box strong { color: var(--light-teal); }
+.info-box { background: rgba(6,102,100,0.06); border: 1px solid rgba(6,102,100,0.15); border-radius: 8px; padding: 13px 16px; font-size: 0.84rem; margin-bottom: 14px; }
+.info-box strong { color: var(--teal); }
 
 /* LINKS */
-a { color: var(--light-teal); text-decoration: none; }
+a { color: var(--teal); text-decoration: none; }
 a:hover { text-decoration: underline; }
 
 /* TABLES */
 table { width: 100%; border-collapse: collapse; }
-th { text-align: left; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); padding: 9px 12px; border-bottom: 1px solid rgba(255,255,255,0.08); }
-td { padding: 11px 12px; font-size: 0.86rem; border-bottom: 1px solid rgba(255,255,255,0.04); vertical-align: middle; }
+th { text-align: left; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); padding: 9px 12px; border-bottom: 1px solid var(--border); }
+td { padding: 11px 12px; font-size: 0.86rem; border-bottom: 1px solid #F0EDE6; vertical-align: middle; }
 tr:last-child td { border-bottom: none; }
 
 /* BUTTONS */
-.btn-sm { background: none; border: 1px solid rgba(177,233,232,0.2); color: var(--muted); font-size: 0.7rem; padding: 4px 10px; border-radius: 6px; cursor: pointer; transition: all 0.15s; }
-.btn-sm:hover { background: rgba(177,233,232,0.08); color: var(--cream); }
-.btn-sm.done-btn { color: var(--success); border-color: var(--success); }
+.btn-sm { background: none; border: 1px solid var(--border); color: var(--muted); font-size: 0.7rem; padding: 4px 10px; border-radius: 6px; cursor: pointer; transition: all 0.15s; }
+.btn-sm:hover { background: rgba(6,102,100,0.06); color: var(--teal); }
+.btn-sm.done-btn { color: var(--success); border-color: rgba(5,150,105,0.3); }
 
 /* COLLAPSE */
-.collapse-toggle { background: none; border: none; color: var(--light-teal); font-size: 0.75rem; cursor: pointer; padding: 5px 0; display: inline-flex; align-items: center; gap: 5px; letter-spacing: 0.06em; text-transform: uppercase; }
+.collapse-toggle { background: none; border: none; color: var(--teal); font-size: 0.75rem; cursor: pointer; padding: 5px 0; display: inline-flex; align-items: center; gap: 5px; letter-spacing: 0.06em; text-transform: uppercase; }
 .collapse-body { display: none; margin-top: 12px; }
 .collapse-body.open { display: block; }
 
 /* CODE */
-code { background: rgba(177,233,232,0.1); color: var(--light-teal); font-size: 0.8em; padding: 2px 6px; border-radius: 4px; font-family: 'Courier New', monospace; word-break: break-all; }
-.code-block { background: rgba(0,0,0,0.3); border: 1px solid rgba(177,233,232,0.15); border-radius: 8px; padding: 12px 14px; font-family: 'Courier New', monospace; font-size: 0.78rem; color: var(--light-teal); word-break: break-all; line-height: 1.6; margin: 8px 0; }
+code { background: rgba(6,102,100,0.08); color: var(--teal); font-size: 0.8em; padding: 2px 6px; border-radius: 4px; font-family: 'Courier New', monospace; word-break: break-all; }
+.code-block { background: var(--navy); border: 1px solid rgba(177,233,232,0.15); border-radius: 8px; padding: 12px 14px; font-family: 'Courier New', monospace; font-size: 0.78rem; color: var(--light-teal); word-break: break-all; line-height: 1.6; margin: 8px 0; }
 
 /* STEPS */
 .steps { list-style: none; }
 .steps li { display: flex; gap: 12px; padding: 8px 0; font-size: 0.86rem; align-items: flex-start; }
-.step-num { background: rgba(6,102,100,0.4); color: var(--light-teal); width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.68rem; font-weight: 700; flex-shrink: 0; margin-top: 2px; }
+.step-num { background: rgba(6,102,100,0.1); color: var(--teal); width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.68rem; font-weight: 700; flex-shrink: 0; margin-top: 2px; }
 
 /* NOTES */
-.notes-area { width: 100%; background: rgba(255,255,255,0.04); border: 1px solid rgba(177,233,232,0.12); border-radius: 8px; color: var(--cream); font-family: 'Lato', sans-serif; font-size: 0.85rem; padding: 11px; resize: vertical; min-height: 70px; }
-.notes-area::placeholder { color: var(--muted); }
+.notes-area { width: 100%; background: #fff; border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-family: 'Lato', sans-serif; font-size: 0.85rem; padding: 11px; resize: vertical; min-height: 70px; }
+.notes-area::placeholder { color: #bbb; }
 
 /* PITCH CARDS */
-.pitch-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(177,233,232,0.12); border-radius: 12px; padding: 20px; }
+.pitch-card { background: var(--cream); border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
 .pitch-vertical { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--orange); margin-bottom: 6px; }
-.pitch-card h3 { font-size: 1.3rem; margin-bottom: 6px; }
+.pitch-card h3 { font-size: 1.3rem; margin-bottom: 6px; color: var(--navy); }
 .pitch-hook { font-size: 0.84rem; color: var(--muted); font-style: italic; line-height: 1.5; margin-bottom: 12px; }
-.meta-tag { background: rgba(6,102,100,0.2); color: var(--light-teal); font-size: 0.72rem; padding: 3px 9px; border-radius: 20px; font-family: monospace; display: inline-block; margin: 2px; }
+.meta-tag { background: rgba(6,102,100,0.08); color: var(--teal); font-size: 0.72rem; padding: 3px 9px; border-radius: 20px; font-family: monospace; display: inline-block; margin: 2px; }
 
 /* SHOT LIST */
-.shot { display: flex; gap: 13px; padding: 11px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.shot { display: flex; gap: 13px; padding: 11px 0; border-bottom: 1px solid var(--border); }
 .shot:last-child { border-bottom: none; }
 .shot-n { background: var(--teal); color: white; width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.72rem; font-weight: 700; flex-shrink: 0; margin-top: 2px; }
 .shot-title { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--orange); margin-bottom: 3px; }
@@ -138,25 +139,71 @@ code { background: rgba(177,233,232,0.1); color: var(--light-teal); font-size: 0
 
 /* LINK HUB */
 .link-group-title { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--orange); margin-bottom: 10px; }
-.link-row { display: flex; align-items: center; gap: 12px; padding: 9px 13px; background: rgba(255,255,255,0.03); border: 1px solid rgba(177,233,232,0.07); border-radius: 8px; margin-bottom: 5px; transition: all 0.15s; }
-.link-row:hover { background: rgba(177,233,232,0.05); border-color: rgba(177,233,232,0.18); }
-.link-name { font-size: 0.8rem; font-weight: 700; color: var(--cream); min-width: 170px; }
-.link-url { font-size: 0.78rem; color: var(--light-teal); font-family: monospace; flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.copy-btn { margin-left: auto; background: none; border: 1px solid rgba(177,233,232,0.18); color: var(--muted); font-size: 0.68rem; padding: 3px 9px; border-radius: 5px; cursor: pointer; flex-shrink: 0; transition: all 0.15s; }
-.copy-btn:hover { background: rgba(177,233,232,0.1); color: var(--cream); }
+.link-row { display: flex; align-items: center; gap: 12px; padding: 9px 13px; background: #fff; border: 1px solid var(--border); border-radius: 8px; margin-bottom: 5px; transition: all 0.15s; }
+.link-row:hover { background: var(--cream); border-color: rgba(6,102,100,0.2); }
+.link-name { font-size: 0.8rem; font-weight: 700; color: var(--navy); min-width: 170px; }
+.link-url { font-size: 0.78rem; color: var(--teal); font-family: monospace; flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.copy-btn { margin-left: auto; background: none; border: 1px solid var(--border); color: var(--muted); font-size: 0.68rem; padding: 3px 9px; border-radius: 5px; cursor: pointer; flex-shrink: 0; transition: all 0.15s; }
+.copy-btn:hover { background: rgba(6,102,100,0.06); color: var(--teal); }
 
 /* PHASE CARDS */
-.phase-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(177,233,232,0.09); border-radius: 10px; padding: 16px; }
+.phase-card { background: var(--cream); border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
 .phase-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--orange); margin-bottom: 4px; }
-.phase-card h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; margin-bottom: 5px; color: var(--cream); }
+.phase-card h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; margin-bottom: 5px; color: var(--navy); }
 .phase-card p { font-size: 0.81rem; color: var(--muted); line-height: 1.5; }
 
 /* DM COUNTER */
 .dm-counter-row { display: flex; gap: 8px; align-items: center; margin-top: 6px; }
-.dm-btn { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); color: var(--cream); width: 30px; height: 30px; border-radius: 6px; cursor: pointer; font-size: 1rem; display: flex; align-items: center; justify-content: center; }
-.dm-big { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; color: var(--light-teal); min-width: 50px; text-align: center; line-height: 1; }
+.dm-btn { background: #fff; border: 1px solid var(--border); color: var(--navy); width: 30px; height: 30px; border-radius: 6px; cursor: pointer; font-size: 1rem; display: flex; align-items: center; justify-content: center; }
+.dm-big { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; color: var(--teal); min-width: 50px; text-align: center; line-height: 1; }
 
-hr { border: none; border-top: 1px solid rgba(177,233,232,0.08); margin: 18px 0; }
+hr { border: none; border-top: 1px solid var(--border); margin: 18px 0; }
+
+/* ── CREATOR SECTION ── */
+.tab-divider { display: flex; align-items: center; padding: 0 12px; color: var(--border); font-size: 1rem; pointer-events: none; flex-shrink: 0; }
+.cr-tag { display: inline-block; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; padding: 2px 8px; border-radius: 4px; flex-shrink: 0; margin-top: 3px; }
+.cr-tag-urgent { background: rgba(220,38,38,0.08); color: var(--danger); border: 1px solid rgba(220,38,38,0.2); }
+.cr-tag-money  { background: rgba(5,150,105,0.08); color: var(--success); border: 1px solid rgba(5,150,105,0.2); }
+.cr-tag-quick  { background: rgba(196,122,58,0.1); color: var(--orange); border: 1px solid rgba(196,122,58,0.2); }
+.cr-tag-new    { background: rgba(124,58,237,0.08); color: var(--purple); border: 1px solid rgba(124,58,237,0.2); }
+.cr-checklist { list-style: none; }
+.cr-checklist li { display: flex; align-items: flex-start; gap: 12px; padding: 11px 14px; background: #fff; border: 1px solid var(--border); border-radius: 8px; margin-bottom: 7px; cursor: pointer; transition: all 0.15s; }
+.cr-checklist li:hover { border-color: rgba(6,102,100,0.25); }
+.cr-checklist li.checked { background: var(--cream); opacity: 0.55; }
+.cr-checklist li.checked .check-box { background: var(--teal); border-color: var(--teal); }
+.cr-checklist li.checked .check-icon { display: block; }
+.cr-checklist li.checked .cr-title { text-decoration: line-through; }
+.cr-title { font-size: 0.88rem; font-weight: 700; margin-bottom: 3px; color: var(--navy); }
+.cr-sub { font-size: 0.8rem; color: var(--muted); line-height: 1.5; }
+.status-sel { background: #fff; border: 1px solid var(--border); color: var(--text); font-size: 0.78rem; padding: 4px 8px; border-radius: 6px; cursor: pointer; font-family: 'Lato', sans-serif; }
+.status-sel option { background: #fff; color: var(--text); }
+.loc-pill { display: inline-block; font-size: 0.7rem; padding: 2px 8px; border-radius: 20px; border: 1px solid var(--border); color: var(--muted); }
+.loc-panama { border-color: rgba(196,122,58,0.3); color: var(--orange); background: rgba(196,122,58,0.05); }
+.grid-9 { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin-bottom: 12px; }
+.g-cell { aspect-ratio: 1; border: 1px solid var(--border); background: #fff; padding: 13px; display: flex; flex-direction: column; justify-content: space-between; cursor: pointer; border-radius: 8px; transition: all 0.2s; position: relative; overflow: hidden; }
+.g-cell:hover { border-color: rgba(6,102,100,0.3); background: var(--cream); }
+.g-cell.posted { background: rgba(5,150,105,0.05); border-color: rgba(5,150,105,0.3); }
+.g-cell.posted::after { content: '✓ POSTED'; position: absolute; top: 8px; right: 8px; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.08em; color: var(--success); }
+.g-num { font-family: 'Cormorant Garamond', serif; font-size: 2rem; color: rgba(6,102,100,0.15); line-height: 1; }
+.g-loc { font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--orange); margin-bottom: 3px; }
+.g-cap { font-size: 0.76rem; font-style: italic; color: var(--muted); line-height: 1.4; }
+.angle-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
+@media (max-width: 600px) { .angle-grid { grid-template-columns: 1fr; } }
+.angle-card { border: 1px solid var(--border); border-radius: 10px; padding: 18px; background: #fff; }
+.angle-card.new-angle { border-color: rgba(196,122,58,0.3); background: rgba(196,122,58,0.04); }
+.angle-icon { font-size: 1.4rem; margin-bottom: 8px; display: block; }
+.angle-title { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; margin-bottom: 6px; color: var(--navy); }
+.angle-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
+.new-badge { display: inline-block; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; color: #fff; background: var(--orange); padding: 2px 7px; border-radius: 3px; margin-bottom: 8px; text-transform: uppercase; }
+.copy-block { background: #fff; border: 1px solid var(--border); border-left: 3px solid var(--orange); border-radius: 0 8px 8px 0; padding: 14px 16px; font-size: 0.86rem; line-height: 1.8; white-space: pre-line; color: var(--text); margin-bottom: 12px; font-style: italic; }
+.field-label { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; margin-top: 16px; }
+.tl { position: relative; padding-left: 24px; }
+.tl::before { content: ''; position: absolute; left: 6px; top: 8px; bottom: 8px; width: 1px; background: var(--border); }
+.tl-item { position: relative; margin-bottom: 24px; }
+.tl-dot { position: absolute; left: -21px; top: 5px; width: 10px; height: 10px; border: 2px solid var(--orange); background: var(--bg); border-radius: 50%; }
+.tl-week { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--orange); margin-bottom: 4px; }
+.tl-title { font-weight: 700; font-size: 0.9rem; margin-bottom: 4px; color: var(--navy); }
+.tl-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
 </style>
 </head>
 <body>
@@ -173,6 +220,14 @@ hr { border: none; border-top: 1px solid rgba(177,233,232,0.08); margin: 18px 0;
   <button class="tab-btn" onclick="showTab('content',this)">📱 Content & IG</button>
   <button class="tab-btn" onclick="showTab('pipeline',this)">🤝 Lead Pipeline</button>
   <button class="tab-btn" onclick="showTab('links',this)">🔗 Link Hub</button>
+  <span class="tab-divider">|</span>
+  <button class="tab-btn" onclick="showTab('cr-setup',this)">🌴 Creator Setup</button>
+  <button class="tab-btn" onclick="showTab('cr-ig',this)">📸 @mads.gallow</button>
+  <button class="tab-btn" onclick="showTab('cr-pitches',this)">📬 Hotel Pitches</button>
+  <button class="tab-btn" onclick="showTab('cr-grid',this)">🗂 9-Grid</button>
+  <button class="tab-btn" onclick="showTab('cr-angles',this)">🍹 Content Angles</button>
+  <button class="tab-btn" onclick="showTab('cr-linkedin',this)">💼 LinkedIn</button>
+  <button class="tab-btn" onclick="showTab('cr-route',this)">🗺 Route</button>
 </nav>
 
 <!-- ════════════════════════════════════════
@@ -890,6 +945,370 @@ hr { border: none; border-top: 1px solid rgba(177,233,232,0.08); margin: 18px 0;
 </div>
 
 <!-- ════════════════════════════════════════
+     TAB: CREATOR SETUP
+════════════════════════════════════════ -->
+<div id="tab-cr-setup" class="tab-content">
+
+  <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;">
+    <div>
+      <div style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--orange);margin-bottom:4px;">@mads.gallow · Creator Launch</div>
+      <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;margin:0;">Day Zero — Washington → Panama</h3>
+    </div>
+    <div style="margin-left:auto;text-align:right;">
+      <div style="font-size:0.72rem;color:var(--muted);margin-bottom:4px;">Overall Progress</div>
+      <div class="progress-bar" style="width:180px;"><div class="progress-fill" id="cr-prog-bar" style="width:0%"></div></div>
+      <div style="font-size:0.78rem;color:var(--orange);margin-top:4px;" id="cr-prog-text">0 of 0 done</div>
+    </div>
+  </div>
+
+  <div class="section-title">Do These First — Today</div>
+  <ul class="cr-checklist" id="cr-today">
+    <li onclick="crCheck(this,'cr0')"><div class="check-box"><span class="check-icon">✓</span></div><div style="flex:1;"><div class="cr-title">Update @mads.gallow bio</div><div class="cr-sub">🌍 Wellness travel creator • PNW → Panama · Drone + lifestyle content for boutique stays ✈️ · 📩 maddie@elevatealign.com</div></div><span class="cr-tag cr-tag-urgent">Urgent</span></li>
+    <li onclick="crCheck(this,'cr1')"><div class="check-box"><span class="check-icon">✓</span></div><div style="flex:1;"><div class="cr-title">Post 3 photos to @mads.gallow</div><div class="cr-sub">Hot springs, Panama infinity pool, Pedasí street — use captions from the 9-Grid tab</div></div><span class="cr-tag cr-tag-urgent">Urgent</span></li>
+    <li onclick="crCheck(this,'cr2')"><div class="check-box"><span class="check-icon">✓</span></div><div style="flex:1;"><div class="cr-title">Send all 9 pitch emails</div><div class="cr-sub">5 Panama + 4 US route stops. Fill in your IG handle and attach media kit PDF</div></div><span class="cr-tag cr-tag-urgent">Urgent</span></li>
+    <li onclick="crCheck(this,'cr3')"><div class="check-box"><span class="check-icon">✓</span></div><div style="flex:1;"><div class="cr-title">Save media kit as PDF</div><div class="cr-sub">Open maddie-galloway-media-kit.html → File → Print → Save as PDF → attach to every pitch email</div></div><span class="cr-tag cr-tag-quick">15 min</span></li>
+    <li onclick="crCheck(this,'cr4')"><div class="check-box"><span class="check-icon">✓</span></div><div style="flex:1;"><div class="cr-title">Add link in bio</div><div class="cr-sub">Link to your media kit or LinkedIn. Makes you look immediately legit to any property that checks</div></div><span class="cr-tag cr-tag-quick">10 min</span></li>
+  </ul>
+
+  <div class="section-title">This Week</div>
+  <ul class="cr-checklist" id="cr-week">
+    <li onclick="crCheck(this,'cr5')"><div class="check-box"><span class="check-icon">✓</span></div><div style="flex:1;"><div class="cr-title">Set up LinkedIn creator profile</div><div class="cr-sub">Copy is ready in the LinkedIn tab. Takes ~30 min. Link it in pitch emails going forward</div></div><span class="cr-tag cr-tag-quick">30 min</span></li>
+    <li onclick="crCheck(this,'cr6')"><div class="check-box"><span class="check-icon">✓</span></div><div style="flex:1;"><div class="cr-title">Refresh Instagram highlights</div><div class="cr-sub">New covers: Panama · PNW · Alaska · Thailand · Europe · Drone · Food+Drinks · Collabs</div></div><span class="cr-tag cr-tag-quick">45 min</span></li>
+    <li onclick="crCheck(this,'cr7')"><div class="check-box"><span class="check-icon">✓</span></div><div style="flex:1;"><div class="cr-title">Post remaining 6 of 9 grid photos</div><div class="cr-sub">3 per week. Follow the 9-Grid tab exactly for visual flow and caption arc</div></div><span class="cr-tag cr-tag-quick">Ongoing</span></li>
+    <li onclick="crCheck(this,'cr8')"><div class="check-box"><span class="check-icon">✓</span></div><div style="flex:1;"><div class="cr-title">Follow up on unanswered pitch emails</div><div class="cr-sub">Wait 5–7 days then one friendly bump: "Just bumping this up — would love to connect!"</div></div><span class="cr-tag cr-tag-quick">Day 7</span></li>
+    <li onclick="crCheck(this,'cr9')"><div class="check-box"><span class="check-icon">✓</span></div><div style="flex:1;"><div class="cr-title">Create a Food + Drinks highlight</div><div class="cr-sub">Pull best beach drinks, bowling alley food shots, Thailand drinks — opens a whole new pitch angle</div></div><span class="cr-tag cr-tag-money">New angle</span></li>
+    <li onclick="crCheck(this,'cr10')"><div class="check-box"><span class="check-icon">✓</span></div><div style="flex:1;"><div class="cr-title">Confirm road trip plan with Nya</div><div class="cr-sub">Two-person travel content performs better. Is she in for the drive to Wyoming/Utah?</div></div><span class="cr-tag cr-tag-quick">Personal</span></li>
+  </ul>
+
+  <div class="section-title">Before You Leave Washington</div>
+  <ul class="cr-checklist">
+    <li onclick="crCheck(this,'cr11')"><div class="check-box"><span class="check-icon">✓</span></div><div style="flex:1;"><div class="cr-title">Confirm at least 1 free stay on the US route</div><div class="cr-sub">Dreamcatcher Tipi (Yellowstone) or Brasada Ranch (Bend) are most likely to reply fast</div></div><span class="cr-tag cr-tag-money">$$ Saved</span></li>
+    <li onclick="crCheck(this,'cr12')"><div class="check-box"><span class="check-icon">✓</span></div><div style="flex:1;"><div class="cr-title">Confirm at least 1 Panama free stay</div><div class="cr-sub">La Concordia or Eden Ubedi — Panama pitches sent, just need a yes before booking flights</div></div><span class="cr-tag cr-tag-money">$$ Saved</span></li>
+    <li onclick="crCheck(this,'cr13')"><div class="check-box"><span class="check-icon">✓</span></div><div style="flex:1;"><div class="cr-title">Book flight WA → Miami → Panama City</div><div class="cr-sub">Wait until at least 1 Panama stay confirmed so you know your landing zone. Arlo Wynwood pitch sent for Miami</div></div><span class="cr-tag cr-tag-urgent">Before leaving</span></li>
+    <li onclick="crCheck(this,'cr14')"><div class="check-box"><span class="check-icon">✓</span></div><div style="flex:1;"><div class="cr-title">Decide where to leave your car</div><div class="cr-sub">Fireside Resort (Jackson Hole) or friend/family in Utah/Colorado. Don't leave this unplanned</div></div><span class="cr-tag cr-tag-urgent">Logistics</span></li>
+    <li onclick="crCheck(this,'cr15')"><div class="check-box"><span class="check-icon">✓</span></div><div style="flex:1;"><div class="cr-title">Sort Thailand + Europe photos</div><div class="cr-sub">Pick top 5 from each. These are your biggest content drops after the initial revival arc</div></div><span class="cr-tag cr-tag-quick">Content</span></li>
+  </ul>
+
+</div>
+
+<!-- ════════════════════════════════════════
+     TAB: @MADS.GALLOW IG
+════════════════════════════════════════ -->
+<div id="tab-cr-ig" class="tab-content">
+
+  <div class="section-title">Bio — Copy & Paste</div>
+  <div class="copy-block">🌍 Wellness travel creator • PNW → Panama
+Drone + lifestyle content for boutique stays ✈️
+📩 maddie@elevatealign.com</div>
+
+  <div class="section-title">Highlight Covers to Create</div>
+  <ul class="cr-checklist">
+    <li onclick="crCheck(this,'ig0')"><div class="check-box"><span class="check-icon">✓</span></div><div style="flex:1;"><div class="cr-title">🌴 Panama</div><div class="cr-sub">Infinity pool shot or Pedasí street as cover</div></div></li>
+    <li onclick="crCheck(this,'ig1')"><div class="check-box"><span class="check-icon">✓</span></div><div style="flex:1;"><div class="cr-title">🌿 PNW</div><div class="cr-sub">Forks forest or Washington coast</div></div></li>
+    <li onclick="crCheck(this,'ig2')"><div class="check-box"><span class="check-icon">✓</span></div><div style="flex:1;"><div class="cr-title">🏔️ Alaska</div><div class="cr-sub">Mountain overlook shot</div></div></li>
+    <li onclick="crCheck(this,'ig3')"><div class="check-box"><span class="check-icon">✓</span></div><div style="flex:1;"><div class="cr-title">🌏 Thailand</div><div class="cr-sub">Best Thailand shot as cover</div></div></li>
+    <li onclick="crCheck(this,'ig4')"><div class="check-box"><span class="check-icon">✓</span></div><div style="flex:1;"><div class="cr-title">🏰 Europe</div><div class="cr-sub">Most editorial European shot</div></div></li>
+    <li onclick="crCheck(this,'ig5')"><div class="check-box"><span class="check-icon">✓</span></div><div style="flex:1;"><div class="cr-title">🚁 Drone</div><div class="cr-sub">Boat aerial on teal water</div></div></li>
+    <li onclick="crCheck(this,'ig6')"><div class="check-box"><span class="check-icon">✓</span></div><div style="flex:1;"><div class="cr-title">🍹 Food + Drinks</div><div class="cr-sub">Best beach cocktail or Thailand drink shot — NEW pitch angle, add this cover!</div></div><span class="cr-tag cr-tag-new">New</span></li>
+    <li onclick="crCheck(this,'ig7')"><div class="check-box"><span class="check-icon">✓</span></div><div style="flex:1;"><div class="cr-title">🤝 Collabs</div><div class="cr-sub">Start empty — add as deals come in. Having the highlight shows you're open to collabs</div></div></li>
+  </ul>
+
+</div>
+
+<!-- ════════════════════════════════════════
+     TAB: HOTEL PITCH TRACKER
+════════════════════════════════════════ -->
+<div id="tab-cr-pitches" class="tab-content">
+
+  <div class="info-box"><strong>Tip:</strong> Status and notes save automatically. Follow up 5–7 days after sending if no reply — one short message: "Just bumping this up — would love to connect!"</div>
+
+  <div class="section-title">US Route Pitches</div>
+  <div class="card">
+    <table>
+      <thead><tr><th>Property</th><th>Location</th><th>Status</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Brasada Ranch</strong></td>
+          <td><span class="loc-pill">Bend, OR</span></td>
+          <td><select class="status-sel" onchange="savePitch('us-brasada-status',this.value);styleStatus(this)" id="us-brasada-status"><option>📤 Sent</option><option>👀 Viewed</option><option>💬 Replied</option><option>✅ Confirmed</option><option>❌ Passed</option></select></td>
+          <td><textarea class="notes-area" style="min-height:40px;font-size:0.8rem;" placeholder="Notes..." id="us-brasada-notes" oninput="savePitch('us-brasada-notes',this.value)"></textarea></td>
+        </tr>
+        <tr>
+          <td><strong>FivePine Lodge</strong></td>
+          <td><span class="loc-pill">Sisters, OR</span></td>
+          <td><select class="status-sel" onchange="savePitch('us-fivepine-status',this.value);styleStatus(this)" id="us-fivepine-status"><option>📤 Sent</option><option>👀 Viewed</option><option>💬 Replied</option><option>✅ Confirmed</option><option>❌ Passed</option></select></td>
+          <td><textarea class="notes-area" style="min-height:40px;font-size:0.8rem;" placeholder="Notes..." id="us-fivepine-notes" oninput="savePitch('us-fivepine-notes',this.value)"></textarea></td>
+        </tr>
+        <tr>
+          <td><strong>Dreamcatcher Tipi</strong></td>
+          <td><span class="loc-pill">Yellowstone, MT</span></td>
+          <td><select class="status-sel" onchange="savePitch('us-dream-status',this.value);styleStatus(this)" id="us-dream-status"><option>📤 Sent</option><option>👀 Viewed</option><option>💬 Replied</option><option>✅ Confirmed</option><option>❌ Passed</option></select></td>
+          <td><textarea class="notes-area" style="min-height:40px;font-size:0.8rem;" placeholder="Notes..." id="us-dream-notes" oninput="savePitch('us-dream-notes',this.value)"></textarea></td>
+        </tr>
+        <tr>
+          <td><strong>Fireside Resort</strong></td>
+          <td><span class="loc-pill">Jackson Hole, WY</span></td>
+          <td><select class="status-sel" onchange="savePitch('us-fireside-status',this.value);styleStatus(this)" id="us-fireside-status"><option>📤 Sent</option><option>👀 Viewed</option><option>💬 Replied</option><option>✅ Confirmed</option><option>❌ Passed</option></select></td>
+          <td><textarea class="notes-area" style="min-height:40px;font-size:0.8rem;" placeholder="Leave car here as part of the deal?" id="us-fireside-notes" oninput="savePitch('us-fireside-notes',this.value)"></textarea></td>
+        </tr>
+        <tr>
+          <td><strong>Arlo Wynwood</strong></td>
+          <td><span class="loc-pill">Miami, FL</span></td>
+          <td><select class="status-sel" onchange="savePitch('us-arlo-status',this.value);styleStatus(this)" id="us-arlo-status"><option>📤 Sent</option><option>👀 Viewed</option><option>💬 Replied</option><option>✅ Confirmed</option><option>❌ Passed</option></select></td>
+          <td><textarea class="notes-area" style="min-height:40px;font-size:0.8rem;" placeholder="Last US stop before Panama..." id="us-arlo-notes" oninput="savePitch('us-arlo-notes',this.value)"></textarea></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section-title">Panama Pitches</div>
+  <div class="card">
+    <table>
+      <thead><tr><th>Property</th><th>Location</th><th>Status</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>La Concordia</strong></td>
+          <td><span class="loc-pill loc-panama">Casco Viejo</span></td>
+          <td><select class="status-sel" onchange="savePitch('pa-concordia-status',this.value);styleStatus(this)" id="pa-concordia-status"><option>📤 Sent</option><option>👀 Viewed</option><option>💬 Replied</option><option>✅ Confirmed</option><option>❌ Passed</option></select></td>
+          <td><textarea class="notes-area" style="min-height:40px;font-size:0.8rem;" placeholder="Top priority" id="pa-concordia-notes" oninput="savePitch('pa-concordia-notes',this.value)"></textarea></td>
+        </tr>
+        <tr>
+          <td><strong>Amarla Boutique</strong></td>
+          <td><span class="loc-pill loc-panama">Casco Viejo</span></td>
+          <td><select class="status-sel" onchange="savePitch('pa-amarla-status',this.value);styleStatus(this)" id="pa-amarla-status"><option>📤 Sent</option><option>👀 Viewed</option><option>💬 Replied</option><option>✅ Confirmed</option><option>❌ Passed</option></select></td>
+          <td><textarea class="notes-area" style="min-height:40px;font-size:0.8rem;" placeholder="Notes..." id="pa-amarla-notes" oninput="savePitch('pa-amarla-notes',this.value)"></textarea></td>
+        </tr>
+        <tr>
+          <td><strong>Eden Ubedi</strong></td>
+          <td><span class="loc-pill loc-panama">Panama Beaches</span></td>
+          <td><select class="status-sel" onchange="savePitch('pa-eden-status',this.value);styleStatus(this)" id="pa-eden-status"><option>📤 Sent</option><option>👀 Viewed</option><option>💬 Replied</option><option>✅ Confirmed</option><option>❌ Passed</option></select></td>
+          <td><textarea class="notes-area" style="min-height:40px;font-size:0.8rem;" placeholder="Fast yes likely" id="pa-eden-notes" oninput="savePitch('pa-eden-notes',this.value)"></textarea></td>
+        </tr>
+        <tr>
+          <td><strong>Hotel Bardot</strong></td>
+          <td><span class="loc-pill loc-panama">Casco Viejo</span></td>
+          <td><select class="status-sel" onchange="savePitch('pa-bardot-status',this.value);styleStatus(this)" id="pa-bardot-status"><option>📤 Sent</option><option>👀 Viewed</option><option>💬 Replied</option><option>✅ Confirmed</option><option>❌ Passed</option></select></td>
+          <td><textarea class="notes-area" style="min-height:40px;font-size:0.8rem;" placeholder="Notes..." id="pa-bardot-notes" oninput="savePitch('pa-bardot-notes',this.value)"></textarea></td>
+        </tr>
+        <tr>
+          <td><strong>Villa Solara</strong></td>
+          <td><span class="loc-pill loc-panama">Buenaventura</span></td>
+          <td><select class="status-sel" onchange="savePitch('pa-solara-status',this.value);styleStatus(this)" id="pa-solara-status"><option>📤 Sent</option><option>👀 Viewed</option><option>💬 Replied</option><option>✅ Confirmed</option><option>❌ Passed</option></select></td>
+          <td><textarea class="notes-area" style="min-height:40px;font-size:0.8rem;" placeholder="Pitched to Nikolas" id="pa-solara-notes" oninput="savePitch('pa-solara-notes',this.value)"></textarea></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+<!-- ════════════════════════════════════════
+     TAB: 9-GRID
+════════════════════════════════════════ -->
+<div id="tab-cr-grid" class="tab-content">
+
+  <div class="section-title">Your 9-Post Revival Arc</div>
+  <div class="info-box">Click any cell to mark it as posted. The visual arc reads left→right, row by row. Visual flow matters — aim for variety in light, tone, and color across the grid.</div>
+
+  <div class="grid-9" style="max-width:560px;">
+    <div class="g-cell" onclick="toggleGrid(this,'g0')"><div class="g-num">01</div><div><div class="g-loc">Colorado</div><div class="g-cap">"hey, still alive. colorado can confirm 🏔️"</div></div></div>
+    <div class="g-cell" onclick="toggleGrid(this,'g1')"><div class="g-num">02</div><div><div class="g-loc">Utah</div><div class="g-cap">"utah you absolute show off"</div></div></div>
+    <div class="g-cell" onclick="toggleGrid(this,'g2')"><div class="g-num">03</div><div><div class="g-loc">Forks, WA</div><div class="g-cap">"forks, washington. yes that forks. no vampires. yes i looked."</div></div></div>
+    <div class="g-cell" onclick="toggleGrid(this,'g3')"><div class="g-num">04</div><div><div class="g-loc">Europe</div><div class="g-cap">"oh also i went to europe and forgot to tell anyone 🫠"</div></div></div>
+    <div class="g-cell" onclick="toggleGrid(this,'g4')"><div class="g-num">05</div><div><div class="g-loc">Thailand</div><div class="g-cap">"and thailand. i went to thailand too. she's fine."</div></div></div>
+    <div class="g-cell" onclick="toggleGrid(this,'g5')"><div class="g-num">06</div><div><div class="g-loc">Pedasí, Panama</div><div class="g-cap">"pedasí — population: me, briefly, and i'd go back tomorrow"</div></div></div>
+    <div class="g-cell" onclick="toggleGrid(this,'g6')"><div class="g-num">07</div><div><div class="g-loc">Panama</div><div class="g-cap">"found the edge of the world, it had a pool 🌊"</div></div></div>
+    <div class="g-cell" onclick="toggleGrid(this,'g7')"><div class="g-num">08</div><div><div class="g-loc">Daily magic</div><div class="g-cap">"been collecting little moments. running out of room to put them all."</div></div></div>
+    <div class="g-cell" onclick="toggleGrid(this,'g8')"><div class="g-num">09</div><div><div class="g-loc">Portrait</div><div class="g-cap">"turns out when you stop posting, you just start actually living it 🌙 more soon."</div></div></div>
+  </div>
+  <p style="font-size:0.78rem;color:var(--muted);font-style:italic;margin-bottom:24px;">Click a cell to mark as posted ✓ — state saves automatically</p>
+
+  <div class="section-title">Caption Notes</div>
+  <div class="grid-3">
+    <div class="card" style="padding:14px;">
+      <h4>The Arc</h4>
+      <p style="font-size:0.82rem;color:var(--muted);line-height:1.6;">Posts 1–3: "I was alive but offline." Humor, warmth, no explanation needed.<br><br>Posts 4–6: Drops from places you didn't announce. Europe, Thailand, Panama. Let people catch up to you.<br><br>Posts 7–9: Settle in. Show you're here to stay.</p>
+    </div>
+    <div class="card" style="padding:14px;">
+      <h4>Caption Tone</h4>
+      <p style="font-size:0.82rem;color:var(--muted);line-height:1.6;">Lowercase. Dry humor. A little self-aware. Never explaining the absence — just showing you're back and it was worth it.<br><br>The aesthetic of "I don't need to justify myself to the internet but here's what I've been up to anyway."</p>
+    </div>
+    <div class="card" style="padding:14px;">
+      <h4>Posting Cadence</h4>
+      <p style="font-size:0.82rem;color:var(--muted);line-height:1.6;">Post 3 now (today). Then 3 per week until all 9 are live. Don't rush — let each one land before the next.<br><br>Stories every day regardless. Grid posts are the anchor. Stories are the conversation.</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- ════════════════════════════════════════
+     TAB: CONTENT ANGLES
+════════════════════════════════════════ -->
+<div id="tab-cr-angles" class="tab-content">
+
+  <div class="section-title">Your Pitch Angles</div>
+  <div class="angle-grid">
+    <div class="angle-card">
+      <span class="angle-icon">🏨</span>
+      <div class="angle-title">Boutique Hotel Stays</div>
+      <p class="angle-desc">Interior lifestyle, pool, suite morning light, rooftop. Trade for free nights. Your primary pitch right now.</p>
+    </div>
+    <div class="angle-card">
+      <span class="angle-icon">🚁</span>
+      <div class="angle-title">Drone Aerials</div>
+      <p class="angle-desc">Panama only (drone on-location). Cinematic overhead footage of properties, coast, and boats. Premium add-on to every Panama pitch.</p>
+    </div>
+    <div class="angle-card new-angle">
+      <span class="new-badge">New Angle</span>
+      <span class="angle-icon">🍹</span>
+      <div class="angle-title">Food + Drinks</div>
+      <p class="angle-desc">Beach cocktails, Thailand drinks, bowling alley food marketing background. Pitch hotel restaurants, beach bars, and café stops on your route. You already have a portfolio here.</p>
+    </div>
+    <div class="angle-card new-angle">
+      <span class="new-badge">Untapped</span>
+      <span class="angle-icon">🎳</span>
+      <div class="angle-title">Brand F&B Content</div>
+      <p class="angle-desc">Your bowling alley marketing experience = paid F&B content for brands. A real credential to list on LinkedIn and pitch to hotel restaurants separately from the stay itself.</p>
+    </div>
+    <div class="angle-card">
+      <span class="angle-icon">🌿</span>
+      <div class="angle-title">Wellness Travel</div>
+      <p class="angle-desc">Hot springs, intentional stays, morning routines, water health. Connects naturally to your Kangen brand without being salesy.</p>
+    </div>
+    <div class="angle-card">
+      <span class="angle-icon">🗺️</span>
+      <div class="angle-title">Destination Content</div>
+      <p class="angle-desc">Local town shots, markets, street food, signs. Great for tourism boards — a future paid angle once you have more Panama content live.</p>
+    </div>
+  </div>
+
+  <div class="section-title">Food + Drinks Checklist</div>
+  <ul class="cr-checklist">
+    <li onclick="crCheck(this,'an0')"><div class="check-box"><span class="check-icon">✓</span></div><div style="flex:1;"><div class="cr-title">Pull your top 10 drink shots</div><div class="cr-sub">Beach cocktails, Thailand drinks, Panama beers — build a mini portfolio folder</div></div><span class="cr-tag cr-tag-quick">Sort photos</span></li>
+    <li onclick="crCheck(this,'an1')"><div class="check-box"><span class="check-icon">✓</span></div><div style="flex:1;"><div class="cr-title">Pull top 5 food shots from bowling alley era</div><div class="cr-sub">These prove you already shoot for brands — a real differentiator in pitches</div></div><span class="cr-tag cr-tag-quick">Sort photos</span></li>
+    <li onclick="crCheck(this,'an2')"><div class="check-box"><span class="check-icon">✓</span></div><div style="flex:1;"><div class="cr-title">Create Food + Drinks highlight on @mads.gallow</div><div class="cr-sub">Best beach cocktail as cover. Shows hotels you can shoot their F&B too = bigger deal potential</div></div><span class="cr-tag cr-tag-money">Upsell</span></li>
+    <li onclick="crCheck(this,'an3')"><div class="check-box"><span class="check-icon">✓</span></div><div style="flex:1;"><div class="cr-title">Add F&B content offer to Panama pitches</div><div class="cr-sub">Hotels with restaurants (La Concordia, Amarla) get BOTH a stay feature AND restaurant content</div></div><span class="cr-tag cr-tag-money">Upsell</span></li>
+    <li onclick="crCheck(this,'an4')"><div class="check-box"><span class="check-icon">✓</span></div><div style="flex:1;"><div class="cr-title">Post one Thailand drink shot on @mads.gallow</div><div class="cr-sub">Caption: "thailand had the best drinks and i have the photos to prove it 🍹"</div></div><span class="cr-tag cr-tag-quick">Easy win</span></li>
+  </ul>
+
+</div>
+
+<!-- ════════════════════════════════════════
+     TAB: LINKEDIN
+════════════════════════════════════════ -->
+<div id="tab-cr-linkedin" class="tab-content">
+
+  <div class="section-title">LinkedIn — Copy & Paste</div>
+
+  <div class="card">
+    <div class="field-label" style="margin-top:0;">Headline</div>
+    <div class="copy-block">Travel & Lifestyle Content Creator | Drone + Photography | Wellness Travel | F&B Content | PNW → Panama</div>
+
+    <div class="field-label">About Section</div>
+    <div class="copy-block">I create content that makes people feel something — then book something.
+
+I'm a wellness travel creator based in the Pacific Northwest, currently relocating to Panama City. I shoot real places, told honestly, with natural light and a point of view. No over-edited, over-posed content — just the frame that already exists, caught at the right moment.
+
+I offer photo, video, and drone content packages for boutique hotels, Airbnb superhosts, beach bars, hotel restaurants, and travel brands who want content their guests will actually share.
+
+Background in brand marketing (F&B) — I've shot for businesses before and understand what actually converts.
+
+📍 Shot in: Panama, Thailand, Europe, Alaska, Colorado, Wyoming, Utah, Oregon, Arizona & beyond
+🚁 Drone available in Panama
+🍹 Food + beverage content available everywhere
+📩 maddie@elevatealign.com</div>
+
+    <div class="field-label">Experience — Entry 1</div>
+    <div class="copy-block">Travel & Lifestyle Content Creator — Self-employed · 2023–Present
+Lifestyle and wellness travel photography and video for boutique properties and personal brand. Shot across 10+ countries including Panama, Thailand, and Europe. Drone aerial content available in Panama. Specializing in authentic, editorial-style content for boutique hotels, Airbnb hosts, and travel brands.</div>
+
+    <div class="field-label">Experience — Entry 2 (USE THIS)</div>
+    <div class="copy-block">Marketing & Content Creator — [Bowling Alley Name] · [Years]
+Brand photography and food & beverage content creation for a hospitality venue. Developed marketing campaigns, shot product and lifestyle content for social media, and built visual brand identity. Experience shooting in real-world F&B environments for commercial use.</div>
+
+    <div class="field-label">Featured Section</div>
+    <div class="copy-block">Add: Your media kit PDF
+Add: Link to @mads.gallow
+Add: 2–3 of your best individual photos (infinity pool, drone boat, hot springs)
+Add: "Available for collaborations — maddie@elevatealign.com"</div>
+  </div>
+
+  <div class="section-title">LinkedIn Setup Checklist</div>
+  <ul class="cr-checklist">
+    <li onclick="crCheck(this,'li0')"><div class="check-box"><span class="check-icon">✓</span></div><div style="flex:1;"><div class="cr-title">Create / update LinkedIn profile using copy above</div></div><span class="cr-tag cr-tag-quick">30 min</span></li>
+    <li onclick="crCheck(this,'li1')"><div class="check-box"><span class="check-icon">✓</span></div><div style="flex:1;"><div class="cr-title">Upload profile photo — best portrait, hat shot or hammock smiling</div></div><span class="cr-tag cr-tag-quick">5 min</span></li>
+    <li onclick="crCheck(this,'li2')"><div class="check-box"><span class="check-icon">✓</span></div><div style="flex:1;"><div class="cr-title">Upload banner — infinity pool + ocean shot, wide crop</div></div><span class="cr-tag cr-tag-quick">5 min</span></li>
+    <li onclick="crCheck(this,'li3')"><div class="check-box"><span class="check-icon">✓</span></div><div style="flex:1;"><div class="cr-title">Add media kit to Featured section (PDF upload or link)</div></div><span class="cr-tag cr-tag-quick">10 min</span></li>
+    <li onclick="crCheck(this,'li4')"><div class="check-box"><span class="check-icon">✓</span></div><div style="flex:1;"><div class="cr-title">Add LinkedIn URL to future pitch emails</div></div><span class="cr-tag cr-tag-money">Credibility</span></li>
+  </ul>
+
+</div>
+
+<!-- ════════════════════════════════════════
+     TAB: ROUTE TIMELINE
+════════════════════════════════════════ -->
+<div id="tab-cr-route" class="tab-content">
+
+  <div class="section-title">Your Move Timeline</div>
+  <div class="card">
+    <div class="tl">
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-week">Right Now — Woodinville, WA</div>
+        <div class="tl-title">Send pitches + fix Instagram</div>
+        <div class="tl-desc">Bio update, 3 posts live, all 9 pitch emails sent, media kit PDF saved. LinkedIn set up. Done in 2 hours.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-week">Week 1–2 — Still in WA</div>
+        <div class="tl-title">Wait for replies + keep posting</div>
+        <div class="tl-desc">Post 3 more grid photos. Follow up on unanswered pitches. Confirm at least 1 stay before hitting the road. Sort Thailand + Europe photos for future posts.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-week">Stop 1 — Bend, Oregon</div>
+        <div class="tl-title">Brasada Ranch or FivePine Lodge</div>
+        <div class="tl-desc">4–5 hrs from Woodinville. First content stop. Shoot property, post 1–2 stories same day to show receipts to future pitches.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-week">Stop 2 — Yellowstone Area, MT</div>
+        <div class="tl-title">Dreamcatcher Tipi Hotel</div>
+        <div class="tl-desc">Your must-do. 2 nights. Bison, bonfires, stargazing, tipi content. This single stop could be your best performing post of the whole trip.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-week">Stop 3 — Jackson Hole, WY</div>
+        <div class="tl-title">Fireside Resort — leave car here</div>
+        <div class="tl-desc">Teton views, outdoor fireplaces. Leave car at the resort (ask as part of the deal). Fly out from Jackson Hole or drive to SLC first.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-week">Layover — Miami, FL</div>
+        <div class="tl-title">Arlo Wynwood · 2–3 nights</div>
+        <div class="tl-desc">Wynwood murals, rooftop, art district content. Last US stop before Panama. Great "transition" content moment for the announcement arc.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-week">Arrival — Panama City 🇵🇦</div>
+        <div class="tl-title">La Concordia or Amarla · Casco Viejo</div>
+        <div class="tl-desc">Land, check in to first confirmed Panama stay, get the drone out. This is where the real content series begins. Start shooting immediately.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-week">Week 2–3 — Panama</div>
+        <div class="tl-title">Eden Ubedi + Villa Solara</div>
+        <div class="tl-desc">Beach villa content with drone aerials. By now you have receipts, posted content, and can negotiate paid deals for future stays.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-title">Route Notes</div>
+  <textarea class="notes-area" id="note-route" style="min-height:100px;" placeholder="Route updates, car situation, travel dates, flight info..." oninput="saveNote('route',this.value)"></textarea>
+
+</div>
+
+<!-- ════════════════════════════════════════
      JAVASCRIPT
 ════════════════════════════════════════ -->
 <script>
@@ -1035,12 +1454,85 @@ function cp(url, btn) {
   });
 }
 
+// ─── CREATOR: Checklists ───────────────────────────────────────────────────
+function crCheck(el, key) {
+  el.classList.toggle('checked');
+  localStorage.setItem('eau_cr_' + key, el.classList.contains('checked') ? '1' : '0');
+  updateCrProgress();
+}
+function initCrChecks() {
+  document.querySelectorAll('.cr-checklist li[onclick]').forEach(li => {
+    const m = li.getAttribute('onclick').match(/'(cr\d+|ig\d+|an\d+|li\d+)'/);
+    if (!m) return;
+    if (localStorage.getItem('eau_cr_' + m[1]) === '1') li.classList.add('checked');
+  });
+  updateCrProgress();
+  // Route note
+  const rn = document.getElementById('note-route');
+  if (rn) rn.value = localStorage.getItem('eau_note_route') || '';
+}
+function updateCrProgress() {
+  const all = document.querySelectorAll('.cr-checklist li[onclick]');
+  const done = document.querySelectorAll('.cr-checklist li[onclick].checked');
+  const bar = document.getElementById('cr-prog-bar');
+  const txt = document.getElementById('cr-prog-text');
+  if (!bar || !txt) return;
+  const pct = all.length ? Math.round((done.length / all.length) * 100) : 0;
+  bar.style.width = pct + '%';
+  txt.textContent = done.length + ' of ' + all.length + ' done';
+}
+
+// ─── CREATOR: 9-Grid ───────────────────────────────────────────────────────
+function toggleGrid(el, key) {
+  el.classList.toggle('posted');
+  localStorage.setItem('eau_grid_' + key, el.classList.contains('posted') ? '1' : '0');
+}
+function initGrid() {
+  document.querySelectorAll('.g-cell').forEach(cell => {
+    const m = cell.getAttribute('onclick').match(/'(g\d+)'/);
+    if (!m) return;
+    if (localStorage.getItem('eau_grid_' + m[1]) === '1') cell.classList.add('posted');
+  });
+}
+
+// ─── CREATOR: Pitch Tracker ────────────────────────────────────────────────
+function savePitch(key, val) {
+  localStorage.setItem('eau_pitch_' + key, val);
+}
+function styleStatus(sel) {
+  sel.className = 'status-sel';
+  const v = sel.value;
+  if (v.includes('Confirmed')) sel.style.color = 'var(--success)';
+  else if (v.includes('Replied')) sel.style.color = 'var(--teal)';
+  else if (v.includes('Passed')) sel.style.color = 'var(--muted)';
+  else sel.style.color = '';
+}
+function initPitches() {
+  const pitchIds = ['us-brasada','us-fivepine','us-dream','us-fireside','us-arlo','pa-concordia','pa-amarla','pa-eden','pa-bardot','pa-solara'];
+  pitchIds.forEach(id => {
+    const sel = document.getElementById(id + '-status');
+    const notes = document.getElementById(id + '-notes');
+    if (sel) {
+      const saved = localStorage.getItem('eau_pitch_' + id + '-status');
+      if (saved) sel.value = saved;
+      styleStatus(sel);
+    }
+    if (notes) {
+      const saved = localStorage.getItem('eau_pitch_' + id + '-notes');
+      if (saved) notes.value = saved;
+    }
+  });
+}
+
 // INIT ALL
 initDaily();
 initPersist();
 initLive();
 initTH();
 initNotes();
+initCrChecks();
+initGrid();
+initPitches();
 </script>
 </body>
 </html>

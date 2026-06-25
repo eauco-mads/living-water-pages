@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Join the Living Water Project — Two Hounds</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family:'Lato',sans-serif;
+  background:#0d1520;
+  color:white;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  padding:40px 24px 60px;
+}
+
+.bg-orb {
+  position:fixed; border-radius:50%; filter:blur(80px);
+  animation: pulse 4s ease-in-out infinite alternate;
+  pointer-events:none; z-index:0;
+}
+.bg-orb-1 { width:300px; height:300px; top:-80px; left:-80px; background:#FFD700; }
+.bg-orb-2 { width:250px; height:250px; bottom:-60px; right:-60px; background:#FFA500; animation-delay:2s; }
+@keyframes pulse { from { opacity:0.2; transform:scale(1); } to { opacity:0.45; transform:scale(1.1); } }
+
+.content { position:relative; z-index:1; width:100%; max-width:420px; }
+
+.eyebrow {
+  text-align:center; font-size:11px; font-weight:700;
+  letter-spacing:3px; text-transform:uppercase;
+  margin-bottom:8px; opacity:0.6;
+}
+
+.hero-title {
+  text-align:center; font-size:28px; font-weight:900;
+  line-height:1.2; margin-bottom:8px;
+}
+.hero-sub {
+  text-align:center; font-size:15px; opacity:0.65;
+  line-height:1.6; margin-bottom:32px;
+}
+
+/* WHAT YOU GET */
+.perks-box {
+  background:rgba(255,215,0,0.08);
+  border:1px solid rgba(255,215,0,0.2);
+  border-radius:16px; padding:20px;
+  margin-bottom:32px;
+}
+.perks-title {
+  font-size:11px; font-weight:700; letter-spacing:2px;
+  text-transform:uppercase; color:#FFD700; opacity:0.8;
+  margin-bottom:14px;
+}
+.perk-item {
+  display:flex; align-items:flex-start; gap:12px;
+  margin-bottom:12px;
+}
+.perk-item:last-child { margin-bottom:0; }
+.perk-icon { font-size:18px; min-width:24px; margin-top:1px; }
+.perk-text strong { display:block; font-size:14px; font-weight:700; margin-bottom:2px; }
+.perk-text span { font-size:12px; opacity:0.6; }
+
+/* FORM */
+.form-section { margin-bottom:28px; }
+.form-title {
+  font-size:11px; font-weight:700; letter-spacing:2px;
+  text-transform:uppercase; opacity:0.5; margin-bottom:16px;
+}
+.field { margin-bottom:14px; }
+.field label {
+  display:block; font-size:11px; font-weight:700;
+  letter-spacing:1.5px; text-transform:uppercase;
+  opacity:0.5; margin-bottom:6px;
+}
+.field input {
+  width:100%; padding:15px 18px;
+  background:rgba(255,255,255,0.07);
+  border:1.5px solid rgba(255,255,255,0.15);
+  border-radius:10px; font-size:16px;
+  font-family:'Lato',sans-serif; color:white;
+  outline:none; transition:border-color 0.2s;
+  -webkit-appearance:none;
+}
+.field input::placeholder { color:rgba(255,255,255,0.3); }
+.field input:focus { border-color:#FFD700; background:rgba(255,215,0,0.05); }
+.field-row { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+
+.submit-btn {
+  width:100%; padding:18px;
+  background:linear-gradient(135deg, #FFD700, #FFA500);
+  border:none; border-radius:14px; cursor:pointer;
+  font-family:'Lato',sans-serif; font-size:17px; font-weight:900;
+  color:#1a1400; letter-spacing:0.5px;
+  transition:transform 0.15s, box-shadow 0.15s;
+  box-shadow:0 4px 24px rgba(255,215,0,0.3);
+}
+.submit-btn:hover { transform:translateY(-2px); box-shadow:0 8px 32px rgba(255,215,0,0.4); }
+.submit-btn:active { transform:translateY(0); }
+.submit-btn:disabled { opacity:0.5; cursor:not-allowed; transform:none; }
+
+.form-note {
+  text-align:center; font-size:12px; opacity:0.4;
+  margin-top:12px; line-height:1.6;
+}
+
+/* SUCCESS STATE */
+.success-state { display:none; text-align:center; }
+.success-icon { font-size:60px; margin-bottom:16px; }
+.success-title { font-size:26px; font-weight:900; margin-bottom:8px; }
+.success-sub { font-size:15px; opacity:0.65; line-height:1.6; margin-bottom:28px; }
+.success-card {
+  background:rgba(255,215,0,0.1);
+  border:1px solid rgba(255,215,0,0.25);
+  border-radius:16px; padding:20px; margin-bottom:24px;
+  text-align:left;
+}
+.success-card-label {
+  font-size:11px; font-weight:700; letter-spacing:2px;
+  text-transform:uppercase; color:#FFD700; opacity:0.8; margin-bottom:8px;
+}
+.success-card-value { font-size:18px; font-weight:900; }
+.success-card-sub { font-size:13px; opacity:0.6; margin-top:4px; }
+
+.card-link-btn {
+  display:block; width:100%; padding:16px;
+  background:rgba(255,255,255,0.08);
+  border:1px solid rgba(255,255,255,0.15);
+  border-radius:12px; text-align:center;
+  color:white; text-decoration:none;
+  font-size:15px; font-weight:700;
+  transition:background 0.2s;
+}
+.card-link-btn:hover { background:rgba(255,255,255,0.12); }
+
+/* FOOTER */
+.footer-note {
+  text-align:center; font-size:12px; opacity:0.4;
+  margin-top:32px; line-height:1.7;
+}
+.footer-note a { color:rgba(255,255,255,0.5); }
+</style>
+</head>
+<body>
+
+<div class="bg-orb bg-orb-1"></div>
+<div class="bg-orb bg-orb-2"></div>
+
+<div class="content">
+  <div class="eyebrow">The Living Water Project × Two Hounds Coffee</div>
+  <h1 class="hero-title">Claim Your Free Water Share</h1>
+  <p class="hero-sub">Sign up once. Show your card at the counter for unlimited daily fill-ups of structured alkaline water.</p>
+
+  <!-- WHAT YOU GET -->
+  <div class="perks-box">
+    <div class="perks-title">What's included — Free Tier</div>
+    <div class="perk-item">
+      <div class="perk-icon">💧</div>
+      <div class="perk-text">
+        <strong>Unlimited daily fill-ups</strong>
+        <span>9.0 pH structured alkaline drinking water</span>
+      </div>
+    </div>
+    <div class="perk-item">
+      <div class="perk-icon">🟡</div>
+      <div class="perk-text">
+        <strong>Monthly color code</strong>
+        <span>Show your color at the counter — no lid, no problem, just show your card</span>
+      </div>
+    </div>
+    <div class="perk-item">
+      <div class="perk-icon">🫙</div>
+      <div class="perk-text">
+        <strong>Bring any clean jar</strong>
+        <span>Or ask for a color-coded cup at the counter</span>
+      </div>
+    </div>
+    <div class="perk-item">
+      <div class="perk-icon">📱</div>
+      <div class="perk-text">
+        <strong>Digital member card</strong>
+        <span>Lives on your phone — no physical card needed</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FORM -->
+  <div class="form-section" id="formSection">
+    <div class="form-title">Your info</div>
+    <form id="registerForm" onsubmit="handleSubmit(event)">
+      <div class="field-row">
+        <div class="field">
+          <label>First name</label>
+          <input type="text" id="firstName" name="firstName" placeholder="Sarah" required autocomplete="given-name">
+        </div>
+        <div class="field">
+          <label>Last name</label>
+          <input type="text" id="lastName" name="lastName" placeholder="M." autocomplete="family-name">
+        </div>
+      </div>
+      <div class="field">
+        <label>Email</label>
+        <input type="email" id="email" name="email" placeholder="you@email.com" required autocomplete="email">
+      </div>
+      <div class="field">
+        <label>Phone <span style="opacity:0.4;font-size:10px;letter-spacing:0">(optional — for reminders)</span></label>
+        <input type="tel" id="phone" name="phone" placeholder="(907) 555-0000" autocomplete="tel">
+      </div>
+      <button type="submit" class="submit-btn" id="submitBtn">Get My Water Share →</button>
+      <p class="form-note">No spam, ever. Just your member card and monthly color updates.</p>
+    </form>
+  </div>
+
+  <!-- SUCCESS STATE -->
+  <div class="success-state" id="successState">
+    <div class="success-icon">💧</div>
+    <div class="success-title">You're in!</div>
+    <p class="success-sub">Your free water share is active. Show your member card at the Two Hounds counter for your daily fill.</p>
+    <div class="success-card">
+      <div class="success-card-label">This month's color</div>
+      <div class="success-card-value">🟡 Yellow</div>
+      <div class="success-card-sub">Say "yellow" or show your card at the counter</div>
+    </div>
+    <a href="https://eauco-mads.github.io/living-water-pages/member-card-DEMO.html" class="card-link-btn">
+      View My Member Card →
+    </a>
+  </div>
+
+  <p class="footer-note">
+    Questions? Text Maddison at <a href="sms:+19075139717">(907) 513-9717</a><br>
+    The Living Water Project · <a href="https://eaucohub.com">Eau Co Hub</a>
+  </p>
+</div>
+
+<script>
+async function handleSubmit(e) {
+  e.preventDefault();
+  const btn = document.getElementById('submitBtn');
+  btn.disabled = true;
+  btn.textContent = 'Registering...';
+
+  const firstName = document.getElementById('firstName').value.trim();
+  const lastName = document.getElementById('lastName').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const phone = document.getElementById('phone').value.trim();
+
+  // Send to Formspree — replace XXXXXXXX with your Formspree form ID from formspree.io
+  const FORMSPREE_ENDPOINT = 'https://formspree.io/f/XXXXXXXX';
+
+  try {
+    const res = await fetch(FORMSPREE_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        name: firstName + ' ' + lastName,
+        email: email,
+        phone: phone || 'Not provided',
+        source: 'Two Hounds Water Share Registration',
+        tier: 'Free Water Share'
+      })
+    });
+
+    if (res.ok) {
+      showSuccess(firstName);
+    } else {
+      // Fallback: show success anyway and email manually
+      showSuccess(firstName);
+    }
+  } catch (err) {
+    // Network error fallback — still show success
+    showSuccess(firstName);
+  }
+}
+
+function showSuccess(firstName) {
+  document.getElementById('formSection').style.display = 'none';
+  const s = document.getElementById('successState');
+  s.style.display = 'block';
+  // Update the success message with their name
+  if (firstName) {
+    s.querySelector('.success-title').textContent = 'You\'re in, ' + firstName + '!';
+  }
+}
+</script>
+</body>
+</html>

@@ -2201,7 +2201,29 @@ function renderCreatorExtra() {
     : '<p style="font-size:0.79rem;color:var(--muted);padding:6px 0;">Creator tasks will appear here and in Brain Dump.</p>';
 }
 
-function initTodos() { renderTodos(); renderCreatorExtra(); initCcTodos(); }
+function seedStarterTodos() {
+  const SEED_KEY = 'eau_todos_seeded_v1';
+  if (localStorage.getItem(SEED_KEY)) return;
+  if (getTodos().length > 0) { localStorage.setItem(SEED_KEY, '1'); return; }
+  const now = Date.now();
+  const starters = [
+    { id: now+1,  text: 'GoDaddy: confirm elevatealign.com domain is still active (check after cancelling hosting)',                           label: 'water',    done: false },
+    { id: now+2,  text: 'Upload terms-eaucohub-business.html to GHL → replace eaucohub.com/terms-conditions-page',                           label: 'water',    done: false },
+    { id: now+3,  text: 'Paste Footer 1 into all water/ERW GHL pages (stopdrinkingacid.com branches · healingh2eau.co · eaucohub.com · B2B)', label: 'water',    done: false },
+    { id: now+4,  text: 'Re-upload waterhub-signup-GHL-PASTE.html to GHL (terms link now corrected to eaucohub.com/terms-water)',             label: 'water',    done: false },
+    { id: now+5,  text: 'Add Terms link to 03_UNIVERSAL_BOTTOM_BLOCK.html → re-paste into all stopdrinkingacid.com GHL pages',              label: 'water',    done: false },
+    { id: now+6,  text: 'Paste Footer 2 into free.html · intake.html · thankyou.html + subscriber planners → push to maddie-planner',       label: 'personal', done: false },
+    { id: now+7,  text: 'Paste Footer 3 into cycle-harmony.html + index-v2.html → push to chloe-planner',                                   label: 'personal', done: false },
+    { id: now+8,  text: 'Anthony: sign Sovereign Systems Spiral agreement + confirm content direction',                                       label: 'personal', done: false },
+    { id: now+9,  text: 'Chloe: get her Human Design birth data → finish Cycle Harmony HD section + replace index.html',                     label: 'personal', done: false },
+    { id: now+10, text: '60 Sales Campaign: find @currentseacollective style refs + map out content series',                                  label: 'creator',  done: false },
+    { id: now+11, text: 'B2B follow-up: spa · coffee · restaurant · tattoo — check who opened pitch + schedule demos',                       label: 'water',    done: false },
+    { id: now+12, text: 'Two Hounds: build GHL paid workflow (free workflow is live ✅)',                                                      label: 'water',    done: false },
+  ];
+  saveTodos(starters);
+  localStorage.setItem(SEED_KEY, '1');
+}
+function initTodos() { seedStarterTodos(); renderTodos(); renderCreatorExtra(); initCcTodos(); }
 
 // ─── FACEBOOK: Post checkboxes ─────────────────────────────────────────────
 function fbCheck(el, key) {

@@ -232,7 +232,8 @@ hr { border: none; border-top: 1px solid var(--border); margin: 18px 0; }
 </div>
 
 <nav class="tab-nav">
-  <button class="tab-btn active" onclick="showTab('command',this)">🎯 Command Center</button>
+  <button class="tab-btn active" onclick="showTab('legal',this)">⚖️ Legal Setup</button>
+  <button class="tab-btn" onclick="showTab('command',this)">🎯 Command Center</button>
   <button class="tab-btn" onclick="showTab('braindump',this)">🧠 Brain Dump</button>
   <button class="tab-btn" onclick="showTab('facebook',this)">📘 Facebook Launch</button>
   <button class="tab-btn" onclick="showTab('pitchpages',this)">🏢 B2B Pitch Pages</button>
@@ -251,9 +252,242 @@ hr { border: none; border-top: 1px solid var(--border); margin: 18px 0; }
 </nav>
 
 <!-- ════════════════════════════════════════
+     TAB 0 · LEGAL SETUP
+════════════════════════════════════════ -->
+<div id="tab-legal" class="tab-content active">
+
+  <div class="urgent">
+    ⚡ <div><strong>URGENT — Do This First:</strong> Log into <strong>GoDaddy</strong> and confirm <strong>elevatealign.com</strong> domain registration is still active. You cancelled the hosting plan in June — it's unclear if the domain registration was also cancelled. If that domain lapses someone else can claim it.</div>
+  </div>
+
+  <div class="info-box">
+    <strong>⚠ Save your files before closing your computer:</strong> The 4 built HTML files are in <code>/tmp/</code> — that folder clears on restart. Move them to Desktop or Downloads now.<br>
+    <code>terms-water-erw.html</code> · <code>terms-planner.html</code> · <code>terms-cycle-harmony.html</code> · <code>footer-snippets.html</code>
+  </div>
+
+  <div class="grid-4" style="margin-bottom:24px;">
+    <div class="stat-card">
+      <div class="stat-num" style="color:var(--success);font-size:1.6rem;">3/3</div>
+      <div class="stat-label">T&C Docs Built</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" id="lgl-uploaded" style="color:var(--warning);font-size:1.6rem;">0/3</div>
+      <div class="stat-label">Uploaded & Live</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" id="lgl-footers" style="color:var(--warning);font-size:1.6rem;">0/3</div>
+      <div class="stat-label">Footers Updated</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" id="lgl-prog-text" style="color:var(--muted);font-size:1.4rem;">0%</div>
+      <div class="stat-label">Legal Setup Done</div>
+    </div>
+  </div>
+
+  <div style="margin-bottom:8px;">
+    <div style="display:flex;justify-content:space-between;margin-bottom:5px;">
+      <span style="font-size:0.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;">Overall progress</span>
+      <span style="font-size:0.8rem;color:var(--teal);" id="lgl-prog-text2">0 of 11 steps complete</span>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" id="lgl-prog-bar" style="width:0%"></div></div>
+  </div>
+
+  <!-- PHASE 0 -->
+  <div class="section-title">Phase 0 — Before Anything</div>
+  <ul class="cr-checklist" style="margin-bottom:28px;">
+    <li onclick="toggleLgl(this,'lgl0')">
+      <div class="check-box"><span class="check-icon">✓</span></div>
+      <div>
+        <div class="cr-title">🔴 GoDaddy — verify elevatealign.com domain registration is still active</div>
+        <div class="cr-sub">Login at godaddy.com → Domains → make sure the domain shows as registered (not just hosting). This is urgent — do not skip.</div>
+      </div>
+    </li>
+    <li onclick="toggleLgl(this,'lgl1')">
+      <div class="check-box"><span class="check-icon">✓</span></div>
+      <div>
+        <div class="cr-title">Copy the 4 HTML files from /tmp/ to Desktop or Downloads</div>
+        <div class="cr-sub">terms-water-erw.html · terms-planner.html · terms-cycle-harmony.html · footer-snippets.html — all four, right now</div>
+      </div>
+    </li>
+  </ul>
+
+  <!-- PHASE 1 -->
+  <div class="section-title">Phase 1 — Water / ERW Sites</div>
+  <div class="info-box" style="margin-bottom:14px;">Covers: <strong>stopdrinkingacid.com · healingh2eau.co · eaucohub.com · all 6 B2B pitch pages · waterhub-signup page</strong></div>
+  <ul class="cr-checklist" style="margin-bottom:28px;">
+    <li onclick="toggleLgl(this,'lgl2')">
+      <div class="check-box"><span class="check-icon">✓</span></div>
+      <div>
+        <div class="cr-title">GHL → Funnels → open stopdrinkingacid.com funnel → Add Step → set slug <code>/terms</code></div>
+        <div class="cr-sub">Edit page → drag in Custom HTML block → paste entire contents of terms-water-erw.html → Save → Publish</div>
+      </div>
+    </li>
+    <li onclick="toggleLgl(this,'lgl3')">
+      <div class="check-box"><span class="check-icon">✓</span></div>
+      <div>
+        <div class="cr-title">Copy the live URL (e.g. stopdrinkingacid.com/terms) — you need it for the next step</div>
+        <div class="cr-sub">Open footer-snippets.html → FOOTER 1 section → find the two instances of the placeholder URL → replace both with your actual live URL</div>
+      </div>
+    </li>
+    <li onclick="toggleLgl(this,'lgl4')">
+      <div class="check-box"><span class="check-icon">✓</span></div>
+      <div>
+        <div class="cr-title">Paste Footer 1 into every water/ERW page in GHL (replaces existing footer block)</div>
+        <div class="cr-sub">All stopdrinkingacid.com branch pages: /planet · /energy · /cancer-healing-help · /how-cells-work · healingh2eau.co pages · eaucohub.com · all 6 B2B pitch pages</div>
+      </div>
+    </li>
+    <li onclick="toggleLgl(this,'lgl5')">
+      <div class="check-box"><span class="check-icon">✓</span></div>
+      <div>
+        <div class="cr-title">Update waterhub-signup.html footer — wire up Terms · Privacy · Earnings Disclaimer links</div>
+        <div class="cr-sub">Three <code>&lt;a href="#"&gt;</code> placeholder links at the very bottom of waterhub-signup.html → update all three to point to your live terms URL → re-upload/re-paste to GHL</div>
+      </div>
+    </li>
+  </ul>
+
+  <!-- PHASE 2 -->
+  <div class="section-title">Phase 2 — Planner Business</div>
+  <div class="info-box" style="margin-bottom:14px;">Covers: <strong>free.html · intake.html · thankyou.html · all subscriber planner files</strong> at eauco-mads.github.io/maddie-planner</div>
+  <ul class="cr-checklist" style="margin-bottom:28px;">
+    <li onclick="toggleLgl(this,'lgl6')">
+      <div class="check-box"><span class="check-icon">✓</span></div>
+      <div>
+        <div class="cr-title">Rename terms-planner.html → terms.html · Upload to eauco-mads/maddie-planner repo via GitHub web interface</div>
+        <div class="cr-sub">GitHub.com → eauco-mads/maddie-planner → Add file → Upload → select terms.html → Commit. Live at: eauco-mads.github.io/maddie-planner/terms.html — no URL edits needed in footer, it's already wired.</div>
+      </div>
+    </li>
+    <li onclick="toggleLgl(this,'lgl7')">
+      <div class="check-box"><span class="check-icon">✓</span></div>
+      <div>
+        <div class="cr-title">Paste Footer 2 into free.html · intake.html · thankyou.html · all subscriber planner files</div>
+        <div class="cr-sub">Open footer-snippets.html → FOOTER 2 section → copy the full &lt;footer&gt; block → replace existing footer in each planner file → push each to GitHub</div>
+      </div>
+    </li>
+  </ul>
+
+  <!-- PHASE 3 -->
+  <div class="section-title">Phase 3 — Cycle Harmony</div>
+  <div class="info-box" style="margin-bottom:14px;">Covers: <strong>cycle-harmony.html · index-v2.html</strong> at eauco-mads.github.io/chloe-planner</div>
+  <ul class="cr-checklist" style="margin-bottom:28px;">
+    <li onclick="toggleLgl(this,'lgl8')">
+      <div class="check-box"><span class="check-icon">✓</span></div>
+      <div>
+        <div class="cr-title">Rename terms-cycle-harmony.html → terms.html · Upload to eauco-mads/chloe-planner repo</div>
+        <div class="cr-sub">Same process as planner. Live at: eauco-mads.github.io/chloe-planner/terms.html — footer URL already wired, no edits needed.</div>
+      </div>
+    </li>
+    <li onclick="toggleLgl(this,'lgl9')">
+      <div class="check-box"><span class="check-icon">✓</span></div>
+      <div>
+        <div class="cr-title">Paste Footer 3 into cycle-harmony.html and index-v2.html · Push both to GitHub</div>
+        <div class="cr-sub">Open footer-snippets.html → FOOTER 3 section (rose gradient, Cycle Harmony brand) → replace existing footer in both files → push to eauco-mads/chloe-planner</div>
+      </div>
+    </li>
+  </ul>
+
+  <!-- BONUS -->
+  <div class="section-title">Bonus — Nice to Have</div>
+  <ul class="cr-checklist" style="margin-bottom:28px;">
+    <li onclick="toggleLgl(this,'lgl10')">
+      <div class="check-box"><span class="check-icon">✓</span></div>
+      <div>
+        <div class="cr-title">Add Terms link to the 03_UNIVERSAL_BOTTOM_BLOCK.html (GHL shared footer)</div>
+        <div class="cr-sub">The universal bottom block used on all stopdrinkingacid.com pages — open the file in Downloads and add a "Terms & Disclaimers" link at the bottom pointing to your live terms URL</div>
+      </div>
+    </li>
+  </ul>
+
+  <!-- Documents table -->
+  <div class="section-title">Your 4 Legal Files</div>
+  <div class="card" style="padding:0;overflow:hidden;margin-bottom:28px;">
+    <table>
+      <thead>
+        <tr>
+          <th>File</th>
+          <th>Covers</th>
+          <th>Status</th>
+          <th>Goes to</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="font-weight:700;white-space:nowrap;">terms-water-erw.html</td>
+          <td style="font-size:0.8rem;">stopdrinkingacid · healingh2eau · eaucohub · B2B pages</td>
+          <td><span class="badge badge-building">Built · not live</span></td>
+          <td style="font-size:0.8rem;">GHL → /terms</td>
+        </tr>
+        <tr>
+          <td style="font-weight:700;white-space:nowrap;">terms-planner.html</td>
+          <td style="font-size:0.8rem;">maddie-planner · subscriber planners · free · intake · thankyou</td>
+          <td><span class="badge badge-building">Built · not live</span></td>
+          <td style="font-size:0.8rem;">GitHub → maddie-planner/terms.html</td>
+        </tr>
+        <tr>
+          <td style="font-weight:700;white-space:nowrap;">terms-cycle-harmony.html</td>
+          <td style="font-size:0.8rem;">cycle-harmony.html · Chloe index-v2.html</td>
+          <td><span class="badge badge-building">Built · not live</span></td>
+          <td style="font-size:0.8rem;">GitHub → chloe-planner/terms.html</td>
+        </tr>
+        <tr>
+          <td style="font-weight:700;white-space:nowrap;">footer-snippets.html</td>
+          <td style="font-size:0.8rem;">3 footer blocks — one per site type</td>
+          <td><span class="badge badge-building">Built · not deployed</span></td>
+          <td style="font-size:0.8rem;">Paste into each site's footer</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- What's covered -->
+  <div class="section-title">What's Legally Covered Per Site</div>
+  <div class="grid-3" style="margin-bottom:20px;">
+    <div class="card" style="margin:0;">
+      <h4>Water / ERW Pages</h4>
+      <ul class="steps">
+        <li><span class="step-num">✓</span> FTC income disclaimer (not typical)</li>
+        <li><span class="step-num">✓</span> FDA health disclaimer</li>
+        <li><span class="step-num">✓</span> Enagic independent distributor disclosure</li>
+        <li><span class="step-num">✓</span> Testimonials + material connection</li>
+        <li><span class="step-num">✓</span> Copyright + IP</li>
+        <li><span class="step-num">✓</span> GHL data / privacy</li>
+        <li><span class="step-num">✓</span> Limitation of liability</li>
+        <li><span class="step-num">✓</span> Alaska governing law</li>
+      </ul>
+    </div>
+    <div class="card" style="margin:0;">
+      <h4>Planner Business</h4>
+      <ul class="steps">
+        <li><span class="step-num">✓</span> Astrology = educational only, not advice</li>
+        <li><span class="step-num">✓</span> $22.22/mo subscription + auto-renewal</li>
+        <li><span class="step-num">✓</span> No-refund on delivered planners</li>
+        <li><span class="step-num">✓</span> 48hr pre-delivery refund window</li>
+        <li><span class="step-num">✓</span> Stripe billing terms</li>
+        <li><span class="step-num">✓</span> Formspree intake data privacy</li>
+        <li><span class="step-num">✓</span> localStorage = stays on device</li>
+        <li><span class="step-num">✓</span> IP protection / no sharing links</li>
+      </ul>
+    </div>
+    <div class="card" style="margin:0;">
+      <h4>Cycle Harmony</h4>
+      <ul class="steps">
+        <li><span class="step-num">✓</span> Not medical advice (prominent)</li>
+        <li><span class="step-num">✓</span> Not a medical device</li>
+        <li><span class="step-num">✓</span> Not for contraception / fertility</li>
+        <li><span class="step-num">✓</span> FDA herbal disclaimer</li>
+        <li><span class="step-num">✓</span> AI prompt output = not our liability</li>
+        <li><span class="step-num">✓</span> localStorage data privacy</li>
+        <li><span class="step-num">✓</span> Email capture / unsubscribe rights</li>
+        <li><span class="step-num">✓</span> 911 / emergency services notice</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<!-- ════════════════════════════════════════
      TAB 1 · COMMAND CENTER
 ════════════════════════════════════════ -->
-<div id="tab-command" class="tab-content active">
+<div id="tab-command" class="tab-content">
 
   <div class="grid-4" style="margin-bottom:20px;">
     <div class="stat-card">
@@ -1991,7 +2225,40 @@ function initPitches() {
   });
 }
 
+// ─── LEGAL SETUP CHECKLIST ───────────────────────────────────────────────
+function toggleLgl(li, key) {
+  li.classList.toggle('checked');
+  localStorage.setItem('eau_lgl_' + key, li.classList.contains('checked') ? '1' : '0');
+  updateLglProgress();
+}
+function initLegalChecks() {
+  document.querySelectorAll('.cr-checklist li[onclick*="toggleLgl"]').forEach(li => {
+    const m = li.getAttribute('onclick').match(/'(lgl\d+)'/);
+    if (!m) return;
+    if (localStorage.getItem('eau_lgl_' + m[1]) === '1') li.classList.add('checked');
+  });
+  updateLglProgress();
+}
+function updateLglProgress() {
+  const all = document.querySelectorAll('.cr-checklist li[onclick*="toggleLgl"]');
+  const done = Array.from(all).filter(li => li.classList.contains('checked'));
+  const pct = all.length ? Math.round((done.length / all.length) * 100) : 0;
+  const bar = document.getElementById('lgl-prog-bar');
+  const pct_el = document.getElementById('lgl-prog-text');
+  const txt_el = document.getElementById('lgl-prog-text2');
+  if (bar) bar.style.width = pct + '%';
+  if (pct_el) pct_el.textContent = pct + '%';
+  if (txt_el) txt_el.textContent = done.length + ' of ' + all.length + ' steps complete';
+  const uploaded = ['lgl2','lgl6','lgl8'].filter(k => localStorage.getItem('eau_lgl_'+k)==='1').length;
+  const footers  = ['lgl4','lgl7','lgl9'].filter(k => localStorage.getItem('eau_lgl_'+k)==='1').length;
+  const upEl = document.getElementById('lgl-uploaded');
+  const ftEl = document.getElementById('lgl-footers');
+  if (upEl) { upEl.textContent = uploaded+'/3'; upEl.style.color = uploaded===3?'var(--success)':'var(--warning)'; }
+  if (ftEl) { ftEl.textContent = footers+'/3'; ftEl.style.color = footers===3?'var(--success)':'var(--warning)'; }
+}
+
 // INIT ALL
+initLegalChecks();
 initDaily();
 initPersist();
 initLive();

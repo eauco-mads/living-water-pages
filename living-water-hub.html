@@ -489,6 +489,35 @@ hr { border: none; border-top: 1px solid var(--border); margin: 18px 0; }
 ════════════════════════════════════════ -->
 <div id="tab-command" class="tab-content">
 
+  <!-- QUICK TO-DOS PANEL -->
+  <div class="card" style="margin-bottom:20px;padding:18px 22px;">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0;" id="cc-todos-header">
+      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+        <h3 style="margin:0;font-size:1.1rem;">Quick To-Dos</h3>
+        <span style="font-size:0.68rem;background:rgba(196,122,58,0.1);color:var(--orange);padding:2px 9px;border-radius:20px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;">In Progress / Random</span>
+        <span id="cc-todo-count" style="font-size:0.75rem;color:var(--muted);"></span>
+      </div>
+      <button class="btn-sm" id="cc-todos-toggle-btn" onclick="toggleCcTodos()" style="flex-shrink:0;">▾ Hide</button>
+    </div>
+    <div id="cc-todos-body" style="margin-top:14px;">
+      <div class="todo-add-row" style="margin-bottom:10px;">
+        <input class="todo-add-input" id="cc-todo-input" placeholder="add a task... (press Enter)" onkeydown="if(event.key==='Enter')addCcTodo()">
+        <select class="label-sel" id="cc-todo-label-sel">
+          <option value="personal">🙋 personal</option>
+          <option value="water">💧 water</option>
+          <option value="planner">📅 planner</option>
+          <option value="creator">🎨 creator</option>
+          <option value="facebook">📘 facebook</option>
+        </select>
+        <button class="todo-add-btn" onclick="addCcTodo()">+ Add</button>
+      </div>
+      <div id="cc-todo-list"></div>
+      <div style="margin-top:8px;text-align:right;">
+        <button onclick="showTab('braindump',document.querySelector('[onclick*=braindump]'))" style="background:none;border:none;font-size:0.75rem;color:var(--muted);cursor:pointer;text-decoration:underline;">View full Brain Dump →</button>
+      </div>
+    </div>
+  </div>
+
   <div class="grid-4" style="margin-bottom:20px;">
     <div class="stat-card">
       <div class="stat-num">4</div>
@@ -2112,6 +2141,48 @@ function renderTodos() {
   el.innerHTML = todos.length
     ? todos.map(todoRowHTML).join('')
     : '<p style="color:var(--muted);font-size:0.83rem;padding:14px 0;">No tasks yet — type one above and press Enter!</p>';
+  renderCcTodos();
+}
+
+// ─── COMMAND CENTER QUICK TO-DOS ─────────────────────────────────────────
+function renderCcTodos() {
+  const el = document.getElementById('cc-todo-list');
+  if (!el) return;
+  const todos = getTodos();
+  const active = todos.filter(t => !t.done).length;
+  const done   = todos.filter(t =>  t.done).length;
+  const countEl = document.getElementById('cc-todo-count');
+  if (countEl) countEl.textContent = active + ' active' + (done ? ' · ' + done + ' done' : '');
+  el.innerHTML = todos.length
+    ? todos.map(todoRowHTML).join('')
+    : '<p style="color:var(--muted);font-size:0.83rem;padding:10px 0;">No tasks yet — type one above and hit Enter!</p>';
+}
+function addCcTodo() {
+  const inp = document.getElementById('cc-todo-input');
+  const sel = document.getElementById('cc-todo-label-sel');
+  const t = inp ? inp.value.trim() : '';
+  const l = sel ? sel.value : 'personal';
+  if (!t) return;
+  const todos = getTodos();
+  todos.unshift({ id: Date.now(), text: t, label: l, done: false });
+  saveTodos(todos);
+  if (inp) inp.value = '';
+  renderTodos();
+  renderCreatorExtra();
+}
+let _ccOpen = true;
+function toggleCcTodos() {
+  _ccOpen = !_ccOpen;
+  const body = document.getElementById('cc-todos-body');
+  const btn  = document.getElementById('cc-todos-toggle-btn');
+  if (body) body.style.display = _ccOpen ? 'block' : 'none';
+  if (btn)  btn.textContent = _ccOpen ? '▾ Hide' : '▸ Show';
+  localStorage.setItem('eau_cc_todos_open', _ccOpen ? '1' : '0');
+}
+function initCcTodos() {
+  const saved = localStorage.getItem('eau_cc_todos_open');
+  if (saved === '0') { _ccOpen = true; toggleCcTodos(); }
+  renderCcTodos();
 }
 
 function addCreatorExtra() {
@@ -2130,7 +2201,7 @@ function renderCreatorExtra() {
     : '<p style="font-size:0.79rem;color:var(--muted);padding:6px 0;">Creator tasks will appear here and in Brain Dump.</p>';
 }
 
-function initTodos() { renderTodos(); renderCreatorExtra(); }
+function initTodos() { renderTodos(); renderCreatorExtra(); initCcTodos(); }
 
 // ─── FACEBOOK: Post checkboxes ─────────────────────────────────────────────
 function fbCheck(el, key) {

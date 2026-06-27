@@ -232,8 +232,8 @@ hr { border: none; border-top: 1px solid var(--border); margin: 18px 0; }
 </div>
 
 <nav class="tab-nav">
-  <button class="tab-btn active" onclick="showTab('legal',this)">⚖️ Legal Setup</button>
-  <button class="tab-btn" onclick="showTab('command',this)">🎯 Command Center</button>
+  <button class="tab-btn active" onclick="showTab('command',this)">🎯 Command Center</button>
+  <button class="tab-btn" onclick="showTab('legal',this)">⚖️ Legal Setup</button>
   <button class="tab-btn" onclick="showTab('braindump',this)">🧠 Brain Dump</button>
   <button class="tab-btn" onclick="showTab('facebook',this)">📘 Facebook Launch</button>
   <button class="tab-btn" onclick="showTab('pitchpages',this)">🏢 B2B Pitch Pages</button>
@@ -254,7 +254,7 @@ hr { border: none; border-top: 1px solid var(--border); margin: 18px 0; }
 <!-- ════════════════════════════════════════
      TAB 0 · LEGAL SETUP
 ════════════════════════════════════════ -->
-<div id="tab-legal" class="tab-content active">
+<div id="tab-legal" class="tab-content">
 
   <div class="urgent">
     ⚡ <div><strong>URGENT — Do This First:</strong> Log into <strong>GoDaddy</strong> and confirm <strong>elevatealign.com</strong> domain registration is still active. You cancelled the hosting plan in June — it's unclear if the domain registration was also cancelled. If that domain lapses someone else can claim it.</div>
@@ -487,7 +487,7 @@ hr { border: none; border-top: 1px solid var(--border); margin: 18px 0; }
 <!-- ════════════════════════════════════════
      TAB 1 · COMMAND CENTER
 ════════════════════════════════════════ -->
-<div id="tab-command" class="tab-content">
+<div id="tab-command" class="tab-content active">
 
   <!-- QUICK TO-DOS PANEL -->
   <div class="card" style="margin-bottom:20px;padding:18px 22px;">
@@ -2202,26 +2202,52 @@ function renderCreatorExtra() {
 }
 
 function seedStarterTodos() {
-  const SEED_KEY = 'eau_todos_seeded_v1';
-  if (localStorage.getItem(SEED_KEY)) return;
-  if (getTodos().length > 0) { localStorage.setItem(SEED_KEY, '1'); return; }
-  const now = Date.now();
-  const starters = [
-    { id: now+1,  text: 'GoDaddy: confirm elevatealign.com domain is still active (check after cancelling hosting)',                           label: 'water',    done: false },
-    { id: now+2,  text: 'Upload terms-eaucohub-business.html to GHL → replace eaucohub.com/terms-conditions-page',                           label: 'water',    done: false },
-    { id: now+3,  text: 'Paste Footer 1 into all water/ERW GHL pages (stopdrinkingacid.com branches · healingh2eau.co · eaucohub.com · B2B)', label: 'water',    done: false },
-    { id: now+4,  text: 'Re-upload waterhub-signup-GHL-PASTE.html to GHL (terms link now corrected to eaucohub.com/terms-water)',             label: 'water',    done: false },
-    { id: now+5,  text: 'Add Terms link to 03_UNIVERSAL_BOTTOM_BLOCK.html → re-paste into all stopdrinkingacid.com GHL pages',              label: 'water',    done: false },
-    { id: now+6,  text: 'Paste Footer 2 into free.html · intake.html · thankyou.html + subscriber planners → push to maddie-planner',       label: 'personal', done: false },
-    { id: now+7,  text: 'Paste Footer 3 into cycle-harmony.html + index-v2.html → push to chloe-planner',                                   label: 'personal', done: false },
-    { id: now+8,  text: 'Anthony: sign Sovereign Systems Spiral agreement + confirm content direction',                                       label: 'personal', done: false },
-    { id: now+9,  text: 'Chloe: get her Human Design birth data → finish Cycle Harmony HD section + replace index.html',                     label: 'personal', done: false },
-    { id: now+10, text: '60 Sales Campaign: find @currentseacollective style refs + map out content series',                                  label: 'creator',  done: false },
-    { id: now+11, text: 'B2B follow-up: spa · coffee · restaurant · tattoo — check who opened pitch + schedule demos',                       label: 'water',    done: false },
-    { id: now+12, text: 'Two Hounds: build GHL paid workflow (free workflow is live ✅)',                                                      label: 'water',    done: false },
-  ];
-  saveTodos(starters);
-  localStorage.setItem(SEED_KEY, '1');
+  // v1 — base seed (runs only if list was empty)
+  const SEED_V1 = 'eau_todos_seeded_v1';
+  if (!localStorage.getItem(SEED_V1)) {
+    if (getTodos().length === 0) {
+      const now = Date.now();
+      saveTodos([
+        { id: now+1,  text: 'GoDaddy: confirm elevatealign.com domain is still active (check after cancelling hosting)',                           label: 'water',    done: false },
+        { id: now+2,  text: 'Upload terms-eaucohub-business.html to GHL → replace eaucohub.com/terms-conditions-page',                           label: 'water',    done: false },
+        { id: now+3,  text: 'Paste Footer 1 into all water/ERW GHL pages (stopdrinkingacid.com branches · healingh2eau.co · eaucohub.com · B2B)', label: 'water',    done: false },
+        { id: now+4,  text: 'Re-upload waterhub-signup-GHL-PASTE.html to GHL (terms link now corrected to eaucohub.com/terms-water)',             label: 'water',    done: false },
+        { id: now+5,  text: 'Add Terms link to 03_UNIVERSAL_BOTTOM_BLOCK.html → re-paste into all stopdrinkingacid.com GHL pages',               label: 'water',    done: false },
+        { id: now+6,  text: 'Paste Footer 2 into free.html · intake.html · thankyou.html + subscriber planners → push to maddie-planner',        label: 'personal', done: false },
+        { id: now+7,  text: 'Paste Footer 3 into cycle-harmony.html + index-v2.html → push to chloe-planner',                                    label: 'personal', done: false },
+        { id: now+8,  text: 'Anthony: sign Sovereign Systems Spiral agreement + confirm content direction',                                        label: 'personal', done: false },
+        { id: now+9,  text: 'Chloe: get her Human Design birth data → finish Cycle Harmony HD section + replace index.html',                      label: 'personal', done: false },
+        { id: now+10, text: '60 Sales Campaign: find @currentseacollective style refs + map out content series',                                   label: 'creator',  done: false },
+        { id: now+11, text: 'B2B follow-up: spa · coffee · restaurant · tattoo — check who opened pitch + schedule demos',                        label: 'water',    done: false },
+        { id: now+12, text: 'Two Hounds: build GHL paid workflow (free workflow is live ✅)',                                                       label: 'water',    done: false },
+      ]);
+    }
+    localStorage.setItem(SEED_V1, '1');
+  }
+  // v2 — merge in screenshot todos (non-destructive, never overwrites existing)
+  const SEED_V2 = 'eau_todos_seeded_v2';
+  if (!localStorage.getItem(SEED_V2)) {
+    const v2 = [
+      { text: 'update and figure out Stripe',                                                                                                     label: 'water'   },
+      { text: 'Google Photos set up',                                                                                                             label: 'water'   },
+      { text: 'fix water hub landing page',                                                                                                       label: 'water'   },
+      { text: 'finish up planner tracker and send to Chloe',                                                                                      label: 'water'   },
+      { text: 'build Devins calendar',                                                                                                            label: 'water'   },
+      { text: 'redo web class in own words with koalas script — make it 2hrs, put after 10-min intro, explain EAU and where I was at',           label: 'water'   },
+      { text: 'add Cycle Harmony page to stopdrinkingacid.com → eauco-mads.github.io/chloe-planner/cycle-harmony.html',                          label: 'water'   },
+      { text: 'move business pitch pages to GHL for tracking + domain (ask Claude for exact step-by-step: slug → builder → contact tagging)',     label: 'water'   },
+      { text: 'send drone stuff to Romano',                                                                                                       label: 'creator' },
+      { text: 'edit drone footage',                                                                                                               label: 'creator' },
+    ];
+    const existing = getTodos();
+    const existingSnips = existing.map(t => t.text.toLowerCase().slice(0, 22));
+    const toAdd = v2.filter(item => !existingSnips.some(s => s.includes(item.text.toLowerCase().slice(0, 18))));
+    if (toAdd.length > 0) {
+      const t2 = Date.now();
+      saveTodos([...toAdd.map((item, i) => ({ id: t2 + 200 + i, text: item.text, label: item.label, done: false })), ...existing]);
+    }
+    localStorage.setItem(SEED_V2, '1');
+  }
 }
 function initTodos() { seedStarterTodos(); renderTodos(); renderCreatorExtra(); initCcTodos(); }
 

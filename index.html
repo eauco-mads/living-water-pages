@@ -233,6 +233,7 @@ hr { border: none; border-top: 1px solid var(--border); margin: 18px 0; }
 
 <nav class="tab-nav">
   <button class="tab-btn active" onclick="showTab('command',this)">🎯 Command Center</button>
+  <button class="tab-btn" onclick="showTab('legal',this)">⚖️ Legal Setup</button>
   <button class="tab-btn" onclick="showTab('braindump',this)">🧠 Brain Dump</button>
   <button class="tab-btn" onclick="showTab('facebook',this)">📘 Facebook Launch</button>
   <button class="tab-btn" onclick="showTab('pitchpages',this)">🏢 B2B Pitch Pages</button>
@@ -251,9 +252,271 @@ hr { border: none; border-top: 1px solid var(--border); margin: 18px 0; }
 </nav>
 
 <!-- ════════════════════════════════════════
+     TAB 0 · LEGAL SETUP
+════════════════════════════════════════ -->
+<div id="tab-legal" class="tab-content">
+
+  <div class="urgent">
+    ⚡ <div><strong>URGENT — Do This First:</strong> Log into <strong>GoDaddy</strong> and confirm <strong>elevatealign.com</strong> domain registration is still active. You cancelled the hosting plan in June — it's unclear if the domain registration was also cancelled. If that domain lapses someone else can claim it.</div>
+  </div>
+
+  <div class="info-box">
+    <strong>⚠ Save your files before closing your computer:</strong> The 4 built HTML files are in <code>/tmp/</code> — that folder clears on restart. Move them to Desktop or Downloads now.<br>
+    <code>terms-water-erw.html</code> · <code>terms-planner.html</code> · <code>terms-cycle-harmony.html</code> · <code>footer-snippets.html</code>
+  </div>
+
+  <div class="grid-4" style="margin-bottom:24px;">
+    <div class="stat-card">
+      <div class="stat-num" style="color:var(--success);font-size:1.6rem;">3/3</div>
+      <div class="stat-label">T&C Docs Built</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" id="lgl-uploaded" style="color:var(--warning);font-size:1.6rem;">0/3</div>
+      <div class="stat-label">Uploaded & Live</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" id="lgl-footers" style="color:var(--warning);font-size:1.6rem;">0/3</div>
+      <div class="stat-label">Footers Updated</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" id="lgl-prog-text" style="color:var(--muted);font-size:1.4rem;">0%</div>
+      <div class="stat-label">Legal Setup Done</div>
+    </div>
+  </div>
+
+  <div style="margin-bottom:8px;">
+    <div style="display:flex;justify-content:space-between;margin-bottom:5px;">
+      <span style="font-size:0.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;">Overall progress</span>
+      <span style="font-size:0.8rem;color:var(--teal);" id="lgl-prog-text2">0 of 11 steps complete</span>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" id="lgl-prog-bar" style="width:0%"></div></div>
+  </div>
+
+  <!-- PHASE 0 -->
+  <div class="section-title">Phase 0 — Before Anything</div>
+  <ul class="cr-checklist" style="margin-bottom:28px;">
+    <li onclick="toggleLgl(this,'lgl0')">
+      <div class="check-box"><span class="check-icon">✓</span></div>
+      <div>
+        <div class="cr-title">🔴 GoDaddy — verify elevatealign.com domain registration is still active</div>
+        <div class="cr-sub">Login at godaddy.com → Domains → make sure the domain shows as registered (not just hosting). This is urgent — do not skip.</div>
+      </div>
+    </li>
+    <li onclick="toggleLgl(this,'lgl1')">
+      <div class="check-box"><span class="check-icon">✓</span></div>
+      <div>
+        <div class="cr-title">Copy the 4 HTML files from /tmp/ to Desktop or Downloads</div>
+        <div class="cr-sub">terms-water-erw.html · terms-planner.html · terms-cycle-harmony.html · footer-snippets.html — all four, right now</div>
+      </div>
+    </li>
+  </ul>
+
+  <!-- PHASE 1 -->
+  <div class="section-title">Phase 1 — Water / ERW Sites</div>
+  <div class="info-box" style="margin-bottom:14px;">Covers: <strong>stopdrinkingacid.com · healingh2eau.co · eaucohub.com · all 6 B2B pitch pages · waterhub-signup page</strong></div>
+  <ul class="cr-checklist" style="margin-bottom:28px;">
+    <li onclick="toggleLgl(this,'lgl2')">
+      <div class="check-box"><span class="check-icon">✓</span></div>
+      <div>
+        <div class="cr-title">GHL → Funnels → open stopdrinkingacid.com funnel → Add Step → set slug <code>/terms</code></div>
+        <div class="cr-sub">Edit page → drag in Custom HTML block → paste entire contents of terms-water-erw.html → Save → Publish</div>
+      </div>
+    </li>
+    <li onclick="toggleLgl(this,'lgl3')">
+      <div class="check-box"><span class="check-icon">✓</span></div>
+      <div>
+        <div class="cr-title">Water T&amp;C is LIVE at <strong>eaucohub.com/terms-water</strong> ✅ — now update Footer 1 in footer-snippets.html</div>
+        <div class="cr-sub">Open footer-snippets.html → FOOTER 1 section → both placeholder URLs are already updated to <code>eaucohub.com/terms-water</code> — copy the full &lt;footer&gt; block and paste into each water/ERW page.</div>
+      </div>
+    </li>
+    <li onclick="toggleLgl(this,'lgl4')">
+      <div class="check-box"><span class="check-icon">✓</span></div>
+      <div>
+        <div class="cr-title">Paste Footer 1 into every water/ERW page in GHL (replaces existing footer block)</div>
+        <div class="cr-sub">All stopdrinkingacid.com branch pages: /planet · /energy · /cancer-healing-help · /how-cells-work · healingh2eau.co pages · eaucohub.com · all 6 B2B pitch pages</div>
+      </div>
+    </li>
+    <li onclick="toggleLgl(this,'lgl5')">
+      <div class="check-box"><span class="check-icon">✓</span></div>
+      <div>
+        <div class="cr-title">Update waterhub-signup.html footer — wire up Terms · Privacy · Earnings Disclaimer links</div>
+        <div class="cr-sub">Three <code>&lt;a href="#"&gt;</code> placeholder links at the very bottom of waterhub-signup.html → update all three to point to your live terms URL → re-upload/re-paste to GHL</div>
+      </div>
+    </li>
+  </ul>
+
+  <!-- PHASE 2 -->
+  <div class="section-title">Phase 2 — Planner Business</div>
+  <div class="info-box" style="margin-bottom:14px;">Covers: <strong>free.html · intake.html · thankyou.html · all subscriber planner files</strong> at eauco-mads.github.io/maddie-planner</div>
+  <ul class="cr-checklist" style="margin-bottom:28px;">
+    <li onclick="toggleLgl(this,'lgl6')">
+      <div class="check-box"><span class="check-icon">✓</span></div>
+      <div>
+        <div class="cr-title">Planner T&amp;C is LIVE at <strong>eaucohub.com/terms-planner</strong> ✅</div>
+        <div class="cr-sub">Already uploaded to GHL on eaucohub.com. Footer 2 in footer-snippets.html is updated to point to <code>eaucohub.com/terms-planner</code> — just paste it into your planner files.</div>
+      </div>
+    </li>
+    <li onclick="toggleLgl(this,'lgl7')">
+      <div class="check-box"><span class="check-icon">✓</span></div>
+      <div>
+        <div class="cr-title">Paste Footer 2 into free.html · intake.html · thankyou.html · all subscriber planner files</div>
+        <div class="cr-sub">Open footer-snippets.html → FOOTER 2 section → copy the full &lt;footer&gt; block → replace existing footer in each planner file → push each to GitHub</div>
+      </div>
+    </li>
+  </ul>
+
+  <!-- PHASE 3 -->
+  <div class="section-title">Phase 3 — Cycle Harmony</div>
+  <div class="info-box" style="margin-bottom:14px;">Covers: <strong>cycle-harmony.html · index-v2.html</strong> at eauco-mads.github.io/chloe-planner</div>
+  <ul class="cr-checklist" style="margin-bottom:28px;">
+    <li onclick="toggleLgl(this,'lgl8')">
+      <div class="check-box"><span class="check-icon">✓</span></div>
+      <div>
+        <div class="cr-title">Cycle Harmony T&amp;C is LIVE at <strong>eaucohub.com/terms-cycle</strong> ✅</div>
+        <div class="cr-sub">Already uploaded to GHL on eaucohub.com. Footer 3 in footer-snippets.html is updated to point to <code>eaucohub.com/terms-cycle</code> — just paste it into cycle-harmony.html and index-v2.html.</div>
+      </div>
+    </li>
+    <li onclick="toggleLgl(this,'lgl9')">
+      <div class="check-box"><span class="check-icon">✓</span></div>
+      <div>
+        <div class="cr-title">Paste Footer 3 into cycle-harmony.html and index-v2.html · Push both to GitHub</div>
+        <div class="cr-sub">Open footer-snippets.html → FOOTER 3 section (rose gradient, Cycle Harmony brand) → replace existing footer in both files → push to eauco-mads/chloe-planner</div>
+      </div>
+    </li>
+  </ul>
+
+  <!-- BONUS -->
+  <div class="section-title">Bonus — Nice to Have</div>
+  <ul class="cr-checklist" style="margin-bottom:28px;">
+    <li onclick="toggleLgl(this,'lgl10')">
+      <div class="check-box"><span class="check-icon">✓</span></div>
+      <div>
+        <div class="cr-title">Add Terms link to the 03_UNIVERSAL_BOTTOM_BLOCK.html (GHL shared footer)</div>
+        <div class="cr-sub">The universal bottom block used on all stopdrinkingacid.com pages — open the file in Downloads and add a "Terms & Disclaimers" link at the bottom pointing to your live terms URL</div>
+      </div>
+    </li>
+  </ul>
+
+  <!-- Documents table -->
+  <div class="section-title">Your 4 Legal Files</div>
+  <div class="card" style="padding:0;overflow:hidden;margin-bottom:28px;">
+    <table>
+      <thead>
+        <tr>
+          <th>File</th>
+          <th>Covers</th>
+          <th>Status</th>
+          <th>Goes to</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="font-weight:700;white-space:nowrap;">terms-water-erw.html</td>
+          <td style="font-size:0.8rem;">stopdrinkingacid · healingh2eau · eaucohub · B2B pages</td>
+          <td><span class="badge badge-live">Live ✅</span></td>
+          <td style="font-size:0.8rem;"><a href="https://eaucohub.com/terms-water" target="_blank">eaucohub.com/terms-water</a></td>
+        </tr>
+        <tr>
+          <td style="font-weight:700;white-space:nowrap;">terms-planner.html</td>
+          <td style="font-size:0.8rem;">maddie-planner · subscriber planners · free · intake · thankyou</td>
+          <td><span class="badge badge-live">Live ✅</span></td>
+          <td style="font-size:0.8rem;"><a href="https://eaucohub.com/terms-planner" target="_blank">eaucohub.com/terms-planner</a></td>
+        </tr>
+        <tr>
+          <td style="font-weight:700;white-space:nowrap;">terms-cycle-harmony.html</td>
+          <td style="font-size:0.8rem;">cycle-harmony.html · Chloe index-v2.html</td>
+          <td><span class="badge badge-live">Live ✅</span></td>
+          <td style="font-size:0.8rem;"><a href="https://eaucohub.com/terms-cycle" target="_blank">eaucohub.com/terms-cycle</a></td>
+        </tr>
+        <tr>
+          <td style="font-weight:700;white-space:nowrap;">footer-snippets.html</td>
+          <td style="font-size:0.8rem;">3 footer blocks — one per site type</td>
+          <td><span class="badge badge-building">Built · not deployed</span></td>
+          <td style="font-size:0.8rem;">Paste into each site's footer</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- What's covered -->
+  <div class="section-title">What's Legally Covered Per Site</div>
+  <div class="grid-3" style="margin-bottom:20px;">
+    <div class="card" style="margin:0;">
+      <h4>Water / ERW Pages</h4>
+      <ul class="steps">
+        <li><span class="step-num">✓</span> FTC income disclaimer (not typical)</li>
+        <li><span class="step-num">✓</span> FDA health disclaimer</li>
+        <li><span class="step-num">✓</span> Enagic independent distributor disclosure</li>
+        <li><span class="step-num">✓</span> Testimonials + material connection</li>
+        <li><span class="step-num">✓</span> Copyright + IP</li>
+        <li><span class="step-num">✓</span> GHL data / privacy</li>
+        <li><span class="step-num">✓</span> Limitation of liability</li>
+        <li><span class="step-num">✓</span> Alaska governing law</li>
+      </ul>
+    </div>
+    <div class="card" style="margin:0;">
+      <h4>Planner Business</h4>
+      <ul class="steps">
+        <li><span class="step-num">✓</span> Astrology = educational only, not advice</li>
+        <li><span class="step-num">✓</span> $22.22/mo subscription + auto-renewal</li>
+        <li><span class="step-num">✓</span> No-refund on delivered planners</li>
+        <li><span class="step-num">✓</span> 48hr pre-delivery refund window</li>
+        <li><span class="step-num">✓</span> Stripe billing terms</li>
+        <li><span class="step-num">✓</span> Formspree intake data privacy</li>
+        <li><span class="step-num">✓</span> localStorage = stays on device</li>
+        <li><span class="step-num">✓</span> IP protection / no sharing links</li>
+      </ul>
+    </div>
+    <div class="card" style="margin:0;">
+      <h4>Cycle Harmony</h4>
+      <ul class="steps">
+        <li><span class="step-num">✓</span> Not medical advice (prominent)</li>
+        <li><span class="step-num">✓</span> Not a medical device</li>
+        <li><span class="step-num">✓</span> Not for contraception / fertility</li>
+        <li><span class="step-num">✓</span> FDA herbal disclaimer</li>
+        <li><span class="step-num">✓</span> AI prompt output = not our liability</li>
+        <li><span class="step-num">✓</span> localStorage data privacy</li>
+        <li><span class="step-num">✓</span> Email capture / unsubscribe rights</li>
+        <li><span class="step-num">✓</span> 911 / emergency services notice</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<!-- ════════════════════════════════════════
      TAB 1 · COMMAND CENTER
 ════════════════════════════════════════ -->
 <div id="tab-command" class="tab-content active">
+
+  <!-- QUICK TO-DOS PANEL -->
+  <div class="card" style="margin-bottom:20px;padding:18px 22px;">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0;" id="cc-todos-header">
+      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+        <h3 style="margin:0;font-size:1.1rem;">Quick To-Dos</h3>
+        <span style="font-size:0.68rem;background:rgba(196,122,58,0.1);color:var(--orange);padding:2px 9px;border-radius:20px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;">In Progress / Random</span>
+        <span id="cc-todo-count" style="font-size:0.75rem;color:var(--muted);"></span>
+      </div>
+      <button class="btn-sm" id="cc-todos-toggle-btn" onclick="toggleCcTodos()" style="flex-shrink:0;">▾ Hide</button>
+    </div>
+    <div id="cc-todos-body" style="margin-top:14px;">
+      <div class="todo-add-row" style="margin-bottom:10px;">
+        <input class="todo-add-input" id="cc-todo-input" placeholder="add a task... (press Enter)" onkeydown="if(event.key==='Enter')addCcTodo()">
+        <select class="label-sel" id="cc-todo-label-sel">
+          <option value="personal">🙋 personal</option>
+          <option value="water">💧 water</option>
+          <option value="planner">📅 planner</option>
+          <option value="creator">🎨 creator</option>
+          <option value="facebook">📘 facebook</option>
+        </select>
+        <button class="todo-add-btn" onclick="addCcTodo()">+ Add</button>
+      </div>
+      <div id="cc-todo-list"></div>
+      <div style="margin-top:8px;text-align:right;">
+        <button onclick="showTab('braindump',document.querySelector('[onclick*=braindump]'))" style="background:none;border:none;font-size:0.75rem;color:var(--muted);cursor:pointer;text-decoration:underline;">View full Brain Dump →</button>
+      </div>
+    </div>
+  </div>
 
   <div class="grid-4" style="margin-bottom:20px;">
     <div class="stat-card">
@@ -274,8 +537,8 @@ hr { border: none; border-top: 1px solid var(--border); margin: 18px 0; }
     </div>
   </div>
 
-  <div style="background:rgba(5,150,105,0.08);border:1px solid rgba(5,150,105,0.25);border-radius:8px;padding:12px 16px;display:flex;gap:10px;align-items:flex-start;font-size:0.84rem;color:var(--text);margin-bottom:16px;">
-    ✅ <div><strong>All 6 B2B pitch pages are LIVE.</strong> Links in the Link Hub tab → B2B Leads. Move to GHL when ready to get clean <code>healingh2eau.co/[slug]</code> URLs — transfer notes saved in the B2B Pitch Pages tab.</div>
+  <div class="urgent">
+    ⚡ <div><strong>URGENT — June 27:</strong> Spa pitch page must go live in GHL at <code>/spa</code> before the tanning salon pop-up. Open the B2B Pitch Pages tab for upload steps.</div>
   </div>
 
   <div class="grid-2">
@@ -697,70 +960,44 @@ If any of this past 10 days resonated — this is your sign. Shoot me a message.
 ════════════════════════════════════════ -->
 <div id="tab-pitchpages" class="tab-content">
 
-  <div style="background:rgba(5,150,105,0.08);border:1px solid rgba(5,150,105,0.25);border-radius:8px;padding:14px 16px;display:flex;gap:10px;align-items:flex-start;font-size:0.85rem;color:var(--text);margin-bottom:16px;">
-    ✅ <div><strong>All 6 pitch pages are LIVE on GitHub Pages.</strong> Share any link directly. To get on <code>healingh2eau.co/[slug]</code>: GHL → Sites → Funnels → add page with slug → add Custom HTML block → paste the file content → publish.</div>
+  <div class="urgent">
+    ⚡ <div><strong>June 27 DEADLINE:</strong> Spa page must be live in GHL at <code>/spa</code> before tanning salon pop-up. All files are in your Downloads folder.</div>
   </div>
 
   <div class="grid-2">
 
-    <!-- WELLNESS SPA -->
-    <div class="pitch-card">
-      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
-        <div class="pitch-vertical">Medical Wellness</div>
-        <span class="badge badge-live">Live 🌐</span>
-      </div>
-      <h3>Wellness Spas & Medical Aesthetics</h3>
-      <p class="pitch-hook">"IV therapy + H₂ water amplifies every outcome. pH 6.0 post-procedure skin care. pH 2.5 replaces chemical sanitizer. Health-forward clients already spending — this is their next yes."</p>
-      <div style="margin-bottom:12px;">
-        <span class="meta-tag">wellness-spa-pitch.html</span>
-        <span class="meta-tag">IV · Massage · Botox · Laser</span>
-      </div>
-      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:6px;">
-        <a href="https://eauco-mads.github.io/living-water-pages/wellness-spa/" target="_blank" class="btn-sm" style="text-decoration:none;">Open Live Page →</a>
-        <button class="collapse-toggle" onclick="toggle('wspa-emails',this)">▶ Cold Email Notes</button>
-      </div>
-      <div id="wspa-emails" class="collapse-body">
-        <div class="info-box"><strong>Cold email sequence for wellness spa — needs building.</strong> Ask Claude: "Build me a 3-email cold outreach sequence for IV bars and medical aesthetics — angle: protocol upgrade that amplifies their existing services."</div>
-      </div>
-    </div>
-
-    <!-- SALON -->
-    <div class="pitch-card">
-      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
-        <div class="pitch-vertical">Beauty & Style</div>
-        <span class="badge badge-live">Live 🌐</span>
-      </div>
-      <h3>Hair & Nail Salons</h3>
-      <p class="pitch-hook">"pH 6.0 closes the cuticle before clients leave the chair. pH 2.5 replaces every chemical sanitizer at the nail station. Members come back daily between appointments."</p>
-      <div style="margin-bottom:12px;">
-        <span class="meta-tag">salon-pitch.html</span>
-        <span class="meta-tag">Hair · Nail · Barbershop</span>
-      </div>
-      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:6px;">
-        <a href="https://eauco-mads.github.io/living-water-pages/salon/" target="_blank" class="btn-sm" style="text-decoration:none;">Open Live Page →</a>
-        <button class="collapse-toggle" onclick="toggle('salon-emails',this)">▶ Cold Email Notes</button>
-      </div>
-      <div id="salon-emails" class="collapse-body">
-        <div class="info-box"><strong>Cold email sequence for salons — needs building.</strong> Ask Claude: "Build me a 3-email cold outreach sequence for hair and nail salon owners — angle: the pH 6.0 rinse clients feel before they leave the chair."</div>
-      </div>
-    </div>
-
-    <!-- SPA (general) -->
+    <!-- SPA -->
     <div class="pitch-card">
       <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
         <div class="pitch-vertical">Wellness & Beauty</div>
-        <span id="badge-spa" class="badge badge-live">Live 🌐</span>
+        <span id="badge-spa" class="badge badge-urgent">⚡ Upload Now</span>
       </div>
-      <h3>Spa / Wellness Studios (General)</h3>
+      <h3>Spa / Wellness Studios</h3>
       <p class="pitch-hook">"pH 2.5 replaces your bleach. pH 6.0 replaces your toner. pH 9.5 fills member cups. Your next income stream is already built."</p>
       <div style="margin-bottom:12px;">
+        <span class="meta-tag">GHL: /spa</span>
         <span class="meta-tag">spa-pitch.html</span>
         <span class="meta-tag">Tanning · Botox · IV · Hair</span>
       </div>
       <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px;">
-        <a href="https://eauco-mads.github.io/living-water-pages/spa/" target="_blank" class="btn-sm" style="text-decoration:none;">Open Live Page →</a>
+        <button class="btn-sm" onclick="markLive('spa')">Mark Live ✓</button>
+        <button class="collapse-toggle" onclick="toggle('spa-steps',this)">▶ GHL Upload Steps</button>
         <button class="collapse-toggle" onclick="toggle('spa-video',this)">▶ Video Script</button>
         <button class="collapse-toggle" onclick="toggle('spa-emails',this)">▶ Cold Email Notes</button>
+      </div>
+
+      <div id="spa-steps" class="collapse-body">
+        <div class="info-box">
+          <strong>Upload to GHL:</strong>
+          <ol style="margin-top:8px;padding-left:16px;font-size:0.83rem;line-height:1.9;">
+            <li>GHL → Sites → Funnels → open your main funnel</li>
+            <li>Click "+ Add Page" → name: Spa Pitch → slug: <code>/spa</code></li>
+            <li>Edit page → add a "Custom HTML" block</li>
+            <li>Open <code>spa-pitch.html</code> in TextEdit → Select All → Copy</li>
+            <li>Paste into the Custom HTML block → Save → Publish</li>
+            <li>Test live at: <code>healingh2eau.co/spa</code></li>
+          </ol>
+        </div>
       </div>
 
       <div id="spa-video" class="collapse-body">
@@ -784,16 +1021,17 @@ If any of this past 10 days resonated — this is your sign. Shoot me a message.
     <div class="pitch-card">
       <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
         <div class="pitch-vertical">Coffee & Beverage</div>
-        <span id="badge-coffee" class="badge badge-live">Live 🌐</span>
+        <span id="badge-coffee" class="badge badge-pending">Needs Upload</span>
       </div>
       <h3>Coffee Shops</h3>
       <p class="pitch-hook">"Water is 96–98.5% of your espresso shot. If you're sourcing great beans but pouring tap water — you're working against yourself."</p>
       <div style="margin-bottom:12px;">
+        <span class="meta-tag">GHL: /coffee</span>
         <span class="meta-tag">coffee-pitch.html</span>
         <span class="meta-tag">Two Hounds = live proof</span>
       </div>
       <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px;">
-        <a href="https://eauco-mads.github.io/living-water-pages/coffee/" target="_blank" class="btn-sm" style="text-decoration:none;">Open Live Page →</a>
+        <button class="btn-sm" onclick="markLive('coffee')">Mark Live ✓</button>
         <button class="collapse-toggle" onclick="toggle('coffee-video',this)">▶ Video Script</button>
       </div>
 
@@ -815,17 +1053,18 @@ If any of this past 10 days resonated — this is your sign. Shoot me a message.
     <div class="pitch-card">
       <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
         <div class="pitch-vertical">Food Service</div>
-        <span id="badge-restaurant" class="badge badge-live">Live 🌐</span>
+        <span id="badge-restaurant" class="badge badge-pending">Needs Upload</span>
       </div>
       <h3>Restaurants</h3>
       <p class="pitch-hook">"30,000+ restaurants in Japan run on this water. Chemical replacement savings of $2,200–$6,400/yr — before a single membership."</p>
       <div style="margin-bottom:12px;">
+        <span class="meta-tag">GHL: /restaurants</span>
         <span class="meta-tag">restaurant-pitch.html</span>
         <span class="meta-tag">Lynn · Enzo · Fidel ✓</span>
       </div>
       <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px;">
-        <a href="https://eauco-mads.github.io/living-water-pages/restaurant/" target="_blank" class="btn-sm" style="text-decoration:none;">Open Live Page →</a>
-        <button class="collapse-toggle" onclick="toggle('rest-emails',this)">▶ Email Sequence ✅</button>
+        <button class="btn-sm" onclick="markLive('restaurant')">Mark Live ✓</button>
+        <button class="collapse-toggle" onclick="toggle('rest-emails',this)">▶ Email Sequence</button>
       </div>
       <div id="rest-emails" class="collapse-body">
         <div class="info-box"><strong>Done ✅</strong> — 3 cold outreach emails (Day 1: chemical cost angle, Day 4: beef stew story, Day 10: income angle) + 4-email GHL automation + SMS. Open <code>restaurant-email-sequence.html</code> in browser to see all copy.</div>
@@ -836,16 +1075,17 @@ If any of this past 10 days resonated — this is your sign. Shoot me a message.
     <div class="pitch-card">
       <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
         <div class="pitch-vertical">Body Art</div>
-        <span id="badge-tattoo" class="badge badge-live">Live 🌐</span>
+        <span id="badge-tattoo" class="badge badge-pending">Needs Upload</span>
       </div>
       <h3>Tattoo Studios</h3>
       <p class="pitch-hook">"Your studio is built on sterility. The water should be too. pH 2.5 = hospital-grade HOCl — 100x more effective than bleach. This is already your standard."</p>
       <div style="margin-bottom:12px;">
+        <span class="meta-tag">GHL: /tattoo</span>
         <span class="meta-tag">tattoo-pitch.html</span>
         <span class="meta-tag">pH 2.5 · pH 6.0 aftercare</span>
       </div>
       <div style="display:flex;gap:8px;flex-wrap:wrap;">
-        <a href="https://eauco-mads.github.io/living-water-pages/tattoo/" target="_blank" class="btn-sm" style="text-decoration:none;">Open Live Page →</a>
+        <button class="btn-sm" onclick="markLive('tattoo')">Mark Live ✓</button>
       </div>
     </div>
   </div>
@@ -855,17 +1095,17 @@ If any of this past 10 days resonated — this is your sign. Shoot me a message.
     <div class="card" style="padding:16px;">
       <div class="badge badge-building" style="margin-bottom:10px;">Building</div>
       <h4>Demo Video</h4>
-      <p style="font-size:0.84rem;color:var(--muted);">5–7 min machine walkthrough to embed on all pages. Shot lists in the Spa card are ready. Film this first — biggest single conversion lever across all 6 pages.</p>
+      <p style="font-size:0.84rem;color:var(--muted);">5–7 min machine walkthrough to embed on all pages. Shot lists above are ready. Film this first — biggest single conversion lever.</p>
     </div>
     <div class="card" style="padding:16px;">
       <div class="badge badge-building" style="margin-bottom:10px;">Building</div>
       <h4>B2B Discovery Process</h4>
-      <p style="font-size:0.84rem;color:var(--muted);">Current DP is for aspiring distributors. Need a "Business Owner Walkthrough" — comp plan, income math, setup. Under 30 min. $99 refundable on machine purchase.</p>
+      <p style="font-size:0.84rem;color:var(--muted);">Current DP is for aspiring distributors (mindset content). Need a "Business Owner Walkthrough" — comp plan, income math, setup. Under 30 min.</p>
     </div>
     <div class="card" style="padding:16px;">
       <div class="badge badge-building" style="margin-bottom:10px;">Building</div>
       <h4>Cold Email Sequences</h4>
-      <p style="font-size:0.84rem;color:var(--muted);">Restaurant ✅ done. Still needed: wellness spa, salon, coffee, tattoo sequences + GHL automations for each.</p>
+      <p style="font-size:0.84rem;color:var(--muted);">Restaurant done ✅. Still needed: spa, coffee, tattoo outreach email sequences + GHL automations.</p>
     </div>
   </div>
 
@@ -1276,12 +1516,10 @@ If any of this past 10 days resonated — this is your sign. Shoot me a message.
 
     <div>
       <div class="link-group-title">Send to B2B Leads</div>
-      <div class="link-row"><span class="link-name">→ Wellness Spa / Medical</span><a class="link-url" href="https://eauco-mads.github.io/living-water-pages/wellness-spa/" target="_blank">GitHub · wellness-spa</a><button class="copy-btn" onclick="cp('https://eauco-mads.github.io/living-water-pages/wellness-spa/',this)">Copy</button></div>
-      <div class="link-row"><span class="link-name">→ Hair & Nail Salon</span><a class="link-url" href="https://eauco-mads.github.io/living-water-pages/salon/" target="_blank">GitHub · salon</a><button class="copy-btn" onclick="cp('https://eauco-mads.github.io/living-water-pages/salon/',this)">Copy</button></div>
-      <div class="link-row"><span class="link-name">→ Spa (general)</span><a class="link-url" href="https://eauco-mads.github.io/living-water-pages/spa/" target="_blank">GitHub · spa</a><button class="copy-btn" onclick="cp('https://eauco-mads.github.io/living-water-pages/spa/',this)">Copy</button></div>
-      <div class="link-row"><span class="link-name">→ Coffee Shop</span><a class="link-url" href="https://eauco-mads.github.io/living-water-pages/coffee/" target="_blank">GitHub · coffee</a><button class="copy-btn" onclick="cp('https://eauco-mads.github.io/living-water-pages/coffee/',this)">Copy</button></div>
-      <div class="link-row"><span class="link-name">→ Restaurant</span><a class="link-url" href="https://eauco-mads.github.io/living-water-pages/restaurant/" target="_blank">GitHub · restaurant</a><button class="copy-btn" onclick="cp('https://eauco-mads.github.io/living-water-pages/restaurant/',this)">Copy</button></div>
-      <div class="link-row"><span class="link-name">→ Tattoo Studio</span><a class="link-url" href="https://eauco-mads.github.io/living-water-pages/tattoo/" target="_blank">GitHub · tattoo</a><button class="copy-btn" onclick="cp('https://eauco-mads.github.io/living-water-pages/tattoo/',this)">Copy</button></div>
+      <div class="link-row"><span class="link-name">→ Spa / Salon Owner</span><a class="link-url" href="https://healingh2eau.co/spa" target="_blank">healingh2eau.co/spa</a><button class="copy-btn" onclick="cp('https://healingh2eau.co/spa',this)">Copy</button></div>
+      <div class="link-row"><span class="link-name">→ Coffee Shop</span><a class="link-url" href="https://healingh2eau.co/coffee" target="_blank">healingh2eau.co/coffee</a><button class="copy-btn" onclick="cp('https://healingh2eau.co/coffee',this)">Copy</button></div>
+      <div class="link-row"><span class="link-name">→ Restaurant</span><a class="link-url" href="https://healingh2eau.co/restaurants" target="_blank">healingh2eau.co/restaurants</a><button class="copy-btn" onclick="cp('https://healingh2eau.co/restaurants',this)">Copy</button></div>
+      <div class="link-row"><span class="link-name">→ Tattoo Studio</span><a class="link-url" href="https://healingh2eau.co/tattoo" target="_blank">healingh2eau.co/tattoo</a><button class="copy-btn" onclick="cp('https://healingh2eau.co/tattoo',this)">Copy</button></div>
     </div>
 
     <div>
@@ -1296,7 +1534,7 @@ If any of this past 10 days resonated — this is your sign. Shoot me a message.
       <div class="link-group-title">Send to Consumer / IG Leads</div>
       <div class="link-row"><span class="link-name">→ Water Education</span><a class="link-url" href="https://stopdrinkingacid.com" target="_blank">stopdrinkingacid.com</a><button class="copy-btn" onclick="cp('https://stopdrinkingacid.com',this)">Copy</button></div>
       <div class="link-row"><span class="link-name">→ Business Curious</span><a class="link-url" href="https://eaucohub.com" target="_blank">eaucohub.com</a><button class="copy-btn" onclick="cp('https://eaucohub.com',this)">Copy</button></div>
-      <div class="link-row"><span class="link-name">→ Water Hub (Members login)</span><a class="link-url" href="https://members.eaucohub.com" target="_blank">members.eaucohub.com</a><button class="copy-btn" onclick="cp('https://members.eaucohub.com',this)">Copy</button></div>
+      <div class="link-row"><span class="link-name">→ Water Hub (Members)</span><a class="link-url" href="https://members.eaucohub.com" target="_blank">members.eaucohub.com</a><button class="copy-btn" onclick="cp('https://members.eaucohub.com',this)">Copy</button></div>
       <div class="link-row"><span class="link-name">→ Check Your Water</span><a class="link-url" href="https://www.ewg.org/tapwater/" target="_blank">ewg.org/tapwater</a><button class="copy-btn" onclick="cp('https://www.ewg.org/tapwater/',this)">Copy</button></div>
       <div class="link-row"><span class="link-name">→ Find A Spring</span><a class="link-url" href="https://www.findasspring.com" target="_blank">findasspring.com</a><button class="copy-btn" onclick="cp('https://www.findasspring.com',this)">Copy</button></div>
     </div>
@@ -1903,6 +2141,48 @@ function renderTodos() {
   el.innerHTML = todos.length
     ? todos.map(todoRowHTML).join('')
     : '<p style="color:var(--muted);font-size:0.83rem;padding:14px 0;">No tasks yet — type one above and press Enter!</p>';
+  renderCcTodos();
+}
+
+// ─── COMMAND CENTER QUICK TO-DOS ─────────────────────────────────────────
+function renderCcTodos() {
+  const el = document.getElementById('cc-todo-list');
+  if (!el) return;
+  const todos = getTodos();
+  const active = todos.filter(t => !t.done).length;
+  const done   = todos.filter(t =>  t.done).length;
+  const countEl = document.getElementById('cc-todo-count');
+  if (countEl) countEl.textContent = active + ' active' + (done ? ' · ' + done + ' done' : '');
+  el.innerHTML = todos.length
+    ? todos.map(todoRowHTML).join('')
+    : '<p style="color:var(--muted);font-size:0.83rem;padding:10px 0;">No tasks yet — type one above and hit Enter!</p>';
+}
+function addCcTodo() {
+  const inp = document.getElementById('cc-todo-input');
+  const sel = document.getElementById('cc-todo-label-sel');
+  const t = inp ? inp.value.trim() : '';
+  const l = sel ? sel.value : 'personal';
+  if (!t) return;
+  const todos = getTodos();
+  todos.unshift({ id: Date.now(), text: t, label: l, done: false });
+  saveTodos(todos);
+  if (inp) inp.value = '';
+  renderTodos();
+  renderCreatorExtra();
+}
+let _ccOpen = true;
+function toggleCcTodos() {
+  _ccOpen = !_ccOpen;
+  const body = document.getElementById('cc-todos-body');
+  const btn  = document.getElementById('cc-todos-toggle-btn');
+  if (body) body.style.display = _ccOpen ? 'block' : 'none';
+  if (btn)  btn.textContent = _ccOpen ? '▾ Hide' : '▸ Show';
+  localStorage.setItem('eau_cc_todos_open', _ccOpen ? '1' : '0');
+}
+function initCcTodos() {
+  const saved = localStorage.getItem('eau_cc_todos_open');
+  if (saved === '0') { _ccOpen = true; toggleCcTodos(); }
+  renderCcTodos();
 }
 
 function addCreatorExtra() {
@@ -1921,7 +2201,55 @@ function renderCreatorExtra() {
     : '<p style="font-size:0.79rem;color:var(--muted);padding:6px 0;">Creator tasks will appear here and in Brain Dump.</p>';
 }
 
-function initTodos() { renderTodos(); renderCreatorExtra(); }
+function seedStarterTodos() {
+  // v1 — base seed (runs only if list was empty)
+  const SEED_V1 = 'eau_todos_seeded_v1';
+  if (!localStorage.getItem(SEED_V1)) {
+    if (getTodos().length === 0) {
+      const now = Date.now();
+      saveTodos([
+        { id: now+1,  text: 'GoDaddy: confirm elevatealign.com domain is still active (check after cancelling hosting)',                           label: 'water',    done: false },
+        { id: now+2,  text: 'Upload terms-eaucohub-business.html to GHL → replace eaucohub.com/terms-conditions-page',                           label: 'water',    done: false },
+        { id: now+3,  text: 'Paste Footer 1 into all water/ERW GHL pages (stopdrinkingacid.com branches · healingh2eau.co · eaucohub.com · B2B)', label: 'water',    done: false },
+        { id: now+4,  text: 'Re-upload waterhub-signup-GHL-PASTE.html to GHL (terms link now corrected to eaucohub.com/terms-water)',             label: 'water',    done: false },
+        { id: now+5,  text: 'Add Terms link to 03_UNIVERSAL_BOTTOM_BLOCK.html → re-paste into all stopdrinkingacid.com GHL pages',               label: 'water',    done: false },
+        { id: now+6,  text: 'Paste Footer 2 into free.html · intake.html · thankyou.html + subscriber planners → push to maddie-planner',        label: 'personal', done: false },
+        { id: now+7,  text: 'Paste Footer 3 into cycle-harmony.html + index-v2.html → push to chloe-planner',                                    label: 'personal', done: false },
+        { id: now+8,  text: 'Anthony: sign Sovereign Systems Spiral agreement + confirm content direction',                                        label: 'personal', done: false },
+        { id: now+9,  text: 'Chloe: get her Human Design birth data → finish Cycle Harmony HD section + replace index.html',                      label: 'personal', done: false },
+        { id: now+10, text: '60 Sales Campaign: find @currentseacollective style refs + map out content series',                                   label: 'creator',  done: false },
+        { id: now+11, text: 'B2B follow-up: spa · coffee · restaurant · tattoo — check who opened pitch + schedule demos',                        label: 'water',    done: false },
+        { id: now+12, text: 'Two Hounds: build GHL paid workflow (free workflow is live ✅)',                                                       label: 'water',    done: false },
+      ]);
+    }
+    localStorage.setItem(SEED_V1, '1');
+  }
+  // v2 — merge in screenshot todos (non-destructive, never overwrites existing)
+  const SEED_V2 = 'eau_todos_seeded_v2';
+  if (!localStorage.getItem(SEED_V2)) {
+    const v2 = [
+      { text: 'update and figure out Stripe',                                                                                                     label: 'water'   },
+      { text: 'Google Photos set up',                                                                                                             label: 'water'   },
+      { text: 'fix water hub landing page',                                                                                                       label: 'water'   },
+      { text: 'finish up planner tracker and send to Chloe',                                                                                      label: 'water'   },
+      { text: 'build Devins calendar',                                                                                                            label: 'water'   },
+      { text: 'redo web class in own words with koalas script — make it 2hrs, put after 10-min intro, explain EAU and where I was at',           label: 'water'   },
+      { text: 'add Cycle Harmony page to stopdrinkingacid.com → eauco-mads.github.io/chloe-planner/cycle-harmony.html',                          label: 'water'   },
+      { text: 'move business pitch pages to GHL for tracking + domain (ask Claude for exact step-by-step: slug → builder → contact tagging)',     label: 'water'   },
+      { text: 'send drone stuff to Romano',                                                                                                       label: 'creator' },
+      { text: 'edit drone footage',                                                                                                               label: 'creator' },
+    ];
+    const existing = getTodos();
+    const existingSnips = existing.map(t => t.text.toLowerCase().slice(0, 22));
+    const toAdd = v2.filter(item => !existingSnips.some(s => s.includes(item.text.toLowerCase().slice(0, 18))));
+    if (toAdd.length > 0) {
+      const t2 = Date.now();
+      saveTodos([...toAdd.map((item, i) => ({ id: t2 + 200 + i, text: item.text, label: item.label, done: false })), ...existing]);
+    }
+    localStorage.setItem(SEED_V2, '1');
+  }
+}
+function initTodos() { seedStarterTodos(); renderTodos(); renderCreatorExtra(); initCcTodos(); }
 
 // ─── FACEBOOK: Post checkboxes ─────────────────────────────────────────────
 function fbCheck(el, key) {
@@ -2016,7 +2344,40 @@ function initPitches() {
   });
 }
 
+// ─── LEGAL SETUP CHECKLIST ───────────────────────────────────────────────
+function toggleLgl(li, key) {
+  li.classList.toggle('checked');
+  localStorage.setItem('eau_lgl_' + key, li.classList.contains('checked') ? '1' : '0');
+  updateLglProgress();
+}
+function initLegalChecks() {
+  document.querySelectorAll('.cr-checklist li[onclick*="toggleLgl"]').forEach(li => {
+    const m = li.getAttribute('onclick').match(/'(lgl\d+)'/);
+    if (!m) return;
+    if (localStorage.getItem('eau_lgl_' + m[1]) === '1') li.classList.add('checked');
+  });
+  updateLglProgress();
+}
+function updateLglProgress() {
+  const all = document.querySelectorAll('.cr-checklist li[onclick*="toggleLgl"]');
+  const done = Array.from(all).filter(li => li.classList.contains('checked'));
+  const pct = all.length ? Math.round((done.length / all.length) * 100) : 0;
+  const bar = document.getElementById('lgl-prog-bar');
+  const pct_el = document.getElementById('lgl-prog-text');
+  const txt_el = document.getElementById('lgl-prog-text2');
+  if (bar) bar.style.width = pct + '%';
+  if (pct_el) pct_el.textContent = pct + '%';
+  if (txt_el) txt_el.textContent = done.length + ' of ' + all.length + ' steps complete';
+  const uploaded = ['lgl2','lgl6','lgl8'].filter(k => localStorage.getItem('eau_lgl_'+k)==='1').length;
+  const footers  = ['lgl4','lgl7','lgl9'].filter(k => localStorage.getItem('eau_lgl_'+k)==='1').length;
+  const upEl = document.getElementById('lgl-uploaded');
+  const ftEl = document.getElementById('lgl-footers');
+  if (upEl) { upEl.textContent = uploaded+'/3'; upEl.style.color = uploaded===3?'var(--success)':'var(--warning)'; }
+  if (ftEl) { ftEl.textContent = footers+'/3'; ftEl.style.color = footers===3?'var(--success)':'var(--warning)'; }
+}
+
 // INIT ALL
+initLegalChecks();
 initDaily();
 initPersist();
 initLive();

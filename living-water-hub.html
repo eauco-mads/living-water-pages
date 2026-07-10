@@ -252,6 +252,36 @@ hr { border: none; border-top: 1px solid var(--border); margin: 18px 0; }
 .proj-done-toggle { background: none; border: none; color: var(--muted); font-size: 0.72rem; cursor: pointer; padding: 4px 0; letter-spacing: 0.04em; }
 .proj-done-toggle:hover { color: var(--teal); }
 
+/* ── CAPACITY-UNLOCK ROADMAP (shared: Whole Vision + Project Index) ── */
+.alwayson { display:flex; align-items:center; gap:16px; background:linear-gradient(100deg,#effaf6,#fff);
+  border:1px solid #cfeee1; border-radius:14px; padding:18px 22px; margin:0 0 32px; }
+.alwayson .pulse { flex:0 0 auto; width:14px; height:14px; border-radius:50%; background:#10b981;
+  box-shadow:0 0 0 4px rgba(16,185,129,.18); }
+.alwayson h4 { font-family:'EB Garamond',serif; font-size:1.15rem; font-weight:600; margin:0 0 2px; color:var(--navy); }
+.alwayson p { font-size:.82rem; color:#4d4a40; margin:0; }
+.rm-stage { position:relative; display:flex; gap:20px; padding:16px 0; transition:opacity .3s; }
+.rm-stage.locked { opacity:.42; }
+.rm-check { flex:0 0 auto; width:48px; height:48px; border-radius:50%; background:#fff; cursor:pointer;
+  border:2px solid #e4e1d8; display:flex; align-items:center; justify-content:center;
+  font-family:'EB Garamond',serif; font-size:1.15rem; color:#8a8579; z-index:2; transition:all .2s; }
+.rm-stage.active .rm-check { border-color:#0f7d8c; color:#0f7d8c; box-shadow:0 0 0 5px rgba(15,125,140,.12); }
+.rm-stage.residual .rm-check { border-color:#10b981; background:#10b981; color:#fff; }
+.rm-stage.locked .rm-check { cursor:not-allowed; }
+.rm-body h4 { margin:6px 0 2px; font-family:'EB Garamond',serif; font-size:1.25rem; font-weight:600; color:var(--navy); }
+.rm-stage.residual .rm-body h4 { text-decoration:line-through; text-decoration-color:rgba(16,185,129,.4); }
+.rm-k { font-size:.62rem; letter-spacing:.14em; text-transform:uppercase; color:#8a8579; font-weight:600; }
+.rm-time { display:inline-block; font-size:.62rem; font-weight:700; letter-spacing:.06em;
+  color:#b08a3e; background:#fdf6e8; padding:2px 9px; border-radius:999px; margin-left:8px; vertical-align:middle; }
+.rm-body p { margin:6px 0 0; font-size:.88rem; color:#4d4a40; max-width:62ch; }
+.rm-status { font-size:.68rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; margin-top:6px; display:block; }
+.rm-stage.locked .rm-status { color:#8a8579; }
+.rm-stage.active .rm-status { color:#0f7d8c; }
+.rm-stage.residual .rm-status { color:#10b981; }
+.rm-endcard { margin-top:10px; background:linear-gradient(100deg,#fdf6e8,#fff); border:1px solid #f0e3c8;
+  border-radius:14px; padding:20px 24px; }
+.rm-endcard h4 { font-family:'EB Garamond',serif; font-size:1.2rem; margin:0 0 8px; color:var(--navy); }
+.rm-endcard p { font-size:.88rem; color:#4d4a40; margin:0; }
+
 /* ── Interior Page Guide (scoped embed) ── */
 
   #pig-mount *, #pig-mount *::before, #pig-mount *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -812,6 +842,7 @@ hr { border: none; border-top: 1px solid var(--border); margin: 18px 0; }
     color:#fff;background:var(--gold);padding:2px 8px;border-radius:999px;margin-left:8px;vertical-align:middle;}
   #vision-mount .pointbox {background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-top:30px;}
   #vision-mount .pointbox h4 {font-family:'EB Garamond',serif;font-size:1.2rem;margin:0 0 12px;}
+
   #vision-mount .pointbox .row {display:flex;gap:14px;padding:7px 0;border-top:1px dashed var(--line);font-size:.88rem;}
   #vision-mount .pointbox .row:first-of-type {border-top:none;}
   #vision-mount .pointbox .who {flex:0 0 38%;font-weight:500;color:var(--eau);}
@@ -902,6 +933,15 @@ hr { border: none; border-top: 1px solid var(--border); margin: 18px 0; }
     <h1><em>One list</em>, ordered by what actually matters most.</h1>
     <p>Every scattered doc gets a home here so nothing floats away unfindable again. Each group carries its own quick notes — add a task, check it off, and it tucks itself out of view. Open top to bottom, or jump straight to whatever's pulling at you.</p>
   </div>
+
+  <div class="alwayson">
+    <div class="pulse"></div>
+    <div>
+      <h4>Water — always on</h4>
+      <p>Not gated by anything below. Full breakdown and the rest of the chain: <a href="#" onclick="jumpToTab('vision'); var b=document.querySelector('#vision-mount [data-p=roadmap]'); if(b) b.click(); return false;" style="color:var(--teal);">The Whole Vision → Roadmap</a>.</p>
+    </div>
+  </div>
+  <div id="roadmap-compact" style="margin-bottom:40px;"></div>
 
   <!-- PRIORITY 1 — PHOTO SORTER -->
   <div class="proj-group" style="--pi-accent:#0f7d8c;border-left-color:#0f7d8c;">
@@ -1235,6 +1275,7 @@ hr { border: none; border-top: 1px solid var(--border); margin: 18px 0; }
       <button class="vis-tab" data-p="map">The Map</button>
       <button class="vis-tab" data-p="funnel">Water Funnel</button>
       <button class="vis-tab" data-p="money">Money</button>
+      <button class="vis-tab" data-p="roadmap">Roadmap</button>
       <button class="vis-tab" data-p="week">This Week</button>
       <button class="vis-tab" data-p="vault">The Vault</button>
     </div>
@@ -1618,6 +1659,32 @@ hr { border: none; border-top: 1px solid var(--border); margin: 18px 0; }
     <p style="font-size:.82rem;color:var(--muted);margin-top:24px;max-width:62ch;">
       Read top-down, two things jump out: your <b>recurring</b> money (membership, planners, Spiral) is mostly waiting on a small unlock, and your <b>backlog</b> money (stock, prints, products) is pure upside that just needs curation — which is the photo-organizing work you already want to do this week.
     </p>
+  </div>
+</section>
+
+<!-- ============ ROADMAP ============ -->
+<section class="vis-panel" id="roadmap">
+  <div class="wrap">
+    <div class="sechead">
+      <div class="eyebrow">How it all correlates</div>
+      <h2 class="serif">The Capacity Roadmap</h2>
+      <p class="lede">Not a monthly plan — a chain. Each stage's residual income is what buys you the time for the next one. Click a stage to mark it residual once it's actually flowing on its own; the next one unlocks. Roughly 10–60 minutes a day per active stream, on top of whatever's already residual.</p>
+    </div>
+
+    <div class="alwayson">
+      <div class="pulse"></div>
+      <div>
+        <h4>Water — always on</h4>
+        <p>Not gated by anything below. Stays focused and active the entire time, in parallel with every stage of this chain.</p>
+      </div>
+    </div>
+
+    <div id="roadmap-full"></div>
+
+    <div class="rm-endcard">
+      <h4 class="serif">Then — 7 streams of income</h4>
+      <p>Some residual, some active (water coaching/calls is the "extra effort, extra pay" one). Once they're all flowing, there's real time to write, create and post freely, practice tattooing, connect with brands, and work on UGC — the stuff that isn't about survival anymore, just creation.</p>
+    </div>
   </div>
 </section>
 
@@ -5157,6 +5224,67 @@ function renderAllProjChecklists() {
   PROJ_SECTIONS.forEach(renderProjChecklist);
 }
 
+// ─── CAPACITY-UNLOCK ROADMAP (shared between Whole Vision + Project Index) ──
+const ROADMAP_KEY = 'eau_roadmap_v1';
+const ROADMAP_STAGES = [
+  { id:'photosorter',   name:'Photo Sorter & Print Shop',        time:'30–60 min/day', desc:"Get it fully live — ads running, print shop up, money flowing." },
+  { id:'personalig',    name:'Personal Instagram — light posting', time:'10–20 min/day', desc:"Once Photo Sorter income is flowing, start posting lightly to the personal account." },
+  { id:'hormonecycle',  name:'Hormone & Cycle Content',           time:'20–30 min/day', desc:"Dial in Cycle Harmony — build the page, talk about it on the business account." },
+  { id:'watercoaching', name:'Water Coaching & Calls',            time:'30–60 min/day', desc:"With two residual streams flowing, there's capacity for calls and nurturing water leads." },
+  { id:'booksplanners', name:'Books, Planners & Calendars',       time:'30–60 min/day', desc:"Time to create the books and calendars, and set up drop shipping." },
+];
+
+function getRoadmapState() {
+  try { return JSON.parse(localStorage.getItem(ROADMAP_KEY) || '{}'); } catch(e) { return {}; }
+}
+function saveRoadmapState(state) { localStorage.setItem(ROADMAP_KEY, JSON.stringify(state)); }
+
+function roadmapStatusFor(index, state) {
+  if (state[ROADMAP_STAGES[index].id] === 'residual') return 'residual';
+  if (index === 0) return 'active';
+  return state[ROADMAP_STAGES[index-1].id] === 'residual' ? 'active' : 'locked';
+}
+
+function toggleRoadmapStage(id) {
+  const state = getRoadmapState();
+  const idx = ROADMAP_STAGES.findIndex(s => s.id === id);
+  if (roadmapStatusFor(idx, state) === 'locked') return;
+  if (state[id] === 'residual') {
+    delete state[id];
+  } else {
+    state[id] = 'residual';
+  }
+  saveRoadmapState(state);
+  renderAllRoadmaps();
+}
+
+function roadmapStageHTML(index) {
+  const stage = ROADMAP_STAGES[index];
+  const status = roadmapStatusFor(index, getRoadmapState());
+  const icon = status === 'residual' ? '✓' : (index + 1);
+  const statusLabel = status === 'residual' ? 'Residual — flowing' : status === 'active' ? 'Active now' : 'Locked';
+  return `<div class="rm-stage ${status}">
+    <div class="rm-check" onclick="toggleRoadmapStage('${stage.id}')" title="${status === 'locked' ? 'Unlocks once the previous stage is marked residual' : 'Click to mark residual'}">${icon}</div>
+    <div class="rm-body">
+      <div class="rm-k">Stage ${index + 1}</div>
+      <h4>${stage.name}<span class="rm-time">${stage.time}</span></h4>
+      <p>${stage.desc}</p>
+      <span class="rm-status">${statusLabel}</span>
+    </div>
+  </div>`;
+}
+
+function renderRoadmap(mountId) {
+  const el = document.getElementById(mountId);
+  if (!el) return;
+  el.innerHTML = ROADMAP_STAGES.map((s, i) => roadmapStageHTML(i)).join('');
+}
+
+function renderAllRoadmaps() {
+  renderRoadmap('roadmap-full');
+  renderRoadmap('roadmap-compact');
+}
+
 function addProjTodo(label) {
   const inp = document.getElementById('proj-input-' + label);
   if (!inp || !inp.value.trim()) return;
@@ -5216,7 +5344,7 @@ function seedStarterTodos() {
     localStorage.setItem(SEED_V2, '1');
   }
 }
-function initTodos() { seedStarterTodos(); renderTodos(); renderCreatorExtra(); initCcTodos(); }
+function initTodos() { seedStarterTodos(); renderTodos(); renderCreatorExtra(); initCcTodos(); renderAllRoadmaps(); }
 
 // ─── FACEBOOK: Post checkboxes ─────────────────────────────────────────────
 function fbCheck(el, key) {

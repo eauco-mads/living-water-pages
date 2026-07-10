@@ -1,0 +1,1419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interior Page Guide — The Return Collection</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #faf9f5;
+  --ink: #2e2820;
+  --muted: #7a6a50;
+  --sage: #a8b89a;
+  --moss: #5a7852;
+  --dust: #dfd7c5;
+  --dustlight: #f0ebe0;
+  --rose: #c4a090;
+  --tan: #d4c9b0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+/* ── TABS ─────────────────────────────────────── */
+.tab-bar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--ink);
+  display: flex;
+  gap: 0;
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 16px 20px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+  transition: color 0.2s, background 0.2s;
+  border-bottom: 2px solid transparent;
+}
+
+.tab-btn.active {
+  color: #faf9f5;
+  border-bottom-color: var(--sage);
+}
+
+.tab-btn:hover { color: rgba(255,255,255,0.8); }
+
+/* ── PANELS ──────────────────────────────────── */
+.panel { display: none; padding: 40px 24px 80px; }
+.panel.active { display: block; }
+
+.panel-inner { max-width: 760px; margin: 0 auto; }
+
+/* ── PAGE TYPE BADGES ──────────────────────────── */
+.badge {
+  display: inline-block;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 8px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 2px;
+  vertical-align: middle;
+  margin-right: 6px;
+  flex-shrink: 0;
+}
+.b-poem    { background: #e8f0e2; color: var(--moss); }
+.b-teach   { background: #efe8d8; color: #6b5940; }
+.b-soma    { background: #f0e4dc; color: #8a5545; }
+.b-game    { background: #dff0e4; color: #3a6b4a; }
+.b-prompt  { background: #e8e4f5; color: #5a4a8a; }
+.b-art     { background: var(--dustlight); color: var(--muted); }
+.b-mantra  { background: #f5e8d8; color: #7a5a30; }
+.b-thread  { background: #e0e0dc; color: #4a4540; }
+.b-mind    { background: #fce8e0; color: #8a3a20; }
+.b-junk    { background: #f0f0e0; color: #5a5a20; }
+.b-wreck   { background: #f8e0f0; color: #7a207a; }
+.b-fort    { background: #e0e8f8; color: #203a7a; }
+.b-struct  { background: #e8e8e8; color: #4a4a4a; }
+
+/* ── SECTION HEADERS ─────────────────────────── */
+.ring-header {
+  margin: 48px 0 24px;
+  padding-bottom: 12px;
+  border-bottom: 1.5px solid var(--dust);
+}
+
+.ring-label {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--sage);
+  display: block;
+  margin-bottom: 4px;
+}
+
+.ring-title {
+  font-size: 1.3em;
+  font-weight: normal;
+  font-style: italic;
+  color: var(--ink);
+}
+
+.chapter-header {
+  margin: 32px 0 16px;
+}
+
+.chapter-label {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  display: block;
+  margin-bottom: 3px;
+}
+
+.chapter-name {
+  font-size: 1.1em;
+  font-style: italic;
+  color: var(--ink);
+}
+
+/* ── PAGE ENTRIES ─────────────────────────────── */
+.pages-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-bottom: 8px;
+}
+
+.page-entry {
+  border: 1px solid var(--dust);
+  border-left: 3px solid var(--dust);
+  background: white;
+  transition: border-left-color 0.15s;
+}
+
+.page-entry.poem-e   { border-left-color: var(--sage); }
+.page-entry.teach-e  { border-left-color: var(--tan); }
+.page-entry.soma-e   { border-left-color: var(--rose); }
+.page-entry.game-e   { border-left-color: var(--moss); }
+.page-entry.prompt-e { border-left-color: #9a90c8; }
+.page-entry.art-e    { border-left-color: var(--dust); }
+.page-entry.mantra-e { border-left-color: #c8a060; }
+.page-entry.thread-e { border-left-color: var(--ink); }
+.page-entry.mind-e   { border-left-color: #c85030; }
+.page-entry.junk-e   { border-left-color: #a0a030; }
+.page-entry.wreck-e  { border-left-color: #c020c0; }
+.page-entry.fort-e   { border-left-color: #3060c8; }
+.page-entry.struct-e { border-left-color: #c0c0c0; }
+
+.page-toggle {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 12px 16px;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-family: Georgia, serif;
+  font-size: 0.93em;
+  color: var(--ink);
+  line-height: 1.4;
+}
+
+.page-toggle:hover { background: var(--dustlight); }
+
+.page-title-text { flex: 1; }
+
+.expand-icon {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 10px;
+  color: var(--muted);
+  margin-top: 2px;
+  flex-shrink: 0;
+  transition: transform 0.2s;
+}
+
+.page-detail {
+  display: none;
+  padding: 0 16px 16px 16px;
+  border-top: 1px solid var(--dustlight);
+}
+
+.page-detail.open { display: block; }
+
+.expand-icon.rotated { transform: rotate(180deg); }
+
+.detail-content {
+  font-size: 0.9em;
+  color: var(--ink);
+  line-height: 1.8;
+  margin-top: 12px;
+}
+
+.detail-content p + p { margin-top: 0.6em; }
+
+.psych-note {
+  margin-top: 10px;
+  padding: 8px 12px;
+  background: var(--dustlight);
+  border-left: 2px solid var(--dust);
+  font-size: 0.85em;
+  color: var(--muted);
+  font-style: italic;
+  line-height: 1.65;
+}
+
+.prompt-q {
+  padding: 6px 0 6px 16px;
+  border-left: 2px solid var(--sage);
+  font-style: italic;
+  color: var(--ink);
+  margin: 6px 0;
+  font-size: 0.92em;
+}
+
+.steps {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 6px;
+}
+.steps li {
+  padding-left: 20px;
+  position: relative;
+  font-size: 0.9em;
+  line-height: 1.65;
+}
+.steps li::before {
+  content: attr(data-n);
+  position: absolute;
+  left: 0;
+  color: var(--sage);
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 0.8em;
+  font-weight: bold;
+  top: 2px;
+}
+
+.fork-box {
+  background: #f5f5f0;
+  border: 1px solid var(--ink);
+  padding: 12px 16px;
+  margin-top: 8px;
+  font-size: 0.88em;
+}
+
+.fork-box p { margin-bottom: 6px; font-style: italic; color: var(--muted); }
+.fork-option {
+  padding: 4px 0 4px 16px;
+  position: relative;
+  color: var(--ink);
+  line-height: 1.5;
+}
+.fork-option::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--ink);
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 0.85em;
+}
+
+/* Front/back matter lists */
+.matter-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+
+/* Page count note */
+.page-count {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 4px;
+  padding: 8px 12px;
+  background: var(--dustlight);
+  display: inline-block;
+}
+
+/* Section intro text */
+.section-intro {
+  font-size: 0.92em;
+  color: var(--muted);
+  font-style: italic;
+  line-height: 1.75;
+  max-width: 58ch;
+  margin-bottom: 24px;
+}
+
+@media (max-width: 520px) {
+  .panel { padding: 28px 16px 60px; }
+  .tab-btn { padding: 14px 12px; font-size: 8px; }
+}
+</style>
+</head>
+<body>
+
+<div style="max-width:760px;margin:0 auto;padding:16px 24px 0;">
+  <a href="index.html" style="display:inline-block;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#5a7852;text-decoration:none;border-bottom:1px solid #dfd7c5;padding-bottom:2px;">← Series Map</a>
+</div>
+
+<!-- TAB BAR -->
+<div class="tab-bar">
+  <button class="tab-btn active" onclick="switchTab('soft', this)">The Soft Return</button>
+  <button class="tab-btn" onclick="switchTab('wild', this)">The Wild Return</button>
+</div>
+
+<!-- ════════════════════════════════════════════════ -->
+<!-- PANEL 1: THE SOFT RETURN -->
+<!-- ════════════════════════════════════════════════ -->
+<div class="panel active" id="panel-soft">
+<div class="panel-inner">
+
+  <p class="section-intro">Each chapter follows the same psychological arc: soften (poem) → understand (teaching) → regulate (somatic) → play (game) → express (prompts + art) → anchor (mantra) → choose (thread fork). This sequence works even if a reader only opens to one chapter.</p>
+  <span class="page-count">Target: 150–165 pages total &nbsp;·&nbsp; 10 chapters × ~13 pages + front/back matter</span>
+
+  <!-- FRONT MATTER -->
+  <div class="ring-header" style="margin-top:32px;">
+    <span class="ring-label">Front Matter</span>
+    <span class="ring-title">Before the Journey Begins</span>
+  </div>
+
+  <div class="pages-list matter-list">
+
+    <div class="page-entry struct-e">
+      <button class="page-toggle" onclick="togglePage(this)">
+        <span class="badge b-struct">Structural</span>
+        <span class="page-title-text">Half-title page — "The Soft Return"</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p>Title only, centered. Large italic serif. Lots of white space. Feels like a breath before diving in.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry struct-e">
+      <button class="page-toggle" onclick="togglePage(this)">
+        <span class="badge b-struct">Structural</span>
+        <span class="page-title-text">Full title page — title, subtitle, author</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p><em>The Soft Return</em> · A Somatic Inner Child Journal for Coming Home to Yourself · Maddie Galloway</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry struct-e">
+      <button class="page-toggle" onclick="togglePage(this)">
+        <span class="badge b-struct">Structural</span>
+        <span class="page-title-text">"This Book Belongs To" — fill-in page</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p>Name line · Date you began · One word for what you're hoping to find · "This book was written for you. Specifically. Even if we've never met."</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry struct-e">
+      <button class="page-toggle" onclick="togglePage(this)">
+        <span class="badge b-struct">Structural</span>
+        <span class="page-title-text">A note before you begin — how to use this journal</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p>Key message: there is no right order, no right amount, no right way. Body first, always. Skip anything that doesn't feel right. Come back. There are no wrong turns here — only threads.</p>
+          <p>Mention the Follow Your Thread forks scattered throughout — they're optional, never required.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry struct-e">
+      <button class="page-toggle" onclick="togglePage(this)">
+        <span class="badge b-struct">Structural</span>
+        <span class="page-title-text">Letter from Maddie — personal opening</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p>Warm, direct, personal. Written in her handwriting font if possible. The tone: "I made this because I needed it." Not clinical, not preachy. Ends with something like: "The version of you that picked this up — she knew what she was doing."</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry struct-e">
+      <button class="page-toggle" onclick="togglePage(this)">
+        <span class="badge b-struct">Structural</span>
+        <span class="page-title-text">The Five Rings — spiral map visual</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p>A visual of the spiral with all five rings labeled: Safety · Feeling · Understanding · Reconnecting · Becoming. Not a table of contents — more like a map you look at before a hike. Shows that the journey spirals inward.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry thread-e">
+      <button class="page-toggle" onclick="togglePage(this)">
+        <span class="badge b-thread">Follow Your Thread</span>
+        <span class="page-title-text">Your Entry Point — the opening gateway</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p>The first Follow Your Thread moment. Reads:</p>
+          <div class="fork-box">
+            <p>"Close your eyes. Take one breath. Open them and read the statement that feels most true in your body right now:"</p>
+            <div class="fork-option">My body feels tight, anxious, or on guard → start at Chapter 1</div>
+            <div class="fork-option">I feel numb, foggy, or far away from myself → start at Chapter 5</div>
+            <div class="fork-option">I feel sad but present and open → start at Chapter 3</div>
+            <div class="fork-option">I'm actually okay — I just want to play → start at Chapter 8</div>
+            <div class="fork-option" style="margin-top:8px; font-style:italic; color: var(--muted);">"You can always change your mind. You can start over. There are no wrong doors."</div>
+          </div>
+          <div class="psych-note">Giving agency at the very start regulates the nervous system. The reader's inner child is immediately in the driver's seat, not following rules.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry soma-e">
+      <button class="page-toggle" onclick="togglePage(this)">
+        <span class="badge b-soma">Somatic</span>
+        <span class="page-title-text">Before You Begin — full body baseline check-in</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p>A simple body scan to use before any session. Serves as a baseline — they can return to this page after each chapter to notice what shifted.</p>
+          <ol class="steps">
+            <li data-n="1.">Sit or lie down. Allow your weight to be fully supported.</li>
+            <li data-n="2.">Notice your breath. Don't change it. Just feel it.</li>
+            <li data-n="3.">Scan from feet to head. Where do you feel tension? Numbness? Warmth?</li>
+            <li data-n="4.">Draw or circle where you feel it on the body outline below.</li>
+            <li data-n="5.">Write three words: how does your body feel right now?</li>
+          </ol>
+          <p style="margin-top:10px;">Include a simple line-drawing body outline (front view) for them to mark.</p>
+          <div class="psych-note">Beginning with body awareness primes the reader for somatic work and creates a felt sense of starting point — healing becomes measurable even without words.</div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end front matter -->
+
+  <!-- RING 1 -->
+  <div class="ring-header">
+    <span class="ring-label">Ring One</span>
+    <span class="ring-title">Safety</span>
+  </div>
+
+  <!-- CHAPTER 1 -->
+  <div class="chapter-header">
+    <span class="chapter-label">Chapter One</span>
+    <span class="chapter-name">The Place Where You Begin</span>
+  </div>
+  <div class="pages-list">
+
+    <div class="page-entry poem-e">
+      <button class="page-toggle" onclick="togglePage(this)">
+        <span class="badge b-poem">Poem</span>
+        <span class="page-title-text">Opening poem — "The Place Where You Begin"</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p>From the manuscript. Full page. No prompt, no instructions. Just the poem and white space. Let it land.</p>
+          <div class="psych-note">Poems lower defenses before any "work" begins. The nervous system receives poetry differently than instruction — it relaxes into it.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry teach-e">
+      <button class="page-toggle" onclick="togglePage(this)">
+        <span class="badge b-teach">Teaching</span>
+        <span class="page-title-text">What Your Nervous System Was Trying to Do — 2-page spread</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p>Simple explanation of the three nervous system states (safe/regulated · activated/fight-flight · shutdown/freeze). Key message: <em>none of these responses are wrong — they were correct for what you were living through.</em></p>
+          <p>Include a small visual: three states shown as three circles or a simple diagram. Keep it warm, not clinical. End with: "Your nervous system didn't fail you. It protected you. That matters."</p>
+          <div class="psych-note">Psychoeducation delivered with warmth removes shame from survival responses and builds safety to explore further. This is the cognitive container for the somatic work that follows.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry soma-e">
+      <button class="page-toggle" onclick="togglePage(this)">
+        <span class="badge b-soma">Somatic</span>
+        <span class="page-title-text">Practice — "Finding Your Feet"</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <ol class="steps">
+            <li data-n="1.">Take your shoes off if you can. Press both feet fully into the floor.</li>
+            <li data-n="2.">Feel the floor pressing back. That resistance is real. You are held.</li>
+            <li data-n="3.">Slowly notice: where do your feet meet the ground? What's the texture? Temperature?</li>
+            <li data-n="4.">Take 3 slow breaths. With each exhale, imagine sending your breath all the way down to your feet.</li>
+            <li data-n="5.">Notice: is there any place in your body that softened — even a little?</li>
+          </ol>
+          <p style="margin-top:8px;">Write one word below: what does your body feel now?</p>
+          <div class="psych-note">Grounding activates the parasympathetic nervous system and anchors attention in the present body — the prerequisite for any meaningful inner child work.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry game-e">
+      <button class="page-toggle" onclick="togglePage(this)">
+        <span class="badge b-game">I Spy</span>
+        <span class="page-title-text">I Spy — Grounding Edition</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p>"I spy, with my little eye, something that belongs to right now."</p>
+          <p>Find one thing in the room that feels:</p>
+          <div class="prompt-q">Safe</div>
+          <div class="prompt-q">Soft</div>
+          <div class="prompt-q">Like something a child would love</div>
+          <div class="prompt-q">Yours</div>
+          <p style="margin-top:8px;">Write or draw what you found. [4 small boxes or lines]</p>
+          <p style="font-style:italic; color:var(--muted); font-size:0.88em; margin-top:6px;">"They were here the whole time."</p>
+          <div class="psych-note">I Spy redirects hypervigilant scanning (looking for threats) toward sensory beauty and safety. Activates the orienting response in a positive direction.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry prompt-e">
+      <button class="page-toggle" onclick="togglePage(this)">
+        <span class="badge b-prompt">Prompts</span>
+        <span class="page-title-text">Journal prompts — 2 pages of writing space</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <div class="prompt-q">When did you first learn it might not be safe to just be yourself?</div>
+          <div class="prompt-q">What does your body do when it's scared? (Do you hold your breath? Get small? Get very still? Get loud?)</div>
+          <div class="prompt-q">If safety were a feeling that lived in your body, where would it be?</div>
+          <p style="margin-top:8px; font-size:0.88em; color:var(--muted);">Lots of lines. No pressure to fill them. One sentence is enough.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry art-e">
+      <button class="page-toggle" onclick="togglePage(this)">
+        <span class="badge b-art">Art Page</span>
+        <span class="page-title-text">"Draw or color what 'safe' feels like"</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p>Full blank page. Instruction at the top: <em>"It doesn't have to look like anything. Let your hand move and see what wants to come out."</em></p>
+          <p>Very light decorative border, otherwise completely open.</p>
+          <div class="psych-note">Right-brain expression bypasses the inner critic. The act of making something — anything — activates the parasympathetic system and builds a felt sense of creative agency.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry mantra-e">
+      <button class="page-toggle" onclick="togglePage(this)">
+        <span class="badge b-mantra">Mantra</span>
+        <span class="page-title-text">Integration mantra — Chapter 1</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p><em>"My body has been keeping me safe. I can thank it now, and ask it to rest."</em></p>
+          <p style="margin-top:8px;">Beautiful typography, centered, lots of breathing room. A space below to rewrite it in their own handwriting — the act of writing anchors it somatically.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry thread-e">
+      <button class="page-toggle" onclick="togglePage(this)">
+        <span class="badge b-thread">Follow Your Thread</span>
+        <span class="page-title-text">Chapter 1 fork — soft check-in</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <div class="fork-box">
+            <p>"Before you turn the page, notice: something has shifted. Even 1%. What was it?"</p>
+            <p style="margin-top:6px;">[small writing space]</p>
+            <div class="fork-option">If you need more time in this chapter — stay. There is no rush.</div>
+            <div class="fork-option">If you're ready — Chapter 2 is waiting.</div>
+          </div>
+          <div class="psych-note">Micro-check-ins after each chapter build interoceptive awareness (the ability to notice internal states) — a core skill in healing anxiety and disconnection.</div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end ch1 -->
+
+  <!-- CHAPTER 2 -->
+  <div class="chapter-header">
+    <span class="chapter-label">Chapter Two</span>
+    <span class="chapter-name">The Emotions You Were Told Were Too Much</span>
+  </div>
+  <div class="pages-list">
+
+    <div class="page-entry poem-e">
+      <button class="page-toggle" onclick="togglePage(this)">
+        <span class="badge b-poem">Poem</span>
+        <span class="page-title-text">Opening poem — "The Emotions"</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail"><div class="detail-content"><p>From the manuscript. Full page. Let it land.</p></div></div>
+    </div>
+
+    <div class="page-entry teach-e">
+      <button class="page-toggle" onclick="togglePage(this)">
+        <span class="badge b-teach">Teaching</span>
+        <span class="page-title-text">Why You Learned to Perform Instead of Feel — 2-page spread</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p>Explains how children suppress emotions when those emotions weren't welcomed or safe. The "performing" self vs. the real self. Key message: <em>You didn't become fake — you became strategic. That was smart. You get to choose differently now.</em></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry soma-e">
+      <button class="page-toggle" onclick="togglePage(this)">
+        <span class="badge b-soma">Somatic</span>
+        <span class="page-title-text">Practice — "Riding the Wave"</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <ol class="steps">
+            <li data-n="1.">Think of a feeling that's present right now. Not the story around it — just the sensation.</li>
+            <li data-n="2.">Where do you feel it in your body? Put a hand there.</li>
+            <li data-n="3.">Give it a shape. A color. A texture.</li>
+            <li data-n="4.">Watch it the way you'd watch a wave. You don't have to stop it. You don't have to ride it. Just... watch.</li>
+            <li data-n="5.">Notice: waves crest. They always come down. So does this.</li>
+          </ol>
+          <div class="psych-note">Teaching tolerating emotion without suppressing or being overwhelmed by it is the core of somatic healing work. This practice builds "window of tolerance."</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry game-e">
+      <button class="page-toggle" onclick="togglePage(this)">
+        <span class="badge b-game">Word Search</span>
+        <span class="page-title-text">Emotions word search</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p>Hidden words: JOY · GRIEF · RAGE · SHAME · WONDER · FEAR · PEACE · LONGING · TENDER · AWE · NUMB · SAFE</p>
+          <p>Caption above: <em>"All of these live in you. Find them."</em></p>
+          <p>Caption below after grid: <em>"Every word you found was already there. Circle the ones that feel like yours right now."</em></p>
+          <div class="psych-note">Normalizes the full range of human emotion by presenting all feelings — even "difficult" ones — as simply findable, present, and non-threatening.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry prompt-e">
+      <button class="page-toggle" onclick="togglePage(this)">
+        <span class="badge b-prompt">Prompts</span>
+        <span class="page-title-text">Journal prompts — 2 pages</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <div class="prompt-q">Which emotion were you taught was "too much" — too loud, too messy, too dramatic, too sad?</div>
+          <div class="prompt-q">How did you learn to manage it? What did you do with it instead?</div>
+          <div class="prompt-q">What would you say to a child who felt that feeling, right now?</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry art-e">
+      <button class="page-toggle" onclick="togglePage(this)">
+        <span class="badge b-art">Art Page</span>
+        <span class="page-title-text">"Color this page with today's feeling"</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p>A simple, beautiful body outline — front-facing. No labels. Instruction: <em>"Color where you feel things. Use whatever colors feel right. There is no correct answer."</em></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry mantra-e">
+      <button class="page-toggle" onclick="togglePage(this)">
+        <span class="badge b-mantra">Mantra</span>
+        <span class="page-title-text">Integration mantra — Chapter 2</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p><em>"My feelings were never the problem. They were information I didn't know how to hold yet. I'm learning."</em></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry thread-e">
+      <button class="page-toggle" onclick="togglePage(this)">
+        <span class="badge b-thread">Follow Your Thread</span>
+        <span class="page-title-text">Chapter 2 fork — what came up?</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <div class="fork-box">
+            <p>"What came up in this chapter?"</p>
+            <div class="fork-option">Something heavy — grief, sadness, or loss → go to the extra reflection on page [X] before continuing</div>
+            <div class="fork-option">Something hot — anger, frustration, or fight energy → go to the extra reflection on page [X]</div>
+            <div class="fork-option">Nothing came up, or I felt numb → that's information too. Go to page [X]</div>
+            <div class="fork-option">I feel lighter — ready to keep going → Chapter 3 is next</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end ch2 -->
+
+  <!-- RINGS 2–5 COMPRESSED -->
+  <div class="ring-header">
+    <span class="ring-label">Rings Two through Five</span>
+    <span class="ring-title">Feeling · Understanding · Reconnecting · Becoming</span>
+  </div>
+
+  <p class="section-intro" style="margin-bottom:16px;">Chapters 3–10 follow the exact same 8-page arc as Chapters 1–2. Below are the unique elements for each chapter — the poem topic, teaching theme, somatic practice, game type, prompts, mantra, and fork text. All other page types (art page, extra writing pages) repeat the same template.</p>
+
+  <div class="pages-list">
+
+    <div class="page-entry teach-e">
+      <button class="page-toggle" onclick="togglePage(this)">
+        <span class="badge b-teach">Ch. 3</span>
+        <span class="page-title-text">Survival Mode Is Not Your Personality</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p><strong>Teaching:</strong> The patterns that kept you safe then — fawning, over-explaining, shrinking, controlling — were adaptive. They cost you something. Key message: <em>Your coping strategies are not your character.</em></p>
+          <p><strong>Somatic — "Softening the Armor":</strong> Roll shoulders back and down. Feel the chest open. Take 3 breaths into the chest. Notice what you were protecting by closing there.</p>
+          <p><strong>Game — Fill-in:</strong> "The strategy I used most to stay safe was ___. It worked because ___. What it cost me was ___. I'm ready to thank it by saying: ___."</p>
+          <div class="prompt-q">Which survival strategy shows up most in your life right now?</div>
+          <div class="prompt-q">If that pattern had a voice, what would it say it's trying to protect?</div>
+          <p><strong>Mantra:</strong> <em>"I survived. And survival is not the ceiling — it's the floor I get to build from."</em></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry teach-e">
+      <button class="page-toggle" onclick="togglePage(this)">
+        <span class="badge b-teach">Ch. 4</span>
+        <span class="page-title-text">Teaching Your Body That Now Is Different</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p><strong>Teaching:</strong> Triggers are old memories looking for an update. Your nervous system is pattern-matching to the past. Key message: <em>You are not overreacting. You are under-informed — your body hasn't gotten the news yet that it's safe.</em></p>
+          <p><strong>Somatic — "Pendulation":</strong> Notice a mild activation in the body. Then shift attention to something neutral or pleasant in the room. Back to the activation. Back to neutral. Repeat. This teaches the nervous system it can move between states.</p>
+          <p><strong>Game — I Spy (Then vs Now):</strong> "I spy something that belongs to NOW, not then." Find 3 things in the room that are proof you're not in the past. Write them. <em>"These are evidence."</em></p>
+          <div class="prompt-q">When you notice yourself triggered, what does your body do first — before your mind catches up?</div>
+          <div class="prompt-q">What would you want to say to the version of you who first learned that response?</div>
+          <p><strong>Mantra:</strong> <em>"My past was real. My body remembers. And right now, in this moment, I am safe enough to heal."</em></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry teach-e">
+      <button class="page-toggle" onclick="togglePage(this)">
+        <span class="badge b-teach">Ch. 5</span>
+        <span class="page-title-text">Meeting the Little One Inside</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p><strong>Teaching:</strong> What inner child work actually is — not regression, not "becoming" a child. It's building a relationship with the part of you that stopped developing when it got scared. Key message: <em>She didn't go anywhere. She went quiet.</em></p>
+          <p><strong>Somatic — "Hand on Heart":</strong> Place one or both hands on the center of your chest. Feel the warmth of your own hands. Let yourself be held — by yourself. Breathe into your hands. Say (silently or aloud): "I see you. I'm not leaving."</p>
+          <p><strong>Game — Word Search:</strong> Hidden words: PLAY · MUD · STARS · NAPS · STORIES · WONDER · CRAYON · MAGIC · LAUGH · CLIMB · DREAM · SILLY. Caption: <em>"She remembers all of these."</em></p>
+          <div class="prompt-q">If your inner child could write you a letter, what do you think she'd say?</div>
+          <div class="prompt-q">What did you love doing at age 7 that you no longer let yourself do?</div>
+          <p><strong>Art Page:</strong> Draw yourself at age 7. What are you doing? Where are you? What's on your face?</p>
+          <p><strong>Mantra:</strong> <em>"She has been waiting patiently. I'm showing up now."</em></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry teach-e">
+      <button class="page-toggle" onclick="togglePage(this)">
+        <span class="badge b-teach">Ch. 6</span>
+        <span class="page-title-text">Rewriting the Story</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p><strong>Teaching:</strong> The stories we tell about ourselves formed in childhood to make sense of things that didn't make sense. They were the best explanations a small person could form. You are the author now.</p>
+          <p><strong>Somatic — "Shaking It Out":</strong> Stand up if you can. Gently shake your hands, then wrists, then arms, then whole body. 60 seconds. This is how animals discharge stress after a threat. Let it be weird. Let it work.</p>
+          <p><strong>Game — Mad Libs Affirmation:</strong> Fill in the blanks: "I am ___. I used to believe I was ___, but that story belonged to ___. I release ___. The truest thing about me is ___."</p>
+          <div class="prompt-q">What is the oldest story you tell about who you are? Where did it come from?</div>
+          <div class="prompt-q">What story do you want to tell instead? What would it feel like to live from there?</div>
+          <p><strong>Art Page:</strong> Two columns — "Old Story" on the left, "True Story" on the right. Draw, write, collage, scribble. Both sides.</p>
+          <p><strong>Mantra:</strong> <em>"The story I was given was not the truth of me. I am allowed to write a new one."</em></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry teach-e">
+      <button class="page-toggle" onclick="togglePage(this)">
+        <span class="badge b-teach">Ch. 7</span>
+        <span class="page-title-text">Play Is a Form of Healing</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p><strong>Teaching:</strong> Play is not frivolous — it is the primary way the nervous system regulates, integrates, and heals. Adults who stop playing often stop healing. Key message: <em>You don't have to earn play. It is the work.</em></p>
+          <p><strong>Somatic — "Shake Your Sillies Out":</strong> Put on a song (optional). Dance, jump, wiggle, make a sound that has no meaning. 90 seconds minimum. Let the body move without purpose. Notice if something loosens.</p>
+          <p><strong>Game — Dot-to-Dot:</strong> Connect the dots. Reveals a butterfly. Caption when complete: <em>"The shape was always there. You just had to follow the sequence."</em></p>
+          <div class="prompt-q">What did play feel like as a child? Describe it physically — where in your body did joy live?</div>
+          <div class="prompt-q">What would you do this week if no one was watching and nothing needed to be productive?</div>
+          <p><strong>Art Page:</strong> Full blank page. Instructions: <em>"Make something for absolutely no reason. Nothing needs to come from it."</em></p>
+          <p><strong>Mantra:</strong> <em>"Play is not a reward I earn. It is the language my inner child speaks. I'm learning to speak it again."</em></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry teach-e">
+      <button class="page-toggle" onclick="togglePage(this)">
+        <span class="badge b-teach">Ch. 8</span>
+        <span class="page-title-text">Unlearning the Rules</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p><strong>Teaching:</strong> Most of the rules we follow were absorbed, not chosen. They served someone — often not us. Key message: <em>You are allowed to audit the rules and keep only the ones that are actually yours.</em></p>
+          <p><strong>Somatic — "The Long Exhale":</strong> Breathe in for 4 counts. Hold for 2. Exhale for 8. Repeat 4 times. The extended exhale activates the vagus nerve — the physical mechanism of letting go.</p>
+          <p><strong>Game — Fill-in:</strong> "A rule I was taught: ___. Who it actually served: ___. Whether I choose to keep it: ___. If I release it, what becomes possible: ___."</p>
+          <div class="prompt-q">What rules do you live by that you never consciously chose?</div>
+          <div class="prompt-q">Which rule are you most ready to break — or at least examine?</div>
+          <p><strong>Art Page:</strong> Write every rule you were given — fill the page. Then cross out the ones that were never actually true about you.</p>
+          <p><strong>Mantra:</strong> <em>"I get to decide what I carry forward. Not everything handed to me was meant for me."</em></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry teach-e">
+      <button class="page-toggle" onclick="togglePage(this)">
+        <span class="badge b-teach">Ch. 9</span>
+        <span class="page-title-text">Building Your Inner Home</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p><strong>Teaching:</strong> Safety doesn't have to come from the outside. There is a place inside you that has always been home — it was just buried under noise. Key message: <em>You don't need anyone's permission to come home to yourself.</em></p>
+          <p><strong>Somatic — "The Container":</strong> Imagine a space inside your chest — warm, lit, completely yours. Notice its size, its temperature, its quality. This is yours. No one can enter without your invitation. Breathe into it.</p>
+          <p><strong>Game — I Spy (Inner Home Edition):</strong> "I spy, with my inner eye, something that feels like home." Close your eyes. What image, memory, or sensation arises? Draw or describe it below.</p>
+          <div class="prompt-q">What made you feel most at home as a child — a place, a person, a feeling, a time of day?</div>
+          <div class="prompt-q">What does the inner home you're building look like? What's in it?</div>
+          <p><strong>Art Page:</strong> Draw the home you carry inside you. It doesn't have to be a house.</p>
+          <p><strong>Mantra:</strong> <em>"I am the home I was looking for. I have always been here."</em></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry teach-e">
+      <button class="page-toggle" onclick="togglePage(this)">
+        <span class="badge b-teach">Ch. 10</span>
+        <span class="page-title-text">Becoming the Person You Needed</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p><strong>Teaching:</strong> Healing is not becoming someone new — it's becoming someone deeply familiar. The most integrated version of you is not far away. Key message: <em>You don't have to finish to begin. You already are.</em></p>
+          <p><strong>Somatic — "Full Body Yes":</strong> Think of something you genuinely want — not what you should want. Notice what your body does. Does it expand? Soften? Lean forward? That physical "yes" is real. Practice recognizing it.</p>
+          <p><strong>Game — Word Search:</strong> Hidden words: BRAVE · SOFT · WHOLE · HOME · ENOUGH · FREE · LOVED · TRUE · WILD · MINE · REAL · READY. Caption: <em>"You were always all of these things."</em></p>
+          <div class="prompt-q">What does the most integrated, healed version of you look like? How does she move? How does she speak to herself?</div>
+          <div class="prompt-q">What do you want to say to the version of you who picked up this book?</div>
+          <p><strong>Art Page:</strong> Draw her. Draw you. Notice if they're the same person.</p>
+          <p><strong>Mantra:</strong> <em>"I am not waiting to become. I am already in the process of arriving."</em></p>
+          <div class="fork-box" style="margin-top:12px;">
+            <p>"You made it to the end. Or maybe you made it to the middle, and that's where you needed to be. Either way:"</p>
+            <div class="fork-option">Turn back to the Entry Point. Read the options again. Notice which one you'd choose now.</div>
+            <div class="fork-option" style="font-style:italic; color:var(--muted);">"Something changed. Even 1%. That counts."</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end rings 2-5 -->
+
+  <!-- BACK MATTER -->
+  <div class="ring-header">
+    <span class="ring-label">Back Matter</span>
+    <span class="ring-title">After the Journey</span>
+  </div>
+
+  <div class="pages-list matter-list">
+
+    <div class="page-entry game-e">
+      <button class="page-toggle" onclick="togglePage(this)">
+        <span class="badge b-game">Challenge</span>
+        <span class="page-title-text">30-Day Soft Return Challenge — one gentle act per day</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p>30 days, each one a small somatic/inner child act. Examples: Day 1 — Take your shoes off outside. Day 2 — Draw something with your non-dominant hand. Day 3 — Say no to something that's a "should." Day 4 — Listen to a song you loved at age 12. Day 5 — Sit in the sun for 5 minutes with nothing to do. Day 6 — Write a letter to your 8-year-old self. Day 7 — Make something messy. And so on.</p>
+          <p>Checkbox grid layout — satisfying to check off.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry struct-e">
+      <button class="page-toggle" onclick="togglePage(this)">
+        <span class="badge b-struct">Seal-a-Letter</span>
+        <span class="page-title-text">"Write a letter to yourself. Open it in one year."</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p>A letterhead-style page with lines, a box at the bottom to fold and seal with a sticker or tape. Prompts to guide the letter: "What I want you to know about where I am right now. What I hope is different for you. What I want you to remember about how hard you've worked."</p>
+          <p>One of the most emotionally resonant pages in any healing journal — people photograph this page constantly.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry struct-e">
+      <button class="page-toggle" onclick="togglePage(this)">
+        <span class="badge b-struct">Structural</span>
+        <span class="page-title-text">2–3 blank lined pages — "More Space"</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content"><p>Plain cream, light lines. No prompts. Titled simply "More Space" — invites overflow writing without pressure.</p></div>
+      </div>
+    </div>
+
+    <div class="page-entry struct-e">
+      <button class="page-toggle" onclick="togglePage(this)">
+        <span class="badge b-struct">Structural</span>
+        <span class="page-title-text">About Maddie + what's next in the collection</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content"><p>Brief bio, warm and personal. A teaser for The Wild Return — "if this journal was a breath in, that one is a breath out." elevatealign.com link.</p></div>
+      </div>
+    </div>
+
+  </div>
+
+</div><!-- end panel-inner -->
+</div><!-- end panel-soft -->
+
+
+<!-- ════════════════════════════════════════════════ -->
+<!-- PANEL 2: THE WILD RETURN -->
+<!-- ════════════════════════════════════════════════ -->
+<div class="panel" id="panel-wild">
+<div class="panel-inner">
+
+  <p class="section-intro">The Wild Return is The Soft Return's chaotic, playful, creative twin. Same 5-ring structure and opening poems. Different everything else. The fort is the recurring narrative thread — each chapter adds a room. By page 10, they've built a complete inner home. Mind Benders, junk journal zones, wreck-this moments, and CYOA tunnels run throughout.</p>
+  <span class="page-count">Target: 150–165 pages &nbsp;·&nbsp; 10 chapters × ~14 pages + front/back matter</span>
+
+  <!-- FRONT MATTER -->
+  <div class="ring-header" style="margin-top:32px;">
+    <span class="ring-label">Front Matter</span>
+    <span class="ring-title">Before the Chaos Begins</span>
+  </div>
+
+  <div class="pages-list matter-list">
+
+    <div class="page-entry struct-e">
+      <button class="page-toggle" onclick="togglePage(this)">
+        <span class="badge b-struct">Structural</span>
+        <span class="page-title-text">Title, "This Book Belongs To," letter from Maddie</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p>Same structure as Soft Return but wilder energy. "This Book Belongs To" has space for: name, what you're giving yourself permission to make a mess of, one thing you're done being serious about.</p>
+          <p>Letter from Maddie — tone: "This one's for the part of you that wants to rip pages out, stomp in mud, and make something absolutely unhinged. That part is sacred too."</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry fort-e">
+      <button class="page-toggle" onclick="togglePage(this)">
+        <span class="badge b-fort">Fort Map</span>
+        <span class="page-title-text">Your Fort — opening blank floor plan</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p>A full blank page with just the words: <em>"Your fort starts here. No rules. No wrong rooms. Build as you go."</em></p>
+          <p>Very light outline of a square/space — like graph paper, almost invisible. They sketch their fort here at the start and keep adding to it throughout the book as each chapter reveals a new room.</p>
+          <div class="psych-note">The fort metaphor is the psychological container for the whole book. Building a home = building a self. No limitations = counter to the anxiety/rules the adult self carries.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry thread-e">
+      <button class="page-toggle" onclick="togglePage(this)">
+        <span class="badge b-thread">Follow Your Thread</span>
+        <span class="page-title-text">Opening gateway — wilder version</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <div class="fork-box">
+            <p>"Where are you right now? Don't think. Just pick."</p>
+            <div class="fork-option">My body is wound tight → go to Chapter 1, find the fort entrance</div>
+            <div class="fork-option">I feel like making something messy → go straight to Chapter 3</div>
+            <div class="fork-option">I want to play a game first → go to page [X] and find the hidden picture</div>
+            <div class="fork-option">I need to be told what to do → open to a random page. That one is yours.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- RING 1 -->
+  <div class="ring-header">
+    <span class="ring-label">Ring One</span>
+    <span class="ring-title">Safety</span>
+  </div>
+
+  <div class="chapter-header">
+    <span class="chapter-label">Chapter One</span>
+    <span class="chapter-name">The Place Where You Begin</span>
+  </div>
+
+  <div class="pages-list">
+
+    <div class="page-entry poem-e">
+      <button class="page-toggle" onclick="togglePage(this)">
+        <span class="badge b-poem">Poem</span>
+        <span class="page-title-text">Same opening poem — different page design</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail"><div class="detail-content"><p>Same poem as Soft Return Chapter 1, but the page design is wilder — textured, layered, feels like the poem was written on found paper. The words are the same; the feeling is different.</p></div></div>
+    </div>
+
+    <div class="page-entry mind-e">
+      <button class="page-toggle" onclick="togglePage(this)">
+        <span class="badge b-mind">Mind Bender</span>
+        <span class="page-title-text">Chapter 1 Mind Bender — a river or stream</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p><strong>The squiggle:</strong> A flowing, organic line — like a river or stream, winding across the middle of the page. Goes off-edge on both sides.</p>
+          <p><strong>Instruction:</strong> "This is something. You decide what. Add to it. Turn it into whatever comes — a river, a path, a crack in the earth, a snake, a word. There is no wrong answer."</p>
+          <p><strong>Story lines below:</strong> "What is it?" · "What's at the end of it?" · "What happens if you follow it?"</p>
+          <div class="psych-note">Mind Benders access right-brain processing immediately. The ambiguity is intentional — projective play reveals what's alive in the unconscious without triggering defenses.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry game-e">
+      <button class="page-toggle" onclick="togglePage(this)">
+        <span class="badge b-game">I Spy</span>
+        <span class="page-title-text">I Spy — Fort Edition</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p>"I spy, with my little eye, something I'd bring into my fort."</p>
+          <p>Find 5 things in your actual surroundings you'd want in your fort. Write or draw them. These become the first items in your fort inventory.</p>
+          <p style="font-style:italic; color:var(--muted);">"Your fort only has things you actually want in it."</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry junk-e">
+      <button class="page-toggle" onclick="togglePage(this)">
+        <span class="badge b-junk">Junk Journal Zone</span>
+        <span class="page-title-text">Paste zone — "What does safe look like?"</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p>A hatched-background paste zone — roughly a half or two-thirds of the page — with instruction: <em>"Tear something out of a magazine, a wrapper, a receipt, a piece of anything. Paste whatever feels like safety to you. It doesn't have to make sense."</em></p>
+          <p>Below the paste zone: 3 short lines for "what did you choose? why this?"</p>
+          <div class="psych-note">Collage work accesses implicit memory — things the body knows but the mind can't yet articulate. The act of cutting and placing is also a somatic regulation tool.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry wreck-e">
+      <button class="page-toggle" onclick="togglePage(this)">
+        <span class="badge b-wreck">Wreck This</span>
+        <span class="page-title-text">Wreck This — "Fill this page with your handwriting"</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p>A full blank page with one instruction: <em>"Fill every inch of this page with any word, phrase, or sentence that comes. Overlap. Go sideways. Don't stop until it's full."</em></p>
+          <p>Variation: "Write the same word until this page is covered."</p>
+          <div class="psych-note">Repetitive writing tasks quiet the analytical mind and create a meditative, almost hypnotic state. The physical act of filling space is also deeply satisfying to the inner child.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry fort-e">
+      <button class="page-toggle" onclick="togglePage(this)">
+        <span class="badge b-fort">Fort Building</span>
+        <span class="page-title-text">Chapter 1 Fort — The Entrance</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p>"Every fort needs a way in. Design yours. What does the entrance look like? Is there a door? A tunnel? A secret knock? A password only you know?"</p>
+          <p>A large blank space to draw/design the entrance. Small prompts in the margin: what's the door made of? · what does it feel like to push it open? · what's the first thing you see inside?</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry mantra-e">
+      <button class="page-toggle" onclick="togglePage(this)">
+        <span class="badge b-mantra">Mantra</span>
+        <span class="page-title-text">Integration mantra — wilder typography</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p><em>"I don't need permission to come inside."</em></p>
+          <p>Messier typography than Soft Return — like it was painted or written fast.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry thread-e">
+      <button class="page-toggle" onclick="togglePage(this)">
+        <span class="badge b-thread">Follow Your Thread</span>
+        <span class="page-title-text">Chapter 1 tunnel</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <div class="fork-box">
+            <p style="font-size:0.9em;">Small handwritten-style arrow in the margin:</p>
+            <div class="fork-option">If your Mind Bender became something alive → tunnel to page [X], there's a hidden picture waiting</div>
+            <div class="fork-option">If you want to keep building your fort first → Chapter 2 is next</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end wild ch1 -->
+
+  <!-- WILD CHAPTERS 2-10 COMPRESSED -->
+  <div class="ring-header">
+    <span class="ring-label">Chapters Two through Ten</span>
+    <span class="ring-title">All rings · Same arc · Different rooms</span>
+  </div>
+
+  <p class="section-intro">Each chapter of The Wild Return uses the same structure as Chapter 1. Below are the unique elements — the Mind Bender squiggle, the Junk Journal zone theme, the Wreck This instruction, and the Fort room being built.</p>
+
+  <div class="pages-list">
+
+    <div class="page-entry mind-e">
+      <button class="page-toggle" onclick="togglePage(this)">
+        <span class="badge b-mind">Ch. 2</span>
+        <span class="page-title-text">Mind Bender — a cracked egg / Fort: The Cozy Corner</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p><strong>Squiggle:</strong> A jagged, broken oval — like a cracked egg or a split seed. "What's breaking open? What's hatching? What's finally getting out?" Story lines: What's inside it? · Is it something leaving or something arriving? · What does the air smell like around it?</p>
+          <p><strong>Junk Zone:</strong> "Paste something that represents what you're breaking out of. And something that represents what's waiting on the other side."</p>
+          <p><strong>Wreck This:</strong> "Spill something on this page on purpose. (Water is fine. Juice is better.) Let it dry. Draw around it."</p>
+          <p><strong>Fort — The Cozy Corner:</strong> "Every fort needs a place to curl up. Design yours. What's in it? A pile of blankets? A reading nook? A place no one else can see?" Draw the corner. What makes it yours?</p>
+          <p><strong>Mantra:</strong> <em>"What wants to come out of me is not dangerous. It's ready."</em></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry mind-e">
+      <button class="page-toggle" onclick="togglePage(this)">
+        <span class="badge b-mind">Ch. 3</span>
+        <span class="page-title-text">Mind Bender — a tangled knot / Fort: The Window</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p><strong>Squiggle:</strong> A densely overlapping, looping tangle. "Is this something to unravel, or is it something beautiful? Both? Neither?" Story lines: How long has this been tangled? · What's in the middle of it? · Does it want to be untangled, or is it perfect as it is?</p>
+          <p><strong>Junk Zone:</strong> "Cut something into strips. Weave, tape, or paste them here however feels right. Tangled or organized — your choice."</p>
+          <p><strong>Wreck This:</strong> "Scribble over this entire page with your eyes closed. Then open them and see what's there."</p>
+          <p><strong>Fort — The Window:</strong> "Your fort has a window. What does it look out onto? Draw the view you want. It doesn't have to be real." What can you see from here that you can't see from outside?</p>
+          <p><strong>Mantra:</strong> <em>"Being complex is not the same as being broken."</em></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry mind-e">
+      <button class="page-toggle" onclick="togglePage(this)">
+        <span class="badge b-mind">Ch. 4</span>
+        <span class="page-title-text">Mind Bender — a horizon line / Fort: The Secret Compartment</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p><strong>Squiggle:</strong> A single long horizontal line across the middle of the page. "What's above the line? What's below it? What is the line itself?" This one invites simple completion — a landscape, an ocean, an eye, a tightrope.</p>
+          <p><strong>Junk Zone:</strong> "Paste something from the past and something from the future. They don't have to make sense together."</p>
+          <p><strong>Wreck This:</strong> "Fold this page any way you want. Then unfold it. Draw along the crease lines."</p>
+          <p><strong>Fort — The Secret Compartment:</strong> "Every fort has a hidden spot — for things only you know are there. What do you keep in yours? It doesn't have to be a physical object." Draw or write what lives there.</p>
+          <p><strong>Mantra:</strong> <em>"I am allowed to have things that are only mine."</em></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry mind-e">
+      <button class="page-toggle" onclick="togglePage(this)">
+        <span class="badge b-mind">Ch. 5</span>
+        <span class="page-title-text">Mind Bender — a spiral / Fort: The Reading Nook</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p><strong>Squiggle:</strong> An inward spiral — starting from the outside, curling toward a center. "What is at the center of this? What are you moving toward or away from? What's at the end?" Story lines: Is the center empty or full? · Are you going in or coming out? · What does it feel like at the middle?</p>
+          <p><strong>Junk Zone:</strong> "Find the most comfortable piece of paper or fabric scrap you can and paste it here. What feels soft to you?"</p>
+          <p><strong>Wreck This:</strong> "Rip this page out carefully. Write something on the back that your inner child needs to hear. Put it back in the book — anywhere. You'll find it again."</p>
+          <p><strong>Fort — The Reading Nook:</strong> "This corner of your fort is for the little one. She gets to pick everything. What books are here? What light? What snacks?" Draw or describe it entirely through her eyes.</p>
+          <p><strong>Mantra:</strong> <em>"She didn't go anywhere. She went quiet. I hear her now."</em></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry mind-e">
+      <button class="page-toggle" onclick="togglePage(this)">
+        <span class="badge b-mind">Ch. 6</span>
+        <span class="page-title-text">Mind Bender — two circles / Fort: The Wall of Memories</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p><strong>Squiggle:</strong> Two circles — one large, one small — overlapping or not, reader decides. "What do these two things have in common? What separates them? What's in the overlap?" Story lines: Who are they? · What do they want from each other? · What happens when they touch?</p>
+          <p><strong>Junk Zone:</strong> "Paste a photo of yourself — or draw one. Then surround it with things that tell the story of who you are." No instructions on what to include. Let them decide.</p>
+          <p><strong>Wreck This:</strong> "Scratch this page with your fingernail — hard enough to leave marks. What pattern did you make?"</p>
+          <p><strong>Fort — The Wall of Memories:</strong> "One wall of your fort is covered in things you love. Draw, paste, or list what goes on yours. Old concerts. Faces. Places. Moments. Anything that makes you feel like yourself."</p>
+          <p><strong>Mantra:</strong> <em>"My story is not finished. I'm still in it."</em></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry mind-e">
+      <button class="page-toggle" onclick="togglePage(this)">
+        <span class="badge b-mind">Ch. 7</span>
+        <span class="page-title-text">Mind Bender — a door ajar / Fort: The Stage</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p><strong>Squiggle:</strong> A partial rectangle — like a door that's been left open. Not fully open, not closed. "What's on the other side? What does it feel like to stand at this door? Are you coming or going?" Story lines: How long have you been here? · What would push you through? · Is there a light on the other side?</p>
+          <p><strong>Junk Zone:</strong> "Paste something that represents a part of you that hasn't had a stage yet. The part that wants to be seen."</p>
+          <p><strong>Wreck This:</strong> "Tear the corner of this page off. Hide it somewhere in the book. You'll find it when you need it."</p>
+          <p><strong>Fort — The Stage:</strong> "Your fort has a stage — just for you. Who do you become here? What do you do on it when no one is watching?" Draw it or describe it. What would you perform if performance meant pure joy, no audience?</p>
+          <p><strong>Mantra:</strong> <em>"Every part of me deserves a place to perform."</em></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry mind-e">
+      <button class="page-toggle" onclick="togglePage(this)">
+        <span class="badge b-mind">Ch. 8</span>
+        <span class="page-title-text">Mind Bender — a burst / Fort: The Mess Room</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p><strong>Squiggle:</strong> Jagged, exploding lines radiating from a center point — like a burst, a splash, a star, an explosion. "Is this an ending or a beginning? A destruction or a release? What's at the center of the burst?" Story lines: What just happened? · Did it hurt? · What's left after?</p>
+          <p><strong>Junk Zone:</strong> "Make an actual mess on this page. Drip something. Smear something. Paste chaotically. Then write one sentence over the top of all of it."</p>
+          <p><strong>Wreck This:</strong> "Crumple this page into a ball. Throw it somewhere. Go get it. Unfold it. Now it's a texture. Draw on the wrinkles."</p>
+          <p><strong>Fort — The Mess Room:</strong> "One room in your fort has absolutely no rules. You can do anything here. Nothing has to be put away. What do you do with it?" Draw, list, describe. This is your full permission slip.</p>
+          <p><strong>Mantra:</strong> <em>"Play is not productive and that's exactly the point."</em></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry mind-e">
+      <button class="page-toggle" onclick="togglePage(this)">
+        <span class="badge b-mind">Ch. 9</span>
+        <span class="page-title-text">Mind Bender — a web / Fort: The Room With No Rules</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p><strong>Squiggle:</strong> An interconnected web — lines crossing and meeting at nodes. "What is this connecting? What does each intersection represent? What's holding it together — and what would happen if one thread broke?" Story lines: Is this a trap or a net? · What's caught in it? · What built this?</p>
+          <p><strong>Junk Zone:</strong> "Paste pieces of something you're ready to let go of — an old receipt, a list, a note, a label. Paste it here. Draw over it."</p>
+          <p><strong>Wreck This:</strong> "Write the word that scares you most — very small, in the corner of this page. Then cover it with color until you can't read it anymore."</p>
+          <p><strong>Fort — The Room With No Rules:</strong> "This is the room where every 'should' is banned. Nothing is expected of you here. What does that feel like? What would you do in a space with zero rules?" Draw it. Be specific.</p>
+          <p><strong>Mantra:</strong> <em>"I don't need rules to know who I am. I just need space."</em></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry mind-e">
+      <button class="page-toggle" onclick="togglePage(this)">
+        <span class="badge b-mind">Ch. 10</span>
+        <span class="page-title-text">Mind Bender — a butterfly / Fort: Your Name Above the Door</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p><strong>Squiggle:</strong> The SVG butterfly from the manuscript — two wing outlines. "One wing is where you came from. One wing is where you're going. What's in the body — the center — holding them together?" Story lines: What color are the wings? · Is it flying or resting? · What can you see from up there?</p>
+          <p><strong>Junk Zone:</strong> "Paste the most beautiful thing you can find. Nothing else. This page doesn't need an explanation."</p>
+          <p><strong>Wreck This:</strong> "Sign this page. Your full name. Big. Like you mean it."</p>
+          <p><strong>Fort — Your Name Above the Door:</strong> "Write your name above the entrance to your fort. Decorate it. Make it yours. <em>This is yours.</em> You built this. No one can take it." Final fort page — full spread to design the exterior with the name proudly displayed.</p>
+          <p><strong>Mantra:</strong> <em>"I built this. I am this. I'm home."</em></p>
+          <div class="fork-box" style="margin-top:12px;">
+            <p>"You made it here. Or maybe you found this page first — that's okay too."</p>
+            <div class="fork-option">Go back to the fort floor plan on page [X]. How does it look now?</div>
+            <div class="fork-option">Go back to the opening gateway. Which door would you choose today?</div>
+            <div class="fork-option" style="font-style:italic; color:var(--muted);">"Notice anything different."</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- BACK MATTER -->
+  <div class="ring-header">
+    <span class="ring-label">Back Matter</span>
+    <span class="ring-title">After the Fort Is Built</span>
+  </div>
+
+  <div class="pages-list matter-list">
+
+    <div class="page-entry game-e">
+      <button class="page-toggle" onclick="togglePage(this)">
+        <span class="badge b-game">Challenge</span>
+        <span class="page-title-text">30-Day Wild Return Challenge — all creative, no writing required</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p>30 days of pure creative acts — no journaling, no processing, just play. Examples: Day 1 — Make the messiest breakfast you can and eat it. Day 2 — Build an actual fort with pillows and blankets. Day 3 — Draw on your arm with a marker. Day 4 — Find a mud puddle. Day 5 — Sing something made up in the shower. Day 6 — Collect three objects from outside and arrange them. Day 7 — Make something just to throw it away. Day 8 — Lie in the grass. Day 9 — Draw with your non-dominant hand only. And so on.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry wreck-e">
+      <button class="page-toggle" onclick="togglePage(this)">
+        <span class="badge b-wreck">Wreck This Final</span>
+        <span class="page-title-text">Final wreck — "Do whatever you want to these last pages"</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p>3 blank pages at the end with just the instruction: <em>"These pages belong to you completely. There are no suggestions. No prompts. No right way. Do whatever wants to happen."</em></p>
+          <p>This is the full permission slip — the final act of the inner child taking the wheel entirely.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry struct-e">
+      <button class="page-toggle" onclick="togglePage(this)">
+        <span class="badge b-struct">Structural</span>
+        <span class="page-title-text">About Maddie + tease of the full collection</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content"><p>Brief, warm, wild energy. Tease of "Follow Your Thread" (Book 3) — the dedicated CYOA healing journey. "The fort you built here becomes the map for everything that follows." elevatealign.com</p></div>
+      </div>
+    </div>
+
+  </div>
+
+</div><!-- end panel-inner -->
+</div><!-- end panel-wild -->
+
+<script>
+function switchTab(tab, btn) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('panel-' + tab).classList.add('active');
+  btn.classList.add('active');
+}
+
+function togglePage(btn) {
+  var detail = btn.parentElement.querySelector('.page-detail');
+  var icon = btn.querySelector('.expand-icon');
+  var isOpen = detail.classList.contains('open');
+  detail.classList.toggle('open', !isOpen);
+  icon.classList.toggle('rotated', !isOpen);
+}
+</script>
+</body>
+</html>

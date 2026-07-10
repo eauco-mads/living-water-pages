@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<title>The Return Collection — Series Map</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #faf9f5;
+  --ink: #2e2820;
+  --muted: #7a6a50;
+  --sage: #a8b89a;
+  --moss: #5a7852;
+  --dust: #dfd7c5;
+  --dustlight: #f0ebe0;
+  --rose: #c4a090;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 64px 24px 100px;
+}
+
+.wrapper {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.top-link {
+  display: inline-block;
+  margin-bottom: 32px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--moss);
+  text-decoration: none;
+  border-bottom: 1px solid var(--dust);
+  padding-bottom: 2px;
+}
+.top-link:hover { border-bottom-color: var(--moss); }
+
+/* ── HEADER ─────────────────────────────────────── */
+.header {
+  margin-bottom: 52px;
+}
+
+.eyebrow {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--sage);
+  display: block;
+  margin-bottom: 18px;
+}
+
+.series-title {
+  font-size: clamp(2em, 5vw, 2.8em);
+  font-weight: normal;
+  font-style: italic;
+  line-height: 1.15;
+  text-wrap: balance;
+  color: var(--ink);
+  margin-bottom: 10px;
+}
+
+.series-sub {
+  font-size: 1em;
+  color: var(--muted);
+  font-style: italic;
+}
+
+/* ── PHILOSOPHY ──────────────────────────────────── */
+.philosophy {
+  margin-bottom: 52px;
+  padding: 28px 32px 28px 28px;
+  border-left: 2px solid var(--dust);
+}
+
+.philosophy p {
+  font-size: 1.06em;
+  font-style: italic;
+  color: var(--muted);
+  line-height: 1.85;
+  max-width: 58ch;
+  text-wrap: balance;
+}
+.philosophy p + p { margin-top: 1em; }
+
+/* ── MECHANIC BOX ────────────────────────────────── */
+.mechanic-box {
+  background: var(--dustlight);
+  padding: 24px 28px;
+  margin-bottom: 56px;
+}
+
+.mechanic-box .box-label {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--moss);
+  display: block;
+  margin-bottom: 12px;
+}
+
+.mechanic-box p {
+  font-size: 0.94em;
+  line-height: 1.8;
+  max-width: 60ch;
+  color: var(--ink);
+}
+.mechanic-box p + p { margin-top: 0.8em; }
+
+/* ── TRAIL ───────────────────────────────────────── */
+.trail-section {
+  margin-bottom: 56px;
+}
+
+.section-head {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--dust);
+  margin-bottom: 32px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--dust);
+}
+
+.trail-item {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 0 28px;
+}
+
+.trail-gutter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.t-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 5px;
+  position: relative;
+  z-index: 1;
+}
+.t-dot.live { background: var(--sage); }
+.t-dot.coming { background: var(--bg); border: 1.5px solid var(--sage); }
+.t-dot.seed { background: var(--bg); border: 1.5px dashed var(--dust); }
+
+.t-line {
+  width: 1px;
+  flex: 1;
+  min-height: 24px;
+  margin-top: 4px;
+}
+.t-line.solid {
+  background: repeating-linear-gradient(to bottom, var(--dust) 0, var(--dust) 5px, transparent 5px, transparent 10px);
+}
+.t-line.faint {
+  background: repeating-linear-gradient(to bottom, #e5dece 0, #e5dece 3px, transparent 3px, transparent 9px);
+}
+
+/* ── BOOK CONTENT ────────────────────────────────── */
+.book-content {
+  padding-bottom: 44px;
+}
+
+.book-label {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--sage);
+  display: block;
+  margin-bottom: 8px;
+}
+
+.book-title {
+  font-size: 1.5em;
+  font-weight: normal;
+  font-style: italic;
+  line-height: 1.2;
+  text-wrap: balance;
+  margin-bottom: 4px;
+}
+
+.book-sub {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+
+/* CYOA depth strip */
+.depth-strip {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.depth-label {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.depth-pips {
+  display: flex;
+  gap: 5px;
+}
+
+.pip {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--dust);
+}
+.pip.on { background: var(--moss); }
+
+.book-desc {
+  font-size: 0.95em;
+  color: var(--ink);
+  line-height: 1.8;
+  max-width: 58ch;
+  margin-bottom: 14px;
+}
+
+.detail-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.detail-list li {
+  font-size: 0.9em;
+  color: var(--muted);
+  padding-left: 18px;
+  position: relative;
+  line-height: 1.65;
+}
+
+.detail-list li::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: var(--dust);
+}
+
+/* sub-label used to split a detail list into named tracks */
+.detail-sublabel {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--moss);
+  margin: 14px 0 7px;
+  display: block;
+}
+.detail-sublabel:first-child { margin-top: 0; }
+
+/* ── COMING BOOKS ────────────────────────────────── */
+.coming-content {
+  padding-bottom: 44px;
+}
+
+.coming-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.coming-card {
+  padding: 18px 20px;
+  border: 1px solid var(--dust);
+  position: relative;
+}
+
+.coming-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 2px;
+}
+
+.coming-card.healing::after { background: var(--moss); }
+.coming-card.spark::after { background: var(--rose); }
+.coming-card.water-sci::after { background: var(--sage); }
+.coming-card.water-feel::after { background: var(--sage); opacity: 0.5; }
+.coming-card.kids-card::after { background: var(--rose); }
+
+.coming-label {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  display: block;
+  margin-bottom: 8px;
+}
+
+.coming-title {
+  font-size: 1.05em;
+  font-style: italic;
+  line-height: 1.3;
+  margin-bottom: 8px;
+  text-wrap: balance;
+}
+
+.coming-desc {
+  font-size: 0.86em;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.coming-tagline {
+  font-size: 0.82em;
+  font-style: italic;
+  color: var(--moss);
+  margin-top: 8px;
+  display: block;
+}
+
+/* Full-width card */
+.coming-card.full {
+  grid-column: 1 / -1;
+}
+
+/* ── KIDS SECTION ────────────────────────────────── */
+.kids-content {
+  padding-bottom: 16px;
+}
+
+/* ── MISSION ─────────────────────────────────────── */
+.mission {
+  margin-top: 56px;
+  padding-top: 40px;
+  border-top: 1px solid var(--dust);
+  text-align: center;
+}
+
+.mission-text {
+  font-size: 1.2em;
+  font-style: italic;
+  color: var(--muted);
+  line-height: 2;
+  max-width: 44ch;
+  margin: 0 auto 20px;
+  text-wrap: balance;
+}
+
+.mission-attr {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--dust);
+}
+
+@media (max-width: 560px) {
+  body { padding: 40px 20px 80px; }
+  .coming-grid { grid-template-columns: 1fr; }
+  .mechanic-box { padding: 20px; }
+  .philosophy { padding: 20px 20px 20px 20px; }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1e1c17;
+    --ink: #ece6d8;
+    --muted: #b3a688;
+    --sage: #9db38f;
+    --moss: #8fae82;
+    --dust: #4a4436;
+    --dustlight: #2a271f;
+    --rose: #c9a695;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #1e1c17;
+  --ink: #ece6d8;
+  --muted: #b3a688;
+  --sage: #9db38f;
+  --moss: #8fae82;
+  --dust: #4a4436;
+  --dustlight: #2a271f;
+  --rose: #c9a695;
+}
+:root[data-theme="light"] {
+  --bg: #faf9f5;
+  --ink: #2e2820;
+  --muted: #7a6a50;
+  --sage: #a8b89a;
+  --moss: #5a7852;
+  --dust: #dfd7c5;
+  --dustlight: #f0ebe0;
+  --rose: #c4a090;
+}
+</style>
+<div class="wrapper">
+
+  <a class="top-link" href="interior-guide.html">→ Interior Page Guide (The Soft Return / The Wild Return)</a>
+
+  <!-- HEADER -->
+  <header class="header">
+    <span class="eyebrow">The Return Collection &nbsp;·&nbsp; Series Map &nbsp;·&nbsp; Living Document</span>
+    <h1 class="series-title">Every path leads home.</h1>
+    <p class="series-sub">A healing journal series built on branching paths, inner child play, and the truth that there are no wrong turns.</p>
+  </header>
+
+  <!-- PHILOSOPHY -->
+  <div class="philosophy">
+    <p>Anxiety is the belief that there's only one right path — and you're already failing to find it. Branching stories dissolve that lie. When you can see the map, when you can see that every door leads somewhere real and that "wrong" turns are just new rooms, the nervous system loosens its grip.</p>
+    <p>The mechanic in these books isn't clever. It's structural. By handing the choices to your inner child instead of your ego, you teach your body what no amount of logic ever could: you were never lost. You were just exploring.</p>
+    <p>It has to work at any depth. One page or the whole book — either way, the reader leaves with something: a little more self-knowledge, or just calmer than when they opened it. Cute on the surface, like a fort you get to build inside a book, no rules. But underneath, flowy and paced on purpose — quietly leading toward alignment without ever announcing it. Your little self already knows the way here. This just gets out of its way.</p>
+  </div>
+
+  <!-- THE MECHANIC -->
+  <div class="mechanic-box">
+    <span class="box-label">The Rule — How the Branching Shows Up</span>
+    <p>Not "Node 1 / Node 2." Not clinical. Not in-your-face. More like permission slips. Tiny secret tunnels. A whisper at the bottom of a page that says <em>if something came up, go find page 44.</em></p>
+    <p>The inner child leads. Not the ego. Not the shoulds. The part of you that still knows what it feels like to run toward something for no reason other than that it looks fun. Name for the mechanic: <strong>Follow Your Thread</strong> — not trademarked like "Choose Your Own Adventure," and completely on brand.</p>
+  </div>
+
+  <!-- ── TRAIL: THE BOOKS ── -->
+  <div class="trail-section">
+    <div class="section-head">The Books — In Order of Build</div>
+
+    <!-- BOOK 1 -->
+    <div class="trail-item">
+      <div class="trail-gutter">
+        <div class="t-dot live"></div>
+        <div class="t-line solid"></div>
+      </div>
+      <div class="book-content">
+        <span class="book-label">Book One &nbsp;·&nbsp; In Canva Now ✦</span>
+        <h2 class="book-title">The Soft Return</h2>
+        <p class="book-sub">A Somatic Inner Child Journal</p>
+        <div class="depth-strip">
+          <span class="depth-label">Thread depth</span>
+          <div class="depth-pips">
+            <div class="pip on"></div>
+            <div class="pip on"></div>
+            <div class="pip"></div>
+            <div class="pip"></div>
+            <div class="pip"></div>
+          </div>
+          <span class="depth-label" style="color:var(--moss); font-style:italic;">light — a wink to the rest</span>
+        </div>
+        <p class="book-desc">The branching here is barely visible — felt more than seen. Two or three moments where the reader senses the book is listening back. A taste of what's coming in the collection.</p>
+        <ul class="detail-list">
+          <li>Opening spiral entry map — three ways in based on how the body feels today (tight/armored · numb/foggy · sad but open) — each routes to a different starting chapter</li>
+          <li>2–3 permission slip moments: "If this chapter needs more space, stay. When you're ready, the next page is waiting."</li>
+          <li>One mid-book fork: what came up in that last practice? Three small reflections — one for grief, one for anger, one for when nothing came at all</li>
+          <li>Closing: "Every page you chose was the right one."</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- BOOK 2 -->
+    <div class="trail-item">
+      <div class="trail-gutter">
+        <div class="t-dot live"></div>
+        <div class="t-line solid"></div>
+      </div>
+      <div class="book-content">
+        <span class="book-label">Book Two &nbsp;·&nbsp; In Canva Now ✦</span>
+        <h2 class="book-title">The Wild Return</h2>
+        <p class="book-sub">A Junk Journal for Your Inner Child</p>
+        <div class="depth-strip">
+          <span class="depth-label">Thread depth</span>
+          <div class="depth-pips">
+            <div class="pip on"></div>
+            <div class="pip on"></div>
+            <div class="pip on"></div>
+            <div class="pip"></div>
+            <div class="pip"></div>
+          </div>
+          <span class="depth-label" style="color:var(--moss); font-style:italic;">tunnels throughout</span>
+        </div>
+        <p class="book-desc">More chaos, more play, more secret passages. The fort metaphor begins here — you're building and decorating an inner home as you move through. Wreck This Journal energy meets junk journal meets hidden doors.</p>
+        <ul class="detail-list">
+          <li>Margin arrows throughout — small, handwritten-style, unexpected: "if this made you laugh, find page 48"</li>
+          <li>Mind bender tunnel: "If your squiggle became something alive, go to page 45"</li>
+          <li>Junk zone: "If you filled this whole page — skip ahead. Something's waiting."</li>
+          <li>Wreck-this moment: "Rip this out. Hide it somewhere in the book. You'll find it when you need it."</li>
+          <li>The fort appears — recurring motif, building throughout — a home within you are constructing page by page</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- BOOK 3: FOLLOW YOUR THREAD -->
+    <div class="trail-item">
+      <div class="trail-gutter">
+        <div class="t-dot coming"></div>
+        <div class="t-line solid"></div>
+      </div>
+      <div class="coming-content">
+        <span class="book-label">Book Three &nbsp;·&nbsp; Next to Build</span>
+        <h2 class="book-title">Follow Your Thread</h2>
+        <p class="book-sub">The Dedicated Branching Journey &nbsp;·&nbsp; Indecision · Anxiety · Feeling Stuck</p>
+        <div class="depth-strip">
+          <span class="depth-label">Thread depth</span>
+          <div class="depth-pips">
+            <div class="pip on"></div>
+            <div class="pip on"></div>
+            <div class="pip on"></div>
+            <div class="pip on"></div>
+            <div class="pip on"></div>
+          </div>
+          <span class="depth-label" style="color:var(--moss); font-style:italic;">full experience</span>
+        </div>
+        <p class="book-desc">This is the dedicated one — built from the ground up around the branching mechanic. The fort is the central metaphor, and it works two ways at once: it's a place to play, and it's your insides — every room a part of you, every tunnel leading somewhere real. No wrong rooms. Just new ones. The anxiety/many-worlds insight lives here in full, and every path resolves the same way — it always turns out okay.</p>
+        <ul class="detail-list">
+          <li>I-Spy spreads tucked into the tunnel pages — hidden objects that double as the "find page __" trigger for the next fork</li>
+          <li>Perspective pairs — the same fort scene shown two ways: "look from here" vs. "look from here" — the reader picks a vantage and the story shifts with it</li>
+          <li>Pictures inside of pictures — nested/hidden imagery within the fort's rooms, echoing the idea that there's always another layer underneath</li>
+          <li>A feelings/emotion wheel spread — used as a check-in at each major fork, so the reader names what they feel before choosing a door</li>
+          <li>"It always turns out okay" pay-off baked into every ending — no path in the fort is the wrong one</li>
+          <li>Adult edition: ego takes the backseat — instructions invite the inner child to lead and wander wherever feels good, even off-map</li>
+        </ul>
+        <p class="book-desc" style="margin-top:14px;"><em>Two separate editions, not one blended book</em> — a companion kids' edition walks the same fort and tunnels, but with grounded, centering prompts in place of the adult's "let the inner child lead" instructions. Same map, two different books.</p>
+      </div>
+    </div>
+
+    <!-- BOOK 4 + SPARK: side by side -->
+    <div class="trail-item">
+      <div class="trail-gutter">
+        <div class="t-dot coming"></div>
+        <div class="t-line solid"></div>
+      </div>
+      <div class="coming-content">
+        <span class="book-label">Book Four &nbsp;·&nbsp; Coming</span>
+        <h2 class="book-title">Find Your Spark</h2>
+        <p class="book-sub">For When You've Forgotten What Lights You Up</p>
+        <div class="depth-strip">
+          <span class="depth-label">Thread depth</span>
+          <div class="depth-pips">
+            <div class="pip on"></div>
+            <div class="pip on"></div>
+            <div class="pip on"></div>
+            <div class="pip on"></div>
+            <div class="pip"></div>
+          </div>
+          <span class="depth-label" style="color:var(--moss); font-style:italic;">discovery-led</span>
+        </div>
+        <p class="book-desc">More play, less excavation. CYOA + creative activities + sensory discovery. Lighter in tone — what do you love? What did you love before you decided you had to be serious? The branching follows curiosity, not wounds.</p>
+      </div>
+    </div>
+
+    <!-- WATER LINE -->
+    <div class="trail-item">
+      <div class="trail-gutter">
+        <div class="t-dot seed"></div>
+        <div class="t-line faint"></div>
+      </div>
+      <div class="coming-content">
+        <span class="book-label">Books Five &amp; Six &nbsp;·&nbsp; The Water Line &nbsp;·&nbsp; Seeded</span>
+        <h2 class="book-title">The Water Books</h2>
+        <p class="book-sub">Two Paths Through the Same Truth</p>
+        <p class="book-desc" style="margin-bottom:16px;">Water is non-linear too — it finds its own path. Two companion books, same subject, completely different doors in. One for the mind that needs the science first. One for the body that leads with feeling.</p>
+        <div class="coming-grid">
+          <div class="coming-card water-sci">
+            <span class="coming-label">The Science Door</span>
+            <p class="coming-title">The Cell Book</p>
+            <p class="coming-desc">Hydrogen, ATP, free radicals, how water heals you at the cellular level. Mind benders, facts, educational magic. For the reader who needs to understand before they can soften.</p>
+            <span class="coming-tagline">Ties directly into the water business — best seller potential on Amazon science/health.</span>
+          </div>
+          <div class="coming-card water-feel">
+            <span class="coming-label">The Feeling Door</span>
+            <p class="coming-title">The Flow Book</p>
+            <p class="coming-desc">Water element, kidneys, fear → will → courage. Chinese medicine meets chakra meets felt sense. The intuitive companion. For the reader who knows it in their body before they know it in their mind.</p>
+            <span class="coming-tagline">Water element in TCM governs fear and willpower — the anxiety book's perfect counterpart.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- KIDS LINE -->
+    <div class="trail-item">
+      <div class="trail-gutter">
+        <div class="t-dot seed"></div>
+        <div class="t-line faint" style="min-height: 0; flex: 0; height: 40px;"></div>
+      </div>
+      <div class="kids-content">
+        <span class="book-label">The Kids Line &nbsp;·&nbsp; Seeded</span>
+        <h2 class="book-title">So They Never Have to Return</h2>
+        <p class="book-sub">Coloring · CYOA · Mind Benders · Junk Journal · For Children</p>
+        <div class="coming-card kids-card full" style="margin-top:16px; border-color: var(--rose); border-left: none;">
+          <span class="coming-label">The Mission Made Tangible</span>
+          <p class="coming-desc">The adult books are about coming back to something you lost. The kids books are about never losing it. Coloring + Choose Your Path + Mind Benders + junk journal adventures, designed for children who are still in their full creative sovereignty — and built to keep them there.</p>
+          <p class="coming-desc" style="margin-top:10px;">Builds natural cross-generational sales: parents who healed with the adult books buy the kids line for their children. Teachers. Therapists recommending both.</p>
+          <span class="coming-tagline" style="color: var(--rose);">The healing you had to do as an adult — they'll never need it.</span>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end trail-section -->
+
+  <!-- MISSION -->
+  <div class="mission">
+    <p class="mission-text">"The healing you had to do as an adult.<br>We're giving kids the tools<br>to never need it."</p>
+    <p class="mission-attr">The Return Collection &nbsp;·&nbsp; by Maddie Galloway &nbsp;·&nbsp; elevatealign.com</p>
+  </div>
+
+</div>
+</body>
+</html>

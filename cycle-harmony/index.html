@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<title>Cycle Harmony — Content Additions</title>
+<style>
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-weight: 300 500;
+  font-style: normal;
+  src: local('Cormorant Garamond');
+}
+
+:root {
+  --rose:      #b86080;
+  --rose-mid:  #d4899e;
+  --rose-bg:   #fff5f8;
+  --sage:      #5e8c6a;
+  --amber:     #b87840;
+  --plum:      #7a5a80;
+  --text:      #2e1a22;
+  --dim:       #5a3a48;
+  --light:     #9a7a88;
+  --bg:        #fdf8f5;
+  --card:      #ffffff;
+  --border:    #ead8e0;
+  --shadow:    rgba(46,26,34,0.06);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', -apple-system, sans-serif;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 24px 100px;
+}
+
+/* ── HEADER ── */
+header {
+  padding: 56px 0 32px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 8px;
+}
+.eyebrow {
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--rose-mid);
+  margin-bottom: 10px;
+}
+h1 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 300;
+  font-size: clamp(2rem, 5vw, 2.7rem);
+  line-height: 1.15;
+  margin: 0 0 12px;
+  text-wrap: balance;
+}
+h1 em { color: var(--rose); font-style: italic; }
+.sub {
+  font-size: 0.88rem;
+  color: var(--dim);
+  max-width: 52ch;
+}
+.sub strong { color: var(--text); font-weight: 500; }
+
+/* ── STICKY NAV ── */
+nav.jump {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--bg);
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+}
+nav.jump a {
+  font-size: 0.72rem;
+  color: var(--dim);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  border-bottom: 1px solid transparent;
+  padding: 2px 0;
+}
+nav.jump a:hover, nav.jump a:focus-visible {
+  color: var(--rose);
+  border-bottom-color: var(--rose-mid);
+}
+
+/* ── SECTION LABELS ── */
+.section-label {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: var(--text);
+  margin: 56px 0 6px;
+  scroll-margin-top: 64px;
+}
+.section-note {
+  font-size: 0.8rem;
+  color: var(--light);
+  margin-bottom: 22px;
+}
+
+/* ── CARD ── */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--rail, var(--rose));
+  border-radius: 10px;
+  padding: 22px 24px;
+  margin-bottom: 18px;
+  box-shadow: 0 1px 8px var(--shadow);
+  scroll-margin-top: 64px;
+}
+.card-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 4px;
+}
+.card-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: var(--text);
+}
+.meta {
+  font-size: 0.72rem;
+  color: var(--light);
+  line-height: 1.7;
+  margin-bottom: 14px;
+}
+.meta b { color: var(--dim); font-weight: 500; }
+
+.copy-btn {
+  flex-shrink: 0;
+  font-family: inherit;
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--rose);
+  background: var(--rose-bg);
+  border: 1px solid #eeccd8;
+  border-radius: 20px;
+  padding: 6px 14px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.copy-btn:hover { background: #fbe0e8; }
+.copy-btn:focus-visible { outline: 2px solid var(--rose); outline-offset: 2px; }
+.copy-btn[data-copied="1"] { background: #e4f2e8; color: var(--sage); border-color: #c8e0cc; }
+
+.body-text {
+  font-size: 0.86rem;
+  color: var(--dim);
+  white-space: pre-wrap;
+}
+.body-text strong { color: var(--text); font-weight: 600; }
+
+.tags {
+  margin-top: 12px;
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 0.7rem;
+  color: var(--light);
+  word-break: break-word;
+}
+
+/* ── BIO OPTIONS (compact grid) ── */
+.bio-grid {
+  display: grid;
+  gap: 14px;
+}
+.bio-card { --rail: var(--amber); }
+.bio-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 8px;
+}
+
+footer {
+  margin-top: 56px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  font-size: 0.72rem;
+  color: var(--light);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .copy-btn { transition: background 0.15s ease; }
+}
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">✦ Cycle Harmony · Staging area, not the live doc</div>
+    <h1>Content additions,<br><em>ready to paste in.</em></h1>
+    <p class="sub">Everything below is meant to be copied into your <strong>Social Content Plan</strong> Google Doc. Each card has a Copy button.</p>
+  </header>
+
+  <nav class="jump" aria-label="Jump to section">
+    <a href="#tracker-post">Tracker Post</a>
+    <a href="#bio">Bio Options</a>
+    <a href="#weave-a">Weave A</a>
+    <a href="#weave-b">Weave B</a>
+    <a href="#weave-c">Weave C</a>
+    <a href="#weave-d">Weave D</a>
+    <a href="#weave-e">Weave E</a>
+    <a href="#weave-f">Weave F</a>
+  </nav>
+
+  <h2 class="section-label" id="tracker-post">New Post — Free Tracker Spotlight</h2>
+  <p class="section-note">Suggested placement: right after Post 3 (Four Phases) in Part 1</p>
+  <div class="card" data-rail="rose" id="card-tracker">
+    <div class="card-head">
+      <div class="card-title">The Free Tracker Spotlight</div>
+      <button class="copy-btn" data-target="copy-tracker">Copy</button>
+    </div>
+    <div class="meta"><b>Format:</b> Reel or carousel — show the actual interactive calendar on screen (phone or laptop)<br><b>Visual:</b> Rose-pink, screen recording of the tracker filling in with phase colors</div>
+    <div class="body-text" id="copy-tracker">HOOK: I made a cycle tracker you'll actually want to fill in.
+
+CAPTION:
+Not another app asking for your data.
+
+Just a printable, interactive 30-day tracker — enter your Day 1 and cycle length, and it fills itself in with your exact phases. Color-coded. No guessing.
+
+Click through it on your phone. Print it and stick it on your wall. Either way, it's the same tool I use myself.
+
+Free. No spam. Just your name and email to get in.
+
+CTA: Free guide + interactive tracker — link in bio.</div>
+    <div class="tags">#cycletracker #cycleharmony #hormonehealth #cycleawareness #periodtracking #cyclesyncing #freetool #womenswellness #bodyintelligence #hormones</div>
+  </div>
+
+  <h2 class="section-label" id="bio">Bio Options</h2>
+  <p class="section-note">Pick one, or mix lines from a couple</p>
+  <div class="bio-grid">
+    <div class="card bio-card" data-rail="amber">
+      <div class="card-head">
+        <div><div class="bio-label">Option 1 · Closest to original</div></div>
+        <button class="copy-btn" data-target="copy-bio1">Copy</button>
+      </div>
+      <div class="body-text" id="copy-bio1">Your cycle is intelligent. Learn the language. ✦
+Free interactive tracker + 4-phase education
+↓ Start with the free guide — no spam, ever</div>
+    </div>
+    <div class="card bio-card" data-rail="amber">
+      <div class="card-head">
+        <div><div class="bio-label">Option 2 · Benefit-forward</div></div>
+        <button class="copy-btn" data-target="copy-bio2">Copy</button>
+      </div>
+      <div class="body-text" id="copy-bio2">You don't need another app tracking you. ✦
+A free tracker that finally makes sense + a dashboard that's actually yours
+↓ Free guide + My Rhythm membership</div>
+    </div>
+    <div class="card bio-card" data-rail="amber">
+      <div class="card-head">
+        <div><div class="bio-label">Option 3 · Short + punchy</div></div>
+        <button class="copy-btn" data-target="copy-bio3">Copy</button>
+      </div>
+      <div class="body-text" id="copy-bio3">Not fixing you. Just showing you the pattern. ✦
+Free cycle tracker ↓ personalized dashboard, when you're ready</div>
+    </div>
+  </div>
+
+  <h2 class="section-label" id="weave-a">Weave A — The Bridge</h2>
+  <p class="section-note">Only the CTA line changed from your original — everything else untouched</p>
+  <div class="card" data-rail="sage">
+    <div class="card-head">
+      <div class="card-title">Weave A</div>
+      <button class="copy-btn" data-target="copy-a">Copy</button>
+    </div>
+    <div class="meta"><b>Format:</b> Static or short Reel &nbsp;·&nbsp; <b>Visual:</b> Water movement + soft florals — on-brand for h2eau</div>
+    <div class="body-text" id="copy-a">HOOK: Two things your body is mostly made of: water and rhythm.
+
+CAPTION:
+Most wellness conversations talk about one or the other.
+
+Drink more water.
+Track your cycle.
+
+But they're not separate.
+
+Your hormones are transported through water.
+Your blood volume changes across your cycle.
+Your electrolyte needs shift with your phases.
+Your body's ability to use water changes depending on where you are in your month.
+
+This is why I talk about both.
+
+Because you can't fully support one without understanding the other. ✦
+
+CTA: Free cycle tracker in bio if you want to start mapping your own rhythm. Save this one.</div>
+    <div class="tags">#h2eau #hormonehealth #hydrationandhealth #womenswellness #waterandwellness #cycleawareness #hormones #healingwater #bodyintelligence</div>
+  </div>
+
+  <h2 class="section-label" id="weave-b">Weave B — Hydration Across Your Cycle</h2>
+  <p class="section-note">Only the CTA line changed</p>
+  <div class="card" data-rail="sage">
+    <div class="card-head">
+      <div class="card-title">Weave B</div>
+      <button class="copy-btn" data-target="copy-b">Copy</button>
+    </div>
+    <div class="meta"><b>Format:</b> Carousel (4 slides — one per phase) or Reel &nbsp;·&nbsp; <b>Visual:</b> Four phase-tinted panels or elegant water</div>
+    <div class="body-text" id="copy-b">HOOK: You're probably not drinking enough water in your luteal phase. Here's why.
+
+CAPTION:
+Your hormone levels change every week.
+And so does how much water your body actually needs.
+
+✦ Menstrual: blood loss + prostaglandins = higher hydration need. Warm water + electrolytes.
+✦ Follicular: rising estrogen = cells more responsive to hydration. Great time to optimize.
+✦ Ovulatory: peak energy = peak fluid turnover. Match your output.
+✦ Luteal: progesterone causes water retention. Paradoxically, you still need MORE water — dehydration worsens PMS.
+
+The bloating, the cramps, the headaches —
+often made worse by dehydration we didn't know to address.
+
+Drink the water. Know your phase. ✦
+
+CTA: Not sure what phase you're in? Grab the free tracker in bio — it'll tell you.</div>
+    <div class="tags">#hydrationtips #hormonehealth #cycleawareness #pms #waterandhealth #cyclesyncing #womenswellness #h2eau #drinkwater #hydration</div>
+  </div>
+
+  <h2 class="section-label" id="weave-c">Weave C — Inflammation + Hormones</h2>
+  <p class="section-note">Only the CTA line changed</p>
+  <div class="card" data-rail="sage">
+    <div class="card-head">
+      <div class="card-title">Weave C</div>
+      <button class="copy-btn" data-target="copy-c">Copy</button>
+    </div>
+    <div class="meta"><b>Format:</b> Static or Reel &nbsp;·&nbsp; <b>Visual:</b> Clean water, clinical-meets-soft aesthetic</div>
+    <div class="body-text" id="copy-c">HOOK: Most hormone imbalances have an inflammation layer underneath.
+
+CAPTION:
+Cortisol dysregulation. Estrogen dominance. Thyroid sluggishness. Irregular cycles.
+
+Almost all of them have something in common:
+Chronic low-grade inflammation.
+
+And chronic inflammation often has something underneath it:
+Oxidative stress.
+
+Free radicals are unstable molecules that damage cells — including the cells that produce and regulate your hormones.
+
+Antioxidants neutralize free radicals.
+Molecular hydrogen (H₂) is one of the most selective antioxidants studied to date.
+
+I'm not saying water is medicine.
+I'm saying the foundation matters.
+
+And inflammation is worth addressing at the root. ✦
+
+CTA: Learn more at stopdrinkingacid.com — link in bio. Free cycle tracker there too.</div>
+    <div class="tags">#hormonehealth #inflammation #oxidativestress #molecularhydrogen #waterhealth #h2eau #erwwater #hormonedisruptor #womenswellness #hydrogenwater</div>
+  </div>
+
+  <h2 class="section-label" id="weave-d">Weave D — My Daily Stack</h2>
+  <p class="section-note">One line in the morning stack now nods at the tracker</p>
+  <div class="card" data-rail="sage">
+    <div class="card-head">
+      <div class="card-title">Weave D</div>
+      <button class="copy-btn" data-target="copy-d">Copy</button>
+    </div>
+    <div class="meta"><b>Format:</b> Reel — morning routine lifestyle video, or aesthetic flat lay &nbsp;·&nbsp; <b>Visual:</b> Morning table: water, sunlight, phone with dashboard open</div>
+    <div class="body-text" id="copy-d">HOOK: I don't talk about wellness without talking about the nervous system.
+
+CAPTION:
+Because you cannot regulate your hormones without first regulating your nervous system.
+
+Cortisol stays elevated when your nervous system is stuck in threat mode.
+Elevated cortisol suppresses progesterone.
+Low progesterone = anxious, irritable, irregular cycles.
+
+This is the loop.
+
+My daily stack to interrupt it:
+
+Morning:
+→ Hydrogen water before anything else
+→ Sunlight within 30 minutes of waking
+→ Check my cycle phase — the free tracker does this in ten seconds
+→ 5 minutes of stillness (no phone)
+
+The goal isn't to biohack.
+The goal is to create enough safety in your body that healing becomes possible.
+
+Regulation before reinvention. ✦
+
+CTA: What does your morning look like? Drop it below.</div>
+    <div class="tags">#nervoussystemregulation #hormonehealth #cortisol #womenswellness #morningroutine #h2eau #hydrogenwater #cycleawareness #embodiment #regulateyourself</div>
+  </div>
+
+  <h2 class="section-label" id="weave-e">Weave E — Personal Story</h2>
+  <p class="section-note">CTA now names the free tracker specifically, alongside My Rhythm</p>
+  <div class="card" data-rail="sage">
+    <div class="card-head">
+      <div class="card-title">Weave E</div>
+      <button class="copy-btn" data-target="copy-e">Copy</button>
+    </div>
+    <div class="meta"><b>Format:</b> Reel — candid, real, day-in-the-life &nbsp;·&nbsp; <b>Visual:</b> Your actual life. Not curated.</div>
+    <div class="body-text" id="copy-e">HOOK: I used to wonder why I felt so different every week. Now I expect it.
+
+CAPTION:
+Some weeks I'm building, planning, pitching, showing up loudly.
+
+Some weeks I'm quiet, interior, slow — and that's by design, not failure.
+
+Some weeks my body wants movement and momentum.
+Some weeks it wants warmth and silence.
+
+I used to fight the difference.
+Now I know it's information.
+
+This is what living in rhythm actually looks like.
+Not perfect. Not rigid. Just — aware.
+
+If this resonates, I built something for exactly this.
+It's called My Rhythm — a personalized cycle dashboard that tells you which phase you're in and what your body needs today.
+
+Link in bio. $8.88/month or $77 for the year.
+Or start with the free interactive tracker — no cost, ever. ✦
+
+CTA: Free tracker or My Rhythm dashboard — both in bio.</div>
+    <div class="tags">#cyclicalliving #cycleawareness #hormonehealth #womenswellness #myrhythm #cycleharmony #h2eau #embodiment #selfawareness #livinginrhythm</div>
+  </div>
+
+  <h2 class="section-label" id="weave-f">Weave F — Women Weren't Built for a 7-Day Week</h2>
+  <p class="section-note">Only the CTA line changed</p>
+  <div class="card" data-rail="sage">
+    <div class="card-head">
+      <div class="card-title">Weave F</div>
+      <button class="copy-btn" data-target="copy-f">Copy</button>
+    </div>
+    <div class="meta"><b>Format:</b> Reel — a little more educational/provocative &nbsp;·&nbsp; <b>Visual:</b> Calendar graphic with cycle overlay</div>
+    <div class="body-text" id="copy-f">HOOK: Men have a 24-hour hormonal cycle. Women have a 28-day one.
+
+CAPTION:
+This is not a flaw. It's a feature.
+
+Men's hormones roughly reset every 24 hours —
+so the 9-to-5, five-days-a-week structure was literally designed around their biology.
+
+Women operate on a 28-day infradian rhythm.
+
+That means: the same task, done on Day 5 versus Day 22,
+will feel completely different —
+not because your discipline changed,
+but because your hormones did.
+
+When you know this, everything makes more sense:
+— Why some weeks you're unstoppable
+— Why some weeks you just can't
+— Why "just be consistent" advice never quite fits
+
+You ARE consistent.
+Just on a longer cycle.
+
+Start tracking yours. ✦
+
+CTA: Free interactive tracker in bio — takes 30 seconds to set up.</div>
+    <div class="tags">#infradianrhythm #cycleawareness #hormonehealth #womenswellness #cyclesyncing #femalephysiology #womensbiology #cycleharmony #h2eau #womenshealth</div>
+  </div>
+
+  <footer>Built for Maddie Galloway · Cycle Harmony content plan additions · safe to close once copied</footer>
+</div>
+
+<script>
+document.querySelectorAll('.copy-btn').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    var target = document.getElementById(btn.getAttribute('data-target'));
+    var text = target.textContent;
+    navigator.clipboard.writeText(text).then(function () {
+      btn.textContent = 'Copied ✓';
+      btn.setAttribute('data-copied', '1');
+      setTimeout(function () {
+        btn.textContent = 'Copy';
+        btn.removeAttribute('data-copied');
+      }, 1800);
+    });
+  });
+});
+</script>
+</body>
+</html>

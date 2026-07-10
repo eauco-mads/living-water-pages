@@ -233,6 +233,7 @@ hr { border: none; border-top: 1px solid var(--border); margin: 18px 0; }
 
 <nav class="tab-nav">
   <button class="tab-btn active" onclick="showTab('command',this)">🎯 Command Center</button>
+  <button class="tab-btn" onclick="showTab('projects',this)">🗂 Project Index</button>
   <button class="tab-btn" onclick="showTab('legal',this)">⚖️ Legal Setup</button>
   <button class="tab-btn" onclick="showTab('braindump',this)">🧠 Brain Dump</button>
   <button class="tab-btn" onclick="showTab('facebook',this)">📘 Facebook Launch</button>
@@ -250,6 +251,51 @@ hr { border: none; border-top: 1px solid var(--border); margin: 18px 0; }
   <button class="tab-btn" onclick="showTab('cr-linkedin',this)">💼 LinkedIn</button>
   <button class="tab-btn" onclick="showTab('cr-route',this)">🗺 Route</button>
 </nav>
+
+<!-- ════════════════════════════════════════
+     TAB · PROJECT INDEX (the hub of hubs)
+════════════════════════════════════════ -->
+<div id="tab-projects" class="tab-content">
+
+  <div class="section-title">Project Index — Everything, In One Place</div>
+  <div class="info-box" style="margin-bottom:20px;">
+    <strong>This is the hub of hubs.</strong> Every scattered doc/artifact gets a card here going forward, so nothing floats away unfindable again. Add a new card whenever a new project doc gets built — same pattern each time: name, status, links.
+  </div>
+
+  <div class="grid-2">
+
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
+        <h4 style="margin:0;">Photo Sorter</h4>
+        <span class="badge badge-done">Launched</span>
+      </div>
+      <p style="font-size:0.84rem;color:var(--muted);margin-bottom:12px;">Keypress camera-roll sorting tool · $27 one-time · Print/Stock/Videography/Me/Archive defaults. Code is done — what's left is the Founding 10 and content.</p>
+      <div class="link-row"><span class="link-name">Launch Day Status Doc</span><a class="link-url" href="photo-sorter-launch/index.html" target="_blank">photo-sorter-launch/</a><button class="copy-btn" onclick="cp('https://eauco-mads.github.io/living-water-pages/photo-sorter-launch/index.html',this)">Copy</button></div>
+      <div class="link-row"><span class="link-name">Live Tool</span><a class="link-url" href="https://eauco-mads.github.io/photo-sorter/" target="_blank">photo-sorter (live)</a><button class="copy-btn" onclick="cp('https://eauco-mads.github.io/photo-sorter/',this)">Copy</button></div>
+      <div class="link-row"><span class="link-name">GitHub Repo</span><a class="link-url" href="https://github.com/eauco-mads/photo-sorter" target="_blank">github.com/eauco-mads/photo-sorter</a><button class="copy-btn" onclick="cp('https://github.com/eauco-mads/photo-sorter',this)">Copy</button></div>
+    </div>
+
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
+        <h4 style="margin:0;">Cycle Harmony — Content Additions</h4>
+        <span class="badge badge-building">Staging</span>
+      </div>
+      <p style="font-size:0.84rem;color:var(--muted);margin-bottom:12px;">Tracker spotlight post, 3 bio options, and 6 "weave" posts tying hormone/cycle content back to h2eau — ready to copy into the Social Content Plan Google Doc.</p>
+      <div class="link-row"><span class="link-name">Content Additions Doc</span><a class="link-url" href="cycle-harmony/index.html" target="_blank">cycle-harmony/</a><button class="copy-btn" onclick="cp('https://eauco-mads.github.io/living-water-pages/cycle-harmony/index.html',this)">Copy</button></div>
+    </div>
+
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
+        <h4 style="margin:0;">The Return Collection</h4>
+        <span class="badge badge-building">Building · 2 of 6 in Canva</span>
+      </div>
+      <p style="font-size:0.84rem;color:var(--muted);margin-bottom:12px;">Branching healing-journal book series — "Follow Your Thread" mechanic, fort/tunnels metaphor. Books One &amp; Two (The Soft Return, The Wild Return) are in Canva now; four more seeded.</p>
+      <div class="link-row"><span class="link-name">Series Map</span><a class="link-url" href="return-collection/index.html" target="_blank">return-collection/</a><button class="copy-btn" onclick="cp('https://eauco-mads.github.io/living-water-pages/return-collection/index.html',this)">Copy</button></div>
+      <div class="link-row"><span class="link-name">Interior Page Guide</span><a class="link-url" href="return-collection/interior-guide.html" target="_blank">return-collection/interior-guide.html</a><button class="copy-btn" onclick="cp('https://eauco-mads.github.io/living-water-pages/return-collection/interior-guide.html',this)">Copy</button></div>
+    </div>
+
+  </div>
+</div>
 
 <!-- ════════════════════════════════════════
      TAB 0 · LEGAL SETUP

@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<title>Photo Sorter — Launch Day</title>
+<style>
+  :root{
+    --paper:#F7F3EA;
+    --paper-raised:#FFFEFB;
+    --ink:#211D16;
+    --ink-soft:#7A7263;
+    --line:#E6DFCC;
+    --gold:#C6811E;
+    --gold-deep:#8F5C10;
+    --good:#4B7B54;
+    --good-bg:#E7EFE6;
+    --todo:#B5482A;
+    --todo-bg:#F5E6DF;
+    --blue:#2E5B8A;
+    --blue-bg:#E6EDF5;
+  }
+  :root[data-theme="dark"]{
+    --paper:#1B1812;
+    --paper-raised:#242019;
+    --ink:#F1ECE0;
+    --ink-soft:#A79C87;
+    --line:#3A3427;
+    --gold:#E0A23D;
+    --gold-deep:#F0BC63;
+    --good:#8FC79A;
+    --good-bg:#25332A;
+    --todo:#E28468;
+    --todo-bg:#3A2620;
+    --blue:#8FB6DE;
+    --blue-bg:#212C39;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#1B1812;
+      --paper-raised:#242019;
+      --ink:#F1ECE0;
+      --ink-soft:#A79C87;
+      --line:#3A3427;
+      --gold:#E0A23D;
+      --gold-deep:#F0BC63;
+      --good:#8FC79A;
+      --good-bg:#25332A;
+      --todo:#E28468;
+      --todo-bg:#3A2620;
+      --blue:#8FB6DE;
+      --blue-bg:#212C39;
+    }
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    line-height:1.5;
+  }
+  .wrap{max-width:760px;margin:0 auto;padding:0 24px 96px;}
+
+  .statusbar{
+    display:flex;align-items:center;justify-content:space-between;
+    gap:16px;padding:14px 24px;
+    background:var(--ink);color:var(--paper);
+    position:sticky;top:0;z-index:10;
+  }
+  .statusbar .dot{
+    display:inline-block;width:8px;height:8px;border-radius:50%;
+    background:#6FCB7A;margin-right:8px;
+    box-shadow:0 0 0 3px rgba(111,203,122,0.25);
+  }
+  .statusbar-left{font-size:13px;letter-spacing:.02em;font-weight:600;}
+  .statusbar-right{font-size:12px;color:#C9C2AE;font-variant-numeric:tabular-nums;}
+
+  header.hero{padding:56px 0 32px;}
+  .eyebrow{
+    font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--gold-deep);margin:0 0 10px;
+  }
+  h1{
+    font-size:36px;line-height:1.1;letter-spacing:-0.01em;margin:0 0 12px;
+    font-weight:800;text-wrap:balance;
+  }
+  .sub{font-size:16px;color:var(--ink-soft);max-width:56ch;margin:0;}
+
+  section{margin:0 0 40px;}
+  .section-head{
+    display:flex;align-items:baseline;gap:10px;margin:0 0 16px;
+    border-bottom:1px solid var(--line);padding-bottom:10px;
+  }
+  .section-num{
+    font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:13px;color:var(--gold-deep);font-weight:700;
+  }
+  h2{font-size:20px;margin:0;font-weight:750;letter-spacing:-0.005em;}
+
+  .card{
+    background:var(--paper-raised);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:20px 22px;
+    margin-bottom:14px;
+  }
+  .card-title{
+    display:flex;align-items:center;justify-content:space-between;
+    gap:12px;margin-bottom:8px;
+  }
+  .card-title strong{font-size:14.5px;}
+
+  .pill{
+    display:inline-flex;align-items:center;gap:5px;
+    font-size:11px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;
+    padding:3px 9px;border-radius:100px;white-space:nowrap;flex-shrink:0;
+  }
+  .pill.done{background:var(--good-bg);color:var(--good);}
+  .pill.copy{background:#F2E6D0;color:var(--gold-deep);}
+  :root[data-theme="dark"] .pill.copy{background:#3A2E14;}
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]) .pill.copy{background:#3A2E14;}
+  }
+  .pill.yours{background:var(--todo-bg);color:var(--todo);}
+  .pill.ask{background:var(--blue-bg);color:var(--blue);}
+  .pill.new{background:var(--blue-bg);color:var(--blue);}
+
+  .bio-block{
+    font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:14px;line-height:1.65;
+    background:var(--paper);border:1px dashed var(--line);
+    border-radius:8px;padding:12px 14px;margin:8px 0;
+    white-space:pre-wrap;user-select:all;
+  }
+  .charcount{font-size:11px;color:var(--ink-soft);margin-top:4px;}
+
+  .link-row{
+    display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+    font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:13px;background:var(--paper);border:1px dashed var(--line);
+    border-radius:8px;padding:10px 12px;margin-top:8px;user-select:all;
+  }
+
+  p{margin:8px 0;font-size:14.5px;}
+  p.note{color:var(--ink-soft);font-size:13.5px;}
+  ul.plain{margin:8px 0;padding-left:20px;font-size:14.5px;}
+  ul.plain li{margin-bottom:4px;}
+  .kbd{
+    display:inline-flex;align-items:center;justify-content:center;
+    font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:12px;font-weight:700;
+    background:var(--paper);border:1px solid var(--ink);border-bottom-width:2px;
+    border-radius:4px;padding:1px 6px;margin:0 2px;
+  }
+
+  ol.sched{list-style:none;margin:0;padding:0;counter-reset:step;}
+  ol.sched li{
+    counter-increment:step;
+    display:grid;grid-template-columns:64px 1fr;gap:14px;
+    padding:10px 0;border-bottom:1px solid var(--line);
+    font-size:14px;
+  }
+  ol.sched li:last-child{border-bottom:none;}
+  .day{
+    font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:12px;color:var(--gold-deep);font-weight:700;padding-top:2px;
+  }
+  .post-name{font-weight:650;}
+  .post-why{color:var(--ink-soft);font-size:13px;}
+
+  .divider{height:1px;background:var(--line);margin:32px 0;}
+  .foot{font-size:12.5px;color:var(--ink-soft);text-align:center;padding-top:8px;}
+
+  .price-strike{text-decoration:line-through;color:var(--ink-soft);margin-right:6px;}
+
+  blockquote{
+    margin:16px 0;padding:14px 18px;border-left:3px solid var(--gold);
+    background:var(--paper);font-size:14.5px;color:var(--ink-soft);font-style:italic;
+  }
+
+  /* Collapsible DONE section */
+  details.done-wrap{margin:0 0 40px;}
+  details.done-wrap summary{
+    list-style:none;cursor:pointer;
+    display:flex;align-items:center;justify-content:space-between;gap:10px;
+    border-bottom:1px solid var(--line);padding-bottom:10px;margin-bottom:0;
+  }
+  details.done-wrap summary::-webkit-details-marker{display:none;}
+  .summary-left{display:flex;align-items:baseline;gap:10px;}
+  .summary-count{
+    font-size:12px;color:var(--ink-soft);font-weight:600;
+    background:var(--good-bg);color:var(--good);
+    padding:2px 9px;border-radius:100px;
+  }
+  .chevron{
+    font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    color:var(--ink-soft);font-size:13px;transition:transform .15s ease;
+  }
+  details.done-wrap[open] .chevron{transform:rotate(90deg);}
+  details.done-wrap .done-body{padding-top:16px;}
+
+  .whats-left h2{font-size:22px;}
+  .left-num{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:26px;height:26px;border-radius:50%;
+    background:var(--gold);color:var(--paper-raised);
+    font-size:13px;font-weight:800;flex-shrink:0;
+  }
+  .left-title{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+  .left-title strong{font-size:16px;}
+
+  @media (max-width:520px){
+    h1{font-size:28px;}
+    .wrap{padding:0 16px 72px;}
+    ol.sched li{grid-template-columns:52px 1fr;}
+  }
+</style>
+
+<div class="statusbar">
+  <div class="statusbar-left"><span class="dot"></span>SITE LIVE — folder rename, No‑AI badge, email script all pushed &amp; redeployed.</div>
+  <div class="statusbar-right">updated just now</div>
+</div>
+
+<div class="wrap">
+  <header class="hero">
+    <p class="eyebrow">Launch Week</p>
+    <h1>Everything's live. What's left is people, not code.</h1>
+    <p class="sub">The folder rename, the trust badges, the email script — all shipped and confirmed working. Nothing outstanding on the build side. What's left is the Founding 10 and the content system to support them.</p>
+  </header>
+
+  <details class="done-wrap">
+    <summary>
+      <div class="summary-left"><span class="section-num">✓</span><h2>Done</h2><span class="summary-count">14 shipped</span></div>
+      <span class="chevron">▶</span>
+    </summary>
+    <div class="done-body">
+
+      <div class="card">
+        <div class="card-title"><strong>Default folders renamed: Print / Stock / Videography / Me / Archive</strong><span class="pill new">New today</span></div>
+        <p>Swapped the old Travel/Stock‑Print/Best/Archive set for <strong>P / S / V / M / A</strong> everywhere it's shown: the tool's actual default, the thank‑you page key list, and both sales pages' "how it works" and default‑system copy. The three example "Editions" cards on sales.html (Photographer / Snapchat / Family) were left alone on purpose — those are customization examples, not the shipped default.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-title"><strong>Removed the unused snap-sorter.html</strong><span class="pill new">New today</span></div>
+        <p>It wasn't linked from anywhere live — thank‑you page and the email both already pointed at the real tool (index.html). Deleted it so there's only one tool to ever think about. Fully recoverable from git history if you ever want it back.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-title"><strong>"No AI — Just a Tool" trust badge + FAQ</strong><span class="pill new">New today</span></div>
+        <p>Added a fourth trust badge next to 100% Local / No Cloud Upload / Never Leaves Your Computer, plus a new "Is this AI?" FAQ entry answering plainly: no AI, no facial recognition, no auto‑tagging — just a keypress that moves a file. For anyone AI‑wary, this should remove the objection before they even ask.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-title"><strong>Email script fixed &amp; redeployed</strong><span class="pill done">Done — confirmed by you</span></div>
+        <p>Two things happened here: the quick‑keys section in the delivery email now matches P/S/V/M/A, and every special character (em dashes, arrows, the checkmark) was swapped for plain ASCII so the file can never show up garbled again in Google's script editor regardless of how it's opened or pasted. You've confirmed the redeploy went through.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-title"><strong>Bios + link-in-bio</strong><span class="pill done">Done</span></div>
+        <p>TikTok and Instagram bios are in, pointing at the right sales page for each account.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-title"><strong>Launch Special pricing</strong><span class="pill done">Done</span></div>
+        <p>Price badge on both sales pages reads <strong>Launch Special · <span class="price-strike">$49</span> $27</strong>, with ✓ One‑time purchase ✓ No subscription ✓ No account required underneath. Raise it back to $49 once testimonials and polish are in.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-title"><strong>Privacy badges + Works With</strong><span class="pill done">Done</span></div>
+        <p>🔒 100% Local · ☁️ No Cloud Upload · ❤️ Your photos never leave your computer, plus a Works With row (iPhone Photos, Snapchat Memories, SD Cards, External Hard Drives, Google Photos exports) so "will this work for me?" is answered before anyone asks.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-title"><strong>The stat, made big</strong><span class="pill done">Done</span></div>
+        <p>"1,400+" is now two large numbers side by side — <strong>1,400</strong> / photos and <strong>8</strong> / minutes.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-title"><strong>Outcome-focused section names</strong><span class="pill done">Done</span></div>
+        <p>Photo Sorter Tool → <strong>Clean Camera Roll</strong>. The Folder System → <strong>Never Lose Another Memory</strong>. Snapchat guide card → <strong>Get Everything Out of Snapchat</strong>.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-title"><strong>Thank-you page: mobile buyers</strong><span class="pill done">Done</span></div>
+        <p>Phone visitors see a direct nudge to email themselves the links instead of the old joke section. Desktop visitors still get the joke — that stayed.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-title"><strong>Photo-count question + Challenge</strong><span class="pill done">Done</span></div>
+        <p>"How many photos are you about to sort?" with four buttons, logging to email. Plus the 🎉 Challenge callout: sort in 10 minutes, tell you on Instagram.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-title"><strong>Mobile Version copy</strong><span class="pill done">Done</span></div>
+        <p>Waitlist sections now open with 📱 Mobile Version — Works with: Google Photos, iPhone Photos, Android.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-title"><strong>Desktop-only, said clearly, before purchase</strong><span class="pill done">Done</span></div>
+        <p>Added under the CTA on both sales pages, plus refined the thank‑you page's phone message to suggest AirDrop or a nearby PC before falling back to email.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-title"><strong>Hero headlines — left alone, on purpose</strong><span class="pill copy">Your call</span></div>
+        <p>Kept your current headlines on both pages — they carry the soft‑certainty voice better than the punchier alternates that were floated. Say the word if you want one swapped in to test.</p>
+      </div>
+
+    </div>
+  </details>
+
+  <section class="whats-left">
+    <div class="section-head"><span class="section-num">→</span><h2>What's left</h2></div>
+
+    <div class="left-title"><span class="left-num">1</span><strong>Founding 10 — reach out, get them in, get the testimonial</strong></div>
+
+    <div class="card">
+      <div class="card-title"><strong>The message to send</strong></div>
+      <blockquote>"Hey! I just finished building something I've been working on for months. I'm inviting 10 founding users to test it before I officially launch. In exchange, I'd love your honest feedback and, if you love it, a testimonial I can use on my website."</blockquote>
+      <p class="note">Send it now, not after the copy is perfect — while they're testing, you're still editing. By the time they're done, you'll have real testimonials instead of hypothetical ones.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><strong>Once they're in</strong></div>
+      <p>Follow up after they've had a day or two with it. Ask directly for a testimonial — specific beats vague. Show a range when you post them: one very specific review ("I do print/stock/travel/screenshots") next to one broad keep‑or‑delete one. "As specific or as loose as you want it" is a real differentiator worth a line in the FAQ once you have both kinds banked.</p>
+    </div>
+
+    <div class="left-title" style="margin-top:32px;"><span class="left-num">2</span><strong>Content — get your ideas out without it eating your day</strong></div>
+
+    <div class="card">
+      <div class="card-title"><strong>What you already have, ready to use</strong></div>
+      <p>The Europe photos are already sorting into Print / Stock / Videography — that's real, usable proof-of-work. You've also got the Thailand screen recording, talking‑head hooks recorded over the Europe photos, and a Mac screen recording. That covers post #1 (hero demo) and several of the confession‑style posts below without filming anything new.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><strong>The posting order — 12 posts, one week</strong></div>
+      <ol class="sched">
+        <li><span class="day">Mon AM</span><div><div class="post-name">1 — Hero demo (pin)</div><div class="post-why">your screen recording + done‑screen reveal — the proof‑of‑concept</div></div></li>
+        <li><span class="day">Mon PM</span><div><div class="post-name">2 — Proof static (pin)</div><div class="post-why">done‑screen screenshot, real numbers — reinforces #1 same day</div></div></li>
+        <li><span class="day">Tue</span><div><div class="post-name">3 — The stat graphic</div><div class="post-why">"1,400 photos. 8 minutes." — pure hook, no explanation needed</div></div></li>
+        <li><span class="day">Wed</span><div><div class="post-name">4 — Snapchat pain</div><div class="post-why">zip files sitting untouched — names the problem</div></div></li>
+        <li><span class="day">Wed</span><div><div class="post-name">5 — How to get your Snap memories</div><div class="post-why">educational, saveable — algorithm likes saves</div></div></li>
+        <li><span class="day">Thu</span><div><div class="post-name">6 — The 5 folders explained</div><div class="post-why">carousel, P/S/V/M/A — shows the system</div></div></li>
+        <li><span class="day">Thu</span><div><div class="post-name">9 — No app, no subscription</div><div class="post-why">objection handling, right before you widen the audience</div></div></li>
+        <li><span class="day">Fri</span><div><div class="post-name">7 — For photographers</div><div class="post-why">K/R/S/C demo — opens the second audience</div></div></li>
+        <li><span class="day">Fri</span><div><div class="post-name">8 — For your mom</div><div class="post-why">family/camera‑roll use case — widest relatability</div></div></li>
+        <li><span class="day">Sat</span><div><div class="post-name">11 — The before</div><div class="post-why">chaotic folder screenshot — relatable, high‑share</div></div></li>
+        <li><span class="day">Sat</span><div><div class="post-name">10 — Multi‑pass workflow</div><div class="post-why">carousel, shows depth for anyone still on the fence</div></div></li>
+        <li><span class="day">Sun</span><div><div class="post-name">12 — Direct CTA</div><div class="post-why">product, price, what's included — the ask, once trust is built</div></div></li>
+      </ol>
+      <p class="note" style="margin-top:12px;">TikTok can take #1–3 twice — launch day, then repost the best performer midweek. That platform rewards volume more than IG does.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><strong>The open question: AI-assist or personal help</strong><span class="pill ask">Let's talk when you're back</span></div>
+      <p>You've got the water content, hormone content, the calendar, travel/print/UGC, and personal — too much to hand-craft solo every day. Worth deciding together: which of those get an AI tool doing first drafts/scheduling, versus which actually need a real person's time. Better to decide this once, on purpose, than to keep context-switching between all five all day.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><strong>Ads — once the first sale lands</strong></div>
+      <p>Don't build a campaign from scratch. Take whichever of the 12 posts has the best watch‑time or saves — likely #1 or #3 — and boost it, $10–20/day to start. Cheapest way to put money behind something the algorithm has already told you works.</p>
+    </div>
+
+  </section>
+
+  <div class="divider"></div>
+  <p class="foot">"How is this only $27" is the reaction you're building toward — warm thank‑you page, instant delivery, beautiful guides, software that just works. You're SO close — the code is done, now it's just people.</p>
+</div>
+
+</body>
+
+</html>

@@ -39,6 +39,14 @@ h1,h2,h3,h4 { font-family: 'Cormorant Garamond', serif; font-weight: 400; letter
 .tab-content { display: none; padding: 28px 24px; max-width: 1100px; margin: 0 auto; }
 .tab-content.active { display: block; }
 
+/* SUB-TABS (nested nav within a single top-level tab) */
+.sub-tab-nav { display: flex; gap: 2px; flex-wrap: wrap; background: rgba(6,102,100,0.05); border: 1px solid var(--border); border-radius: 10px; padding: 4px; margin-bottom: 24px; }
+.sub-tab-btn { background: none; border: none; color: var(--muted); font-family: 'Lato', sans-serif; font-size: 0.74rem; letter-spacing: 0.06em; text-transform: uppercase; padding: 8px 14px; cursor: pointer; border-radius: 7px; white-space: nowrap; transition: all 0.15s; }
+.sub-tab-btn:hover { color: var(--teal); }
+.sub-tab-btn.active { color: #fff; background: var(--teal); }
+.sub-tab-content { display: none; }
+.sub-tab-content.active { display: block; }
+
 /* CARDS */
 .card { background: var(--cream); border: 1px solid var(--border); border-radius: 12px; padding: 22px; margin-bottom: 18px; }
 .card h3 { font-size: 1.25rem; color: var(--navy); margin-bottom: 14px; }
@@ -238,6 +246,442 @@ hr { border: none; border-top: 1px solid var(--border); margin: 18px 0; }
 .proj-checklist-add button:hover { background: var(--navy); }
 .proj-done-toggle { background: none; border: none; color: var(--muted); font-size: 0.72rem; cursor: pointer; padding: 4px 0; letter-spacing: 0.04em; }
 .proj-done-toggle:hover { color: var(--teal); }
+
+/* ── Interior Page Guide (scoped embed) ── */
+
+  #pig-mount *, #pig-mount *::before, #pig-mount *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  #pig-mount {
+  --bg: #F5F2EC;
+  --ink: #2a2a2a;
+  --muted: #999999;
+  --sage: #B1E9E8;
+  --moss: #066664;
+  --dust: #EAE6DF;
+  --dustlight: #F5F2EC;
+  --rose: #c47a3a;
+  --tan: #EAE6DF;
+}
+
+  #pig-mount {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+/* ── TABS ─────────────────────────────────────── */
+  #pig-mount .pig-tab-bar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--ink);
+  display: flex;
+  gap: 0;
+}
+
+  #pig-mount .pig-tab-btn {
+  flex: 1;
+  padding: 16px 20px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+  transition: color 0.2s, background 0.2s;
+  border-bottom: 2px solid transparent;
+}
+
+  #pig-mount .pig-tab-btn.active {
+  color: #F5F2EC;
+  border-bottom-color: var(--sage);
+}
+
+  #pig-mount .pig-tab-btn:hover { color: rgba(255,255,255,0.8); }
+
+/* ── PANELS ──────────────────────────────────── */
+  #pig-mount .pig-panel { display: none; padding: 40px 24px 80px; }
+  #pig-mount .pig-panel.active { display: block; }
+
+  #pig-mount .pig-panel-inner { max-width: 760px; margin: 0 auto; }
+
+/* ── PAGE TYPE BADGES ──────────────────────────── */
+  #pig-mount .badge {
+  display: inline-block;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 8px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 2px;
+  vertical-align: middle;
+  margin-right: 6px;
+  flex-shrink: 0;
+}
+  #pig-mount .b-poem { background: #e8f0e2; color: var(--moss); }
+  #pig-mount .b-teach { background: #efe8d8; color: #6b5940; }
+  #pig-mount .b-soma { background: #f0e4dc; color: #8a5545; }
+  #pig-mount .b-game { background: #dff0e4; color: #3a6b4a; }
+  #pig-mount .b-prompt { background: #e8e4f5; color: #5a4a8a; }
+  #pig-mount .b-art { background: var(--dustlight); color: var(--muted); }
+  #pig-mount .b-mantra { background: #f5e8d8; color: #7a5a30; }
+  #pig-mount .b-thread { background: #e0e0dc; color: #4a4540; }
+  #pig-mount .b-mind { background: #fce8e0; color: #8a3a20; }
+  #pig-mount .b-junk { background: #f0f0e0; color: #5a5a20; }
+  #pig-mount .b-wreck { background: #f8e0f0; color: #7a207a; }
+  #pig-mount .b-fort { background: #e0e8f8; color: #203a7a; }
+  #pig-mount .b-struct { background: #e8e8e8; color: #4a4a4a; }
+
+/* ── SECTION HEADERS ─────────────────────────── */
+  #pig-mount .ring-header {
+  margin: 48px 0 24px;
+  padding-bottom: 12px;
+  border-bottom: 1.5px solid var(--dust);
+}
+
+  #pig-mount .ring-label {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--sage);
+  display: block;
+  margin-bottom: 4px;
+}
+
+  #pig-mount .ring-title {
+  font-size: 1.3em;
+  font-weight: normal;
+  font-style: italic;
+  color: var(--ink);
+}
+
+  #pig-mount .chapter-header {
+  margin: 32px 0 16px;
+}
+
+  #pig-mount .chapter-label {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  display: block;
+  margin-bottom: 3px;
+}
+
+  #pig-mount .chapter-name {
+  font-size: 1.1em;
+  font-style: italic;
+  color: var(--ink);
+}
+
+/* ── PAGE ENTRIES ─────────────────────────────── */
+  #pig-mount .pages-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-bottom: 8px;
+}
+
+  #pig-mount .page-entry {
+  border: 1px solid var(--dust);
+  border-left: 3px solid var(--dust);
+  background: white;
+  transition: border-left-color 0.15s;
+}
+
+  #pig-mount .page-entry.poem-e { border-left-color: var(--sage); }
+  #pig-mount .page-entry.teach-e { border-left-color: var(--tan); }
+  #pig-mount .page-entry.soma-e { border-left-color: var(--rose); }
+  #pig-mount .page-entry.game-e { border-left-color: var(--moss); }
+  #pig-mount .page-entry.prompt-e { border-left-color: #9a90c8; }
+  #pig-mount .page-entry.art-e { border-left-color: var(--dust); }
+  #pig-mount .page-entry.mantra-e { border-left-color: #c8a060; }
+  #pig-mount .page-entry.thread-e { border-left-color: var(--ink); }
+  #pig-mount .page-entry.mind-e { border-left-color: #c85030; }
+  #pig-mount .page-entry.junk-e { border-left-color: #a0a030; }
+  #pig-mount .page-entry.wreck-e { border-left-color: #c020c0; }
+  #pig-mount .page-entry.fort-e { border-left-color: #3060c8; }
+  #pig-mount .page-entry.struct-e { border-left-color: #c0c0c0; }
+
+  #pig-mount .page-toggle {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 12px 16px;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-family: Georgia, serif;
+  font-size: 0.93em;
+  color: var(--ink);
+  line-height: 1.4;
+}
+
+  #pig-mount .page-toggle:hover { background: var(--dustlight); }
+
+  #pig-mount .page-title-text { flex: 1; }
+
+  #pig-mount .expand-icon {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 10px;
+  color: var(--muted);
+  margin-top: 2px;
+  flex-shrink: 0;
+  transition: transform 0.2s;
+}
+
+  #pig-mount .page-detail {
+  display: none;
+  padding: 0 16px 16px 16px;
+  border-top: 1px solid var(--dustlight);
+}
+
+  #pig-mount .page-detail.open { display: block; }
+
+  #pig-mount .expand-icon.rotated { transform: rotate(180deg); }
+
+  #pig-mount .detail-content {
+  font-size: 0.9em;
+  color: var(--ink);
+  line-height: 1.8;
+  margin-top: 12px;
+}
+
+  #pig-mount .detail-content p + p { margin-top: 0.6em; }
+
+  #pig-mount .psych-note {
+  margin-top: 10px;
+  padding: 8px 12px;
+  background: var(--dustlight);
+  border-left: 2px solid var(--dust);
+  font-size: 0.85em;
+  color: var(--muted);
+  font-style: italic;
+  line-height: 1.65;
+}
+
+  #pig-mount .prompt-q {
+  padding: 6px 0 6px 16px;
+  border-left: 2px solid var(--sage);
+  font-style: italic;
+  color: var(--ink);
+  margin: 6px 0;
+  font-size: 0.92em;
+}
+
+  #pig-mount .steps {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 6px;
+}
+  #pig-mount .steps li {
+  padding-left: 20px;
+  position: relative;
+  font-size: 0.9em;
+  line-height: 1.65;
+}
+  #pig-mount .steps li::before {
+  content: attr(data-n);
+  position: absolute;
+  left: 0;
+  color: var(--sage);
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 0.8em;
+  font-weight: bold;
+  top: 2px;
+}
+
+  #pig-mount .fork-box {
+  background: #f5f5f0;
+  border: 1px solid var(--ink);
+  padding: 12px 16px;
+  margin-top: 8px;
+  font-size: 0.88em;
+}
+
+  #pig-mount .fork-box p { margin-bottom: 6px; font-style: italic; color: var(--muted); }
+  #pig-mount .fork-option {
+  padding: 4px 0 4px 16px;
+  position: relative;
+  color: var(--ink);
+  line-height: 1.5;
+}
+  #pig-mount .fork-option::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--ink);
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 0.85em;
+}
+
+/* Front/back matter lists */
+  #pig-mount .matter-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+
+/* Page count note */
+  #pig-mount .page-count {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 4px;
+  padding: 8px 12px;
+  background: var(--dustlight);
+  display: inline-block;
+}
+
+/* Section intro text */
+  #pig-mount .section-intro {
+  font-size: 0.92em;
+  color: var(--muted);
+  font-style: italic;
+  line-height: 1.75;
+  max-width: 58ch;
+  margin-bottom: 24px;
+}
+
+@media (max-width: 520px) {
+  #pig-mount .pig-panel { padding: 28px 16px 60px; }
+  #pig-mount .pig-tab-btn { padding: 14px 12px; font-size: 8px; }
+}
+
+
+/* ── Maddie's Planner Tracker (scoped embed) ── */
+
+  #pt-mount {
+  --green:      #066664;
+  --green-mid:  #50A19F;
+  --green-light:#B1E9E8;
+  --gold:       #B8832A;
+  --text:       #1a3a3a;
+  --text-dim:   #3a5a5a;
+  --text-light: #6a8a8a;
+  --bg:         #f4fafa;
+  --card:       #ffffff;
+  --border:     #d0e8e8;
+  --done-text:  #8abab8;
+}
+  #pt-mount * {box-sizing:border-box;margin:0;padding:0;}
+  #pt-mount {font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
+
+/* HEADER */
+  #pt-mount .header {background:var(--green);padding:16px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+  #pt-mount .header-brand {font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:#fff;letter-spacing:0.04em;}
+  #pt-mount .header-sub {font-size:0.67rem;color:rgba(255,255,255,0.6);letter-spacing:0.1em;text-transform:uppercase;margin-top:2px;}
+  #pt-mount .header-right {display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+  #pt-mount .identity-pill {display:flex;align-items:center;gap:6px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:20px;padding:5px 12px;}
+  #pt-mount .identity-pill label {font-size:0.63rem;color:rgba(255,255,255,0.55);letter-spacing:0.06em;text-transform:uppercase;white-space:nowrap;}
+  #pt-mount .identity-pill select {background:transparent;border:none;color:#fff;font-family:'Inter',sans-serif;font-size:0.75rem;font-weight:500;cursor:pointer;outline:none;-webkit-appearance:none;appearance:none;}
+  #pt-mount .sync-badge {font-size:0.63rem;color:rgba(255,255,255,0.45);white-space:nowrap;}
+  #pt-mount .sync-badge.ok {color:var(--green-light);}
+  #pt-mount .header-btn {font-size:0.68rem;color:rgba(255,255,255,0.8);background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.25);border-radius:20px;padding:5px 14px;cursor:pointer;font-family:'Inter',sans-serif;transition:all 0.2s;white-space:nowrap;}
+  #pt-mount .header-btn:hover {color:#fff;background:rgba(255,255,255,0.2);}
+  #pt-mount .header-reset {font-size:0.68rem;color:rgba(255,255,255,0.45);background:none;border:1px solid rgba(255,255,255,0.15);border-radius:20px;padding:5px 14px;cursor:pointer;font-family:'Inter',sans-serif;transition:all 0.2s;}
+  #pt-mount .header-reset:hover {color:#fff;border-color:rgba(255,255,255,0.4);}
+
+/* COLLAB BANNER */
+  #pt-mount .collab-banner {background:#054d4b;border-bottom:1px solid rgba(177,233,232,0.18);padding:10px 24px;display:none;align-items:center;gap:10px;flex-wrap:wrap;}
+  #pt-mount .collab-label {font-size:0.72rem;color:rgba(255,255,255,0.7);white-space:nowrap;}
+  #pt-mount .share-url-input {flex:1;min-width:180px;background:rgba(255,255,255,0.07);border:1px solid rgba(177,233,232,0.2);border-radius:8px;padding:5px 10px;color:#fff;font-size:0.68rem;font-family:'Inter',sans-serif;outline:none;}
+  #pt-mount .copy-btn {background:var(--green-light);color:var(--green);border:none;border-radius:8px;padding:5px 14px;font-size:0.7rem;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif;white-space:nowrap;flex-shrink:0;}
+  #pt-mount .sync-now-btn {background:transparent;border:1px solid rgba(177,233,232,0.25);border-radius:8px;padding:5px 12px;font-size:0.68rem;color:rgba(255,255,255,0.55);cursor:pointer;font-family:'Inter',sans-serif;flex-shrink:0;}
+  #pt-mount .sync-now-btn:hover {color:rgba(255,255,255,0.85);}
+
+/* LAYOUT */
+  #pt-mount .main {max-width:860px;margin:0 auto;padding:32px 20px 60px;}
+
+/* OVERVIEW CARDS */
+  #pt-mount .overview {display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:36px;}
+@media(max-width:600px){.overview{grid-template-columns:repeat(2,1fr);}}
+  #pt-mount .ov-card {background:var(--card);border-radius:12px;padding:16px 14px;text-align:center;box-shadow:0 1px 6px rgba(6,102,100,0.06);border-top:3px solid var(--green-light);}
+  #pt-mount .ov-num {font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:var(--green);line-height:1;display:block;}
+  #pt-mount .ov-label {font-size:0.62rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-light);margin-top:4px;display:block;}
+
+/* PHASE BLOCK */
+  #pt-mount .phase {background:var(--card);border-radius:14px;margin-bottom:20px;overflow:hidden;box-shadow:0 1px 8px rgba(6,102,100,0.06);}
+  #pt-mount .phase-header {padding:18px 22px 14px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+  #pt-mount .phase-left {display:flex;align-items:center;gap:12px;}
+  #pt-mount .phase-icon {font-size:1.1rem;flex-shrink:0;}
+  #pt-mount .phase-title {font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:var(--text);}
+  #pt-mount .phase-target {font-size:0.65rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-light);margin-top:1px;}
+  #pt-mount .phase-progress {display:flex;align-items:center;gap:10px;}
+  #pt-mount .progress-bar {width:100px;height:5px;background:var(--border);border-radius:10px;overflow:hidden;}
+  #pt-mount .progress-fill {height:100%;background:var(--green);border-radius:10px;transition:width 0.4s ease;}
+  #pt-mount .progress-pct {font-size:0.72rem;color:var(--green);font-weight:500;min-width:30px;text-align:right;}
+
+/* TASK ITEMS */
+  #pt-mount .tasks {padding:10px 0;}
+  #pt-mount .task-item {display:flex;align-items:flex-start;gap:12px;padding:10px 22px;cursor:pointer;transition:background 0.15s;}
+  #pt-mount .task-item:hover {background:#f7fdfd;}
+  #pt-mount .task-item.done {opacity:0.58;}
+  #pt-mount .task-item.done .task-text {text-decoration:line-through;color:var(--done-text);}
+  #pt-mount .task-checkbox {width:18px;height:18px;border-radius:5px;border:1.5px solid var(--border);flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center;transition:all 0.2s;background:#fff;}
+  #pt-mount .task-item.done .task-checkbox {background:var(--green);border-color:var(--green);}
+  #pt-mount .task-check-icon {color:#fff;font-size:10px;display:none;}
+  #pt-mount .task-item.done .task-check-icon {display:block;}
+  #pt-mount .task-body {flex:1;min-width:0;}
+  #pt-mount .task-text {font-size:0.82rem;color:var(--text-dim);line-height:1.5;}
+  #pt-mount .task-meta {font-size:0.67rem;color:var(--text-light);margin-top:2px;}
+  #pt-mount .task-tag {display:inline-block;background:#e8f6f6;color:var(--green-mid);border-radius:10px;padding:1px 8px;font-size:0.62rem;letter-spacing:0.04em;margin-top:3px;}
+  #pt-mount .task-claimer {font-size:0.62rem;color:var(--green-mid);margin-top:3px;opacity:0.85;}
+
+/* SUBTASKS */
+  #pt-mount .subtask-item {display:flex;align-items:flex-start;gap:10px;padding:7px 22px 7px 52px;cursor:pointer;transition:background 0.15s;}
+  #pt-mount .subtask-item:hover {background:#f7fdfd;}
+  #pt-mount .subtask-item.done {opacity:0.5;}
+  #pt-mount .subtask-item.done .task-text {text-decoration:line-through;color:var(--done-text);}
+  #pt-mount .subtask-checkbox {width:14px;height:14px;border-radius:3px;border:1.5px solid var(--border);flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;transition:all 0.2s;background:#fff;}
+  #pt-mount .subtask-item.done .subtask-checkbox {background:var(--green-mid);border-color:var(--green-mid);}
+  #pt-mount .subtask-check-icon {color:#fff;font-size:8px;display:none;}
+  #pt-mount .subtask-item.done .subtask-check-icon {display:block;}
+
+/* DIVIDER */
+  #pt-mount .task-divider {font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-light);padding:12px 22px 4px;border-top:1px solid #f0f8f8;margin-top:4px;}
+
+/* LINKS SECTION */
+  #pt-mount .links-section {background:var(--card);border-radius:14px;padding:20px 22px;margin-bottom:20px;box-shadow:0 1px 8px rgba(6,102,100,0.06);}
+  #pt-mount .links-title {font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--text);margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+  #pt-mount .links-grid {display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+@media(max-width:560px){.links-grid{grid-template-columns:1fr;}}
+  #pt-mount .link-item {background:var(--bg);border-radius:8px;padding:10px 12px;text-decoration:none;display:flex;flex-direction:column;gap:2px;border:1px solid var(--border);transition:border-color 0.2s;}
+  #pt-mount .link-item:hover {border-color:var(--green-mid);}
+  #pt-mount .link-name {font-size:0.75rem;font-weight:500;color:var(--text);}
+  #pt-mount .link-url {font-size:0.65rem;color:var(--text-light);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  #pt-mount .link-badge {font-size:0.58rem;letter-spacing:0.06em;color:#fff;background:var(--green);border-radius:8px;padding:1px 6px;display:inline-block;margin-top:2px;width:fit-content;}
+  #pt-mount .link-badge.rose {background:#b86080;}
+
+/* SUBSCRIBERS */
+  #pt-mount .sub-section {background:var(--card);border-radius:14px;padding:20px 22px;margin-bottom:20px;box-shadow:0 1px 8px rgba(6,102,100,0.06);}
+  #pt-mount .sub-title {font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--text);margin-bottom:14px;}
+  #pt-mount .sub-table {width:100%;border-collapse:collapse;font-size:0.75rem;}
+  #pt-mount .sub-table th {text-align:left;font-size:0.62rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-light);padding:6px 10px;border-bottom:1px solid var(--border);}
+  #pt-mount .sub-table td {padding:10px 10px;border-bottom:1px solid #f0f8f8;color:var(--text-dim);}
+  #pt-mount .sub-table tr:last-child td {border-bottom:none;}
+  #pt-mount .badge {display:inline-block;border-radius:10px;padding:2px 8px;font-size:0.62rem;font-weight:500;}
+  #pt-mount .badge.done {background:#e0f5f4;color:var(--green);}
+  #pt-mount .badge.pending {background:#fff3e6;color:var(--gold);}
+  #pt-mount .badge.build {background:#e8eeff;color:#4a6ae8;}
+  #pt-mount .badge.next {background:#fce8f3;color:#b86080;}
+  #pt-mount .badge.na {background:#f0f0f0;color:#999;}
+
+  #pt-mount .updated {text-align:center;font-size:0.67rem;color:var(--text-light);margin-top:32px;}
+
 </style>
 </head>
 <body>
@@ -253,21 +697,15 @@ hr { border: none; border-top: 1px solid var(--border); margin: 18px 0; }
   <button class="tab-btn" onclick="showTab('legal',this)">⚖️ Legal Setup</button>
   <button class="tab-btn" onclick="showTab('braindump',this)">🧠 Brain Dump</button>
   <button class="tab-btn" onclick="showTab('facebook',this)">📘 Facebook Launch</button>
-  <span class="tab-cluster">
-    <button class="tab-btn" onclick="showTab('pitchpages',this)">🏢 B2B Pitch Pages</button>
-    <button class="tab-btn" onclick="showTab('twohounds',this)">💧 Two Hounds</button>
-  </span>
+  <button class="tab-btn" onclick="showTab('pitchpages',this)">🏢 B2B Pitch Pages</button>
   <button class="tab-btn" onclick="showTab('content',this)">📱 Content & IG</button>
   <button class="tab-btn" onclick="showTab('pipeline',this)">🤝 Lead Pipeline</button>
   <button class="tab-btn" onclick="showTab('links',this)">🔗 Link Hub</button>
   <span class="tab-divider">|</span>
-  <button class="tab-btn" onclick="showTab('cr-setup',this)">🌴 Creator Setup</button>
-  <button class="tab-btn" onclick="showTab('cr-ig',this)">📸 @mads.gallow</button>
-  <button class="tab-btn" onclick="showTab('cr-pitches',this)">📬 Hotel Pitches</button>
-  <button class="tab-btn" onclick="showTab('cr-grid',this)">🗂 9-Grid</button>
-  <button class="tab-btn" onclick="showTab('cr-angles',this)">🍹 Content Angles</button>
-  <button class="tab-btn" onclick="showTab('cr-linkedin',this)">💼 LinkedIn</button>
-  <button class="tab-btn" onclick="showTab('cr-route',this)">🗺 Route</button>
+  <button class="tab-btn" onclick="showTab('photosorter',this)">📸 Photo Sorter</button>
+  <button class="tab-btn" onclick="showTab('cycleharmony',this)">🩸 Cycle Harmony</button>
+  <button class="tab-btn" onclick="showTab('planners',this)">📖 Planners &amp; Journals</button>
+  <button class="tab-btn" onclick="showTab('creative',this)">🌴 @mads.gallow / Creative</button>
 </nav>
 
 <!-- ════════════════════════════════════════
@@ -289,9 +727,10 @@ hr { border: none; border-top: 1px solid var(--border); margin: 18px 0; }
         <span class="badge badge-done">Launched</span>
       </div>
       <p style="font-size:0.84rem;color:var(--muted);margin-bottom:12px;">Keypress camera-roll sorting tool · $27 one-time · Print/Stock/Videography/Me/Archive defaults. Code is done — what's left is the Founding 10 and content.</p>
-      <div class="link-row"><span class="link-name">Launch Day Status Doc</span><a class="link-url" href="photo-sorter-launch/index.html" target="_blank">photo-sorter-launch/</a><button class="copy-btn" onclick="cp('https://eauco-mads.github.io/living-water-pages/photo-sorter-launch/index.html',this)">Copy</button></div>
-      <div class="link-row"><span class="link-name">Live Tool</span><a class="link-url" href="https://eauco-mads.github.io/photo-sorter/" target="_blank">photo-sorter (live)</a><button class="copy-btn" onclick="cp('https://eauco-mads.github.io/photo-sorter/',this)">Copy</button></div>
-      <div class="link-row"><span class="link-name">GitHub Repo</span><a class="link-url" href="https://github.com/eauco-mads/photo-sorter" target="_blank">github.com/eauco-mads/photo-sorter</a><button class="copy-btn" onclick="cp('https://github.com/eauco-mads/photo-sorter',this)">Copy</button></div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;">
+        <button class="btn-sm" onclick="jumpToTab('photosorter')">Open Photo Sorter tab →</button>
+        <button class="btn-sm" onclick="window.open('https://eauco-mads.github.io/photo-sorter/','_blank')">Live Tool ↗</button>
+      </div>
     </div>
     <div id="proj-checklist-photosorter"></div>
   </div>
@@ -310,11 +749,8 @@ hr { border: none; border-top: 1px solid var(--border); margin: 18px 0; }
   <div class="proj-group">
     <div class="proj-group-head"><span class="proj-num">3</span><h3>Personal Instagram (@mads.gallow)</h3></div>
     <div class="card">
-      <p style="font-size:0.84rem;color:var(--muted);margin-bottom:12px;">Creator/travel content — Day Zero checklist, 9-Grid, content angles, and route all live under the Creator tabs.</p>
-      <div style="display:flex;gap:8px;flex-wrap:wrap;">
-        <button class="btn-sm" onclick="jumpToTab('cr-setup')">Creator Setup →</button>
-        <button class="btn-sm" onclick="jumpToTab('cr-ig')">@mads.gallow →</button>
-      </div>
+      <p style="font-size:0.84rem;color:var(--muted);margin-bottom:12px;">Creator/travel content — Day Zero checklist, 9-Grid, content angles, and route all live under one tab now, as sub-sections.</p>
+      <button class="btn-sm" onclick="jumpToTab('creative')">Open @mads.gallow / Creative tab →</button>
     </div>
     <div id="proj-checklist-personalig"></div>
   </div>
@@ -328,10 +764,9 @@ hr { border: none; border-top: 1px solid var(--border); margin: 18px 0; }
         <span class="badge badge-building">Staging</span>
       </div>
       <p style="font-size:0.84rem;color:var(--muted);margin-bottom:12px;">Tracker spotlight post, 3 bio options, and 6 "weave" posts tying hormone/cycle content back to h2eau — ready to copy into the Social Content Plan Google Doc.</p>
-      <div class="link-row"><span class="link-name">Content Additions Doc</span><a class="link-url" href="cycle-harmony/index.html" target="_blank">cycle-harmony/</a><button class="copy-btn" onclick="cp('https://eauco-mads.github.io/living-water-pages/cycle-harmony/index.html',this)">Copy</button></div>
-      <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;">
-        <button class="btn-sm" onclick="jumpToTab('twohounds')">Two Hounds tab →</button>
-        <button class="btn-sm" onclick="jumpToTab('pitchpages')">B2B Pitch Pages →</button>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;">
+        <button class="btn-sm" onclick="jumpToTab('cycleharmony')">Open Cycle Harmony tab →</button>
+        <button class="btn-sm" onclick="jumpToTab('pitchpages')">B2B Pitch Pages (incl. Two Hounds) →</button>
       </div>
     </div>
     <div id="proj-checklist-hormonewater"></div>
@@ -339,25 +774,15 @@ hr { border: none; border-top: 1px solid var(--border); margin: 18px 0; }
 
   <!-- PRIORITY 5 — BOOKS, PLANNERS, HARD COPY -->
   <div class="proj-group">
-    <div class="proj-group-head"><span class="proj-num">5</span><h3>Books, Planners &amp; Hard Copy</h3></div>
+    <div class="proj-group-head"><span class="proj-num">5</span><h3>Planners &amp; Journals — Books &amp; Hard Copy</h3></div>
     <div class="card">
       <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
         <h4 style="margin:0;">The Return Collection</h4>
         <span class="badge badge-building">Building · 2 of 6 in Canva</span>
       </div>
       <p style="font-size:0.84rem;color:var(--muted);margin-bottom:12px;">Branching healing-journal book series — "Follow Your Thread" mechanic, fort/tunnels metaphor. Books One &amp; Two (The Soft Return, The Wild Return) are in Canva now; four more seeded.</p>
-      <div class="link-row"><span class="link-name">Series Map</span><a class="link-url" href="return-collection/index.html" target="_blank">return-collection/</a><button class="copy-btn" onclick="cp('https://eauco-mads.github.io/living-water-pages/return-collection/index.html',this)">Copy</button></div>
-      <div class="link-row"><span class="link-name">Interior Page Guide</span><a class="link-url" href="return-collection/interior-guide.html" target="_blank">return-collection/interior-guide.html</a><button class="copy-btn" onclick="cp('https://eauco-mads.github.io/living-water-pages/return-collection/interior-guide.html',this)">Copy</button></div>
-    </div>
-    <div class="card">
-      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
-        <h4 style="margin:0;">Maddie's Planner &amp; Project Tracker</h4>
-        <span class="badge badge-building">Beta</span>
-      </div>
-      <p style="font-size:0.84rem;color:var(--muted);margin-bottom:12px;">Personalized Vedic + Human Design planner business. Tracker covers Phase 0–5 (foundation → beta → launch → subscriber ops → physical planners → tech infra). Beta subscribers: Chloe Newby, Andie Galloway, Devin (upcoming).</p>
-      <div class="link-row"><span class="link-name">Project Tracker</span><a class="link-url" href="https://eauco-mads.github.io/maddie-planner/tracker.html" target="_blank">maddie-planner/tracker.html</a><button class="copy-btn" onclick="cp('https://eauco-mads.github.io/maddie-planner/tracker.html',this)">Copy</button></div>
-      <div class="link-row"><span class="link-name">Maddie's Live Planner</span><a class="link-url" href="https://eauco-mads.github.io/maddie-planner/" target="_blank">maddie-planner (live)</a><button class="copy-btn" onclick="cp('https://eauco-mads.github.io/maddie-planner/',this)">Copy</button></div>
-      <div class="link-row"><span class="link-name">GitHub Repo</span><a class="link-url" href="https://github.com/eauco-mads/maddie-planner" target="_blank">github.com/eauco-mads/maddie-planner</a><button class="copy-btn" onclick="cp('https://github.com/eauco-mads/maddie-planner',this)">Copy</button></div>
+      <p style="font-size:0.84rem;color:var(--muted);margin-bottom:12px;"><strong>Maddie's Planner &amp; Project Tracker</strong> — personalized Vedic + Human Design planner business, Phase 0–5. Beta subscribers: Chloe Newby, Andie Galloway, Devin (upcoming).</p>
+      <button class="btn-sm" onclick="jumpToTab('planners')">Open Planners &amp; Journals tab →</button>
     </div>
     <div id="proj-checklist-booksplanners"></div>
   </div>
@@ -1249,14 +1674,7 @@ If any of this past 10 days resonated — this is your sign. Shoot me a message.
     </div>
   </div>
 
-</div>
-
-<!-- ════════════════════════════════════════
-     TAB 3 · TWO HOUNDS
-════════════════════════════════════════ -->
-<div id="tab-twohounds" class="tab-content">
-
-  <div class="section-title">Two Hounds Coffee · Kenai, Alaska</div>
+  <div class="section-title" style="margin-top:24px;">Two Hounds — Live Case Study · Kenai, Alaska</div>
 
   <div class="card">
     <h3>Live Pages ✅</h3>
@@ -1383,7 +1801,8 @@ If any of this past 10 days resonated — this is your sign. Shoot me a message.
     </div>
   </div>
 
-</div>
+
+    </div>
 
 <!-- ════════════════════════════════════════
      TAB 4 · CONTENT & IG
@@ -1676,9 +2095,1674 @@ If any of this past 10 days resonated — this is your sign. Shoot me a message.
 </div>
 
 <!-- ════════════════════════════════════════
-     TAB: CREATOR SETUP
+     TAB: PHOTO SORTER
 ════════════════════════════════════════ -->
-<div id="tab-cr-setup" class="tab-content">
+<div id="tab-photosorter" class="tab-content">
+
+  <div class="section-title">Photo Sorter — Launch Day</div>
+  <div class="info-box"><strong>Everything's live.</strong> The folder rename (Print/Stock/Videography/Me/Archive), the trust badges, the email script — all shipped and confirmed working. What's left is the Founding 10 and the content system to support them.</div>
+
+  <button class="collapse-toggle" onclick="toggle('ps-done',this)">▶ Done — 14 shipped</button>
+  <div id="ps-done" class="collapse-body">
+
+    <div class="card">
+      <div class="card-title"><h4 style="margin:0;">Default folders renamed: Print / Stock / Videography / Me / Archive</h4><span class="badge badge-build" style="background:rgba(6,102,100,0.1);color:var(--teal);">New</span></div>
+      <p style="font-size:0.84rem;color:var(--muted);">Swapped Travel/Stock-Print/Best/Archive for <strong>P/S/V/M/A</strong> everywhere it's shown: the tool's default, the thank-you page, and both sales pages. The three example "Editions" cards on sales.html were left alone on purpose — those are customization examples, not the shipped default.</p>
+    </div>
+    <div class="card">
+      <div class="card-title"><h4 style="margin:0;">Removed the unused snap-sorter.html</h4></div>
+      <p style="font-size:0.84rem;color:var(--muted);">Wasn't linked from anywhere live — thank-you page and the email both already pointed at the real tool. Deleted so there's only one tool to think about. Fully recoverable from git history.</p>
+    </div>
+    <div class="card">
+      <div class="card-title"><h4 style="margin:0;">"No AI — Just a Tool" trust badge + FAQ</h4></div>
+      <p style="font-size:0.84rem;color:var(--muted);">Fourth trust badge next to 100% Local / No Cloud Upload / Never Leaves Your Computer, plus a new "Is this AI?" FAQ entry: no AI, no facial recognition, no auto-tagging — just a keypress that moves a file.</p>
+    </div>
+    <div class="card">
+      <div class="card-title"><h4 style="margin:0;">Email script fixed &amp; redeployed</h4><span class="badge badge-done">Confirmed by you</span></div>
+      <p style="font-size:0.84rem;color:var(--muted);">Quick-keys section now matches P/S/V/M/A, and every special character (em dashes, arrows, checkmark) swapped for plain ASCII so the file can't show up garbled in Google's script editor again.</p>
+    </div>
+    <div class="card"><div class="card-title"><h4 style="margin:0;">Bios + link-in-bio</h4></div><p style="font-size:0.84rem;color:var(--muted);">TikTok and Instagram bios are in, pointing at the right sales page for each account.</p></div>
+    <div class="card"><div class="card-title"><h4 style="margin:0;">Launch Special pricing</h4></div><p style="font-size:0.84rem;color:var(--muted);">Both sales pages read <strong>Launch Special · <span style="text-decoration:line-through;color:var(--muted);">$49</span> $27</strong>, one-time · no subscription · no account. Raise back to $49 once testimonials and polish are in.</p></div>
+    <div class="card"><div class="card-title"><h4 style="margin:0;">Privacy badges + Works With</h4></div><p style="font-size:0.84rem;color:var(--muted);">🔒 100% Local · ☁️ No Cloud Upload · ❤️ Never leaves your computer, plus a Works With row (iPhone Photos, Snapchat Memories, SD Cards, External Hard Drives, Google Photos exports).</p></div>
+    <div class="card"><div class="card-title"><h4 style="margin:0;">The stat, made big</h4></div><p style="font-size:0.84rem;color:var(--muted);">"1,400+" is now two large numbers side by side — <strong>1,400</strong> photos, <strong>8</strong> minutes.</p></div>
+    <div class="card"><div class="card-title"><h4 style="margin:0;">Outcome-focused section names</h4></div><p style="font-size:0.84rem;color:var(--muted);">Photo Sorter Tool → <strong>Clean Camera Roll</strong>. The Folder System → <strong>Never Lose Another Memory</strong>. Snapchat guide → <strong>Get Everything Out of Snapchat</strong>.</p></div>
+    <div class="card"><div class="card-title"><h4 style="margin:0;">Thank-you page: mobile buyers</h4></div><p style="font-size:0.84rem;color:var(--muted);">Phone visitors get a direct nudge to email themselves the links. Desktop visitors keep the original joke section.</p></div>
+    <div class="card"><div class="card-title"><h4 style="margin:0;">Photo-count question + Challenge</h4></div><p style="font-size:0.84rem;color:var(--muted);">"How many photos are you about to sort?" with four buttons, logging to email. Plus the 🎉 Challenge: sort in 10 minutes, tell you on Instagram.</p></div>
+    <div class="card"><div class="card-title"><h4 style="margin:0;">Mobile Version copy</h4></div><p style="font-size:0.84rem;color:var(--muted);">Waitlist sections now open with 📱 Mobile Version — Works with: Google Photos, iPhone Photos, Android.</p></div>
+    <div class="card"><div class="card-title"><h4 style="margin:0;">Desktop-only, said clearly, before purchase</h4></div><p style="font-size:0.84rem;color:var(--muted);">Added under the CTA on both sales pages, plus AirDrop/nearby-PC suggestion before falling back to email.</p></div>
+    <div class="card"><div class="card-title"><h4 style="margin:0;">Hero headlines — left alone, on purpose</h4><span class="badge badge-pending">Your call</span></div><p style="font-size:0.84rem;color:var(--muted);">Kept current headlines — they carry the soft-certainty voice better than the punchier alternates floated. Say the word if you want one swapped in to test.</p></div>
+
+  </div>
+
+  <div class="section-title" style="margin-top:32px;">What's Left</div>
+
+  <div class="card">
+    <h4>1. Founding 10 — reach out, get them in, get the testimonial</h4>
+    <p style="font-size:0.85rem;color:var(--muted);margin:10px 0;font-style:italic;">"Hey! I just finished building something I've been working on for months. I'm inviting 10 founding users to test it before I officially launch. In exchange, I'd love your honest feedback and, if you love it, a testimonial I can use on my website."</p>
+    <p style="font-size:0.84rem;color:var(--muted);">Send it now, not after the copy is perfect. Once they're in: follow up after a day or two, ask directly for a testimonial. Show a range when you post them — one very specific review next to one broad keep-or-delete one.</p>
+  </div>
+
+  <div class="card">
+    <h4>2. Content — get your ideas out without it eating your day</h4>
+    <p style="font-size:0.84rem;color:var(--muted);margin-bottom:14px;">The Europe photos are already sorting into Print/Stock/Videography — real, usable proof-of-work. Plus the Thailand screen recording, talking-head hooks over the Europe photos, and a Mac screen recording. That covers post #1 and several confession-style posts without filming anything new.</p>
+    <div class="shot"><div class="shot-n">1</div><div><div class="shot-title">Mon AM — Hero demo (pin)</div><div class="shot-line">Your screen recording + done-screen reveal — the proof-of-concept</div></div></div>
+    <div class="shot"><div class="shot-n">2</div><div><div class="shot-title">Mon PM — Proof static (pin)</div><div class="shot-line">Done-screen screenshot, real numbers — reinforces #1 same day</div></div></div>
+    <div class="shot"><div class="shot-n">3</div><div><div class="shot-title">Tue — The stat graphic</div><div class="shot-line">"1,400 photos. 8 minutes." — pure hook, no explanation needed</div></div></div>
+    <div class="shot"><div class="shot-n">4</div><div><div class="shot-title">Wed — Snapchat pain</div><div class="shot-line">Zip files sitting untouched — names the problem</div></div></div>
+    <div class="shot"><div class="shot-n">5</div><div><div class="shot-title">Wed — How to get your Snap memories</div><div class="shot-line">Educational, saveable — algorithm likes saves</div></div></div>
+    <div class="shot"><div class="shot-n">6</div><div><div class="shot-title">Thu — The 5 folders explained</div><div class="shot-line">Carousel, P/S/V/M/A — shows the system</div></div></div>
+    <div class="shot"><div class="shot-n">7</div><div><div class="shot-title">Thu — No app, no subscription</div><div class="shot-line">Objection handling, right before widening the audience</div></div></div>
+    <div class="shot"><div class="shot-n">8</div><div><div class="shot-title">Fri — For photographers</div><div class="shot-line">K/R/S/C demo — opens the second audience</div></div></div>
+    <div class="shot"><div class="shot-n">9</div><div><div class="shot-title">Fri — For your mom</div><div class="shot-line">Family/camera-roll use case — widest relatability</div></div></div>
+    <div class="shot"><div class="shot-n">10</div><div><div class="shot-title">Sat — The before</div><div class="shot-line">Chaotic folder screenshot — relatable, high-share</div></div></div>
+    <div class="shot"><div class="shot-n">11</div><div><div class="shot-title">Sat — Multi-pass workflow</div><div class="shot-line">Carousel, shows depth for anyone still on the fence</div></div></div>
+    <div class="shot"><div class="shot-n">12</div><div><div class="shot-title">Sun — Direct CTA</div><div class="shot-line">Product, price, what's included — the ask, once trust is built</div></div></div>
+    <p class="cr-sub" style="margin-top:10px;">TikTok can take #1–3 twice — launch day, then repost the best performer midweek.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><h4 style="margin:0;">The open question: AI-assist or personal help</h4><span class="badge badge-pending">Talk it through</span></div>
+    <p style="font-size:0.84rem;color:var(--muted);">Water content, hormone content, the calendar, travel/print/UGC, and personal — too much to hand-craft solo every day. Worth deciding which of those get an AI tool doing first drafts/scheduling, versus which need a real person's time.</p>
+  </div>
+
+  <div class="card">
+    <h4>Ads — once the first sale lands</h4>
+    <p style="font-size:0.84rem;color:var(--muted);">Don't build a campaign from scratch — take whichever of the 12 posts has the best watch-time or saves and boost it, $10–20/day to start.</p>
+  </div>
+
+</div>
+
+<!-- ════════════════════════════════════════
+     TAB: CYCLE HARMONY
+════════════════════════════════════════ -->
+<div id="tab-cycleharmony" class="tab-content">
+
+  <div class="section-title">Cycle Harmony — Content Additions</div>
+  <div class="info-box"><strong>Staging area, not the live doc.</strong> Everything below is meant to be copied into the Social Content Plan Google Doc. Each block has a Copy button.</div>
+
+  <div class="card">
+    <div class="card-title"><h4 style="margin:0;">New Post — The Free Tracker Spotlight</h4></div>
+    <p style="font-size:0.72rem;color:var(--muted);margin-bottom:10px;">Suggested placement: right after Post 3 (Four Phases) in Part 1 · Reel or carousel — screen recording of the tracker filling in with phase colors</p>
+    <div class="link-row" style="align-items:flex-start;">
+      <span class="body-text" id="ch-copy-tracker" style="font-size:0.84rem;line-height:1.7;white-space:pre-wrap;flex:1;">HOOK: I made a cycle tracker you'll actually want to fill in.
+
+CAPTION:
+Not another app asking for your data. Just a printable, interactive 30-day tracker — enter your Day 1 and cycle length, and it fills itself in with your exact phases. Color-coded. No guessing.
+
+Click through it on your phone. Print it and stick it on your wall. Free. No spam. Just your name and email to get in.
+
+CTA: Free guide + interactive tracker — link in bio.</span>
+      <button class="copy-btn" onclick="cp(document.getElementById('ch-copy-tracker').textContent,this)">Copy</button>
+    </div>
+    <p style="font-size:0.7rem;color:var(--muted);margin-top:8px;">#cycletracker #cycleharmony #hormonehealth #cycleawareness #periodtracking #cyclesyncing #freetool #womenswellness #bodyintelligence #hormones</p>
+  </div>
+
+  <div class="card">
+    <h4>Bio Options — pick one, or mix lines from a couple</h4>
+    <div style="margin-top:12px;">
+      <p style="font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--orange);margin-bottom:6px;">Option 1 · Closest to original</p>
+      <div class="link-row"><span class="body-text" id="ch-bio1" style="font-size:0.84rem;white-space:pre-wrap;flex:1;">Your cycle is intelligent. Learn the language. ✦
+Free interactive tracker + 4-phase education
+↓ Start with the free guide — no spam, ever</span><button class="copy-btn" onclick="cp(document.getElementById('ch-bio1').textContent,this)">Copy</button></div>
+    </div>
+    <div style="margin-top:12px;">
+      <p style="font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--orange);margin-bottom:6px;">Option 2 · Benefit-forward</p>
+      <div class="link-row"><span class="body-text" id="ch-bio2" style="font-size:0.84rem;white-space:pre-wrap;flex:1;">You don't need another app tracking you. ✦
+A free tracker that finally makes sense + a dashboard that's actually yours
+↓ Free guide + My Rhythm membership</span><button class="copy-btn" onclick="cp(document.getElementById('ch-bio2').textContent,this)">Copy</button></div>
+    </div>
+    <div style="margin-top:12px;">
+      <p style="font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--orange);margin-bottom:6px;">Option 3 · Short + punchy</p>
+      <div class="link-row"><span class="body-text" id="ch-bio3" style="font-size:0.84rem;white-space:pre-wrap;flex:1;">Not fixing you. Just showing you the pattern. ✦
+Free cycle tracker ↓ personalized dashboard, when you're ready</span><button class="copy-btn" onclick="cp(document.getElementById('ch-bio3').textContent,this)">Copy</button></div>
+    </div>
+  </div>
+
+  <button class="collapse-toggle" onclick="toggle('ch-weaves',this)">▶ 6 Weave Posts — tying hormone/cycle content back to h2eau</button>
+  <div id="ch-weaves" class="collapse-body">
+
+    <div class="card">
+      <div class="card-title"><h4 style="margin:0;">Weave A — The Bridge</h4></div>
+      <p style="font-size:0.72rem;color:var(--muted);margin-bottom:10px;">Static or short Reel · Water movement + soft florals</p>
+      <div class="link-row"><span class="body-text" id="ch-a" style="font-size:0.84rem;white-space:pre-wrap;flex:1;">HOOK: Two things your body is mostly made of: water and rhythm.
+
+CAPTION:
+Most wellness conversations talk about one or the other. Drink more water. Track your cycle. But they're not separate.
+
+Your hormones are transported through water. Your blood volume changes across your cycle. Your electrolyte needs shift with your phases.
+
+This is why I talk about both. ✦
+
+CTA: Free cycle tracker in bio if you want to start mapping your own rhythm. Save this one.</span><button class="copy-btn" onclick="cp(document.getElementById('ch-a').textContent,this)">Copy</button></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><h4 style="margin:0;">Weave B — Hydration Across Your Cycle</h4></div>
+      <p style="font-size:0.72rem;color:var(--muted);margin-bottom:10px;">Carousel (4 slides, one per phase) or Reel</p>
+      <div class="link-row"><span class="body-text" id="ch-b" style="font-size:0.84rem;white-space:pre-wrap;flex:1;">HOOK: You're probably not drinking enough water in your luteal phase. Here's why.
+
+CAPTION:
+✦ Menstrual: blood loss + prostaglandins = higher hydration need.
+✦ Follicular: rising estrogen = cells more responsive to hydration.
+✦ Ovulatory: peak energy = peak fluid turnover.
+✦ Luteal: progesterone causes water retention — you still need MORE water.
+
+Drink the water. Know your phase. ✦
+
+CTA: Not sure what phase you're in? Grab the free tracker in bio.</span><button class="copy-btn" onclick="cp(document.getElementById('ch-b').textContent,this)">Copy</button></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><h4 style="margin:0;">Weave C — Inflammation + Hormones</h4></div>
+      <p style="font-size:0.72rem;color:var(--muted);margin-bottom:10px;">Static or Reel · Clean water, clinical-meets-soft aesthetic</p>
+      <div class="link-row"><span class="body-text" id="ch-c" style="font-size:0.84rem;white-space:pre-wrap;flex:1;">HOOK: Most hormone imbalances have an inflammation layer underneath.
+
+CAPTION:
+Cortisol dysregulation. Estrogen dominance. Thyroid sluggishness. Almost all of them have chronic low-grade inflammation in common — and inflammation often has oxidative stress underneath it.
+
+Molecular hydrogen (H₂) is one of the most selective antioxidants studied to date. I'm not saying water is medicine. I'm saying the foundation matters. ✦
+
+CTA: Learn more at stopdrinkingacid.com — link in bio. Free cycle tracker there too.</span><button class="copy-btn" onclick="cp(document.getElementById('ch-c').textContent,this)">Copy</button></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><h4 style="margin:0;">Weave D — My Daily Stack</h4></div>
+      <p style="font-size:0.72rem;color:var(--muted);margin-bottom:10px;">Reel — morning routine, or aesthetic flat lay</p>
+      <div class="link-row"><span class="body-text" id="ch-d" style="font-size:0.84rem;white-space:pre-wrap;flex:1;">HOOK: I don't talk about wellness without talking about the nervous system.
+
+CAPTION:
+Cortisol stays elevated when your nervous system is stuck in threat mode. Elevated cortisol suppresses progesterone. This is the loop.
+
+My daily stack: hydrogen water → sunlight within 30 min → check my cycle phase (the free tracker does this in ten seconds) → 5 minutes of stillness.
+
+Regulation before reinvention. ✦
+
+CTA: What does your morning look like? Drop it below.</span><button class="copy-btn" onclick="cp(document.getElementById('ch-d').textContent,this)">Copy</button></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><h4 style="margin:0;">Weave E — Personal Story</h4></div>
+      <p style="font-size:0.72rem;color:var(--muted);margin-bottom:10px;">Reel — candid, real, day-in-the-life</p>
+      <div class="link-row"><span class="body-text" id="ch-e" style="font-size:0.84rem;white-space:pre-wrap;flex:1;">HOOK: I used to wonder why I felt so different every week. Now I expect it.
+
+CAPTION:
+Some weeks I'm building, planning, pitching, showing up loudly. Some weeks I'm quiet, interior, slow — and that's by design, not failure.
+
+If this resonates, I built something for exactly this. It's called My Rhythm — a personalized cycle dashboard. Link in bio. $8.88/month or $77/year. Or start with the free interactive tracker. ✦
+
+CTA: Free tracker or My Rhythm dashboard — both in bio.</span><button class="copy-btn" onclick="cp(document.getElementById('ch-e').textContent,this)">Copy</button></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><h4 style="margin:0;">Weave F — Women Weren't Built for a 7-Day Week</h4></div>
+      <p style="font-size:0.72rem;color:var(--muted);margin-bottom:10px;">Reel — a little more educational/provocative</p>
+      <div class="link-row"><span class="body-text" id="ch-f" style="font-size:0.84rem;white-space:pre-wrap;flex:1;">HOOK: Men have a 24-hour hormonal cycle. Women have a 28-day one.
+
+CAPTION:
+This is not a flaw. It's a feature. The 9-to-5 five-day week was literally designed around male biology. Women operate on a 28-day infradian rhythm.
+
+When you know this: why some weeks you're unstoppable, why some weeks you just can't. You ARE consistent — just on a longer cycle. ✦
+
+CTA: Free interactive tracker in bio — takes 30 seconds to set up.</span><button class="copy-btn" onclick="cp(document.getElementById('ch-f').textContent,this)">Copy</button></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     TAB: PLANNERS & JOURNALS
+════════════════════════════════════════ -->
+<div id="tab-planners" class="tab-content">
+
+  <div class="section-title">Planners &amp; Journals</div>
+
+  <div class="sub-tab-nav">
+    <button class="sub-tab-btn active" onclick="showSubTab('planners','seriesmap',this)">📖 Series Map</button>
+    <button class="sub-tab-btn" onclick="showSubTab('planners','interiorguide',this)">📝 Interior Page Guide</button>
+    <button class="sub-tab-btn" onclick="showSubTab('planners','tracker',this)">🗓 Maddie's Planner Tracker</button>
+  </div>
+
+  <!-- SUB-TAB: SERIES MAP -->
+  <div id="sub-planners-seriesmap" class="sub-tab-content active">
+
+    <div class="info-box"><strong>Every path leads home.</strong> A healing journal series built on branching paths, inner child play, and the truth that there are no wrong turns. Mechanic name: <strong>Follow Your Thread</strong> — permission slips and tiny secret tunnels, not clinical branch-numbering. The inner child leads, not the ego.</div>
+
+    <div class="card">
+      <div class="card-title"><h4 style="margin:0;">Book One — The Soft Return</h4><span class="badge badge-done">In Canva now</span></div>
+      <p style="font-size:0.72rem;color:var(--muted);margin-bottom:8px;">A Somatic Inner Child Journal · Thread depth: light — a wink to the rest</p>
+      <p style="font-size:0.84rem;color:var(--muted);">Branching barely visible — felt more than seen. Opening spiral entry map (three ways in based on how the body feels today), 2–3 permission-slip moments, one mid-book fork, closing: "Every page you chose was the right one."</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><h4 style="margin:0;">Book Two — The Wild Return</h4><span class="badge badge-done">In Canva now</span></div>
+      <p style="font-size:0.72rem;color:var(--muted);margin-bottom:8px;">A Junk Journal for Your Inner Child · Thread depth: tunnels throughout</p>
+      <p style="font-size:0.84rem;color:var(--muted);">More chaos, more play, more secret passages. The fort metaphor begins here. Margin arrows, mind-bender tunnels, a wreck-this moment ("Rip this out. Hide it somewhere in the book."), the fort as a recurring motif.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><h4 style="margin:0;">Book Three — Follow Your Thread</h4><span class="badge badge-build">Next to build</span></div>
+      <p style="font-size:0.72rem;color:var(--muted);margin-bottom:8px;">The Dedicated Branching Journey · Indecision · Anxiety · Feeling Stuck · Thread depth: full experience</p>
+      <p style="font-size:0.84rem;color:var(--muted);">Built from the ground up around the branching mechanic. The fort works two ways at once — a place to play, and a metaphor for your insides. I-Spy spreads doubling as fork triggers, perspective pairs, pictures inside pictures, an emotion-wheel check-in at each fork. Two separate editions (adult + kids), same map.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><h4 style="margin:0;">Book Four — Find Your Spark</h4><span class="badge badge-pending">Coming</span></div>
+      <p style="font-size:0.72rem;color:var(--muted);margin-bottom:8px;">For When You've Forgotten What Lights You Up · Thread depth: discovery-led</p>
+      <p style="font-size:0.84rem;color:var(--muted);">More play, less excavation. CYOA + creative activities + sensory discovery. The branching follows curiosity, not wounds.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><h4 style="margin:0;">Books Five &amp; Six — The Water Books</h4><span class="badge badge-na">Seeded</span></div>
+      <p style="font-size:0.72rem;color:var(--muted);margin-bottom:8px;">Two paths through the same truth — water is non-linear too</p>
+      <p style="font-size:0.84rem;color:var(--muted);"><strong>The Cell Book</strong> (Science Door) — hydrogen, ATP, free radicals, mind-benders. Ties directly into the water business, Amazon science/health potential.<br><strong>The Flow Book</strong> (Feeling Door) — water element, kidneys, fear→will→courage, Chinese medicine meets felt sense.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><h4 style="margin:0;">The Kids Line — So They Never Have to Return</h4><span class="badge badge-na">Seeded</span></div>
+      <p style="font-size:0.84rem;color:var(--muted);">Coloring · CYOA · Mind Benders · Junk Journal, for children still in full creative sovereignty. The adult books are about coming back to something you lost — the kids books are about never losing it. Natural cross-generational sales: parents who healed with the adult books buy this for their kids.</p>
+    </div>
+
+    <blockquote style="margin:20px 0 0;padding:14px 18px;border-left:3px solid var(--teal);background:rgba(6,102,100,0.04);font-style:italic;color:var(--muted);font-size:0.88rem;">"The healing you had to do as an adult. We're giving kids the tools to never need it." — The Return Collection, by Maddie Galloway</blockquote>
+  </div>
+
+  <!-- SUB-TAB: INTERIOR PAGE GUIDE (scoped embed, see script below) -->
+  <div id="sub-planners-interiorguide" class="sub-tab-content">
+    <div id="pig-mount">
+<div style="max-width:760px;margin:0 auto;padding:16px 24px 0;">
+  <a href="index.html" style="display:inline-block;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#5a7852;text-decoration:none;border-bottom:1px solid #dfd7c5;padding-bottom:2px;">← Series Map</a>
+</div>
+
+<!-- TAB BAR -->
+<div class="pig-tab-bar">
+  <button class="pig-tab-btn active" onclick="pigSwitchTab('soft', this)">The Soft Return</button>
+  <button class="pig-tab-btn" onclick="pigSwitchTab('wild', this)">The Wild Return</button>
+</div>
+
+<!-- ════════════════════════════════════════════════ -->
+<!-- PANEL 1: THE SOFT RETURN -->
+<!-- ════════════════════════════════════════════════ -->
+<div class="pig-panel active" id="pig-panel-soft">
+<div class="pig-panel-inner">
+
+  <p class="section-intro">Each chapter follows the same psychological arc: soften (poem) → understand (teaching) → regulate (somatic) → play (game) → express (prompts + art) → anchor (mantra) → choose (thread fork). This sequence works even if a reader only opens to one chapter.</p>
+  <span class="page-count">Target: 150–165 pages total &nbsp;·&nbsp; 10 chapters × ~13 pages + front/back matter</span>
+
+  <!-- FRONT MATTER -->
+  <div class="ring-header" style="margin-top:32px;">
+    <span class="ring-label">Front Matter</span>
+    <span class="ring-title">Before the Journey Begins</span>
+  </div>
+
+  <div class="pages-list matter-list">
+
+    <div class="page-entry struct-e">
+      <button class="page-toggle" onclick="pigTogglePage(this)">
+        <span class="badge b-struct">Structural</span>
+        <span class="page-title-text">Half-title page — "The Soft Return"</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p>Title only, centered. Large italic serif. Lots of white space. Feels like a breath before diving in.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry struct-e">
+      <button class="page-toggle" onclick="pigTogglePage(this)">
+        <span class="badge b-struct">Structural</span>
+        <span class="page-title-text">Full title page — title, subtitle, author</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p><em>The Soft Return</em> · A Somatic Inner Child Journal for Coming Home to Yourself · Maddie Galloway</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry struct-e">
+      <button class="page-toggle" onclick="pigTogglePage(this)">
+        <span class="badge b-struct">Structural</span>
+        <span class="page-title-text">"This Book Belongs To" — fill-in page</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p>Name line · Date you began · One word for what you're hoping to find · "This book was written for you. Specifically. Even if we've never met."</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry struct-e">
+      <button class="page-toggle" onclick="pigTogglePage(this)">
+        <span class="badge b-struct">Structural</span>
+        <span class="page-title-text">A note before you begin — how to use this journal</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p>Key message: there is no right order, no right amount, no right way. Body first, always. Skip anything that doesn't feel right. Come back. There are no wrong turns here — only threads.</p>
+          <p>Mention the Follow Your Thread forks scattered throughout — they're optional, never required.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry struct-e">
+      <button class="page-toggle" onclick="pigTogglePage(this)">
+        <span class="badge b-struct">Structural</span>
+        <span class="page-title-text">Letter from Maddie — personal opening</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p>Warm, direct, personal. Written in her handwriting font if possible. The tone: "I made this because I needed it." Not clinical, not preachy. Ends with something like: "The version of you that picked this up — she knew what she was doing."</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry struct-e">
+      <button class="page-toggle" onclick="pigTogglePage(this)">
+        <span class="badge b-struct">Structural</span>
+        <span class="page-title-text">The Five Rings — spiral map visual</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p>A visual of the spiral with all five rings labeled: Safety · Feeling · Understanding · Reconnecting · Becoming. Not a table of contents — more like a map you look at before a hike. Shows that the journey spirals inward.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry thread-e">
+      <button class="page-toggle" onclick="pigTogglePage(this)">
+        <span class="badge b-thread">Follow Your Thread</span>
+        <span class="page-title-text">Your Entry Point — the opening gateway</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p>The first Follow Your Thread moment. Reads:</p>
+          <div class="fork-box">
+            <p>"Close your eyes. Take one breath. Open them and read the statement that feels most true in your body right now:"</p>
+            <div class="fork-option">My body feels tight, anxious, or on guard → start at Chapter 1</div>
+            <div class="fork-option">I feel numb, foggy, or far away from myself → start at Chapter 5</div>
+            <div class="fork-option">I feel sad but present and open → start at Chapter 3</div>
+            <div class="fork-option">I'm actually okay — I just want to play → start at Chapter 8</div>
+            <div class="fork-option" style="margin-top:8px; font-style:italic; color: var(--muted);">"You can always change your mind. You can start over. There are no wrong doors."</div>
+          </div>
+          <div class="psych-note">Giving agency at the very start regulates the nervous system. The reader's inner child is immediately in the driver's seat, not following rules.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry soma-e">
+      <button class="page-toggle" onclick="pigTogglePage(this)">
+        <span class="badge b-soma">Somatic</span>
+        <span class="page-title-text">Before You Begin — full body baseline check-in</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p>A simple body scan to use before any session. Serves as a baseline — they can return to this page after each chapter to notice what shifted.</p>
+          <ol class="steps">
+            <li data-n="1.">Sit or lie down. Allow your weight to be fully supported.</li>
+            <li data-n="2.">Notice your breath. Don't change it. Just feel it.</li>
+            <li data-n="3.">Scan from feet to head. Where do you feel tension? Numbness? Warmth?</li>
+            <li data-n="4.">Draw or circle where you feel it on the body outline below.</li>
+            <li data-n="5.">Write three words: how does your body feel right now?</li>
+          </ol>
+          <p style="margin-top:10px;">Include a simple line-drawing body outline (front view) for them to mark.</p>
+          <div class="psych-note">Beginning with body awareness primes the reader for somatic work and creates a felt sense of starting point — healing becomes measurable even without words.</div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end front matter -->
+
+  <!-- RING 1 -->
+  <div class="ring-header">
+    <span class="ring-label">Ring One</span>
+    <span class="ring-title">Safety</span>
+  </div>
+
+  <!-- CHAPTER 1 -->
+  <div class="chapter-header">
+    <span class="chapter-label">Chapter One</span>
+    <span class="chapter-name">The Place Where You Begin</span>
+  </div>
+  <div class="pages-list">
+
+    <div class="page-entry poem-e">
+      <button class="page-toggle" onclick="pigTogglePage(this)">
+        <span class="badge b-poem">Poem</span>
+        <span class="page-title-text">Opening poem — "The Place Where You Begin"</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p>From the manuscript. Full page. No prompt, no instructions. Just the poem and white space. Let it land.</p>
+          <div class="psych-note">Poems lower defenses before any "work" begins. The nervous system receives poetry differently than instruction — it relaxes into it.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry teach-e">
+      <button class="page-toggle" onclick="pigTogglePage(this)">
+        <span class="badge b-teach">Teaching</span>
+        <span class="page-title-text">What Your Nervous System Was Trying to Do — 2-page spread</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p>Simple explanation of the three nervous system states (safe/regulated · activated/fight-flight · shutdown/freeze). Key message: <em>none of these responses are wrong — they were correct for what you were living through.</em></p>
+          <p>Include a small visual: three states shown as three circles or a simple diagram. Keep it warm, not clinical. End with: "Your nervous system didn't fail you. It protected you. That matters."</p>
+          <div class="psych-note">Psychoeducation delivered with warmth removes shame from survival responses and builds safety to explore further. This is the cognitive container for the somatic work that follows.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry soma-e">
+      <button class="page-toggle" onclick="pigTogglePage(this)">
+        <span class="badge b-soma">Somatic</span>
+        <span class="page-title-text">Practice — "Finding Your Feet"</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <ol class="steps">
+            <li data-n="1.">Take your shoes off if you can. Press both feet fully into the floor.</li>
+            <li data-n="2.">Feel the floor pressing back. That resistance is real. You are held.</li>
+            <li data-n="3.">Slowly notice: where do your feet meet the ground? What's the texture? Temperature?</li>
+            <li data-n="4.">Take 3 slow breaths. With each exhale, imagine sending your breath all the way down to your feet.</li>
+            <li data-n="5.">Notice: is there any place in your body that softened — even a little?</li>
+          </ol>
+          <p style="margin-top:8px;">Write one word below: what does your body feel now?</p>
+          <div class="psych-note">Grounding activates the parasympathetic nervous system and anchors attention in the present body — the prerequisite for any meaningful inner child work.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry game-e">
+      <button class="page-toggle" onclick="pigTogglePage(this)">
+        <span class="badge b-game">I Spy</span>
+        <span class="page-title-text">I Spy — Grounding Edition</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p>"I spy, with my little eye, something that belongs to right now."</p>
+          <p>Find one thing in the room that feels:</p>
+          <div class="prompt-q">Safe</div>
+          <div class="prompt-q">Soft</div>
+          <div class="prompt-q">Like something a child would love</div>
+          <div class="prompt-q">Yours</div>
+          <p style="margin-top:8px;">Write or draw what you found. [4 small boxes or lines]</p>
+          <p style="font-style:italic; color:var(--muted); font-size:0.88em; margin-top:6px;">"They were here the whole time."</p>
+          <div class="psych-note">I Spy redirects hypervigilant scanning (looking for threats) toward sensory beauty and safety. Activates the orienting response in a positive direction.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry prompt-e">
+      <button class="page-toggle" onclick="pigTogglePage(this)">
+        <span class="badge b-prompt">Prompts</span>
+        <span class="page-title-text">Journal prompts — 2 pages of writing space</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <div class="prompt-q">When did you first learn it might not be safe to just be yourself?</div>
+          <div class="prompt-q">What does your body do when it's scared? (Do you hold your breath? Get small? Get very still? Get loud?)</div>
+          <div class="prompt-q">If safety were a feeling that lived in your body, where would it be?</div>
+          <p style="margin-top:8px; font-size:0.88em; color:var(--muted);">Lots of lines. No pressure to fill them. One sentence is enough.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry art-e">
+      <button class="page-toggle" onclick="pigTogglePage(this)">
+        <span class="badge b-art">Art Page</span>
+        <span class="page-title-text">"Draw or color what 'safe' feels like"</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p>Full blank page. Instruction at the top: <em>"It doesn't have to look like anything. Let your hand move and see what wants to come out."</em></p>
+          <p>Very light decorative border, otherwise completely open.</p>
+          <div class="psych-note">Right-brain expression bypasses the inner critic. The act of making something — anything — activates the parasympathetic system and builds a felt sense of creative agency.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry mantra-e">
+      <button class="page-toggle" onclick="pigTogglePage(this)">
+        <span class="badge b-mantra">Mantra</span>
+        <span class="page-title-text">Integration mantra — Chapter 1</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p><em>"My body has been keeping me safe. I can thank it now, and ask it to rest."</em></p>
+          <p style="margin-top:8px;">Beautiful typography, centered, lots of breathing room. A space below to rewrite it in their own handwriting — the act of writing anchors it somatically.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry thread-e">
+      <button class="page-toggle" onclick="pigTogglePage(this)">
+        <span class="badge b-thread">Follow Your Thread</span>
+        <span class="page-title-text">Chapter 1 fork — soft check-in</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <div class="fork-box">
+            <p>"Before you turn the page, notice: something has shifted. Even 1%. What was it?"</p>
+            <p style="margin-top:6px;">[small writing space]</p>
+            <div class="fork-option">If you need more time in this chapter — stay. There is no rush.</div>
+            <div class="fork-option">If you're ready — Chapter 2 is waiting.</div>
+          </div>
+          <div class="psych-note">Micro-check-ins after each chapter build interoceptive awareness (the ability to notice internal states) — a core skill in healing anxiety and disconnection.</div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end ch1 -->
+
+  <!-- CHAPTER 2 -->
+  <div class="chapter-header">
+    <span class="chapter-label">Chapter Two</span>
+    <span class="chapter-name">The Emotions You Were Told Were Too Much</span>
+  </div>
+  <div class="pages-list">
+
+    <div class="page-entry poem-e">
+      <button class="page-toggle" onclick="pigTogglePage(this)">
+        <span class="badge b-poem">Poem</span>
+        <span class="page-title-text">Opening poem — "The Emotions"</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail"><div class="detail-content"><p>From the manuscript. Full page. Let it land.</p></div></div>
+    </div>
+
+    <div class="page-entry teach-e">
+      <button class="page-toggle" onclick="pigTogglePage(this)">
+        <span class="badge b-teach">Teaching</span>
+        <span class="page-title-text">Why You Learned to Perform Instead of Feel — 2-page spread</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p>Explains how children suppress emotions when those emotions weren't welcomed or safe. The "performing" self vs. the real self. Key message: <em>You didn't become fake — you became strategic. That was smart. You get to choose differently now.</em></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry soma-e">
+      <button class="page-toggle" onclick="pigTogglePage(this)">
+        <span class="badge b-soma">Somatic</span>
+        <span class="page-title-text">Practice — "Riding the Wave"</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <ol class="steps">
+            <li data-n="1.">Think of a feeling that's present right now. Not the story around it — just the sensation.</li>
+            <li data-n="2.">Where do you feel it in your body? Put a hand there.</li>
+            <li data-n="3.">Give it a shape. A color. A texture.</li>
+            <li data-n="4.">Watch it the way you'd watch a wave. You don't have to stop it. You don't have to ride it. Just... watch.</li>
+            <li data-n="5.">Notice: waves crest. They always come down. So does this.</li>
+          </ol>
+          <div class="psych-note">Teaching tolerating emotion without suppressing or being overwhelmed by it is the core of somatic healing work. This practice builds "window of tolerance."</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry game-e">
+      <button class="page-toggle" onclick="pigTogglePage(this)">
+        <span class="badge b-game">Word Search</span>
+        <span class="page-title-text">Emotions word search</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p>Hidden words: JOY · GRIEF · RAGE · SHAME · WONDER · FEAR · PEACE · LONGING · TENDER · AWE · NUMB · SAFE</p>
+          <p>Caption above: <em>"All of these live in you. Find them."</em></p>
+          <p>Caption below after grid: <em>"Every word you found was already there. Circle the ones that feel like yours right now."</em></p>
+          <div class="psych-note">Normalizes the full range of human emotion by presenting all feelings — even "difficult" ones — as simply findable, present, and non-threatening.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry prompt-e">
+      <button class="page-toggle" onclick="pigTogglePage(this)">
+        <span class="badge b-prompt">Prompts</span>
+        <span class="page-title-text">Journal prompts — 2 pages</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <div class="prompt-q">Which emotion were you taught was "too much" — too loud, too messy, too dramatic, too sad?</div>
+          <div class="prompt-q">How did you learn to manage it? What did you do with it instead?</div>
+          <div class="prompt-q">What would you say to a child who felt that feeling, right now?</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry art-e">
+      <button class="page-toggle" onclick="pigTogglePage(this)">
+        <span class="badge b-art">Art Page</span>
+        <span class="page-title-text">"Color this page with today's feeling"</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p>A simple, beautiful body outline — front-facing. No labels. Instruction: <em>"Color where you feel things. Use whatever colors feel right. There is no correct answer."</em></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry mantra-e">
+      <button class="page-toggle" onclick="pigTogglePage(this)">
+        <span class="badge b-mantra">Mantra</span>
+        <span class="page-title-text">Integration mantra — Chapter 2</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p><em>"My feelings were never the problem. They were information I didn't know how to hold yet. I'm learning."</em></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry thread-e">
+      <button class="page-toggle" onclick="pigTogglePage(this)">
+        <span class="badge b-thread">Follow Your Thread</span>
+        <span class="page-title-text">Chapter 2 fork — what came up?</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <div class="fork-box">
+            <p>"What came up in this chapter?"</p>
+            <div class="fork-option">Something heavy — grief, sadness, or loss → go to the extra reflection on page [X] before continuing</div>
+            <div class="fork-option">Something hot — anger, frustration, or fight energy → go to the extra reflection on page [X]</div>
+            <div class="fork-option">Nothing came up, or I felt numb → that's information too. Go to page [X]</div>
+            <div class="fork-option">I feel lighter — ready to keep going → Chapter 3 is next</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end ch2 -->
+
+  <!-- RINGS 2–5 COMPRESSED -->
+  <div class="ring-header">
+    <span class="ring-label">Rings Two through Five</span>
+    <span class="ring-title">Feeling · Understanding · Reconnecting · Becoming</span>
+  </div>
+
+  <p class="section-intro" style="margin-bottom:16px;">Chapters 3–10 follow the exact same 8-page arc as Chapters 1–2. Below are the unique elements for each chapter — the poem topic, teaching theme, somatic practice, game type, prompts, mantra, and fork text. All other page types (art page, extra writing pages) repeat the same template.</p>
+
+  <div class="pages-list">
+
+    <div class="page-entry teach-e">
+      <button class="page-toggle" onclick="pigTogglePage(this)">
+        <span class="badge b-teach">Ch. 3</span>
+        <span class="page-title-text">Survival Mode Is Not Your Personality</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p><strong>Teaching:</strong> The patterns that kept you safe then — fawning, over-explaining, shrinking, controlling — were adaptive. They cost you something. Key message: <em>Your coping strategies are not your character.</em></p>
+          <p><strong>Somatic — "Softening the Armor":</strong> Roll shoulders back and down. Feel the chest open. Take 3 breaths into the chest. Notice what you were protecting by closing there.</p>
+          <p><strong>Game — Fill-in:</strong> "The strategy I used most to stay safe was ___. It worked because ___. What it cost me was ___. I'm ready to thank it by saying: ___."</p>
+          <div class="prompt-q">Which survival strategy shows up most in your life right now?</div>
+          <div class="prompt-q">If that pattern had a voice, what would it say it's trying to protect?</div>
+          <p><strong>Mantra:</strong> <em>"I survived. And survival is not the ceiling — it's the floor I get to build from."</em></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry teach-e">
+      <button class="page-toggle" onclick="pigTogglePage(this)">
+        <span class="badge b-teach">Ch. 4</span>
+        <span class="page-title-text">Teaching Your Body That Now Is Different</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p><strong>Teaching:</strong> Triggers are old memories looking for an update. Your nervous system is pattern-matching to the past. Key message: <em>You are not overreacting. You are under-informed — your body hasn't gotten the news yet that it's safe.</em></p>
+          <p><strong>Somatic — "Pendulation":</strong> Notice a mild activation in the body. Then shift attention to something neutral or pleasant in the room. Back to the activation. Back to neutral. Repeat. This teaches the nervous system it can move between states.</p>
+          <p><strong>Game — I Spy (Then vs Now):</strong> "I spy something that belongs to NOW, not then." Find 3 things in the room that are proof you're not in the past. Write them. <em>"These are evidence."</em></p>
+          <div class="prompt-q">When you notice yourself triggered, what does your body do first — before your mind catches up?</div>
+          <div class="prompt-q">What would you want to say to the version of you who first learned that response?</div>
+          <p><strong>Mantra:</strong> <em>"My past was real. My body remembers. And right now, in this moment, I am safe enough to heal."</em></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry teach-e">
+      <button class="page-toggle" onclick="pigTogglePage(this)">
+        <span class="badge b-teach">Ch. 5</span>
+        <span class="page-title-text">Meeting the Little One Inside</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p><strong>Teaching:</strong> What inner child work actually is — not regression, not "becoming" a child. It's building a relationship with the part of you that stopped developing when it got scared. Key message: <em>She didn't go anywhere. She went quiet.</em></p>
+          <p><strong>Somatic — "Hand on Heart":</strong> Place one or both hands on the center of your chest. Feel the warmth of your own hands. Let yourself be held — by yourself. Breathe into your hands. Say (silently or aloud): "I see you. I'm not leaving."</p>
+          <p><strong>Game — Word Search:</strong> Hidden words: PLAY · MUD · STARS · NAPS · STORIES · WONDER · CRAYON · MAGIC · LAUGH · CLIMB · DREAM · SILLY. Caption: <em>"She remembers all of these."</em></p>
+          <div class="prompt-q">If your inner child could write you a letter, what do you think she'd say?</div>
+          <div class="prompt-q">What did you love doing at age 7 that you no longer let yourself do?</div>
+          <p><strong>Art Page:</strong> Draw yourself at age 7. What are you doing? Where are you? What's on your face?</p>
+          <p><strong>Mantra:</strong> <em>"She has been waiting patiently. I'm showing up now."</em></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry teach-e">
+      <button class="page-toggle" onclick="pigTogglePage(this)">
+        <span class="badge b-teach">Ch. 6</span>
+        <span class="page-title-text">Rewriting the Story</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p><strong>Teaching:</strong> The stories we tell about ourselves formed in childhood to make sense of things that didn't make sense. They were the best explanations a small person could form. You are the author now.</p>
+          <p><strong>Somatic — "Shaking It Out":</strong> Stand up if you can. Gently shake your hands, then wrists, then arms, then whole body. 60 seconds. This is how animals discharge stress after a threat. Let it be weird. Let it work.</p>
+          <p><strong>Game — Mad Libs Affirmation:</strong> Fill in the blanks: "I am ___. I used to believe I was ___, but that story belonged to ___. I release ___. The truest thing about me is ___."</p>
+          <div class="prompt-q">What is the oldest story you tell about who you are? Where did it come from?</div>
+          <div class="prompt-q">What story do you want to tell instead? What would it feel like to live from there?</div>
+          <p><strong>Art Page:</strong> Two columns — "Old Story" on the left, "True Story" on the right. Draw, write, collage, scribble. Both sides.</p>
+          <p><strong>Mantra:</strong> <em>"The story I was given was not the truth of me. I am allowed to write a new one."</em></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry teach-e">
+      <button class="page-toggle" onclick="pigTogglePage(this)">
+        <span class="badge b-teach">Ch. 7</span>
+        <span class="page-title-text">Play Is a Form of Healing</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p><strong>Teaching:</strong> Play is not frivolous — it is the primary way the nervous system regulates, integrates, and heals. Adults who stop playing often stop healing. Key message: <em>You don't have to earn play. It is the work.</em></p>
+          <p><strong>Somatic — "Shake Your Sillies Out":</strong> Put on a song (optional). Dance, jump, wiggle, make a sound that has no meaning. 90 seconds minimum. Let the body move without purpose. Notice if something loosens.</p>
+          <p><strong>Game — Dot-to-Dot:</strong> Connect the dots. Reveals a butterfly. Caption when complete: <em>"The shape was always there. You just had to follow the sequence."</em></p>
+          <div class="prompt-q">What did play feel like as a child? Describe it physically — where in your body did joy live?</div>
+          <div class="prompt-q">What would you do this week if no one was watching and nothing needed to be productive?</div>
+          <p><strong>Art Page:</strong> Full blank page. Instructions: <em>"Make something for absolutely no reason. Nothing needs to come from it."</em></p>
+          <p><strong>Mantra:</strong> <em>"Play is not a reward I earn. It is the language my inner child speaks. I'm learning to speak it again."</em></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry teach-e">
+      <button class="page-toggle" onclick="pigTogglePage(this)">
+        <span class="badge b-teach">Ch. 8</span>
+        <span class="page-title-text">Unlearning the Rules</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p><strong>Teaching:</strong> Most of the rules we follow were absorbed, not chosen. They served someone — often not us. Key message: <em>You are allowed to audit the rules and keep only the ones that are actually yours.</em></p>
+          <p><strong>Somatic — "The Long Exhale":</strong> Breathe in for 4 counts. Hold for 2. Exhale for 8. Repeat 4 times. The extended exhale activates the vagus nerve — the physical mechanism of letting go.</p>
+          <p><strong>Game — Fill-in:</strong> "A rule I was taught: ___. Who it actually served: ___. Whether I choose to keep it: ___. If I release it, what becomes possible: ___."</p>
+          <div class="prompt-q">What rules do you live by that you never consciously chose?</div>
+          <div class="prompt-q">Which rule are you most ready to break — or at least examine?</div>
+          <p><strong>Art Page:</strong> Write every rule you were given — fill the page. Then cross out the ones that were never actually true about you.</p>
+          <p><strong>Mantra:</strong> <em>"I get to decide what I carry forward. Not everything handed to me was meant for me."</em></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry teach-e">
+      <button class="page-toggle" onclick="pigTogglePage(this)">
+        <span class="badge b-teach">Ch. 9</span>
+        <span class="page-title-text">Building Your Inner Home</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p><strong>Teaching:</strong> Safety doesn't have to come from the outside. There is a place inside you that has always been home — it was just buried under noise. Key message: <em>You don't need anyone's permission to come home to yourself.</em></p>
+          <p><strong>Somatic — "The Container":</strong> Imagine a space inside your chest — warm, lit, completely yours. Notice its size, its temperature, its quality. This is yours. No one can enter without your invitation. Breathe into it.</p>
+          <p><strong>Game — I Spy (Inner Home Edition):</strong> "I spy, with my inner eye, something that feels like home." Close your eyes. What image, memory, or sensation arises? Draw or describe it below.</p>
+          <div class="prompt-q">What made you feel most at home as a child — a place, a person, a feeling, a time of day?</div>
+          <div class="prompt-q">What does the inner home you're building look like? What's in it?</div>
+          <p><strong>Art Page:</strong> Draw the home you carry inside you. It doesn't have to be a house.</p>
+          <p><strong>Mantra:</strong> <em>"I am the home I was looking for. I have always been here."</em></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry teach-e">
+      <button class="page-toggle" onclick="pigTogglePage(this)">
+        <span class="badge b-teach">Ch. 10</span>
+        <span class="page-title-text">Becoming the Person You Needed</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p><strong>Teaching:</strong> Healing is not becoming someone new — it's becoming someone deeply familiar. The most integrated version of you is not far away. Key message: <em>You don't have to finish to begin. You already are.</em></p>
+          <p><strong>Somatic — "Full Body Yes":</strong> Think of something you genuinely want — not what you should want. Notice what your body does. Does it expand? Soften? Lean forward? That physical "yes" is real. Practice recognizing it.</p>
+          <p><strong>Game — Word Search:</strong> Hidden words: BRAVE · SOFT · WHOLE · HOME · ENOUGH · FREE · LOVED · TRUE · WILD · MINE · REAL · READY. Caption: <em>"You were always all of these things."</em></p>
+          <div class="prompt-q">What does the most integrated, healed version of you look like? How does she move? How does she speak to herself?</div>
+          <div class="prompt-q">What do you want to say to the version of you who picked up this book?</div>
+          <p><strong>Art Page:</strong> Draw her. Draw you. Notice if they're the same person.</p>
+          <p><strong>Mantra:</strong> <em>"I am not waiting to become. I am already in the process of arriving."</em></p>
+          <div class="fork-box" style="margin-top:12px;">
+            <p>"You made it to the end. Or maybe you made it to the middle, and that's where you needed to be. Either way:"</p>
+            <div class="fork-option">Turn back to the Entry Point. Read the options again. Notice which one you'd choose now.</div>
+            <div class="fork-option" style="font-style:italic; color:var(--muted);">"Something changed. Even 1%. That counts."</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end rings 2-5 -->
+
+  <!-- BACK MATTER -->
+  <div class="ring-header">
+    <span class="ring-label">Back Matter</span>
+    <span class="ring-title">After the Journey</span>
+  </div>
+
+  <div class="pages-list matter-list">
+
+    <div class="page-entry game-e">
+      <button class="page-toggle" onclick="pigTogglePage(this)">
+        <span class="badge b-game">Challenge</span>
+        <span class="page-title-text">30-Day Soft Return Challenge — one gentle act per day</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p>30 days, each one a small somatic/inner child act. Examples: Day 1 — Take your shoes off outside. Day 2 — Draw something with your non-dominant hand. Day 3 — Say no to something that's a "should." Day 4 — Listen to a song you loved at age 12. Day 5 — Sit in the sun for 5 minutes with nothing to do. Day 6 — Write a letter to your 8-year-old self. Day 7 — Make something messy. And so on.</p>
+          <p>Checkbox grid layout — satisfying to check off.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry struct-e">
+      <button class="page-toggle" onclick="pigTogglePage(this)">
+        <span class="badge b-struct">Seal-a-Letter</span>
+        <span class="page-title-text">"Write a letter to yourself. Open it in one year."</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p>A letterhead-style page with lines, a box at the bottom to fold and seal with a sticker or tape. Prompts to guide the letter: "What I want you to know about where I am right now. What I hope is different for you. What I want you to remember about how hard you've worked."</p>
+          <p>One of the most emotionally resonant pages in any healing journal — people photograph this page constantly.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry struct-e">
+      <button class="page-toggle" onclick="pigTogglePage(this)">
+        <span class="badge b-struct">Structural</span>
+        <span class="page-title-text">2–3 blank lined pages — "More Space"</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content"><p>Plain cream, light lines. No prompts. Titled simply "More Space" — invites overflow writing without pressure.</p></div>
+      </div>
+    </div>
+
+    <div class="page-entry struct-e">
+      <button class="page-toggle" onclick="pigTogglePage(this)">
+        <span class="badge b-struct">Structural</span>
+        <span class="page-title-text">About Maddie + what's next in the collection</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content"><p>Brief bio, warm and personal. A teaser for The Wild Return — "if this journal was a breath in, that one is a breath out." elevatealign.com link.</p></div>
+      </div>
+    </div>
+
+  </div>
+
+</div><!-- end panel-inner -->
+</div><!-- end panel-soft -->
+
+
+<!-- ════════════════════════════════════════════════ -->
+<!-- PANEL 2: THE WILD RETURN -->
+<!-- ════════════════════════════════════════════════ -->
+<div class="pig-panel" id="pig-panel-wild">
+<div class="pig-panel-inner">
+
+  <p class="section-intro">The Wild Return is The Soft Return's chaotic, playful, creative twin. Same 5-ring structure and opening poems. Different everything else. The fort is the recurring narrative thread — each chapter adds a room. By page 10, they've built a complete inner home. Mind Benders, junk journal zones, wreck-this moments, and CYOA tunnels run throughout.</p>
+  <span class="page-count">Target: 150–165 pages &nbsp;·&nbsp; 10 chapters × ~14 pages + front/back matter</span>
+
+  <!-- FRONT MATTER -->
+  <div class="ring-header" style="margin-top:32px;">
+    <span class="ring-label">Front Matter</span>
+    <span class="ring-title">Before the Chaos Begins</span>
+  </div>
+
+  <div class="pages-list matter-list">
+
+    <div class="page-entry struct-e">
+      <button class="page-toggle" onclick="pigTogglePage(this)">
+        <span class="badge b-struct">Structural</span>
+        <span class="page-title-text">Title, "This Book Belongs To," letter from Maddie</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p>Same structure as Soft Return but wilder energy. "This Book Belongs To" has space for: name, what you're giving yourself permission to make a mess of, one thing you're done being serious about.</p>
+          <p>Letter from Maddie — tone: "This one's for the part of you that wants to rip pages out, stomp in mud, and make something absolutely unhinged. That part is sacred too."</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry fort-e">
+      <button class="page-toggle" onclick="pigTogglePage(this)">
+        <span class="badge b-fort">Fort Map</span>
+        <span class="page-title-text">Your Fort — opening blank floor plan</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p>A full blank page with just the words: <em>"Your fort starts here. No rules. No wrong rooms. Build as you go."</em></p>
+          <p>Very light outline of a square/space — like graph paper, almost invisible. They sketch their fort here at the start and keep adding to it throughout the book as each chapter reveals a new room.</p>
+          <div class="psych-note">The fort metaphor is the psychological container for the whole book. Building a home = building a self. No limitations = counter to the anxiety/rules the adult self carries.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry thread-e">
+      <button class="page-toggle" onclick="pigTogglePage(this)">
+        <span class="badge b-thread">Follow Your Thread</span>
+        <span class="page-title-text">Opening gateway — wilder version</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <div class="fork-box">
+            <p>"Where are you right now? Don't think. Just pick."</p>
+            <div class="fork-option">My body is wound tight → go to Chapter 1, find the fort entrance</div>
+            <div class="fork-option">I feel like making something messy → go straight to Chapter 3</div>
+            <div class="fork-option">I want to play a game first → go to page [X] and find the hidden picture</div>
+            <div class="fork-option">I need to be told what to do → open to a random page. That one is yours.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- RING 1 -->
+  <div class="ring-header">
+    <span class="ring-label">Ring One</span>
+    <span class="ring-title">Safety</span>
+  </div>
+
+  <div class="chapter-header">
+    <span class="chapter-label">Chapter One</span>
+    <span class="chapter-name">The Place Where You Begin</span>
+  </div>
+
+  <div class="pages-list">
+
+    <div class="page-entry poem-e">
+      <button class="page-toggle" onclick="pigTogglePage(this)">
+        <span class="badge b-poem">Poem</span>
+        <span class="page-title-text">Same opening poem — different page design</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail"><div class="detail-content"><p>Same poem as Soft Return Chapter 1, but the page design is wilder — textured, layered, feels like the poem was written on found paper. The words are the same; the feeling is different.</p></div></div>
+    </div>
+
+    <div class="page-entry mind-e">
+      <button class="page-toggle" onclick="pigTogglePage(this)">
+        <span class="badge b-mind">Mind Bender</span>
+        <span class="page-title-text">Chapter 1 Mind Bender — a river or stream</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p><strong>The squiggle:</strong> A flowing, organic line — like a river or stream, winding across the middle of the page. Goes off-edge on both sides.</p>
+          <p><strong>Instruction:</strong> "This is something. You decide what. Add to it. Turn it into whatever comes — a river, a path, a crack in the earth, a snake, a word. There is no wrong answer."</p>
+          <p><strong>Story lines below:</strong> "What is it?" · "What's at the end of it?" · "What happens if you follow it?"</p>
+          <div class="psych-note">Mind Benders access right-brain processing immediately. The ambiguity is intentional — projective play reveals what's alive in the unconscious without triggering defenses.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry game-e">
+      <button class="page-toggle" onclick="pigTogglePage(this)">
+        <span class="badge b-game">I Spy</span>
+        <span class="page-title-text">I Spy — Fort Edition</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p>"I spy, with my little eye, something I'd bring into my fort."</p>
+          <p>Find 5 things in your actual surroundings you'd want in your fort. Write or draw them. These become the first items in your fort inventory.</p>
+          <p style="font-style:italic; color:var(--muted);">"Your fort only has things you actually want in it."</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry junk-e">
+      <button class="page-toggle" onclick="pigTogglePage(this)">
+        <span class="badge b-junk">Junk Journal Zone</span>
+        <span class="page-title-text">Paste zone — "What does safe look like?"</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p>A hatched-background paste zone — roughly a half or two-thirds of the page — with instruction: <em>"Tear something out of a magazine, a wrapper, a receipt, a piece of anything. Paste whatever feels like safety to you. It doesn't have to make sense."</em></p>
+          <p>Below the paste zone: 3 short lines for "what did you choose? why this?"</p>
+          <div class="psych-note">Collage work accesses implicit memory — things the body knows but the mind can't yet articulate. The act of cutting and placing is also a somatic regulation tool.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry wreck-e">
+      <button class="page-toggle" onclick="pigTogglePage(this)">
+        <span class="badge b-wreck">Wreck This</span>
+        <span class="page-title-text">Wreck This — "Fill this page with your handwriting"</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p>A full blank page with one instruction: <em>"Fill every inch of this page with any word, phrase, or sentence that comes. Overlap. Go sideways. Don't stop until it's full."</em></p>
+          <p>Variation: "Write the same word until this page is covered."</p>
+          <div class="psych-note">Repetitive writing tasks quiet the analytical mind and create a meditative, almost hypnotic state. The physical act of filling space is also deeply satisfying to the inner child.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry fort-e">
+      <button class="page-toggle" onclick="pigTogglePage(this)">
+        <span class="badge b-fort">Fort Building</span>
+        <span class="page-title-text">Chapter 1 Fort — The Entrance</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p>"Every fort needs a way in. Design yours. What does the entrance look like? Is there a door? A tunnel? A secret knock? A password only you know?"</p>
+          <p>A large blank space to draw/design the entrance. Small prompts in the margin: what's the door made of? · what does it feel like to push it open? · what's the first thing you see inside?</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry mantra-e">
+      <button class="page-toggle" onclick="pigTogglePage(this)">
+        <span class="badge b-mantra">Mantra</span>
+        <span class="page-title-text">Integration mantra — wilder typography</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p><em>"I don't need permission to come inside."</em></p>
+          <p>Messier typography than Soft Return — like it was painted or written fast.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry thread-e">
+      <button class="page-toggle" onclick="pigTogglePage(this)">
+        <span class="badge b-thread">Follow Your Thread</span>
+        <span class="page-title-text">Chapter 1 tunnel</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <div class="fork-box">
+            <p style="font-size:0.9em;">Small handwritten-style arrow in the margin:</p>
+            <div class="fork-option">If your Mind Bender became something alive → tunnel to page [X], there's a hidden picture waiting</div>
+            <div class="fork-option">If you want to keep building your fort first → Chapter 2 is next</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end wild ch1 -->
+
+  <!-- WILD CHAPTERS 2-10 COMPRESSED -->
+  <div class="ring-header">
+    <span class="ring-label">Chapters Two through Ten</span>
+    <span class="ring-title">All rings · Same arc · Different rooms</span>
+  </div>
+
+  <p class="section-intro">Each chapter of The Wild Return uses the same structure as Chapter 1. Below are the unique elements — the Mind Bender squiggle, the Junk Journal zone theme, the Wreck This instruction, and the Fort room being built.</p>
+
+  <div class="pages-list">
+
+    <div class="page-entry mind-e">
+      <button class="page-toggle" onclick="pigTogglePage(this)">
+        <span class="badge b-mind">Ch. 2</span>
+        <span class="page-title-text">Mind Bender — a cracked egg / Fort: The Cozy Corner</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p><strong>Squiggle:</strong> A jagged, broken oval — like a cracked egg or a split seed. "What's breaking open? What's hatching? What's finally getting out?" Story lines: What's inside it? · Is it something leaving or something arriving? · What does the air smell like around it?</p>
+          <p><strong>Junk Zone:</strong> "Paste something that represents what you're breaking out of. And something that represents what's waiting on the other side."</p>
+          <p><strong>Wreck This:</strong> "Spill something on this page on purpose. (Water is fine. Juice is better.) Let it dry. Draw around it."</p>
+          <p><strong>Fort — The Cozy Corner:</strong> "Every fort needs a place to curl up. Design yours. What's in it? A pile of blankets? A reading nook? A place no one else can see?" Draw the corner. What makes it yours?</p>
+          <p><strong>Mantra:</strong> <em>"What wants to come out of me is not dangerous. It's ready."</em></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry mind-e">
+      <button class="page-toggle" onclick="pigTogglePage(this)">
+        <span class="badge b-mind">Ch. 3</span>
+        <span class="page-title-text">Mind Bender — a tangled knot / Fort: The Window</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p><strong>Squiggle:</strong> A densely overlapping, looping tangle. "Is this something to unravel, or is it something beautiful? Both? Neither?" Story lines: How long has this been tangled? · What's in the middle of it? · Does it want to be untangled, or is it perfect as it is?</p>
+          <p><strong>Junk Zone:</strong> "Cut something into strips. Weave, tape, or paste them here however feels right. Tangled or organized — your choice."</p>
+          <p><strong>Wreck This:</strong> "Scribble over this entire page with your eyes closed. Then open them and see what's there."</p>
+          <p><strong>Fort — The Window:</strong> "Your fort has a window. What does it look out onto? Draw the view you want. It doesn't have to be real." What can you see from here that you can't see from outside?</p>
+          <p><strong>Mantra:</strong> <em>"Being complex is not the same as being broken."</em></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry mind-e">
+      <button class="page-toggle" onclick="pigTogglePage(this)">
+        <span class="badge b-mind">Ch. 4</span>
+        <span class="page-title-text">Mind Bender — a horizon line / Fort: The Secret Compartment</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p><strong>Squiggle:</strong> A single long horizontal line across the middle of the page. "What's above the line? What's below it? What is the line itself?" This one invites simple completion — a landscape, an ocean, an eye, a tightrope.</p>
+          <p><strong>Junk Zone:</strong> "Paste something from the past and something from the future. They don't have to make sense together."</p>
+          <p><strong>Wreck This:</strong> "Fold this page any way you want. Then unfold it. Draw along the crease lines."</p>
+          <p><strong>Fort — The Secret Compartment:</strong> "Every fort has a hidden spot — for things only you know are there. What do you keep in yours? It doesn't have to be a physical object." Draw or write what lives there.</p>
+          <p><strong>Mantra:</strong> <em>"I am allowed to have things that are only mine."</em></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry mind-e">
+      <button class="page-toggle" onclick="pigTogglePage(this)">
+        <span class="badge b-mind">Ch. 5</span>
+        <span class="page-title-text">Mind Bender — a spiral / Fort: The Reading Nook</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p><strong>Squiggle:</strong> An inward spiral — starting from the outside, curling toward a center. "What is at the center of this? What are you moving toward or away from? What's at the end?" Story lines: Is the center empty or full? · Are you going in or coming out? · What does it feel like at the middle?</p>
+          <p><strong>Junk Zone:</strong> "Find the most comfortable piece of paper or fabric scrap you can and paste it here. What feels soft to you?"</p>
+          <p><strong>Wreck This:</strong> "Rip this page out carefully. Write something on the back that your inner child needs to hear. Put it back in the book — anywhere. You'll find it again."</p>
+          <p><strong>Fort — The Reading Nook:</strong> "This corner of your fort is for the little one. She gets to pick everything. What books are here? What light? What snacks?" Draw or describe it entirely through her eyes.</p>
+          <p><strong>Mantra:</strong> <em>"She didn't go anywhere. She went quiet. I hear her now."</em></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry mind-e">
+      <button class="page-toggle" onclick="pigTogglePage(this)">
+        <span class="badge b-mind">Ch. 6</span>
+        <span class="page-title-text">Mind Bender — two circles / Fort: The Wall of Memories</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p><strong>Squiggle:</strong> Two circles — one large, one small — overlapping or not, reader decides. "What do these two things have in common? What separates them? What's in the overlap?" Story lines: Who are they? · What do they want from each other? · What happens when they touch?</p>
+          <p><strong>Junk Zone:</strong> "Paste a photo of yourself — or draw one. Then surround it with things that tell the story of who you are." No instructions on what to include. Let them decide.</p>
+          <p><strong>Wreck This:</strong> "Scratch this page with your fingernail — hard enough to leave marks. What pattern did you make?"</p>
+          <p><strong>Fort — The Wall of Memories:</strong> "One wall of your fort is covered in things you love. Draw, paste, or list what goes on yours. Old concerts. Faces. Places. Moments. Anything that makes you feel like yourself."</p>
+          <p><strong>Mantra:</strong> <em>"My story is not finished. I'm still in it."</em></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry mind-e">
+      <button class="page-toggle" onclick="pigTogglePage(this)">
+        <span class="badge b-mind">Ch. 7</span>
+        <span class="page-title-text">Mind Bender — a door ajar / Fort: The Stage</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p><strong>Squiggle:</strong> A partial rectangle — like a door that's been left open. Not fully open, not closed. "What's on the other side? What does it feel like to stand at this door? Are you coming or going?" Story lines: How long have you been here? · What would push you through? · Is there a light on the other side?</p>
+          <p><strong>Junk Zone:</strong> "Paste something that represents a part of you that hasn't had a stage yet. The part that wants to be seen."</p>
+          <p><strong>Wreck This:</strong> "Tear the corner of this page off. Hide it somewhere in the book. You'll find it when you need it."</p>
+          <p><strong>Fort — The Stage:</strong> "Your fort has a stage — just for you. Who do you become here? What do you do on it when no one is watching?" Draw it or describe it. What would you perform if performance meant pure joy, no audience?</p>
+          <p><strong>Mantra:</strong> <em>"Every part of me deserves a place to perform."</em></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry mind-e">
+      <button class="page-toggle" onclick="pigTogglePage(this)">
+        <span class="badge b-mind">Ch. 8</span>
+        <span class="page-title-text">Mind Bender — a burst / Fort: The Mess Room</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p><strong>Squiggle:</strong> Jagged, exploding lines radiating from a center point — like a burst, a splash, a star, an explosion. "Is this an ending or a beginning? A destruction or a release? What's at the center of the burst?" Story lines: What just happened? · Did it hurt? · What's left after?</p>
+          <p><strong>Junk Zone:</strong> "Make an actual mess on this page. Drip something. Smear something. Paste chaotically. Then write one sentence over the top of all of it."</p>
+          <p><strong>Wreck This:</strong> "Crumple this page into a ball. Throw it somewhere. Go get it. Unfold it. Now it's a texture. Draw on the wrinkles."</p>
+          <p><strong>Fort — The Mess Room:</strong> "One room in your fort has absolutely no rules. You can do anything here. Nothing has to be put away. What do you do with it?" Draw, list, describe. This is your full permission slip.</p>
+          <p><strong>Mantra:</strong> <em>"Play is not productive and that's exactly the point."</em></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry mind-e">
+      <button class="page-toggle" onclick="pigTogglePage(this)">
+        <span class="badge b-mind">Ch. 9</span>
+        <span class="page-title-text">Mind Bender — a web / Fort: The Room With No Rules</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p><strong>Squiggle:</strong> An interconnected web — lines crossing and meeting at nodes. "What is this connecting? What does each intersection represent? What's holding it together — and what would happen if one thread broke?" Story lines: Is this a trap or a net? · What's caught in it? · What built this?</p>
+          <p><strong>Junk Zone:</strong> "Paste pieces of something you're ready to let go of — an old receipt, a list, a note, a label. Paste it here. Draw over it."</p>
+          <p><strong>Wreck This:</strong> "Write the word that scares you most — very small, in the corner of this page. Then cover it with color until you can't read it anymore."</p>
+          <p><strong>Fort — The Room With No Rules:</strong> "This is the room where every 'should' is banned. Nothing is expected of you here. What does that feel like? What would you do in a space with zero rules?" Draw it. Be specific.</p>
+          <p><strong>Mantra:</strong> <em>"I don't need rules to know who I am. I just need space."</em></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry mind-e">
+      <button class="page-toggle" onclick="pigTogglePage(this)">
+        <span class="badge b-mind">Ch. 10</span>
+        <span class="page-title-text">Mind Bender — a butterfly / Fort: Your Name Above the Door</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p><strong>Squiggle:</strong> The SVG butterfly from the manuscript — two wing outlines. "One wing is where you came from. One wing is where you're going. What's in the body — the center — holding them together?" Story lines: What color are the wings? · Is it flying or resting? · What can you see from up there?</p>
+          <p><strong>Junk Zone:</strong> "Paste the most beautiful thing you can find. Nothing else. This page doesn't need an explanation."</p>
+          <p><strong>Wreck This:</strong> "Sign this page. Your full name. Big. Like you mean it."</p>
+          <p><strong>Fort — Your Name Above the Door:</strong> "Write your name above the entrance to your fort. Decorate it. Make it yours. <em>This is yours.</em> You built this. No one can take it." Final fort page — full spread to design the exterior with the name proudly displayed.</p>
+          <p><strong>Mantra:</strong> <em>"I built this. I am this. I'm home."</em></p>
+          <div class="fork-box" style="margin-top:12px;">
+            <p>"You made it here. Or maybe you found this page first — that's okay too."</p>
+            <div class="fork-option">Go back to the fort floor plan on page [X]. How does it look now?</div>
+            <div class="fork-option">Go back to the opening gateway. Which door would you choose today?</div>
+            <div class="fork-option" style="font-style:italic; color:var(--muted);">"Notice anything different."</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- BACK MATTER -->
+  <div class="ring-header">
+    <span class="ring-label">Back Matter</span>
+    <span class="ring-title">After the Fort Is Built</span>
+  </div>
+
+  <div class="pages-list matter-list">
+
+    <div class="page-entry game-e">
+      <button class="page-toggle" onclick="pigTogglePage(this)">
+        <span class="badge b-game">Challenge</span>
+        <span class="page-title-text">30-Day Wild Return Challenge — all creative, no writing required</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p>30 days of pure creative acts — no journaling, no processing, just play. Examples: Day 1 — Make the messiest breakfast you can and eat it. Day 2 — Build an actual fort with pillows and blankets. Day 3 — Draw on your arm with a marker. Day 4 — Find a mud puddle. Day 5 — Sing something made up in the shower. Day 6 — Collect three objects from outside and arrange them. Day 7 — Make something just to throw it away. Day 8 — Lie in the grass. Day 9 — Draw with your non-dominant hand only. And so on.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry wreck-e">
+      <button class="page-toggle" onclick="pigTogglePage(this)">
+        <span class="badge b-wreck">Wreck This Final</span>
+        <span class="page-title-text">Final wreck — "Do whatever you want to these last pages"</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content">
+          <p>3 blank pages at the end with just the instruction: <em>"These pages belong to you completely. There are no suggestions. No prompts. No right way. Do whatever wants to happen."</em></p>
+          <p>This is the full permission slip — the final act of the inner child taking the wheel entirely.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-entry struct-e">
+      <button class="page-toggle" onclick="pigTogglePage(this)">
+        <span class="badge b-struct">Structural</span>
+        <span class="page-title-text">About Maddie + tease of the full collection</span>
+        <span class="expand-icon">▾</span>
+      </button>
+      <div class="page-detail">
+        <div class="detail-content"><p>Brief, warm, wild energy. Tease of "Follow Your Thread" (Book 3) — the dedicated CYOA healing journey. "The fort you built here becomes the map for everything that follows." elevatealign.com</p></div>
+      </div>
+    </div>
+
+  </div>
+
+</div><!-- end panel-inner -->
+</div><!-- end panel-wild -->
+</div>
+  </div>
+
+  <!-- SUB-TAB: MADDIE'S PLANNER TRACKER (scoped embed, see script below) -->
+  <div id="sub-planners-tracker" class="sub-tab-content">
+    <div id="pt-mount">
+<div class="header">
+  <div>
+    <div class="header-brand">✦ EAUCO — Project Tracker</div>
+    <div class="header-sub">Planner Business · Click any item to mark done · Saves automatically</div>
+  </div>
+  <div class="header-right">
+    <div class="identity-pill">
+      <label for="identity-select">you are</label>
+      <select id="identity-select" onchange="setCurrentUser(this.value)">
+        <option>Maddie</option>
+      </select>
+    </div>
+    <span id="sync-status" class="sync-badge"></span>
+    <button class="header-btn" id="collab-btn" onclick="handleCollabBtn()">Enable Sharing</button>
+    <button class="header-reset" onclick="resetAll()">Reset All</button>
+  </div>
+</div>
+
+<!-- Appears once sharing is enabled -->
+<div id="collab-banner" class="collab-banner">
+  <span class="collab-label">🔗 Sharing active — send this link:</span>
+  <input id="share-url-input" type="text" readonly class="share-url-input" />
+  <button id="copy-btn" class="copy-btn" onclick="copyShareLink()">Copy Link</button>
+  <button class="sync-now-btn" onclick="pullState()">↺ Sync Now</button>
+</div>
+
+<div class="main">
+
+  <div class="overview">
+    <div class="ov-card"><span class="ov-num" id="stat-done">0</span><span class="ov-label">Done</span></div>
+    <div class="ov-card"><span class="ov-num" id="stat-total">0</span><span class="ov-label">Total Tasks</span></div>
+    <div class="ov-card"><span class="ov-num" id="stat-pct">0%</span><span class="ov-label">Complete</span></div>
+    <div class="ov-card"><span class="ov-num" id="stat-subs">3</span><span class="ov-label">Planners Live</span></div>
+  </div>
+
+  <!-- PHASE 0 -->
+  <div class="phase">
+    <div class="phase-header">
+      <div class="phase-left"><span class="phase-icon">✅</span><div>
+        <div class="phase-title">Phase 0 — Foundation</div>
+        <div class="phase-target">Completed June 22, 2026</div>
+      </div></div>
+      <div class="phase-progress">
+        <div class="progress-bar"><div class="progress-fill" id="prog-0"></div></div>
+        <span class="progress-pct" id="pct-0">0%</span>
+      </div>
+    </div>
+    <div class="tasks" id="phase-0">
+      <div class="task-item" data-id="p0-1" onclick="ptToggle(this)"><div class="task-checkbox"><span class="task-check-icon">✓</span></div><div class="task-body"><div class="task-text">Maddie's personalized planner built + live</div></div></div>
+      <div class="task-item" data-id="p0-2" onclick="ptToggle(this)"><div class="task-checkbox"><span class="task-check-icon">✓</span></div><div class="task-body"><div class="task-text">Day-of-week content corrected (June 22–30 fix)</div></div></div>
+      <div class="task-item" data-id="p0-3" onclick="ptToggle(this)"><div class="task-checkbox"><span class="task-check-icon">✓</span></div><div class="task-body"><div class="task-text">Chloe's personalized planner built + live</div></div></div>
+      <div class="task-item" data-id="p0-4" onclick="ptToggle(this)"><div class="task-checkbox"><span class="task-check-icon">✓</span></div><div class="task-body"><div class="task-text">Intake form built + Formspree connected</div></div></div>
+      <div class="task-item" data-id="p0-5" onclick="ptToggle(this)"><div class="task-checkbox"><span class="task-check-icon">✓</span></div><div class="task-body"><div class="task-text">Thank-you page built + Stripe $22.22/month button live</div></div></div>
+      <div class="task-item" data-id="p0-6" onclick="ptToggle(this)"><div class="task-checkbox"><span class="task-check-icon">✓</span></div><div class="task-body"><div class="task-text">Free universal planner (lead magnet) built + live</div></div></div>
+      <div class="task-item" data-id="p0-7" onclick="ptToggle(this)"><div class="task-checkbox"><span class="task-check-icon">✓</span></div><div class="task-body"><div class="task-text">Landing page built + live (hero · features · free vs paid · FAQ)</div></div></div>
+      <div class="task-item" data-id="p0-8" onclick="ptToggle(this)"><div class="task-checkbox"><span class="task-check-icon">✓</span></div><div class="task-body"><div class="task-text">Subscriber tracker Google Sheet created</div></div></div>
+      <div class="task-item" data-id="p0-9" onclick="ptToggle(this)"><div class="task-checkbox"><span class="task-check-icon">✓</span></div><div class="task-body"><div class="task-text">This tracker page created</div></div></div>
+    </div>
+  </div>
+
+  <!-- PHASE 1 -->
+  <div class="phase">
+    <div class="phase-header">
+      <div class="phase-left"><span class="phase-icon">🔄</span><div>
+        <div class="phase-title">Phase 1 — Beta</div>
+        <div class="phase-target">Target: June 22 – July 4, 2026</div>
+      </div></div>
+      <div class="phase-progress">
+        <div class="progress-bar"><div class="progress-fill" id="prog-1"></div></div>
+        <span class="progress-pct" id="pct-1">0%</span>
+      </div>
+    </div>
+    <div class="tasks" id="phase-1">
+      <div class="task-divider">Planners</div>
+      <div class="task-item" data-id="p1-1" onclick="ptToggle(this)"><div class="task-checkbox"><span class="task-check-icon">✓</span></div><div class="task-body"><div class="task-text">Chloe filled out intake form</div><div class="task-meta">✦ Confirmed working — flow is live</div></div></div>
+      <div class="task-item" data-id="p1-2" onclick="ptToggle(this)"><div class="task-checkbox"><span class="task-check-icon">✓</span></div><div class="task-body"><div class="task-text">Andie's planner built + live (Gemini Rising · all 14 months)</div><div class="task-meta">eauco-mads.github.io/andie-planner</div></div></div>
+      <div class="task-item" data-id="p1-3" onclick="ptToggle(this)"><div class="task-checkbox"><span class="task-check-icon">✓</span></div><div class="task-body"><div class="task-text">Chloe's Cycle Harmony v2 + Human Design built + live</div><div class="task-meta">Manifestor · Emotional Authority · 4/6 · Cross of Penetration 2</div></div></div>
+      <div class="task-item" data-id="p1-4" onclick="ptToggle(this)"><div class="task-checkbox"><span class="task-check-icon">✓</span></div><div class="task-body"><div class="task-text">Cycle Harmony landing page built + live</div><div class="task-meta">eauco-mads.github.io/chloe-planner/cycle-harmony.html</div></div></div>
+      <div class="task-item" data-id="p1-5" onclick="ptToggle(this)"><div class="task-checkbox"><span class="task-check-icon">✓</span></div><div class="task-body"><div class="task-text">Follow up with Devin — send intake form + build his planner</div><div class="task-meta">Next beta after Chloe + Andie</div><span class="task-tag">Next up</span></div></div>
+      <div class="task-item" data-id="p1-6" onclick="ptToggle(this)"><div class="task-checkbox"><span class="task-check-icon">✓</span></div><div class="task-body"><div class="task-text">Check in with Andie — how is she liking her planner?</div><div class="task-meta">Gather feedback · what would make it better?</div></div></div>
+      <div class="task-divider">Email + Automation</div>
+      <div class="task-item" data-id="p1-7" onclick="ptToggle(this)"><div class="task-checkbox"><span class="task-check-icon">✓</span></div><div class="task-body"><div class="task-text">Write GHL 3-email sequence</div><div class="task-meta">Target: June 28</div></div></div>
+      <div class="subtask-item" data-id="p1-7a" onclick="ptToggle(this)"><div class="subtask-checkbox"><span class="subtask-check-icon">✓</span></div><div class="task-body"><div class="task-text">Email 1 — Welcome + free planner link</div></div></div>
+      <div class="subtask-item" data-id="p1-7b" onclick="ptToggle(this)"><div class="subtask-checkbox"><span class="subtask-check-icon">✓</span></div><div class="task-body"><div class="task-text">Email 2 — What the personalized version includes</div></div></div>
+      <div class="subtask-item" data-id="p1-7c" onclick="ptToggle(this)"><div class="subtask-checkbox"><span class="subtask-check-icon">✓</span></div><div class="task-body"><div class="task-text">Email 3 — Subscribe CTA + intake form link</div></div></div>
+      <div class="task-item" data-id="p1-8" onclick="ptToggle(this)"><div class="task-checkbox"><span class="task-check-icon">✓</span></div><div class="task-body"><div class="task-text">Swap landing page email capture → GHL endpoint</div><div class="task-meta">After GHL sequence is live</div></div></div>
+    </div>
+  </div>
+
+  <!-- PHASE 2 -->
+  <div class="phase">
+    <div class="phase-header">
+      <div class="phase-left"><span class="phase-icon">⏳</span><div>
+        <div class="phase-title">Phase 2 — Launch</div>
+        <div class="phase-target">Target: Week of July 7 · Launch July 14, 2026</div>
+      </div></div>
+      <div class="phase-progress">
+        <div class="progress-bar"><div class="progress-fill" id="prog-2"></div></div>
+        <span class="progress-pct" id="pct-2">0%</span>
+      </div>
+    </div>
+    <div class="tasks" id="phase-2">
+      <div class="task-divider">Accounts + Profiles</div>
+      <div class="task-item" data-id="p2-1" onclick="ptToggle(this)"><div class="task-checkbox"><span class="task-check-icon">✓</span></div><div class="task-body"><div class="task-text">TikTok account created</div><div class="task-meta">Target: July 7</div></div></div>
+      <div class="task-item" data-id="p2-2" onclick="ptToggle(this)"><div class="task-checkbox"><span class="task-check-icon">✓</span></div><div class="task-body"><div class="task-text">TikTok bio + profile photo + link in bio</div><div class="task-meta">Target: July 7</div></div></div>
+      <div class="task-item" data-id="p2-3" onclick="ptToggle(this)"><div class="task-checkbox"><span class="task-check-icon">✓</span></div><div class="task-body"><div class="task-text">Pinterest account created</div><div class="task-meta">Target: July 7</div></div></div>
+      <div class="task-item" data-id="p2-4" onclick="ptToggle(this)"><div class="task-checkbox"><span class="task-check-icon">✓</span></div><div class="task-body"><div class="task-text">Pinterest boards set up (Astrology · Human Design · Moon · Planner Aesthetic)</div><div class="task-meta">Target: July 7</div></div></div>
+      <div class="task-divider">Content</div>
+      <div class="task-item" data-id="p2-5" onclick="ptToggle(this)"><div class="task-checkbox"><span class="task-check-icon">✓</span></div><div class="task-body"><div class="task-text">TikTok 1 — What is this? (planner overview + personalized vs free)</div><div class="task-meta">Target: July 8–10</div></div></div>
+      <div class="task-item" data-id="p2-6" onclick="ptToggle(this)"><div class="task-checkbox"><span class="task-check-icon">✓</span></div><div class="task-body"><div class="task-text">TikTok 2 — Your moon phases for the year</div><div class="task-meta">Target: July 8–10</div></div></div>
+      <div class="task-item" data-id="p2-7" onclick="ptToggle(this)"><div class="task-checkbox"><span class="task-check-icon">✓</span></div><div class="task-body"><div class="task-text">TikTok 3 — Planet day energy walkthrough</div><div class="task-meta">Target: July 8–10</div></div></div>
+      <div class="task-item" data-id="p2-8" onclick="ptToggle(this)"><div class="task-checkbox"><span class="task-check-icon">✓</span></div><div class="task-body"><div class="task-text">TikTok 4 — How it's built (intake → chart → your planner)</div><div class="task-meta">Target: July 8–10</div></div></div>
+      <div class="task-item" data-id="p2-9" onclick="ptToggle(this)"><div class="task-checkbox"><span class="task-check-icon">✓</span></div><div class="task-body"><div class="task-text">TikTok 5 — Free planner walkthrough + CTA</div><div class="task-meta">Target: July 8–10</div></div></div>
+      <div class="task-item" data-id="p2-10" onclick="ptToggle(this)"><div class="task-checkbox"><span class="task-check-icon">✓</span></div><div class="task-body"><div class="task-text">Pinterest pins made (planner screenshots → landing page)</div><div class="task-meta">Target: July 10</div></div></div>
+      <div class="task-divider">Launch Day — July 14</div>
+      <div class="task-item" data-id="p2-11" onclick="ptToggle(this)"><div class="task-checkbox"><span class="task-check-icon">✓</span></div><div class="task-body"><div class="task-text">Pick official launch date</div><div class="task-meta">Suggested: July 14, 2026</div></div></div>
+      <div class="task-item" data-id="p2-12" onclick="ptToggle(this)"><div class="task-checkbox"><span class="task-check-icon">✓</span></div><div class="task-body"><div class="task-text">First 5 TikToks posted (over 3 days)</div><div class="task-meta">Target: July 14–16</div></div></div>
+      <div class="task-item" data-id="p2-13" onclick="ptToggle(this)"><div class="task-checkbox"><span class="task-check-icon">✓</span></div><div class="task-body"><div class="task-text">Pinterest pins live</div><div class="task-meta">Target: July 14</div></div></div>
+      <div class="task-item" data-id="p2-14" onclick="ptToggle(this)"><div class="task-checkbox"><span class="task-check-icon">✓</span></div><div class="task-body"><div class="task-text">Share with close network / communities</div><div class="task-meta">Target: July 14</div></div></div>
+    </div>
+  </div>
+
+  <!-- PHASE 3 -->
+  <div class="phase">
+    <div class="phase-header">
+      <div class="phase-left"><span class="phase-icon">⏳</span><div>
+        <div class="phase-title">Phase 3 — Subscriber Operations</div>
+        <div class="phase-target">Target: July 2026 · after first 3–5 paying subscribers</div>
+      </div></div>
+      <div class="phase-progress">
+        <div class="progress-bar"><div class="progress-fill" id="prog-3"></div></div>
+        <span class="progress-pct" id="pct-3">0%</span>
+      </div>
+    </div>
+    <div class="tasks" id="phase-3">
+      <div class="task-item" data-id="p3-1" onclick="ptToggle(this)"><div class="task-checkbox"><span class="task-check-icon">✓</span></div><div class="task-body"><div class="task-text">Subscriber onboarding email written</div><div class="task-meta">What to expect + how to use the planner</div></div></div>
+      <div class="task-item" data-id="p3-2" onclick="ptToggle(this)"><div class="task-checkbox"><span class="task-check-icon">✓</span></div><div class="task-body"><div class="task-text">Planner delivery email written</div><div class="task-meta">Here's your link + how to bookmark it</div></div></div>
+      <div class="task-item" data-id="p3-3" onclick="ptToggle(this)"><div class="task-checkbox"><span class="task-check-icon">✓</span></div><div class="task-body"><div class="task-text">Zapier: Formspree → Google Sheet auto-fill</div><div class="task-meta">Free tier = 100 tasks/month · handles form → Sheet automatically</div></div></div>
+      <div class="task-item" data-id="p3-4" onclick="ptToggle(this)"><div class="task-checkbox"><span class="task-check-icon">✓</span></div><div class="task-body"><div class="task-text">Create eauco-mads/subscriber-planners GitHub repo</div><div class="task-meta">One folder per subscriber · private links</div></div></div>
+      <div class="task-item" data-id="p3-5" onclick="ptToggle(this)"><div class="task-checkbox"><span class="task-check-icon">✓</span></div><div class="task-body"><div class="task-text">GHL + Stripe: tag subscribers active/inactive</div><div class="task-meta">Automations based on payment status</div></div></div>
+      <div class="task-item" data-id="p3-6" onclick="ptToggle(this)"><div class="task-checkbox"><span class="task-check-icon">✓</span></div><div class="task-body"><div class="task-text">Annual plan added to Stripe (~$197/year)</div><div class="task-meta">Offer after 5+ subscribers</div></div></div>
+    </div>
+  </div>
+
+  <!-- PHASE 4 -->
+  <div class="phase">
+    <div class="phase-header">
+      <div class="phase-left"><span class="phase-icon">⏳</span><div>
+        <div class="phase-title">Phase 4 — Physical Planners</div>
+        <div class="phase-target">Target: September 2026</div>
+      </div></div>
+      <div class="phase-progress">
+        <div class="progress-bar"><div class="progress-fill" id="prog-4"></div></div>
+        <span class="progress-pct" id="pct-4">0%</span>
+      </div>
+    </div>
+    <div class="tasks" id="phase-4">
+      <div class="task-item" data-id="p4-1" onclick="ptToggle(this)"><div class="task-checkbox"><span class="task-check-icon">✓</span></div><div class="task-body"><div class="task-text">Decide on format (spiral / perfect bound / hardcover)</div></div></div>
+      <div class="task-item" data-id="p4-2" onclick="ptToggle(this)"><div class="task-checkbox"><span class="task-check-icon">✓</span></div><div class="task-body"><div class="task-text">Canva design template built</div><div class="task-meta">Cover + monthly spreads + chart pages + HD pages</div></div></div>
+      <div class="task-item" data-id="p4-3" onclick="ptToggle(this)"><div class="task-checkbox"><span class="task-check-icon">✓</span></div><div class="task-body"><div class="task-text">Print partner chosen (Mixam bulk or Printify on-demand)</div></div></div>
+      <div class="task-item" data-id="p4-4" onclick="ptToggle(this)"><div class="task-checkbox"><span class="task-check-icon">✓</span></div><div class="task-body"><div class="task-text">Pricing finalized ($88–111 + digital subscription)</div></div></div>
+      <div class="task-item" data-id="p4-5" onclick="ptToggle(this)"><div class="task-checkbox"><span class="task-check-icon">✓</span></div><div class="task-body"><div class="task-text">Order form added to landing page</div></div></div>
+      <div class="task-item" data-id="p4-6" onclick="ptToggle(this)"><div class="task-checkbox"><span class="task-check-icon">✓</span></div><div class="task-body"><div class="task-text">First test order placed + reviewed</div></div></div>
+    </div>
+  </div>
+
+  <!-- PHASE 5 — NEW -->
+  <div class="phase">
+    <div class="phase-header">
+      <div class="phase-left"><span class="phase-icon">⚙️</span><div>
+        <div class="phase-title">Phase 5 — Tech Infrastructure</div>
+        <div class="phase-target">Target: July–August 2026 · makes every future build faster</div>
+      </div></div>
+      <div class="phase-progress">
+        <div class="progress-bar"><div class="progress-fill" id="prog-5"></div></div>
+        <span class="progress-pct" id="pct-5">0%</span>
+      </div>
+    </div>
+    <div class="tasks" id="phase-5">
+      <div class="task-divider">Astro Automation — Swiss Ephemeris</div>
+      <div class="task-item" data-id="p5-1" onclick="ptToggle(this)"><div class="task-checkbox"><span class="task-check-icon">✓</span></div><div class="task-body"><div class="task-text">Integrate astronomia npm package (Swiss Ephemeris JS port)</div><div class="task-meta">Same engine Astro Future + NASA use · enables auto moon phases + planet positions without manual chart entry per subscriber</div></div></div>
+      <div class="task-item" data-id="p5-2" onclick="ptToggle(this)"><div class="task-checkbox"><span class="task-check-icon">✓</span></div><div class="task-body"><div class="task-text">Build birth data → auto chart generator script</div><div class="task-meta">Name + date/time/location in → all planet positions, nakshatras, dasha timelines out · eliminates manual entry for every new subscriber</div></div></div>
+      <div class="task-item" data-id="p5-3" onclick="ptToggle(this)"><div class="task-checkbox"><span class="task-check-icon">✓</span></div><div class="task-body"><div class="task-text">Standardized planner base template (swap chart data in → ready to style)</div><div class="task-meta">Target: reduce build time from ~4h → under 1h per subscriber</div></div></div>
+      <div class="task-divider">Cycle Harmony — Scale</div>
+      <div class="task-item" data-id="p5-4" onclick="ptToggle(this)"><div class="task-checkbox"><span class="task-check-icon">✓</span></div><div class="task-body"><div class="task-text">Wire cycle-harmony.html email capture → Formspree or GHL</div><div class="task-meta">Free ebook CTA is still a stub — needs backend to actually collect leads</div></div></div>
+      <div class="task-item" data-id="p5-5" onclick="ptToggle(this)"><div class="task-checkbox"><span class="task-check-icon">✓</span></div><div class="task-body"><div class="task-text">Add Cycle Harmony tab to Maddie's planner</div><div class="task-meta">Already built for Chloe · replicate for Maddie's personalized version</div></div></div>
+      <div class="task-item" data-id="p5-6" onclick="ptToggle(this)"><div class="task-checkbox"><span class="task-check-icon">✓</span></div><div class="task-body"><div class="task-text">Add Cycle Harmony tab to Andie's planner</div><div class="task-meta">Same pattern as Chloe's · swap into andie-planner repo</div></div></div>
+    </div>
+  </div>
+
+  <!-- SUBSCRIBERS -->
+  <div class="sub-section">
+    <div class="sub-title">👥 Beta Subscribers &amp; Planners</div>
+    <table class="sub-table">
+      <thead><tr><th>Name</th><th>Intake</th><th>Planner</th><th>Stripe</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Maddie</strong></td>
+          <td><span class="badge done">✅ Done</span></td>
+          <td><span class="badge done">✅ Live</span></td>
+          <td><span class="badge na">Founder</span></td>
+          <td>eauco-mads.github.io/maddie-planner</td>
+        </tr>
+        <tr>
+          <td><strong>Chloe Newby</strong></td>
+          <td><span class="badge done">✅ Done</span></td>
+          <td><span class="badge done">✅ Live</span></td>
+          <td><span class="badge pending">⏳ Pending</span></td>
+          <td>Libra Rising · Cycle Harmony + HD live · eauco-mads.github.io/chloe-planner</td>
+        </tr>
+        <tr>
+          <td><strong>Andie Galloway</strong></td>
+          <td><span class="badge done">✅ Done</span></td>
+          <td><span class="badge done">✅ Live</span></td>
+          <td><span class="badge pending">⏳ Pending</span></td>
+          <td>Gemini Rising · eauco-mads.github.io/andie-planner · check in for feedback</td>
+        </tr>
+        <tr>
+          <td><strong>Devin</strong></td>
+          <td><span class="badge next">⏳ Send form</span></td>
+          <td><span class="badge next">🔜 Next build</span></td>
+          <td><span class="badge pending">⏳ Pending</span></td>
+          <td>Next beta — follow up to get intake filled out</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- LIVE LINKS -->
+  <div class="links-section">
+    <div class="links-title">🔗 Live Links</div>
+    <div class="links-grid">
+      <a class="link-item" href="https://eauco-mads.github.io/maddie-planner/" target="_blank">
+        <span class="link-name">Maddie's Planner</span>
+        <span class="link-url">eauco-mads.github.io/maddie-planner/</span>
+        <span class="link-badge">Live</span>
+      </a>
+      <a class="link-item" href="https://eauco-mads.github.io/chloe-planner/" target="_blank">
+        <span class="link-name">Chloe's Planner</span>
+        <span class="link-url">eauco-mads.github.io/chloe-planner/</span>
+        <span class="link-badge">Live</span>
+      </a>
+      <a class="link-item" href="https://eauco-mads.github.io/andie-planner/" target="_blank">
+        <span class="link-name">Andie's Planner</span>
+        <span class="link-url">eauco-mads.github.io/andie-planner/</span>
+        <span class="link-badge">Live</span>
+      </a>
+      <a class="link-item" href="https://eauco-mads.github.io/chloe-planner/cycle-harmony.html" target="_blank">
+        <span class="link-name">Cycle Harmony Landing</span>
+        <span class="link-url">eauco-mads.github.io/chloe-planner/cycle-harmony.html</span>
+        <span class="link-badge rose">Cycle ♀</span>
+      </a>
+      <a class="link-item" href="https://eauco-mads.github.io/maddie-planner/free.html" target="_blank">
+        <span class="link-name">Free Planner</span>
+        <span class="link-url">eauco-mads.github.io/maddie-planner/free.html</span>
+        <span class="link-badge">Live</span>
+      </a>
+      <a class="link-item" href="https://eauco-mads.github.io/maddie-planner/landing.html" target="_blank">
+        <span class="link-name">Landing Page</span>
+        <span class="link-url">eauco-mads.github.io/maddie-planner/landing.html</span>
+        <span class="link-badge">Live</span>
+      </a>
+      <a class="link-item" href="https://eauco-mads.github.io/maddie-planner/intake.html" target="_blank">
+        <span class="link-name">Intake Form</span>
+        <span class="link-url">eauco-mads.github.io/maddie-planner/intake.html</span>
+        <span class="link-badge">Live</span>
+      </a>
+      <a class="link-item" href="https://eauco-mads.github.io/maddie-planner/thankyou.html" target="_blank">
+        <span class="link-name">Thank You + Stripe</span>
+        <span class="link-url">eauco-mads.github.io/maddie-planner/thankyou.html</span>
+        <span class="link-badge">Live</span>
+      </a>
+      <a class="link-item" href="https://docs.google.com/spreadsheets/d/13Et-UBWZSdYLgHNm6qca9B28krauU3euHsIjcVEtZIM" target="_blank">
+        <span class="link-name">Subscriber Sheet</span>
+        <span class="link-url">Google Sheets</span>
+        <span class="link-badge">Live</span>
+      </a>
+      <a class="link-item" href="https://github.com/eauco-mads/maddie-planner" target="_blank">
+        <span class="link-name">GitHub Repo</span>
+        <span class="link-url">eauco-mads/maddie-planner</span>
+        <span class="link-badge">Live</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="updated">✦ Checks save to your browser automatically · Updated July 9, 2026 · Click "Enable Sharing" to sync across your devices</div>
+
+</div>
+</div>
+  </div>
+
+</div>
+
+<!-- ════════════════════════════════════════
+     TAB: @MADS.GALLOW / CREATIVE CONTENT
+════════════════════════════════════════ -->
+<div id="tab-creative" class="tab-content">
+
+  <div class="section-title">@mads.gallow / Creative Content</div>
+
+  <div class="sub-tab-nav">
+    <button class="sub-tab-btn active" onclick="showSubTab('creative','cr-setup',this)">🌴 Day Zero Setup</button>
+    <button class="sub-tab-btn" onclick="showSubTab('creative','cr-ig',this)">📸 @mads.gallow Bio & IG</button>
+    <button class="sub-tab-btn" onclick="showSubTab('creative','cr-pitches',this)">📬 Hotel Pitches</button>
+    <button class="sub-tab-btn" onclick="showSubTab('creative','cr-grid',this)">🗂 9-Grid</button>
+    <button class="sub-tab-btn" onclick="showSubTab('creative','cr-angles',this)">🍹 Content Angles</button>
+    <button class="sub-tab-btn" onclick="showSubTab('creative','cr-linkedin',this)">💼 LinkedIn</button>
+    <button class="sub-tab-btn" onclick="showSubTab('creative','cr-route',this)">🗺 Route</button>
+  </div>
+
+  <div id="sub-creative-cr-setup" class="sub-tab-content active">
 
   <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;">
     <div>
@@ -1728,12 +3812,9 @@ If any of this past 10 days resonated — this is your sign. Shoot me a message.
   </div>
   <div id="creator-extra-list" style="max-width:560px;margin-top:4px;"></div>
 
-</div>
+  </div>
 
-<!-- ════════════════════════════════════════
-     TAB: @MADS.GALLOW IG
-════════════════════════════════════════ -->
-<div id="tab-cr-ig" class="tab-content">
+  <div id="sub-creative-cr-ig" class="sub-tab-content">
 
   <div class="section-title">Bio — Copy & Paste</div>
   <div class="copy-block">🌍 Wellness travel creator • PNW → Panama
@@ -1752,12 +3833,9 @@ Drone + lifestyle content for boutique stays ✈️
     <li onclick="crCheck(this,'ig7')"><div class="check-box"><span class="check-icon">✓</span></div><div style="flex:1;"><div class="cr-title">🤝 Collabs</div><div class="cr-sub">Start empty — add as deals come in. Having the highlight shows you're open to collabs</div></div></li>
   </ul>
 
-</div>
+  </div>
 
-<!-- ════════════════════════════════════════
-     TAB: HOTEL PITCH TRACKER
-════════════════════════════════════════ -->
-<div id="tab-cr-pitches" class="tab-content">
+  <div id="sub-creative-cr-pitches" class="sub-tab-content">
 
   <div class="info-box"><strong>Tip:</strong> Status and notes save automatically. Follow up 5–7 days after sending if no reply — one short message: "Just bumping this up — would love to connect!"</div>
 
@@ -1839,12 +3917,9 @@ Drone + lifestyle content for boutique stays ✈️
     </table>
   </div>
 
-</div>
+  </div>
 
-<!-- ════════════════════════════════════════
-     TAB: 9-GRID
-════════════════════════════════════════ -->
-<div id="tab-cr-grid" class="tab-content">
+  <div id="sub-creative-cr-grid" class="sub-tab-content">
 
   <div class="section-title">Your 9-Post Revival Arc</div>
   <div class="info-box">Click any cell to mark it as posted. The visual arc reads left→right, row by row. Visual flow matters — aim for variety in light, tone, and color across the grid.</div>
@@ -1878,12 +3953,9 @@ Drone + lifestyle content for boutique stays ✈️
     </div>
   </div>
 
-</div>
+  </div>
 
-<!-- ════════════════════════════════════════
-     TAB: CONTENT ANGLES
-════════════════════════════════════════ -->
-<div id="tab-cr-angles" class="tab-content">
+  <div id="sub-creative-cr-angles" class="sub-tab-content">
 
   <div class="section-title">Your Pitch Angles</div>
   <div class="angle-grid">
@@ -1930,12 +4002,9 @@ Drone + lifestyle content for boutique stays ✈️
     <li onclick="crCheck(this,'an4')"><div class="check-box"><span class="check-icon">✓</span></div><div style="flex:1;"><div class="cr-title">Post one Thailand drink shot on @mads.gallow</div><div class="cr-sub">Caption: "thailand had the best drinks and i have the photos to prove it 🍹"</div></div><span class="cr-tag cr-tag-quick">Easy win</span></li>
   </ul>
 
-</div>
+  </div>
 
-<!-- ════════════════════════════════════════
-     TAB: LINKEDIN
-════════════════════════════════════════ -->
-<div id="tab-cr-linkedin" class="tab-content">
+  <div id="sub-creative-cr-linkedin" class="sub-tab-content">
 
   <div class="section-title">LinkedIn — Copy & Paste</div>
 
@@ -1981,12 +4050,9 @@ Add: "Available for collaborations — maddie@elevatealign.com"</div>
     <li onclick="crCheck(this,'li4')"><div class="check-box"><span class="check-icon">✓</span></div><div style="flex:1;"><div class="cr-title">Add LinkedIn URL to future pitch emails</div></div><span class="cr-tag cr-tag-money">Credibility</span></li>
   </ul>
 
-</div>
+  </div>
 
-<!-- ════════════════════════════════════════
-     TAB: ROUTE TIMELINE
-════════════════════════════════════════ -->
-<div id="tab-cr-route" class="tab-content">
+  <div id="sub-creative-cr-route" class="sub-tab-content">
 
   <div class="section-title">Your Move Timeline</div>
   <div class="card">
@@ -2045,6 +4111,8 @@ Add: "Available for collaborations — maddie@elevatealign.com"</div>
   <div class="section-title">Route Notes</div>
   <textarea class="notes-area" id="note-route" style="min-height:100px;" placeholder="Route updates, car situation, travel dates, flight info..." oninput="saveNote('route',this.value)"></textarea>
 
+  </div>
+
 </div>
 
 <!-- ════════════════════════════════════════
@@ -2061,6 +4129,15 @@ function showTab(name, btn) {
   document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
   document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
   document.getElementById('tab-' + name).classList.add('active');
+  btn.classList.add('active');
+}
+
+function showSubTab(parent, name, btn) {
+  const scope = document.getElementById('tab-' + parent);
+  if (!scope) return;
+  scope.querySelectorAll('.sub-tab-content').forEach(el => el.classList.remove('active'));
+  scope.querySelectorAll('.sub-tab-btn').forEach(el => el.classList.remove('active'));
+  document.getElementById('sub-' + parent + '-' + name).classList.add('active');
   btn.classList.add('active');
 }
 
@@ -2567,6 +4644,282 @@ initFb();
 initCrChecks();
 initGrid();
 initPitches();
+
+// ── Interior Page Guide (scoped embed) ──
+
+function pigSwitchTab(tab, btn) {
+  document.querySelectorAll('.pig-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.pig-tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('pig-panel-' + tab).classList.add('active');
+  btn.classList.add('active');
+}
+
+function pigTogglePage(btn) {
+  var detail = btn.parentElement.querySelector('.page-detail');
+  var icon = btn.querySelector('.expand-icon');
+  var isOpen = detail.classList.contains('open');
+  detail.classList.toggle('open', !isOpen);
+  icon.classList.toggle('rotated', !isOpen);
+}
+
+
+// ── Maddie's Planner Tracker (scoped embed) ──
+
+const STORAGE_KEY  = 'eauco-tracker-v2';
+const IDENTITY_KEY = 'eauco-tracker-identity';
+const BLOB_KEY     = 'eauco-tracker-blob';
+const API_BASE     = 'https://jsonblob.com/api/jsonBlob';
+
+// Pre-marked done as of June 26, 2026
+const DEFAULT_DONE = {
+  'p0-1':{ done:true, by:'Maddie', at:'2026-06-22' },
+  'p0-2':{ done:true, by:'Maddie', at:'2026-06-22' },
+  'p0-3':{ done:true, by:'Maddie', at:'2026-06-22' },
+  'p0-4':{ done:true, by:'Maddie', at:'2026-06-22' },
+  'p0-5':{ done:true, by:'Maddie', at:'2026-06-22' },
+  'p0-6':{ done:true, by:'Maddie', at:'2026-06-22' },
+  'p0-7':{ done:true, by:'Maddie', at:'2026-06-22' },
+  'p0-8':{ done:true, by:'Maddie', at:'2026-06-22' },
+  'p0-9':{ done:true, by:'Maddie', at:'2026-06-22' },
+  'p1-1':{ done:true, by:'Maddie', at:'2026-06-22' },
+  'p1-2':{ done:true, by:'Maddie', at:'2026-06-24' },
+  'p1-3':{ done:true, by:'Maddie', at:'2026-06-26' },
+  'p1-4':{ done:true, by:'Maddie', at:'2026-06-26' },
+};
+
+let blobId = null;
+let syncTimer = null;
+let isSyncing = false;
+
+function readLocal() {
+  try {
+    const cur  = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+    const old  = JSON.parse(localStorage.getItem('eauco-tracker-v1') || '{}');
+    const raw  = { ...old, ...cur };
+    const out  = {};
+    for (const [id, val] of Object.entries(raw)) {
+      if (typeof val === 'boolean') {
+        out[id] = val ? { done:true, by:'?', at:'2026-06-22' } : { done:false };
+      } else if (val && typeof val === 'object') {
+        out[id] = val;
+      }
+    }
+    return out;
+  } catch { return {}; }
+}
+
+function writeLocal(state) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+}
+
+function getState() {
+  const local = readLocal();
+  const merged = { ...DEFAULT_DONE };
+  for (const [id, val] of Object.entries(local)) merged[id] = val;
+  return merged;
+}
+
+function getCurrentUser() {
+  return localStorage.getItem(IDENTITY_KEY) || 'Maddie';
+}
+
+function setCurrentUser(name) {
+  localStorage.setItem(IDENTITY_KEY, name);
+}
+
+function fmtDate(iso) {
+  return new Date(iso + 'T12:00:00').toLocaleDateString('en-US', { month:'short', day:'numeric' });
+}
+
+function applyOne(id, val, el) {
+  if (!el) el = document.querySelector('[data-id="' + id + '"]');
+  if (!el) return;
+  const done = val && val.done;
+  el.classList.ptToggle('done', !!done);
+  let claimer = el.querySelector('.task-claimer');
+  if (done) {
+    if (!claimer) {
+      claimer = document.createElement('div');
+      claimer.className = 'task-claimer';
+      el.querySelector('.task-body').appendChild(claimer);
+    }
+    const name = (val.by && val.by !== '?') ? val.by : null;
+    const date = val.at ? fmtDate(val.at) : null;
+    claimer.textContent = [name, date].filter(Boolean).join(' · ');
+  } else if (claimer) {
+    claimer.remove();
+  }
+}
+
+function applyAll(state) {
+  document.querySelectorAll('[data-id]').forEach(el => applyOne(el.dataset.id, state[el.dataset.id], el));
+}
+
+function ptToggle(el) {
+  const id = el.dataset.id;
+  const state = getState();
+  const cur = state[id];
+  const nowDone = !(cur && cur.done);
+  state[id] = nowDone
+    ? { done:true, by:getCurrentUser(), at:new Date().toISOString().slice(0,10) }
+    : { done:false };
+  writeLocal(state);
+  applyOne(id, state[id], el);
+  updateStats();
+  if (blobId) pushState(state);
+}
+
+function resetAll() {
+  if (!confirm('Reset all checkboxes? Cannot be undone.')) return;
+  const fresh = { ...DEFAULT_DONE };
+  writeLocal(fresh);
+  applyAll(fresh);
+  updateStats();
+  if (blobId) pushState(fresh);
+}
+
+function updateStats() {
+  const state = getState();
+  let totalDone = 0, totalAll = 0;
+  [0,1,2,3,4,5].forEach(p => {
+    const container = document.getElementById('phase-' + p);
+    if (!container) return;
+    const items = container.querySelectorAll('[data-id]');
+    let done = 0;
+    items.forEach(item => { const v = state[item.dataset.id]; if (v && v.done) done++; });
+    const pct = items.length ? Math.round(done / items.length * 100) : 0;
+    const fill = document.getElementById('prog-' + p);
+    const label = document.getElementById('pct-' + p);
+    if (fill) fill.style.width = pct + '%';
+    if (label) label.textContent = pct + '%';
+    totalDone += done; totalAll += items.length;
+  });
+  const pct = totalAll ? Math.round(totalDone / totalAll * 100) : 0;
+  document.getElementById('stat-done').textContent = totalDone;
+  document.getElementById('stat-total').textContent = totalAll;
+  document.getElementById('stat-pct').textContent = pct + '%';
+}
+
+/* ── Collaboration ── */
+
+function setSyncStatus(msg, ok) {
+  const el = document.getElementById('sync-status');
+  if (!el) return;
+  el.textContent = msg;
+  el.className = 'sync-badge' + (ok ? ' ok' : '');
+}
+
+function showBanner() {
+  const b = document.getElementById('collab-banner');
+  if (b) b.style.display = 'flex';
+  const btn = document.getElementById('collab-btn');
+  if (btn) btn.textContent = 'Sharing On';
+}
+
+function updateShareUrl() {
+  const url = location.origin + location.pathname + '?sync=' + blobId;
+  const el = document.getElementById('share-url-input');
+  if (el) el.value = url;
+}
+
+function copyShareLink() {
+  const el = document.getElementById('share-url-input');
+  if (!el) return;
+  navigator.clipboard.writeText(el.value).catch(() => { el.select(); document.execCommand('copy'); });
+  const btn = document.getElementById('copy-btn');
+  if (btn) { btn.textContent = 'Copied ✓'; setTimeout(() => btn.textContent = 'Copy Link', 2000); }
+}
+
+async function enableCollaboration() {
+  setSyncStatus('creating sync…');
+  try {
+    const res = await fetch(API_BASE, {
+      method: 'POST',
+      headers: { 'Content-Type':'application/json', 'Accept':'application/json' },
+      body: JSON.stringify(getState())
+    });
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const loc = res.headers.get('Location') || '';
+    blobId = loc.split('/').pop();
+    if (!blobId) throw new Error('No ID');
+    localStorage.setItem(BLOB_KEY, blobId);
+    history.replaceState(null, '', location.pathname + '?sync=' + blobId);
+    updateShareUrl();
+    showBanner();
+    startPolling();
+    setSyncStatus('synced ✓', true);
+  } catch(e) {
+    setSyncStatus('sharing unavailable — saving locally');
+  }
+}
+
+async function pushState(state) {
+  if (!blobId || isSyncing) return;
+  isSyncing = true;
+  setSyncStatus('saving…');
+  try {
+    const res = await fetch(API_BASE + '/' + blobId, {
+      method: 'PUT',
+      headers: { 'Content-Type':'application/json', 'Accept':'application/json' },
+      body: JSON.stringify(state)
+    });
+    if (res.ok) setSyncStatus('synced ✓', true);
+    else setSyncStatus('saved locally');
+  } catch { setSyncStatus('saved locally'); }
+  isSyncing = false;
+}
+
+async function pullState() {
+  if (!blobId) return;
+  setSyncStatus('syncing…');
+  try {
+    const res = await fetch(API_BASE + '/' + blobId, { headers:{ 'Accept':'application/json' } });
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const remote = await res.json();
+    const local = readLocal();
+    const merged = { ...remote };
+    for (const [id, val] of Object.entries(local)) {
+      if (val && val.done && (!remote[id] || !remote[id].done)) merged[id] = val;
+    }
+    writeLocal(merged);
+    applyAll(getState());
+    updateStats();
+    const t = new Date().toLocaleTimeString('en-US', { hour:'numeric', minute:'2-digit' });
+    setSyncStatus('synced ' + t, true);
+  } catch { setSyncStatus('offline — saved locally'); }
+}
+
+function startPolling() {
+  if (syncTimer) clearInterval(syncTimer);
+  syncTimer = setInterval(pullState, 30000);
+}
+
+function handleCollabBtn() {
+  blobId ? pullState() : enableCollaboration();
+}
+
+/* ── Init ── */
+(function init() {
+  const identity = getCurrentUser();
+  const sel = document.getElementById('identity-select');
+  if (sel) sel.value = identity;
+
+  const params = new URLSearchParams(location.search);
+  const urlBlob = params.get('sync');
+  blobId = urlBlob || localStorage.getItem(BLOB_KEY) || null;
+  if (urlBlob) localStorage.setItem(BLOB_KEY, blobId);
+
+  applyAll(getState());
+  updateStats();
+
+  if (blobId) {
+    updateShareUrl();
+    showBanner();
+    startPolling();
+    pullState();
+  }
+})();
+
 </script>
 </body>
 </html>

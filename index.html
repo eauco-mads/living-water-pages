@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Living Water Hub | EAU Co.</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Lato:wght@300;400;700&family=EB+Garamond:ital,wght@0,400..800;1,400..600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root {
   --navy: #1a2240;
@@ -234,10 +234,15 @@ hr { border: none; border-top: 1px solid var(--border); margin: 18px 0; }
 .dump-date-badge { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 8px; }
 
 /* ── PROJECT INDEX (priority groups + mini checklists) ── */
-.proj-group { margin-bottom: 36px; }
-.proj-group-head { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
-.proj-num { display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: var(--teal); color: #fff; font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-weight: 700; flex-shrink: 0; }
-.proj-group-head h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 600; color: var(--navy); }
+.pi-eyebrow { font-family: 'Inter', sans-serif; font-weight: 600; text-transform: uppercase; letter-spacing: .22em; font-size: .64rem; color: var(--muted); margin-bottom: 18px; }
+.pi-hero h1 { font-family: 'EB Garamond', serif; font-weight: 500; font-size: clamp(1.9rem,4vw,2.8rem); line-height: 1.08; margin: 0 0 14px; }
+.pi-hero h1 em { font-style: italic; color: var(--teal); }
+.pi-hero p { font-family: 'EB Garamond', serif; font-size: 1.05rem; font-style: italic; color: #56534a; max-width: 62ch; line-height: 1.55; margin: 0 0 44px; }
+.proj-group { border-left: 3px solid var(--line, #EAE6DF); padding: 4px 0 4px 22px; margin: 0 0 46px; }
+.proj-group-head { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; margin-bottom: 6px; }
+.proj-num { font-family: 'EB Garamond', serif; font-size: 1.5rem; font-style: italic; color: var(--pi-accent, var(--teal)); flex-shrink: 0; line-height: 1; }
+.proj-group-head h3 { font-family: 'EB Garamond', serif; font-size: 1.7rem; font-weight: 600; color: var(--navy); margin: 0; }
+.proj-tagline { font-size: 0.82rem; color: var(--muted); letter-spacing: .02em; margin: 0 0 20px; font-style: italic; }
 .proj-checklist { margin-top: 10px; }
 .proj-checklist-add { display: flex; gap: 8px; margin-bottom: 8px; }
 .proj-checklist-add input { flex: 1; background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 8px 12px; font-family: 'Lato', sans-serif; font-size: 0.82rem; outline: none; }
@@ -682,6 +687,184 @@ hr { border: none; border-top: 1px solid var(--border); margin: 18px 0; }
 
   #pt-mount .updated {text-align:center;font-size:0.67rem;color:var(--text-light);margin-top:32px;}
 
+
+/* ── The Whole Vision (scoped embed) ── */
+
+  #vision-mount {
+    --paper:#F9F9F7;
+    --paper-2:#F2F1EC;
+    --ink:#26251f;
+    --muted:#8a8579;
+    --line:#e4e1d8;
+    --eau:#0f7d8c;        /* water — the spine */
+    --elevate:#10b981;    /* emerald */
+    --align:#8b5cf6;      /* violet */
+    --unlock:#3b82f6;     /* blue */
+    --gold:#b08a3e;
+  }
+  #vision-mount * {box-sizing:border-box;}
+  #vision-mount {scroll-behavior:smooth;}
+  #vision-mount {
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:'Inter',sans-serif;font-weight:300;
+    -webkit-font-smoothing:antialiased;line-height:1.6;
+  }
+  #vision-mount .serif {font-family:'EB Garamond',serif;}
+  #vision-mount .eyebrow {
+    font-family:'Inter',sans-serif;font-weight:500;
+    text-transform:uppercase;letter-spacing:.28em;font-size:.66rem;
+    color:var(--muted);
+  }
+  #vision-mount .wrap {max-width:1080px;margin:0 auto;padding:0 26px;}
+
+  /* ---------- top nav ---------- */
+  #vision-mount nav.vis-top {
+    background:rgba(249,249,247,.86);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  #vision-mount .vis-navrow {display:flex;align-items:center;justify-content:space-between;
+    max-width:1080px;margin:0 auto;padding:13px 26px;gap:14px;}
+  #vision-mount .brandmark {font-family:'EB Garamond',serif;font-size:1.15rem;letter-spacing:.18em;white-space:nowrap;}
+  #vision-mount .brandmark span {color:var(--eau);}
+  #vision-mount .vis-tabs {display:flex;gap:4px;flex-wrap:wrap;justify-content:flex-end;}
+  #vision-mount .vis-tab {
+    border:none;background:none;cursor:pointer;
+    font-family:'Inter',sans-serif;font-weight:500;font-size:.74rem;
+    letter-spacing:.06em;color:var(--muted);
+    padding:7px 11px;border-radius:999px;transition:.25s;white-space:nowrap;
+  }
+  #vision-mount .vis-tab:hover {color:var(--ink);}
+  #vision-mount .vis-tab.active {background:var(--ink);color:var(--paper);}
+
+  #vision-mount section.vis-panel {display:none;animation:fade .5s ease both;}
+  #vision-mount section.vis-panel.show {display:block;}
+  @keyframes fade{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:none;}}
+
+  /* ---------- hero / vision ---------- */
+  #vision-mount .hero {padding:78px 0 30px;}
+  #vision-mount .hero h1 {
+    font-family:'EB Garamond',serif;font-weight:500;
+    font-size:clamp(2.6rem,7vw,5rem);line-height:1.02;margin:14px 0 0;letter-spacing:.01em;
+  }
+  #vision-mount .hero h1 em {font-style:italic;color:var(--eau);}
+  #vision-mount .thesis {
+    font-family:'EB Garamond',serif;font-size:clamp(1.15rem,2.4vw,1.5rem);
+    font-style:italic;color:#4d4a40;max-width:40ch;margin:24px 0 0;line-height:1.45;
+  }
+  #vision-mount .hdnote {
+    margin:28px 0 0;padding:16px 20px;border-left:2px solid var(--eau);
+    background:var(--paper-2);border-radius:0 10px 10px 0;max-width:58ch;
+  }
+  #vision-mount .hdnote .hdlabel {
+    font-family:'Inter',sans-serif;font-weight:600;font-size:.62rem;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--eau);display:block;margin-bottom:6px;
+  }
+  #vision-mount .hdnote p {font-size:.86rem;color:#4d4a40;line-height:1.6;margin:0;}
+  #vision-mount .pillarstrip {
+    display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin:54px 0 8px;
+  }
+  #vision-mount .pcard {
+    border:1px solid var(--line);border-radius:14px;padding:18px 16px;background:#fff;
+    position:relative;overflow:hidden;transition:.3s;
+  }
+  #vision-mount .pcard:hover {transform:translateY(-3px);box-shadow:0 12px 30px -18px rgba(0,0,0,.25);}
+  #vision-mount .pcard .dot {width:9px;height:9px;border-radius:50%;margin-bottom:14px;}
+  #vision-mount .pcard h3 {font-family:'EB Garamond',serif;font-weight:600;font-size:1.12rem;margin:0 0 4px;}
+  #vision-mount .pcard p {font-size:.78rem;color:var(--muted);margin:0;line-height:1.5;}
+  #vision-mount .pcard .stat {font-size:.68rem;letter-spacing:.04em;font-weight:500;margin-top:12px;display:block;}
+
+  /* ---------- generic content ---------- */
+  #vision-mount .sechead {padding:64px 0 6px;}
+  #vision-mount .sechead h2 {font-family:'EB Garamond',serif;font-weight:500;font-size:clamp(1.9rem,4vw,2.8rem);margin:10px 0 0;}
+  #vision-mount .sechead .lede {color:#56534a;max-width:60ch;margin:16px 0 0;font-size:1rem;}
+  #vision-mount .divider {height:1px;background:var(--line);margin:36px 0;}
+
+  /* venture block */
+  #vision-mount .venture {
+    border-left:3px solid var(--line);padding:6px 0 6px 24px;margin:34px 0;
+  }
+  #vision-mount .venture .vtop {display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;}
+  #vision-mount .venture h3 {font-family:'EB Garamond',serif;font-weight:600;font-size:1.55rem;margin:0;}
+  #vision-mount .vrole {font-size:.72rem;color:var(--muted);letter-spacing:.04em;}
+  #vision-mount .vtag {font-size:.6rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+    padding:3px 9px;border-radius:999px;color:#fff;}
+  #vision-mount .vmeta {color:#56534a;font-size:.92rem;margin:10px 0 14px;max-width:68ch;}
+  #vision-mount .vgrid {display:grid;grid-template-columns:1fr 1fr;gap:8px 26px;margin-top:6px;}
+  #vision-mount .vgrid .col h4 {font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin:8px 0 8px;font-weight:600;}
+  #vision-mount ul.clean {list-style:none;padding:0;margin:0;}
+  #vision-mount ul.clean li {position:relative;padding:3px 0 3px 18px;font-size:.86rem;color:#3f3d35;}
+  #vision-mount ul.clean li::before {content:"";position:absolute;left:0;top:13px;width:6px;height:6px;border-radius:50%;background:var(--eau);opacity:.55;}
+  #vision-mount .money-li li::before {background:var(--gold);opacity:.8;}
+
+  /* ---------- water funnel ---------- */
+  #vision-mount .flow {position:relative;margin:40px 0 10px;padding-left:8px;}
+  #vision-mount .flow .spine {position:absolute;left:25px;top:6px;bottom:30px;width:2px;
+    background:linear-gradient(var(--eau),var(--align));opacity:.35;}
+  #vision-mount .stage {position:relative;display:flex;gap:22px;padding:14px 0;}
+  #vision-mount .node {flex:0 0 auto;width:48px;height:48px;border-radius:50%;background:#fff;
+    border:2px solid var(--eau);display:flex;align-items:center;justify-content:center;
+    font-family:'EB Garamond',serif;font-size:1.15rem;color:var(--eau);z-index:2;}
+  #vision-mount .stage.build .node {border-color:var(--gold);color:var(--gold);background:#fffaf0;}
+  #vision-mount .stagebody h4 {margin:6px 0 2px;font-family:'EB Garamond',serif;font-size:1.25rem;font-weight:600;}
+  #vision-mount .stagebody .k {font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600;}
+  #vision-mount .stagebody p {margin:6px 0 0;font-size:.88rem;color:#4d4a40;max-width:60ch;}
+  #vision-mount .buildpill {display:inline-block;font-size:.58rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+    color:#fff;background:var(--gold);padding:2px 8px;border-radius:999px;margin-left:8px;vertical-align:middle;}
+  #vision-mount .pointbox {background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-top:30px;}
+  #vision-mount .pointbox h4 {font-family:'EB Garamond',serif;font-size:1.2rem;margin:0 0 12px;}
+  #vision-mount .pointbox .row {display:flex;gap:14px;padding:7px 0;border-top:1px dashed var(--line);font-size:.88rem;}
+  #vision-mount .pointbox .row:first-of-type {border-top:none;}
+  #vision-mount .pointbox .who {flex:0 0 38%;font-weight:500;color:var(--eau);}
+
+  /* ---------- money table ---------- */
+  #vision-mount .mtable {width:100%;border-collapse:collapse;margin-top:30px;font-size:.86rem;}
+  #vision-mount .mtable th {text-align:left;font-family:'Inter';font-weight:600;font-size:.62rem;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--muted);padding:0 14px 12px 0;border-bottom:1px solid var(--line);}
+  #vision-mount .mtable td {padding:14px 14px 14px 0;border-bottom:1px solid var(--line);vertical-align:top;}
+  #vision-mount .mtable td.stream {font-family:'EB Garamond',serif;font-size:1.05rem;font-weight:600;}
+  #vision-mount .badge {font-size:.58rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+    padding:3px 9px;border-radius:999px;white-space:nowrap;}
+  #vision-mount .b-live {background:#e6f7ee;color:#0d7a4a;}
+  #vision-mount .b-built {background:#e9f0fe;color:#2c5fc4;}
+  #vision-mount .b-pending {background:#fdf3e0;color:#a06a16;}
+  #vision-mount .b-idle {background:#f0eee9;color:#7a7568;}
+  #vision-mount .trigger {color:#4d4a40;}
+
+  /* ---------- this week ---------- */
+  #vision-mount .focusgrid {display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;margin-top:34px;}
+  #vision-mount .fcard {background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px 22px;position:relative;}
+  #vision-mount .fcard .num {font-family:'EB Garamond',serif;font-size:2.4rem;line-height:1;color:var(--eau);opacity:.5;}
+  #vision-mount .fcard h3 {font-family:'EB Garamond',serif;font-size:1.3rem;margin:8px 0 4px;font-weight:600;}
+  #vision-mount .fcard .sub {font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:12px;}
+  #vision-mount .fcard ul.clean li {font-size:.82rem;}
+  #vision-mount .qwin {margin-top:34px;background:linear-gradient(100deg,#fffaf0,#fff);border:1px solid #f0e3c8;border-radius:16px;padding:22px 26px;}
+  #vision-mount .qwin .eyebrow {color:var(--gold);}
+  #vision-mount .qwin p {margin:8px 0 0;font-size:.95rem;color:#4d4a40;}
+  #vision-mount .qwin b {color:var(--ink);font-weight:600;}
+
+  /* ---------- vault ---------- */
+  #vision-mount .vaultgrid {display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:32px;}
+  #vision-mount .vbox {background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px 24px;}
+  #vision-mount .vbox h3 {font-family:'EB Garamond',serif;font-size:1.3rem;margin:0 0 4px;font-weight:600;}
+  #vision-mount .vbox .src {font-size:.64rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600;}
+  #vision-mount .vbox p {font-size:.86rem;color:#4d4a40;margin:12px 0 0;}
+  #vision-mount .vbox .into {margin-top:14px;padding-top:12px;border-top:1px dashed var(--line);font-size:.82rem;}
+  #vision-mount .vbox .into b {color:var(--gold);font-weight:600;}
+
+  #vision-mount footer {padding:70px 0 90px;text-align:center;color:var(--muted);}
+  #vision-mount footer .serif {font-size:1.5rem;color:var(--ink);}
+  #vision-mount footer .m {font-size:.78rem;margin-top:10px;}
+
+  @media(max-width:860px){
+  #vision-mount .pillarstrip {grid-template-columns:1fr 1fr;}
+  #vision-mount .vgrid {grid-template-columns:1fr;}
+  #vision-mount .focusgrid {grid-template-columns:1fr;}
+  #vision-mount .vaultgrid {grid-template-columns:1fr;}
+  #vision-mount .pointbox .row {flex-direction:column;gap:2px;}
+  #vision-mount .pointbox .who {flex:none;}
+  }
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;}}
+
 </style>
 </head>
 <body>
@@ -692,6 +875,7 @@ hr { border: none; border-top: 1px solid var(--border); margin: 18px 0; }
 </div>
 
 <nav class="tab-nav">
+  <button class="tab-btn" onclick="showTab('vision',this)">🌊 The Whole Vision</button>
   <button class="tab-btn active" onclick="showTab('command',this)">🎯 Command Center</button>
   <button class="tab-btn" onclick="showTab('projects',this)">🗂 Project Index</button>
   <button class="tab-btn" onclick="showTab('legal',this)">⚖️ Legal Setup</button>
@@ -713,14 +897,16 @@ hr { border: none; border-top: 1px solid var(--border); margin: 18px 0; }
 ════════════════════════════════════════ -->
 <div id="tab-projects" class="tab-content">
 
-  <div class="section-title">Project Index — In Priority Order</div>
-  <div class="info-box" style="margin-bottom:20px;">
-    <strong>This is the hub of hubs.</strong> Every scattered doc/artifact gets a card here so nothing floats away unfindable again — ordered by what you actually said matters most, so you always know which one to open next. Each group has its own quick notes list: add a task, check it off, and it tucks itself out of view.
+  <div class="pi-hero">
+    <div class="pi-eyebrow">The Hub of Hubs</div>
+    <h1><em>One list</em>, ordered by what actually matters most.</h1>
+    <p>Every scattered doc gets a home here so nothing floats away unfindable again. Each group carries its own quick notes — add a task, check it off, and it tucks itself out of view. Open top to bottom, or jump straight to whatever's pulling at you.</p>
   </div>
 
   <!-- PRIORITY 1 — PHOTO SORTER -->
-  <div class="proj-group">
-    <div class="proj-group-head"><span class="proj-num">1</span><h3>Photo Sorter &amp; Print Shop</h3></div>
+  <div class="proj-group" style="--pi-accent:#0f7d8c;border-left-color:#0f7d8c;">
+    <div class="proj-group-head"><span class="proj-num">01</span><h3>Photo Sorter &amp; Print Shop</h3></div>
+    <p class="proj-tagline">Launched — the code is done. What's left is people: the Founding 10, and content.</p>
     <div class="card">
       <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
         <h4 style="margin:0;">Photo Sorter</h4>
@@ -736,8 +922,9 @@ hr { border: none; border-top: 1px solid var(--border); margin: 18px 0; }
   </div>
 
   <!-- PRIORITY 2 — BUSINESS IG -->
-  <div class="proj-group">
-    <div class="proj-group-head"><span class="proj-num">2</span><h3>Business Instagram — Highlights &amp; Content</h3></div>
+  <div class="proj-group" style="--pi-accent:#10b981;border-left-color:#10b981;">
+    <div class="proj-group-head"><span class="proj-num">02</span><h3>Business Instagram — Highlights &amp; Content</h3></div>
+    <p class="proj-tagline">Live and in progress — tracked in depth on its own tab.</p>
     <div class="card">
       <p style="font-size:0.84rem;color:var(--muted);margin-bottom:12px;">Tracked in full on the Content &amp; IG tab — the posting calendar, captions, and highlights all live there.</p>
       <button class="btn-sm" onclick="jumpToTab('content')">Open Content &amp; IG tab →</button>
@@ -746,8 +933,9 @@ hr { border: none; border-top: 1px solid var(--border); margin: 18px 0; }
   </div>
 
   <!-- PRIORITY 3 — PERSONAL IG -->
-  <div class="proj-group">
-    <div class="proj-group-head"><span class="proj-num">3</span><h3>Personal Instagram (@mads.gallow)</h3></div>
+  <div class="proj-group" style="--pi-accent:#3b82f6;border-left-color:#3b82f6;">
+    <div class="proj-group-head"><span class="proj-num">03</span><h3>Personal Instagram (@mads.gallow)</h3></div>
+    <p class="proj-tagline">Pitch-ready — the sending and organizing is the work now, not the building.</p>
     <div class="card">
       <p style="font-size:0.84rem;color:var(--muted);margin-bottom:12px;">Creator/travel content — Day Zero checklist, 9-Grid, content angles, and route all live under one tab now, as sub-sections.</p>
       <button class="btn-sm" onclick="jumpToTab('creative')">Open @mads.gallow / Creative tab →</button>
@@ -756,8 +944,9 @@ hr { border: none; border-top: 1px solid var(--border); margin: 18px 0; }
   </div>
 
   <!-- PRIORITY 4 — HORMONE + WATER + DOCUMENTARY -->
-  <div class="proj-group">
-    <div class="proj-group-head"><span class="proj-num">4</span><h3>Hormone &amp; Water Content · Documentary</h3></div>
+  <div class="proj-group" style="--pi-accent:#8b5cf6;border-left-color:#8b5cf6;">
+    <div class="proj-group-head"><span class="proj-num">04</span><h3>Hormone &amp; Water Content · Documentary</h3></div>
+    <p class="proj-tagline">The documentary is the one missing piece that makes the whole water funnel shareable — see The Whole Vision tab for the full script.</p>
     <div class="card">
       <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
         <h4 style="margin:0;">Cycle Harmony — Content Additions</h4>
@@ -767,14 +956,16 @@ hr { border: none; border-top: 1px solid var(--border); margin: 18px 0; }
       <div style="display:flex;gap:8px;flex-wrap:wrap;">
         <button class="btn-sm" onclick="jumpToTab('cycleharmony')">Open Cycle Harmony tab →</button>
         <button class="btn-sm" onclick="jumpToTab('pitchpages')">B2B Pitch Pages (incl. Two Hounds) →</button>
+        <button class="btn-sm" onclick="jumpToTab('vision')">The Whole Vision — Documentary script →</button>
       </div>
     </div>
     <div id="proj-checklist-hormonewater"></div>
   </div>
 
   <!-- PRIORITY 5 — BOOKS, PLANNERS, HARD COPY -->
-  <div class="proj-group">
-    <div class="proj-group-head"><span class="proj-num">5</span><h3>Planners &amp; Journals — Books &amp; Hard Copy</h3></div>
+  <div class="proj-group" style="--pi-accent:#b08a3e;border-left-color:#b08a3e;">
+    <div class="proj-group-head"><span class="proj-num">05</span><h3>Planners &amp; Journals — Books &amp; Hard Copy</h3></div>
+    <p class="proj-tagline">Closest to money flowing — the subscription model already works.</p>
     <div class="card">
       <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
         <h4 style="margin:0;">The Return Collection</h4>
@@ -788,9 +979,9 @@ hr { border: none; border-top: 1px solid var(--border); margin: 18px 0; }
   </div>
 
   <!-- THEN: JUST CREATE -->
-  <div class="proj-group" style="margin-bottom:0;">
-    <div class="proj-group-head"><span class="proj-num">✦</span><h3>Then — Just Create</h3></div>
-    <div class="info-box" style="margin-bottom:0;">No tracker for this one on purpose. Once 1–5 are moving, this is open space — no checklist, no page, just make things.</div>
+  <div class="proj-group" style="margin-bottom:0;border-left-color:var(--border);">
+    <div class="proj-group-head"><span class="proj-num" style="color:var(--muted);">✦</span><h3>Then — Just Create</h3></div>
+    <p class="proj-tagline">No tracker for this one on purpose. Once 1–5 are moving, this is open space — no checklist, no page, just make things.</p>
   </div>
 
 </div>
@@ -1031,6 +1222,527 @@ hr { border: none; border-top: 1px solid var(--border); margin: 18px 0; }
 <!-- ════════════════════════════════════════
      TAB 1 · COMMAND CENTER
 ════════════════════════════════════════ -->
+<!-- ════════════════════════════════════════
+     TAB: THE WHOLE VISION
+════════════════════════════════════════ -->
+<div id="tab-vision" class="tab-content">
+  <div id="vision-mount">
+<nav class="vis-top">
+  <div class="vis-navrow">
+    <div class="brandmark">EAU<span>·</span>CO HUB</div>
+    <div class="vis-tabs">
+      <button class="vis-tab active" data-p="vision">Vision</button>
+      <button class="vis-tab" data-p="map">The Map</button>
+      <button class="vis-tab" data-p="funnel">Water Funnel</button>
+      <button class="vis-tab" data-p="money">Money</button>
+      <button class="vis-tab" data-p="week">This Week</button>
+      <button class="vis-tab" data-p="vault">The Vault</button>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ VISION ============ -->
+<section class="vis-panel show" id="vision">
+  <div class="wrap hero">
+    <div class="eyebrow">Elevate · Align · Unlock</div>
+    <h1 class="serif">The whole<br><em>vision</em>, in one place.</h1>
+    <p class="thesis">One ecosystem teaching people to take back their sovereignty — through water, alignment, and story — where every piece quietly feeds the next.</p>
+
+    <div class="hdnote">
+      <span class="hdlabel">Built for how you work · Generator, Sacral Authority</span>
+      <p>This page plans loosely — roughly a week out, adjusted to what's actually arising, not locked into a fixed month. Rigid long-range schedules aren't how your design responds. When something in "This Week" stops matching reality, change it — that's the system working correctly, not you falling behind. The question every week isn't "what did I say I should do" — it's "what actually needs a response right now."</p>
+    </div>
+
+    <div class="pillarstrip">
+      <div class="pcard">
+        <div class="dot" style="background:var(--eau)"></div>
+        <h3>Water</h3>
+        <p>The flagship. ERW education — sales, built on GHL.</p>
+        <span class="stat" style="color:var(--eau)">Focus first</span>
+      </div>
+      <div class="pcard">
+        <div class="dot" style="background:var(--align)"></div>
+        <h3>Planners</h3>
+        <p>Personalized astro + Human Design subscriptions.</p>
+        <span class="stat" style="color:var(--align)">Chloe — branding</span>
+      </div>
+      <div class="pcard">
+        <div class="dot" style="background:var(--elevate)"></div>
+        <h3>The Spiral</h3>
+        <p>Your personal brand & coaching home.</p>
+        <span class="stat" style="color:var(--elevate)">Anthony — building</span>
+      </div>
+      <div class="pcard">
+        <div class="dot" style="background:var(--unlock)"></div>
+        <h3>Travel / UGC</h3>
+        <p>Funds the move, monetizes the backlog.</p>
+        <span class="stat" style="color:var(--unlock)">Pitch-ready</span>
+      </div>
+      <div class="pcard">
+        <div class="dot" style="background:var(--gold)"></div>
+        <h3>The Vault</h3>
+        <p>Everything sitting around that can pay you.</p>
+        <span class="stat" style="color:var(--gold)">Untapped</span>
+      </div>
+    </div>
+    <p style="font-size:.82rem;color:var(--muted);margin-top:26px;max-width:62ch;">
+      Five pillars, one brain. The water work earns trust and high-ticket income; the planners and Spiral turn your audience into recurring revenue; travel & UGC pay for the life and the move; and the Vault is everything you've already made that can sell on its own. Tap through the tabs above to see each piece, how they connect, and exactly where the money turns on.
+    </p>
+  </div>
+</section>
+
+<!-- ============ THE MAP ============ -->
+<section class="vis-panel" id="map">
+  <div class="wrap">
+    <div class="sechead">
+      <div class="eyebrow">Everything you're building</div>
+      <h2 class="serif">The Map</h2>
+      <p class="lede">Every venture, what's already built, and who's carrying it. This is the "I made so many things" list — organized so it stops feeling like clutter and starts feeling like an engine.</p>
+    </div>
+
+    <!-- WATER -->
+    <div class="venture" style="border-left-color:var(--eau)">
+      <div class="vtop">
+        <h3 class="serif">Water — EAU / ERW</h3>
+        <span class="vtag" style="background:var(--eau)">Flagship</span>
+        <span class="vrole">stopdrinkingacid.com · healingh2eau.co · eaucohub.com — all land in the same place, all on GHL</span>
+      </div>
+      <p class="vmeta">Your ERW education-to-sales machine. Nearly everything is built — the one missing top-of-funnel piece is the documentary, which is why it still feels blurry. Once that exists, the funnel is whole and you can point anyone to one link with total confidence.</p>
+      <div class="vgrid">
+        <div class="col">
+          <h4>Already built</h4>
+          <ul class="clean">
+            <li>Education landing page (6 versions): problem — water types — cellular science — free tools — branches — CTA, quiz-gated</li>
+            <li>Seven branch pages: athletes, fertility, gut-skin, inflammation, energy, cancer-healing-help, planet</li>
+            <li>Machine-owner onboarding ecosystem: H₂Eau guide (85 cards), welcome page, 30-day hub, 6 lessons, 9 emails, branded PDF, GHL workflow</li>
+            <li>GHL course portal — "100 Sales in 60 Days"</li>
+            <li>Discovery-call + close script, 5-touch DM follow-up, "After Yes" onboarding</li>
+            <li>Research content library + 60-day calendar + 60-topic bank + 10-day FB launch</li>
+            <li>Local: Living Water Project @ Two Hounds Coffee — member cards, staff lookup, GHL → Sheets backend</li>
+          </ul>
+        </div>
+        <div class="col">
+          <h4>Income from it</h4>
+          <ul class="clean money-li">
+            <li>Enagic machine sales — high-ticket commissions</li>
+            <li>Two Hounds membership — $50/mo Hydration · $75/mo Total Wellness (recurring)</li>
+            <li>Course portal sales</li>
+          </ul>
+          <h4>Open loops</h4>
+          <ul class="clean">
+            <li><b>Documentary</b> — not filmed yet (see Water Funnel tab)</li>
+            <li>Two Hounds: real phone # still a placeholder in the CTA</li>
+            <li>Compliance language stays locked: ERW, molecular hydrogen (H₂), negative ORP, electrochemical alkalinity, ISO-certified — never cure/heal/medical-grade</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- PLANNERS -->
+    <div class="venture" style="border-left-color:var(--align)">
+      <div class="vtop">
+        <h3 class="serif">Planners</h3>
+        <span class="vtag" style="background:var(--align)">Near-term cash</span>
+        <span class="vrole">Chloe — branding & marketing</span>
+      </div>
+      <p class="vmeta">Personalized astrology (Western + Vedic) + Human Design planners, built per-person from an intake form and hosted as living web pages. This is the closest one to "money flowing" — the subscription model already works; you just need the hard-copy version and a repeatable build process.</p>
+      <div class="vgrid">
+        <div class="col">
+          <h4>Already built</h4>
+          <ul class="clean">
+            <li>Live planners: maddie-planner, andie-planner, chloe-planner (beta) on GitHub Pages</li>
+            <li>Subscriber tracker spreadsheet (birth data, Vedic rising, HD type/authority/profile, vibe, focus areas)</li>
+            <li>Subscription model — $22.22/mo tier noted</li>
+          </ul>
+        </div>
+        <div class="col">
+          <h4>To turn it on</h4>
+          <ul class="clean">
+            <li>Lock the hard-copy / print final</li>
+            <li>Write down the build process (intake — generate — publish) so it's repeatable, not one-off</li>
+            <li>Hand finished brand assets to Chloe to market</li>
+          </ul>
+          <h4>Income from it</h4>
+          <ul class="clean money-li">
+            <li>Monthly planner subscriptions (recurring)</li>
+            <li>One-time printed planner sales</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- SPIRAL -->
+    <div class="venture" style="border-left-color:var(--elevate)">
+      <div class="vtop">
+        <h3 class="serif">The Spiral — EAUCO Hub</h3>
+        <span class="vtag" style="background:var(--elevate)">Personal brand</span>
+        <span class="vrole">Anthony — building elevatealign.com</span>
+      </div>
+      <p class="vmeta">Your personal-brand home and the place your frameworks live. The Spiral is the "art of becoming" — modules across Elevate, Align, and Unlock. Once Anthony has the site set up, this becomes the container for coaching, courses, and membership.</p>
+      <div class="vgrid">
+        <div class="col">
+          <h4>The material</h4>
+          <ul class="clean">
+            <li>Spiral modules: Ready to Start, Energy Alignment, Feel Good First, Aligning with Purpose, Overcoming Freeze, The Compound Effect, Metamorphosis</li>
+            <li>Frameworks: EAU philosophy, Feel Good First, 4 Pillars of Sovereignty, Burnt Toast / Pancake / Lantern Theory</li>
+            <li>Working React prototype of the Spiral app</li>
+            <li>Long-term: The Cind &amp; Sol Collective</li>
+          </ul>
+        </div>
+        <div class="col">
+          <h4>Income from it</h4>
+          <ul class="clean money-li">
+            <li>Coaching / 1:1</li>
+            <li>Self-paced courses (the Spiral modules)</li>
+            <li>Membership / community</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- TRAVEL / UGC -->
+    <div class="venture" style="border-left-color:var(--unlock)">
+      <div class="vtop">
+        <h3 class="serif">Travel &amp; UGC Engine</h3>
+        <span class="vtag" style="background:var(--unlock)">Funds the move</span>
+        <span class="vrole">@mads.gallow (personal, discreet) · @h2eau.co (wellness)</span>
+      </div>
+      <p class="vmeta">The system that pays for stays along your route and turns a giant backlog of content into income. The pitch machine is already built — this is mostly about sending and organizing, which is exactly your stated focus this week.</p>
+      <div class="vgrid">
+        <div class="col">
+          <h4>Already built</h4>
+          <ul class="clean">
+            <li>9 individualized property pitch emails</li>
+            <li>HTML media kit</li>
+            <li>Day Zero hub: setup, IG highlights, pitch tracker, 9-grid planner, content angles, LinkedIn, route timeline</li>
+            <li>Route: WA — OR — Yellowstone — Jackson Hole — Miami — Panama City</li>
+          </ul>
+        </div>
+        <div class="col">
+          <h4>The raw material</h4>
+          <ul class="clean">
+            <li>Drone footage library — DJI 4K clips in Drive (drone footage / Junior's / WillyGood folders)</li>
+            <li>Unused travel content: CO, UT, WA, Portland, Panama, Thailand, Europe, AZ</li>
+            <li>Branding shoot raw photos + stock collection</li>
+          </ul>
+          <h4>Income from it</h4>
+          <ul class="clean money-li">
+            <li>Free / comped stays (offsets move cost)</li>
+            <li>Paid UGC & brand deals · stock licensing · print sales</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+    <p style="font-size:.84rem;color:var(--muted);max-width:64ch;">
+      Note: your foundation files (me.md, voice.md, brand + CLAUDE.md) live locally in VS Code, not in Drive — they're the brain behind all of this. The "funnel and bizz" desktop folder (340 items) and "sort screenshots" (107 items) hold the ad creatives, flyers, brand assets, shoot photos and stock you'll pull from for the Vault and print shop.
+    </p>
+  </div>
+</section>
+
+<!-- ============ WATER FUNNEL ============ -->
+<section class="vis-panel" id="funnel">
+  <div class="wrap">
+    <div class="sechead">
+      <div class="eyebrow">So you're comfy pointing people somewhere</div>
+      <h2 class="serif">The Water Funnel, made clear</h2>
+      <p class="lede">You built so many pages it got foggy. Here's the single path, top to bottom. The only piece not yet made is marked in gold — once it exists, the whole thing is one clean flow you can share without second-guessing.</p>
+    </div>
+
+    <div class="flow">
+      <div class="spine"></div>
+
+      <div class="stage">
+        <div class="node">1</div>
+        <div class="stagebody">
+          <div class="k">Attract</div>
+          <h4>Content leads with results, not the offer</h4>
+          <p>Reels, carousels, stories — authenticity first, business opportunity last. Driven by your 60-day calendar and topic bank.</p>
+        </div>
+      </div>
+
+      <div class="stage build">
+        <div class="node">2</div>
+        <div class="stagebody">
+          <div class="k">Watch</div>
+          <h4>The Documentary <span class="buildpill">Build this</span></h4>
+          <p>The "oh wow, I didn't know that" moment that earns trust before anything is sold. Structure is already fully written: cellular science — your origin story — guest voices (Avani / Hashimoto's) — simple breakdown — FAQ — soft close into the hub. You just need to record your segment + Avani's and weave them into the cellular cut.</p>
+        </div>
+      </div>
+
+      <div class="stage">
+        <div class="node">3</div>
+        <div class="stagebody">
+          <div class="k">Educate</div>
+          <h4>stopdrinkingacid.com</h4>
+          <p>Problem — water types — cellular science — free tools. No pricing here on purpose — education comes before the offer.</p>
+        </div>
+      </div>
+
+      <div class="stage">
+        <div class="node">4</div>
+        <div class="stagebody">
+          <div class="k">Diagnose</div>
+          <h4>The quiz</h4>
+          <p>Gates the funnel and routes each person to the branch that matches what they're dealing with.</p>
+        </div>
+      </div>
+
+      <div class="stage">
+        <div class="node">5</div>
+        <div class="stagebody">
+          <div class="k">Branch</div>
+          <h4>The page for their exact reason</h4>
+          <p>athletes · fertility · gut-skin · inflammation · energy · cancer-healing-help · planet. This is where you send individuals by need.</p>
+        </div>
+      </div>
+
+      <div class="stage">
+        <div class="node">6</div>
+        <div class="stagebody">
+          <div class="k">Invite</div>
+          <h4>CTA — book a discovery call</h4>
+          <p>Soft, after they understand — "let's see what this looks like in real life."</p>
+        </div>
+      </div>
+
+      <div class="stage">
+        <div class="node">7</div>
+        <div class="stagebody">
+          <div class="k">Close</div>
+          <h4>Discovery call + close script</h4>
+          <p>Already written. Walks the conversation from interest to decision.</p>
+        </div>
+      </div>
+
+      <div class="stage">
+        <div class="node">8</div>
+        <div class="stagebody">
+          <div class="k">Onboard</div>
+          <h4>"After Yes" — machine-owner ecosystem</h4>
+          <p>Sign-up flow into the H₂Eau guide, 30-day hub, and email sequence. They're set up to actually use it and to stay.</p>
+        </div>
+      </div>
+
+      <div class="stage">
+        <div class="node">9</div>
+        <div class="stagebody">
+          <div class="k">Nurture &amp; ascend</div>
+          <h4>Follow-up · course portal · they refer</h4>
+          <p>5-touch DM sequence and the course portal keep them moving; happy owners become your next referrers.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="pointbox">
+      <h4 class="serif">Where to point people (so you never hesitate)</h4>
+      <div class="row"><div class="who">Anyone, cold</div><div>— the documentary, or stopdrinkingacid.com (same destination as healingh2eau.co)</div></div>
+      <div class="row"><div class="who">An individual with a specific issue</div><div>— their branch page (fertility, gut-skin, inflammation…)</div></div>
+      <div class="row"><div class="who">A new machine owner</div><div>— the onboarding hub / H₂Eau guide</div></div>
+      <div class="row"><div class="who">Local / coffee-shop crowd</div><div>— Two Hounds membership club</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MONEY ============ -->
+<section class="vis-panel" id="money">
+  <div class="wrap">
+    <div class="sechead">
+      <div class="eyebrow">Every way this pays you</div>
+      <h2 class="serif">The Monetization Map</h2>
+      <p class="lede">Each income stream, where it stands, and the single thing that flips it from "built" to "flowing." You're not missing pieces — most of these are one decision away.</p>
+    </div>
+
+    <table class="mtable">
+      <thead>
+        <tr><th>Stream</th><th>Vehicle</th><th>Status</th><th>Money flows when…</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="stream">Machine sales</td>
+          <td>stopdrinkingacid funnel + documentary</td>
+          <td><span class="badge b-built">Funnel built</span></td>
+          <td class="trigger">the documentary is filmed — then the funnel is whole and shareable</td>
+        </tr>
+        <tr>
+          <td class="stream">Water membership</td>
+          <td>Two Hounds club · $50 / $75 mo</td>
+          <td><span class="badge b-pending">Pending</span></td>
+          <td class="trigger">you swap the placeholder phone # and pitch Morgan to launch</td>
+        </tr>
+        <tr>
+          <td class="stream">Planner subscriptions</td>
+          <td>Personalized astro + HD · $22.22 mo</td>
+          <td><span class="badge b-live">Beta live</span></td>
+          <td class="trigger">hard-copy + build process are locked; Chloe markets it</td>
+        </tr>
+        <tr>
+          <td class="stream">Coaching / courses</td>
+          <td>The Spiral · elevatealign.com</td>
+          <td><span class="badge b-built">In build</span></td>
+          <td class="trigger">Anthony finishes the site and you name the first offer</td>
+        </tr>
+        <tr>
+          <td class="stream">Comped & paid stays</td>
+          <td>UGC pitch system + media kit</td>
+          <td><span class="badge b-built">Pitch-ready</span></td>
+          <td class="trigger">you send the 9 property pitches already written</td>
+        </tr>
+        <tr>
+          <td class="stream">Brand / UGC deals</td>
+          <td>Media kit + LinkedIn + collab highlight</td>
+          <td><span class="badge b-built">Ready</span></td>
+          <td class="trigger">you land the first paid deal off outreach</td>
+        </tr>
+        <tr>
+          <td class="stream">Stock licensing</td>
+          <td>Drone footage + photo library</td>
+          <td><span class="badge b-idle">Sitting</span></td>
+          <td class="trigger">you upload curated clips/photos to stock platforms</td>
+        </tr>
+        <tr>
+          <td class="stream">Print shop</td>
+          <td>Travel + branding photography</td>
+          <td><span class="badge b-idle">Sitting</span></td>
+          <td class="trigger">you curate the best frames and list them</td>
+        </tr>
+        <tr>
+          <td class="stream">Digital products</td>
+          <td>Vault writing, quotes, guides</td>
+          <td><span class="badge b-idle">Sitting</span></td>
+          <td class="trigger">you package one set and put it up</td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="font-size:.82rem;color:var(--muted);margin-top:24px;max-width:62ch;">
+      Read top-down, two things jump out: your <b>recurring</b> money (membership, planners, Spiral) is mostly waiting on a small unlock, and your <b>backlog</b> money (stock, prints, products) is pure upside that just needs curation — which is the photo-organizing work you already want to do this week.
+    </p>
+  </div>
+</section>
+
+<!-- ============ THIS WEEK ============ -->
+<section class="vis-panel" id="week">
+  <div class="wrap">
+    <div class="sechead">
+      <div class="eyebrow">So it clicks and you can move</div>
+      <h2 class="serif">This Week</h2>
+      <p class="lede">Your own call: water first, then organize photos for print shop / stock / UGC. Here's that, sequenced — three lanes, one quick win that unlocks recurring cash with almost no effort.</p>
+      <div class="hdnote" style="margin-top:20px;">
+        <span class="hdlabel">A week out, not a month out</span>
+        <p>This is a rolling view, not a contract. Rewrite it whenever what's actually in front of you changes — the goal is always "what needs a response," not "what did past-you plan."</p>
+      </div>
+    </div>
+
+    <div class="focusgrid">
+      <div class="fcard">
+        <div class="num">1</div>
+        <div class="sub">Water first</div>
+        <h3 class="serif">Lock the documentary</h3>
+        <ul class="clean">
+          <li>The full layout is written — nothing to invent</li>
+          <li>Send Avani the follow-up message; confirm record-first or review-first</li>
+          <li>Record your origin segment + her segment</li>
+          <li>Weave into the cellular cut — publish at the top of the hub</li>
+          <li>Then: one link you can confidently share everywhere</li>
+        </ul>
+      </div>
+      <div class="fcard">
+        <div class="num">2</div>
+        <div class="sub">Your stated focus</div>
+        <h3 class="serif">Sort the photos</h3>
+        <ul class="clean">
+          <li>Pull from: branding shoot raws ("new se/", 79 files), stock collection, drone footage</li>
+          <li>Sort into three buckets as you go:</li>
+          <li>· Print shop — best frames</li>
+          <li>· Stock licensing — clean, generic, sellable</li>
+          <li>· UGC / media kit — on-brand, you-in-frame</li>
+        </ul>
+      </div>
+      <div class="fcard">
+        <div class="num">3</div>
+        <div class="sub">Already written</div>
+        <h3 class="serif">Send the UGC pitches</h3>
+        <ul class="clean">
+          <li>9 individualized property emails are done</li>
+          <li>Send them for the route (WA — Panama City)</li>
+          <li>Log replies in the pitch tracker</li>
+          <li>Keep @mads.gallow discreet — route business inquiries via the collab highlight — LinkedIn</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="qwin">
+      <div class="eyebrow">5-minute quick win</div>
+      <p><b>Replace the placeholder phone number</b> in the Two Hounds CTA SMS link. It's the single blocker standing between you and a live recurring-membership offer — the smallest task on this whole page, with the most direct line to money. Do it before the photo sort.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VAULT ============ -->
+<section class="vis-panel" id="vault">
+  <div class="wrap">
+    <div class="sechead">
+      <div class="eyebrow">The "stuff just sitting around"</div>
+      <h2 class="serif">The Vault</h2>
+      <p class="lede">Everything you've already created that could earn on its own — the in-between monetizers you wanted to see all in one place. None of this needs building; it needs curating and listing.</p>
+    </div>
+
+    <div class="vaultgrid">
+      <div class="vbox">
+        <div class="src">Drive · DJI 4K library</div>
+        <h3 class="serif">Drone footage</h3>
+        <p>Dozens of aerial clips already shot and stored (drone footage / Junior's / WillyGood folders).</p>
+        <div class="into"><b>Into money:</b> stock-video licensing, paid B-roll, Reels, and Panama drone pitches (it's the one place you're physically there).</div>
+      </div>
+
+      <div class="vbox">
+        <div class="src">Desktop + Drive</div>
+        <h3 class="serif">Photo libraries</h3>
+        <p>Branding shoot raws, Unsplash/Adobe stock you collected, and unused travel content from 8+ regions.</p>
+        <div class="into"><b>Into money:</b> a print shop, stock licensing, and ready-to-use UGC / media-kit assets.</div>
+      </div>
+
+      <div class="vbox">
+        <div class="src">Self-Notes · Content Vault</div>
+        <h3 class="serif">Your original writing</h3>
+        <p>A deep archive of your own quotes, carousel lines, caption starters, and wellness/cycle notes — all in your voice.</p>
+        <div class="into"><b>Into money:</b> a quote/carousel content pack, a downloadable mini-guide, or lead magnets that feed every funnel. (Personal journal entries stay private — pull only the shareable pieces.)</div>
+      </div>
+
+      <div class="vbox">
+        <div class="src">Water content library</div>
+        <h3 class="serif">Research-backed posts</h3>
+        <p>Done concepts on hypochlorous acid, bottled-water cost, microplastics, Brita, H₂ + brain, blood sugar, inflammation, oxidative stress — each with Reel, carousel, and caption.</p>
+        <div class="into"><b>Into money:</b> drives the whole water funnel; can also become a paid "ERW education" mini-product.</div>
+      </div>
+
+      <div class="vbox">
+        <div class="src">Brand + ad assets</div>
+        <h3 class="serif">The "funnel and bizz" folder</h3>
+        <p>340 items — logos, business cards, flyers, ad creatives, sales-page art, presentation decks.</p>
+        <div class="into"><b>Into money:</b> ready-made marketing for every offer; cut the time-to-launch on anything new to near zero.</div>
+      </div>
+
+      <div class="vbox">
+        <div class="src">Systems you already wired</div>
+        <h3 class="serif">Repeatable infrastructure</h3>
+        <p>GHL → Sheets backends, member-card + staff-lookup tools, onboarding ecosystems, the planner build pipeline.</p>
+        <div class="into"><b>Into money:</b> these are productizable — the Two Hounds club is a template you could sell to other cafés; the planner pipeline scales person-by-person.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="serif">EAU · Elevate · Align · Unlock</div>
+    <div class="m">One ecosystem. Five pillars. Water first.</div>
+  </div>
+</footer>
+  </div>
+</div>
+
 <div id="tab-command" class="tab-content active">
 
   <!-- QUICK TO-DOS PANEL -->
@@ -4919,6 +5631,19 @@ function handleCollabBtn() {
     pullState();
   }
 })();
+
+
+// ── The Whole Vision (scoped embed) ──
+
+  const visTabs=document.querySelectorAll('.vis-tab');
+  const visPanels=document.querySelectorAll('.vis-panel');
+  visTabs.forEach(t=>t.addEventListener('click',()=>{
+    visTabs.forEach(x=>x.classList.remove('active'));
+    visPanels.forEach(p=>p.classList.remove('show'));
+    t.classList.add('active');
+    document.getElementById(t.dataset.p).classList.add('show');
+    window.scrollTo({top:0,behavior:'smooth'});
+  }));
 
 </script>
 </body>

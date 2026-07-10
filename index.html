@@ -161,6 +161,8 @@ hr { border: none; border-top: 1px solid var(--border); margin: 18px 0; }
 
 /* ── CREATOR SECTION ── */
 .tab-divider { display: flex; align-items: center; padding: 0 12px; color: var(--border); font-size: 1rem; pointer-events: none; flex-shrink: 0; }
+.tab-cluster { display: flex; gap: 2px; flex-shrink: 0; background: rgba(6,102,100,0.06); border: 1px solid rgba(6,102,100,0.15); border-radius: 10px; padding: 3px; margin: 6px 2px; }
+.tab-cluster .tab-btn { padding: 6px 12px 8px; }
 .cr-tag { display: inline-block; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; padding: 2px 8px; border-radius: 4px; flex-shrink: 0; margin-top: 3px; }
 .cr-tag-urgent { background: rgba(220,38,38,0.08); color: var(--danger); border: 1px solid rgba(220,38,38,0.2); }
 .cr-tag-money  { background: rgba(5,150,105,0.08); color: var(--success); border: 1px solid rgba(5,150,105,0.2); }
@@ -222,6 +224,20 @@ hr { border: none; border-top: 1px solid var(--border); margin: 18px 0; }
 .todo-del { background: none; border: none; color: #ccc; cursor: pointer; font-size: 1rem; line-height: 1; padding: 0 2px; flex-shrink: 0; }
 .todo-del:hover { color: var(--danger); }
 .dump-date-badge { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 8px; }
+
+/* ── PROJECT INDEX (priority groups + mini checklists) ── */
+.proj-group { margin-bottom: 36px; }
+.proj-group-head { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+.proj-num { display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: var(--teal); color: #fff; font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-weight: 700; flex-shrink: 0; }
+.proj-group-head h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 600; color: var(--navy); }
+.proj-checklist { margin-top: 10px; }
+.proj-checklist-add { display: flex; gap: 8px; margin-bottom: 8px; }
+.proj-checklist-add input { flex: 1; background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 8px 12px; font-family: 'Lato', sans-serif; font-size: 0.82rem; outline: none; }
+.proj-checklist-add input:focus { border-color: rgba(6,102,100,0.4); }
+.proj-checklist-add button { background: var(--teal); border: none; color: #fff; padding: 8px 14px; border-radius: 8px; font-size: 0.78rem; font-weight: 700; cursor: pointer; white-space: nowrap; }
+.proj-checklist-add button:hover { background: var(--navy); }
+.proj-done-toggle { background: none; border: none; color: var(--muted); font-size: 0.72rem; cursor: pointer; padding: 4px 0; letter-spacing: 0.04em; }
+.proj-done-toggle:hover { color: var(--teal); }
 </style>
 </head>
 <body>
@@ -237,8 +253,10 @@ hr { border: none; border-top: 1px solid var(--border); margin: 18px 0; }
   <button class="tab-btn" onclick="showTab('legal',this)">⚖️ Legal Setup</button>
   <button class="tab-btn" onclick="showTab('braindump',this)">🧠 Brain Dump</button>
   <button class="tab-btn" onclick="showTab('facebook',this)">📘 Facebook Launch</button>
-  <button class="tab-btn" onclick="showTab('pitchpages',this)">🏢 B2B Pitch Pages</button>
-  <button class="tab-btn" onclick="showTab('twohounds',this)">💧 Two Hounds</button>
+  <span class="tab-cluster">
+    <button class="tab-btn" onclick="showTab('pitchpages',this)">🏢 B2B Pitch Pages</button>
+    <button class="tab-btn" onclick="showTab('twohounds',this)">💧 Two Hounds</button>
+  </span>
   <button class="tab-btn" onclick="showTab('content',this)">📱 Content & IG</button>
   <button class="tab-btn" onclick="showTab('pipeline',this)">🤝 Lead Pipeline</button>
   <button class="tab-btn" onclick="showTab('links',this)">🔗 Link Hub</button>
@@ -257,24 +275,14 @@ hr { border: none; border-top: 1px solid var(--border); margin: 18px 0; }
 ════════════════════════════════════════ -->
 <div id="tab-projects" class="tab-content">
 
-  <div class="section-title">Project Index — Everything, In One Place</div>
+  <div class="section-title">Project Index — In Priority Order</div>
   <div class="info-box" style="margin-bottom:20px;">
-    <strong>This is the hub of hubs.</strong> Every scattered doc/artifact gets a card here going forward, so nothing floats away unfindable again. Add a new card whenever a new project doc gets built — same pattern each time: name, status, links.
+    <strong>This is the hub of hubs.</strong> Every scattered doc/artifact gets a card here so nothing floats away unfindable again — ordered by what you actually said matters most, so you always know which one to open next. Each group has its own quick notes list: add a task, check it off, and it tucks itself out of view.
   </div>
 
-  <div class="grid-2">
-
-    <div class="card">
-      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
-        <h4 style="margin:0;">Maddie's Planner &amp; Project Tracker</h4>
-        <span class="badge badge-building">Beta</span>
-      </div>
-      <p style="font-size:0.84rem;color:var(--muted);margin-bottom:12px;">Personalized Vedic + Human Design planner business. Tracker covers Phase 0–5 (foundation → beta → launch → subscriber ops → physical planners → tech infra). Beta subscribers: Chloe Newby, Andie Galloway, Devin (upcoming).</p>
-      <div class="link-row"><span class="link-name">Project Tracker</span><a class="link-url" href="https://eauco-mads.github.io/maddie-planner/tracker.html" target="_blank">maddie-planner/tracker.html</a><button class="copy-btn" onclick="cp('https://eauco-mads.github.io/maddie-planner/tracker.html',this)">Copy</button></div>
-      <div class="link-row"><span class="link-name">Maddie's Live Planner</span><a class="link-url" href="https://eauco-mads.github.io/maddie-planner/" target="_blank">maddie-planner (live)</a><button class="copy-btn" onclick="cp('https://eauco-mads.github.io/maddie-planner/',this)">Copy</button></div>
-      <div class="link-row"><span class="link-name">GitHub Repo</span><a class="link-url" href="https://github.com/eauco-mads/maddie-planner" target="_blank">github.com/eauco-mads/maddie-planner</a><button class="copy-btn" onclick="cp('https://github.com/eauco-mads/maddie-planner',this)">Copy</button></div>
-    </div>
-
+  <!-- PRIORITY 1 — PHOTO SORTER -->
+  <div class="proj-group">
+    <div class="proj-group-head"><span class="proj-num">1</span><h3>Photo Sorter &amp; Print Shop</h3></div>
     <div class="card">
       <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
         <h4 style="margin:0;">Photo Sorter</h4>
@@ -285,7 +293,35 @@ hr { border: none; border-top: 1px solid var(--border); margin: 18px 0; }
       <div class="link-row"><span class="link-name">Live Tool</span><a class="link-url" href="https://eauco-mads.github.io/photo-sorter/" target="_blank">photo-sorter (live)</a><button class="copy-btn" onclick="cp('https://eauco-mads.github.io/photo-sorter/',this)">Copy</button></div>
       <div class="link-row"><span class="link-name">GitHub Repo</span><a class="link-url" href="https://github.com/eauco-mads/photo-sorter" target="_blank">github.com/eauco-mads/photo-sorter</a><button class="copy-btn" onclick="cp('https://github.com/eauco-mads/photo-sorter',this)">Copy</button></div>
     </div>
+    <div id="proj-checklist-photosorter"></div>
+  </div>
 
+  <!-- PRIORITY 2 — BUSINESS IG -->
+  <div class="proj-group">
+    <div class="proj-group-head"><span class="proj-num">2</span><h3>Business Instagram — Highlights &amp; Content</h3></div>
+    <div class="card">
+      <p style="font-size:0.84rem;color:var(--muted);margin-bottom:12px;">Tracked in full on the Content &amp; IG tab — the posting calendar, captions, and highlights all live there.</p>
+      <button class="btn-sm" onclick="jumpToTab('content')">Open Content &amp; IG tab →</button>
+    </div>
+    <div id="proj-checklist-bizig"></div>
+  </div>
+
+  <!-- PRIORITY 3 — PERSONAL IG -->
+  <div class="proj-group">
+    <div class="proj-group-head"><span class="proj-num">3</span><h3>Personal Instagram (@mads.gallow)</h3></div>
+    <div class="card">
+      <p style="font-size:0.84rem;color:var(--muted);margin-bottom:12px;">Creator/travel content — Day Zero checklist, 9-Grid, content angles, and route all live under the Creator tabs.</p>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;">
+        <button class="btn-sm" onclick="jumpToTab('cr-setup')">Creator Setup →</button>
+        <button class="btn-sm" onclick="jumpToTab('cr-ig')">@mads.gallow →</button>
+      </div>
+    </div>
+    <div id="proj-checklist-personalig"></div>
+  </div>
+
+  <!-- PRIORITY 4 — HORMONE + WATER + DOCUMENTARY -->
+  <div class="proj-group">
+    <div class="proj-group-head"><span class="proj-num">4</span><h3>Hormone &amp; Water Content · Documentary</h3></div>
     <div class="card">
       <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
         <h4 style="margin:0;">Cycle Harmony — Content Additions</h4>
@@ -293,8 +329,17 @@ hr { border: none; border-top: 1px solid var(--border); margin: 18px 0; }
       </div>
       <p style="font-size:0.84rem;color:var(--muted);margin-bottom:12px;">Tracker spotlight post, 3 bio options, and 6 "weave" posts tying hormone/cycle content back to h2eau — ready to copy into the Social Content Plan Google Doc.</p>
       <div class="link-row"><span class="link-name">Content Additions Doc</span><a class="link-url" href="cycle-harmony/index.html" target="_blank">cycle-harmony/</a><button class="copy-btn" onclick="cp('https://eauco-mads.github.io/living-water-pages/cycle-harmony/index.html',this)">Copy</button></div>
+      <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;">
+        <button class="btn-sm" onclick="jumpToTab('twohounds')">Two Hounds tab →</button>
+        <button class="btn-sm" onclick="jumpToTab('pitchpages')">B2B Pitch Pages →</button>
+      </div>
     </div>
+    <div id="proj-checklist-hormonewater"></div>
+  </div>
 
+  <!-- PRIORITY 5 — BOOKS, PLANNERS, HARD COPY -->
+  <div class="proj-group">
+    <div class="proj-group-head"><span class="proj-num">5</span><h3>Books, Planners &amp; Hard Copy</h3></div>
     <div class="card">
       <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
         <h4 style="margin:0;">The Return Collection</h4>
@@ -304,8 +349,25 @@ hr { border: none; border-top: 1px solid var(--border); margin: 18px 0; }
       <div class="link-row"><span class="link-name">Series Map</span><a class="link-url" href="return-collection/index.html" target="_blank">return-collection/</a><button class="copy-btn" onclick="cp('https://eauco-mads.github.io/living-water-pages/return-collection/index.html',this)">Copy</button></div>
       <div class="link-row"><span class="link-name">Interior Page Guide</span><a class="link-url" href="return-collection/interior-guide.html" target="_blank">return-collection/interior-guide.html</a><button class="copy-btn" onclick="cp('https://eauco-mads.github.io/living-water-pages/return-collection/interior-guide.html',this)">Copy</button></div>
     </div>
-
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
+        <h4 style="margin:0;">Maddie's Planner &amp; Project Tracker</h4>
+        <span class="badge badge-building">Beta</span>
+      </div>
+      <p style="font-size:0.84rem;color:var(--muted);margin-bottom:12px;">Personalized Vedic + Human Design planner business. Tracker covers Phase 0–5 (foundation → beta → launch → subscriber ops → physical planners → tech infra). Beta subscribers: Chloe Newby, Andie Galloway, Devin (upcoming).</p>
+      <div class="link-row"><span class="link-name">Project Tracker</span><a class="link-url" href="https://eauco-mads.github.io/maddie-planner/tracker.html" target="_blank">maddie-planner/tracker.html</a><button class="copy-btn" onclick="cp('https://eauco-mads.github.io/maddie-planner/tracker.html',this)">Copy</button></div>
+      <div class="link-row"><span class="link-name">Maddie's Live Planner</span><a class="link-url" href="https://eauco-mads.github.io/maddie-planner/" target="_blank">maddie-planner (live)</a><button class="copy-btn" onclick="cp('https://eauco-mads.github.io/maddie-planner/',this)">Copy</button></div>
+      <div class="link-row"><span class="link-name">GitHub Repo</span><a class="link-url" href="https://github.com/eauco-mads/maddie-planner" target="_blank">github.com/eauco-mads/maddie-planner</a><button class="copy-btn" onclick="cp('https://github.com/eauco-mads/maddie-planner',this)">Copy</button></div>
+    </div>
+    <div id="proj-checklist-booksplanners"></div>
   </div>
+
+  <!-- THEN: JUST CREATE -->
+  <div class="proj-group" style="margin-bottom:0;">
+    <div class="proj-group-head"><span class="proj-num">✦</span><h3>Then — Just Create</h3></div>
+    <div class="info-box" style="margin-bottom:0;">No tracker for this one on purpose. Once 1–5 are moving, this is open space — no checklist, no page, just make things.</div>
+  </div>
+
 </div>
 
 <!-- ════════════════════════════════════════
@@ -2149,8 +2211,14 @@ const TODO_LABELS = {
   water:    { icon:'💧', bg:'rgba(6,102,100,0.08)',    col:'var(--teal)' },
   creator:  { icon:'🌴', bg:'rgba(196,122,58,0.1)',    col:'var(--orange)' },
   facebook: { icon:'📘', bg:'rgba(26,34,64,0.08)',     col:'var(--navy)' },
-  personal: { icon:'🙋', bg:'rgba(124,58,237,0.08)',   col:'var(--purple)' }
+  personal: { icon:'🙋', bg:'rgba(124,58,237,0.08)',   col:'var(--purple)' },
+  photosorter:   { icon:'📸', bg:'rgba(6,102,100,0.08)',   col:'var(--teal)' },
+  bizig:         { icon:'📱', bg:'rgba(26,34,64,0.08)',    col:'var(--navy)' },
+  personalig:    { icon:'🌴', bg:'rgba(196,122,58,0.1)',   col:'var(--orange)' },
+  hormonewater:  { icon:'💧', bg:'rgba(124,58,237,0.08)',  col:'var(--purple)' },
+  booksplanners: { icon:'📚', bg:'rgba(217,119,6,0.1)',    col:'var(--warning)' }
 };
+const PROJ_SECTIONS = ['photosorter','bizig','personalig','hormonewater','booksplanners'];
 
 function getTodos() { try { return JSON.parse(localStorage.getItem(TODO_KEY) || '[]'); } catch(e) { return []; } }
 function saveTodos(arr) { localStorage.setItem(TODO_KEY, JSON.stringify(arr)); }
@@ -2199,6 +2267,7 @@ function renderTodos() {
     ? todos.map(todoRowHTML).join('')
     : '<p style="color:var(--muted);font-size:0.83rem;padding:14px 0;">No tasks yet — type one above and press Enter!</p>';
   renderCcTodos();
+  renderAllProjChecklists();
 }
 
 // ─── COMMAND CENTER QUICK TO-DOS ─────────────────────────────────────────
@@ -2256,6 +2325,58 @@ function renderCreatorExtra() {
   el.innerHTML = todos.length
     ? todos.map(todoRowHTML).join('')
     : '<p style="font-size:0.79rem;color:var(--muted);padding:6px 0;">Creator tasks will appear here and in Brain Dump.</p>';
+}
+
+// ─── PROJECT INDEX — jump to tab + per-group mini checklists ──────────────
+function jumpToTab(name) {
+  const btn = document.querySelector('.tab-btn[onclick*="\'' + name + '\'"]');
+  if (btn) showTab(name, btn);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+let _projDoneOpen = {};
+
+function projChecklistHTML(label) {
+  const lbl = TODO_LABELS[label];
+  const todos = getTodos().filter(t => t.label === label);
+  const active = todos.filter(t => !t.done);
+  const done   = todos.filter(t =>  t.done);
+  const open = !!_projDoneOpen[label];
+  return `
+    <div class="proj-checklist">
+      <div class="proj-checklist-add">
+        <input type="text" id="proj-input-${label}" placeholder="Add a note or task…" onkeydown="if(event.key==='Enter')addProjTodo('${label}')">
+        <button onclick="addProjTodo('${label}')">+ Add</button>
+      </div>
+      <div id="proj-active-${label}">
+        ${active.length ? active.map(todoRowHTML).join('') : '<p style="font-size:0.79rem;color:var(--muted);padding:4px 0;">Nothing tracked here yet.</p>'}
+      </div>
+      ${done.length ? `
+        <button class="proj-done-toggle" onclick="toggleProjDone('${label}',this)">${open ? '▼' : '▶'} ${done.length} done — ${open ? 'hide' : 'show'}</button>
+        <div id="proj-done-${label}" class="collapse-body${open ? ' open' : ''}">${done.map(todoRowHTML).join('')}</div>
+      ` : ''}
+    </div>`;
+}
+
+function renderProjChecklist(label) {
+  const host = document.getElementById('proj-checklist-' + label);
+  if (!host) return;
+  host.innerHTML = projChecklistHTML(label);
+}
+
+function renderAllProjChecklists() {
+  PROJ_SECTIONS.forEach(renderProjChecklist);
+}
+
+function addProjTodo(label) {
+  const inp = document.getElementById('proj-input-' + label);
+  if (!inp || !inp.value.trim()) return;
+  addTodo(inp.value.trim(), label);
+}
+
+function toggleProjDone(label, btn) {
+  _projDoneOpen[label] = !_projDoneOpen[label];
+  renderProjChecklist(label);
 }
 
 function seedStarterTodos() {

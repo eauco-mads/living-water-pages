@@ -149,6 +149,40 @@ function parseCsv(text) {
   return rows.filter(r => r.some(cell => cell.trim() !== ''));
 }
 
+// Parses common spreadsheet date formats (e.g. "7/15/2026"). Returns null
+// if it can't be parsed, rather than guessing — an unparseable date should
+// never silently lock someone out.
+function parseFlexibleDate(str) {
+  if (!str) return null;
+  const d = new Date(str);
+  return isNaN(d.getTime()) ? null : d;
+}
+
+function addDays(date, days) {
+  const d = new Date(date);
+  d.setDate(d.getDate() + days);
+  return d;
+}
+
+// Free Water Share is a one-time 30-day trial with no renewal event to hook
+// into, so it auto-expires by date math: the Expires column if GHL wrote
+// one, otherwise Since + 30 days. Paid tiers (Hydration/Wellness) are
+// ongoing monthly subscriptions — the same date math would incorrectly
+// expire someone who's still actively paying, so for those we only trust
+// whatever the Status column explicitly says (set manually until Stripe
+// cancellation events are wired up).
+function computeStatus(tierBucket, rawStatus, sinceStr, expiresStr) {
+  const explicit = (rawStatus || 'active').trim().toLowerCase();
+  if (explicit === 'expired') return 'expired';
+  if (tierBucket !== 'free') return 'active';
+
+  const explicitExpiry = parseFlexibleDate(expiresStr);
+  const since = parseFlexibleDate(sinceStr);
+  const computedExpiry = explicitExpiry || (since ? addDays(since, 30) : null);
+  if (computedExpiry && new Date() > computedExpiry) return 'expired';
+  return 'active';
+}
+
 function rowsToMembers(rows) {
   if (!rows.length) return [];
   const header = rows[0].map(h => h.trim().toLowerCase());
@@ -160,14 +194,24 @@ function rowsToMembers(rows) {
   const iExpires = idx(['expires', 'expiry', 'renews']);
   const iFills = idx(['fills', 'fills this month']);
 
-  return rows.slice(1).map(r => ({
-    name: (iName !== undefined ? r[iName] : '').trim(),
-    tier: bucketFromTier(iTier !== undefined ? r[iTier] : ''),
-    status: ((iStatus !== undefined ? r[iStatus] : 'active').trim().toLowerCase() === 'expired') ? 'expired' : 'active',
-    since: (iSince !== undefined ? r[iSince] : '').trim(),
-    expires: (iExpires !== undefined ? r[iExpires] : '').trim(),
-    fills: parseInt((iFills !== undefined ? r[iFills] : '0'), 10) || 0
-  })).filter(m => m.name);
+  return rows.slice(1).map(r => {
+    const tier = bucketFromTier(iTier !== undefined ? r[iTier] : '');
+    const since = (iSince !== undefined ? r[iSince] : '').trim();
+    const rawExpires = (iExpires !== undefined ? r[iExpires] : '').trim();
+    const status = computeStatus(tier, iStatus !== undefined ? r[iStatus] : '', since, rawExpires);
+    const sinceDate = parseFlexibleDate(since);
+    const displayExpires = rawExpires || (tier === 'free' && sinceDate
+      ? addDays(sinceDate, 30).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
+      : '');
+    return {
+      name: (iName !== undefined ? r[iName] : '').trim(),
+      tier,
+      status,
+      since,
+      expires: displayExpires,
+      fills: parseInt((iFills !== undefined ? r[iFills] : '0'), 10) || 0
+    };
+  }).filter(m => m.name);
 }
 
 function setSyncState(state, text) {

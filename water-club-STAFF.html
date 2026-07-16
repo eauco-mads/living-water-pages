@@ -40,10 +40,10 @@ body { font-family:'Lato',sans-serif; background:#FAF8F4; color:#2a2a2a; -webkit
 
 .status-pill { display:inline-flex; align-items:center; gap:7px; border-radius:50px; padding:5px 14px; margin-bottom:16px; font-size:11px; font-weight:700; letter-spacing:1px; text-transform:uppercase; }
 .status-pill.active { background:rgba(78,255,78,0.15); color:#4eff4e; border:1px solid rgba(78,255,78,0.3); }
-.status-pill.expired { background:rgba(255,78,78,0.15); color:#ff8888; border:1px solid rgba(255,78,78,0.3); }
+.status-pill.expired { background:rgba(255,215,0,0.15); color:#FFD700; border:1px solid rgba(255,215,0,0.35); }
 .s-dot { width:7px; height:7px; border-radius:50%; }
 .s-dot.g { background:#4eff4e; }
-.s-dot.r { background:#ff4e4e; }
+.s-dot.r { background:#FFD700; }
 
 .r-name { font-size:26px; font-weight:900; color:#FAF8F4; margin-bottom:4px; }
 .r-tier { font-size:12px; color:rgba(177,233,232,0.7); letter-spacing:1px; margin-bottom:20px; }
@@ -53,7 +53,7 @@ body { font-family:'Lato',sans-serif; background:#FAF8F4; color:#2a2a2a; -webkit
 .fill-main { font-size:20px; font-weight:900; color:#FAF8F4; margin-bottom:4px; }
 .fill-sub { font-size:13px; color:rgba(177,233,232,0.7); }
 
-.fill-box.stop { background:rgba(255,0,0,0.1); }
+.fill-box.grace { background:rgba(255,215,0,0.08); }
 
 .detail-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:14px; }
 .d-box { background:rgba(255,255,255,0.07); border-radius:8px; padding:12px; }
@@ -253,8 +253,8 @@ function search() {
   const c = cfg[m.tier];
   const active = m.status === 'active';
   wrap.innerHTML = `
-    <div class="r-card ${active ? 'green' : 'red'}">
-      <div class="status-pill ${active ? 'active' : 'expired'}"><div class="s-dot ${active ? 'g' : 'r'}"></div>${active ? 'Active Member' : 'EXPIRED - Do not fill'}</div>
+    <div class="r-card green">
+      <div class="status-pill ${active ? 'active' : 'expired'}"><div class="s-dot ${active ? 'g' : 'r'}"></div>${active ? 'Active Member' : 'Free Share Ended'}</div>
       <div class="r-name">${m.name}</div>
       <div class="r-tier">${c.label}</div>
       ${active ? `
@@ -263,10 +263,10 @@ function search() {
         <div class="fill-main">${c.colorName}</div>
         <div class="fill-sub">${c.fill}</div>
       </div>` : `
-      <div class="fill-box stop">
-        <div style="font-size:44px;margin-bottom:8px;">🚫</div>
-        <div class="fill-main">Do not fill</div>
-        <div class="fill-sub">Membership expired ${m.expires}. Ask them to renew.</div>
+      <div class="fill-box grace">
+        <div style="font-size:44px;margin-bottom:8px;">🕒</div>
+        <div class="fill-main">Go ahead and fill them</div>
+        <div class="fill-sub">Free share ended ${m.expires} — they're good through the end of this month. Let them know to renew at healingh2eau.co/watershare.</div>
       </div>`}
       <div class="detail-grid">
         <div class="d-box"><div class="d-lbl">Member since</div><div class="d-val">${m.since || '—'}</div></div>
@@ -274,7 +274,7 @@ function search() {
         <div class="d-box"><div class="d-lbl">Fills this month</div><div class="d-val">${m.fills}</div></div>
         <div class="d-box"><div class="d-lbl">Their color</div><div class="d-val">${c.colorName}</div></div>
       </div>
-      ${active ? `<button class="confirm-btn" onclick="logFill('${m.name}')">✓ Confirm Fill</button><button class="flag-btn">⚑ Flag Issue</button>` : ''}
+      <button class="confirm-btn" onclick="logFill('${m.name}')">✓ Confirm Fill</button><button class="flag-btn">⚑ Flag Issue</button>
     </div>`;
 }
 

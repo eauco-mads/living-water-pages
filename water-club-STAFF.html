@@ -14,9 +14,14 @@ body { font-family:'Lato',sans-serif; background:#FAF8F4; color:#2a2a2a; -webkit
 
 .top-bar { background:#1a2240; padding:16px 20px; display:flex; align-items:center; justify-content:space-between; }
 .top-title { font-size:13px; font-weight:700; color:#B1E9E8; letter-spacing:1px; text-transform:uppercase; }
-.month-pill { display:flex; align-items:center; gap:7px; background:rgba(255,215,0,0.15); border:1px solid rgba(255,215,0,0.3); border-radius:50px; padding:6px 14px; }
-.month-dot { width:10px; height:10px; border-radius:50%; background:#FFD700; }
-.month-text { font-size:12px; font-weight:700; color:#FFD700; }
+.sync-pill { display:flex; align-items:center; gap:7px; background:rgba(255,215,0,0.15); border:1px solid rgba(255,215,0,0.3); border-radius:50px; padding:6px 14px; }
+.sync-dot { width:8px; height:8px; border-radius:50%; background:#FFD700; }
+.sync-dot.live { background:#4eff4e; animation: blink 2s ease-in-out infinite; }
+.sync-dot.error { background:#ff4e4e; }
+@keyframes blink { 0%,100% { opacity:1; } 50% { opacity:0.4; } }
+.sync-text { font-size:11px; font-weight:700; color:#FFD700; }
+.sync-pill.live .sync-text { color:#4eff4e; }
+.sync-pill.error .sync-text { color:#ff8888; }
 
 .search-wrap { padding:24px 20px 0; background:#FAF8F4; }
 .search-label { font-size:11px; font-weight:700; letter-spacing:2px; color:#066664; text-transform:uppercase; margin-bottom:10px; display:block; }
@@ -28,7 +33,6 @@ body { font-family:'Lato',sans-serif; background:#FAF8F4; color:#2a2a2a; -webkit
 .result-wrap { padding:20px; }
 .empty { text-align:center; padding:40px 20px; color:#aaa; font-size:14px; line-height:1.7; }
 
-/* RESULT CARD - ACTIVE */
 .r-card { border-radius:12px; padding:24px; margin-bottom:14px; }
 .r-card.green { background:#1a2240; }
 .r-card.red { background:#3d1a1a; }
@@ -59,7 +63,6 @@ body { font-family:'Lato',sans-serif; background:#FAF8F4; color:#2a2a2a; -webkit
 .confirm-btn { width:100%; padding:14px; background:#4eff4e; color:#1a2240; border:none; border-radius:8px; font-size:15px; font-weight:900; font-family:'Lato',sans-serif; cursor:pointer; }
 .flag-btn { width:100%; padding:12px; background:rgba(255,255,255,0.08); color:#FAF8F4; border:none; border-radius:8px; font-size:14px; font-weight:700; font-family:'Lato',sans-serif; cursor:pointer; margin-top:8px; }
 
-/* COLOR GUIDE */
 .guide { padding:8px 20px 40px; }
 .guide-title { font-size:11px; font-weight:700; letter-spacing:2px; color:#066664; text-transform:uppercase; margin-bottom:12px; }
 .guide-items { display:flex; flex-direction:column; gap:8px; }
@@ -73,7 +76,7 @@ body { font-family:'Lato',sans-serif; background:#FAF8F4; color:#2a2a2a; -webkit
 
 <div class="top-bar">
   <div class="top-title">Water Club - Staff View</div>
-  <div class="month-pill"><div class="month-dot"></div><div class="month-text">July = Yellow</div></div>
+  <div class="sync-pill" id="syncPill"><div class="sync-dot" id="syncDot"></div><div class="sync-text" id="syncText">Loading...</div></div>
 </div>
 
 <div class="search-wrap">
@@ -91,43 +94,123 @@ body { font-family:'Lato',sans-serif; background:#FAF8F4; color:#2a2a2a; -webkit
 <div class="guide">
   <div class="guide-title">This month's color guide</div>
   <div class="guide-items">
-    <div class="g-item"><div class="g-circle" style="background:#FFD700;">💧</div><div class="g-info"><h4>Yellow - Free Water Share</h4><p>July color. Fill with 9.0 pH drinking water.</p></div></div>
+    <div class="g-item"><div class="g-circle" style="background:#FFD700;">💧</div><div class="g-info"><h4>Yellow - Free Water Share</h4><p>Fill with 9.0 pH drinking water.</p></div></div>
     <div class="g-item"><div class="g-circle" style="background:#B1E9E8;">💧</div><div class="g-info"><h4>Teal - Hydration Club ($50)</h4><p>Any drinking water: 8.5, 9.0, or 9.5 pH.</p></div></div>
     <div class="g-item"><div class="g-circle" style="background:#066664;">💧</div><div class="g-info"><h4>Green - Total Wellness ($75)</h4><p>All waters. Ask member what they need.</p></div></div>
   </div>
 </div>
 
 <script>
-const members = [
-  { name:"Sarah", tier:"free", status:"active", since:"Jul 1, 2026", expires:"Aug 1, 2026", fills:5 },
-  { name:"Jessica", tier:"paid-50", status:"active", since:"Jun 15, 2026", expires:"Jul 15, 2026", fills:12 },
-  { name:"Amanda", tier:"paid-75", status:"active", since:"Jul 1, 2026", expires:"Aug 1, 2026", fills:8 },
-  { name:"Taylor", tier:"free", status:"expired", since:"Jun 1, 2026", expires:"Jul 1, 2026", fills:22 },
-  { name:"Morgan", tier:"free", status:"active", since:"Jul 1, 2026", expires:"Aug 1, 2026", fills:3 },
-  { name:"Brittany", tier:"paid-50", status:"active", since:"Jul 5, 2026", expires:"Aug 5, 2026", fills:7 },
-];
+// ============================================================
+// SETUP: paste the "Publish to web" CSV link for your
+// Living Water Members Google Sheet below. See setup notes
+// from Claude for how to create + publish that sheet.
+// ============================================================
+const SHEET_CSV_URL = "PASTE_YOUR_PUBLISHED_SHEET_CSV_URL_HERE";
+const REFRESH_MS = 45000; // re-sync every 45 seconds
+
 const cfg = {
   "free":     { label:"Free Water Share", color:"#FFD700", colorName:"Yellow 🟡", fill:"Fill with 9.0 pH drinking water", shadow:"rgba(255,215,0,0.5)" },
   "paid-50":  { label:"Hydration Club - $50/mo", color:"#B1E9E8", colorName:"Teal 🩵", fill:"Any drinking water - 8.5, 9.0, or 9.5 pH", shadow:"rgba(177,233,232,0.5)" },
   "paid-75":  { label:"Total Wellness Club - $75/mo", color:"#066664", colorName:"Green 🟢", fill:"All waters - ask member what they need today", shadow:"rgba(6,102,100,0.5)" }
 };
 
-function handleKey(e) { if(e.key==='Enter') search(); }
+let members = [];
+
+function bucketFromTier(raw) {
+  const t = (raw || '').toLowerCase();
+  if (t.includes('75') || t.includes('wellness')) return 'paid-75';
+  if (t.includes('50') || t.includes('hydration')) return 'paid-50';
+  return 'free';
+}
+
+// Minimal CSV line parser that respects quoted fields (Google's
+// "Publish to web" CSV export quotes any value containing a comma,
+// e.g. dates like "Jul 1, 2026").
+function parseCsv(text) {
+  const rows = [];
+  let row = [], field = '', inQuotes = false;
+  for (let i = 0; i < text.length; i++) {
+    const c = text[i];
+    if (inQuotes) {
+      if (c === '"') {
+        if (text[i + 1] === '"') { field += '"'; i++; }
+        else { inQuotes = false; }
+      } else { field += c; }
+    } else {
+      if (c === '"') inQuotes = true;
+      else if (c === ',') { row.push(field); field = ''; }
+      else if (c === '\n') { row.push(field); rows.push(row); row = []; field = ''; }
+      else if (c === '\r') { /* skip */ }
+      else { field += c; }
+    }
+  }
+  if (field.length || row.length) { row.push(field); rows.push(row); }
+  return rows.filter(r => r.some(cell => cell.trim() !== ''));
+}
+
+function rowsToMembers(rows) {
+  if (!rows.length) return [];
+  const header = rows[0].map(h => h.trim().toLowerCase());
+  const idx = (names) => names.map(n => header.indexOf(n)).find(i => i !== -1);
+  const iName = idx(['name', 'first name', 'member']);
+  const iTier = idx(['tier', 'plan', 'membership']);
+  const iStatus = idx(['status']);
+  const iSince = idx(['since', 'member since', 'date added']);
+  const iExpires = idx(['expires', 'expiry', 'renews']);
+  const iFills = idx(['fills', 'fills this month']);
+
+  return rows.slice(1).map(r => ({
+    name: (iName !== undefined ? r[iName] : '').trim(),
+    tier: bucketFromTier(iTier !== undefined ? r[iTier] : ''),
+    status: ((iStatus !== undefined ? r[iStatus] : 'active').trim().toLowerCase() === 'expired') ? 'expired' : 'active',
+    since: (iSince !== undefined ? r[iSince] : '').trim(),
+    expires: (iExpires !== undefined ? r[iExpires] : '').trim(),
+    fills: parseInt((iFills !== undefined ? r[iFills] : '0'), 10) || 0
+  })).filter(m => m.name);
+}
+
+function setSyncState(state, text) {
+  const pill = document.getElementById('syncPill');
+  const dot = document.getElementById('syncDot');
+  pill.className = 'sync-pill ' + state;
+  dot.className = 'sync-dot ' + state;
+  document.getElementById('syncText').textContent = text;
+}
+
+async function loadMembers() {
+  if (!SHEET_CSV_URL || SHEET_CSV_URL.indexOf('PASTE_YOUR') === 0) {
+    setSyncState('error', 'Not connected');
+    return;
+  }
+  try {
+    const res = await fetch(SHEET_CSV_URL + (SHEET_CSV_URL.includes('?') ? '&' : '?') + 'cb=' + Date.now());
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const text = await res.text();
+    members = rowsToMembers(parseCsv(text));
+    const now = new Date();
+    setSyncState('live', 'Synced ' + now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
+  } catch (err) {
+    setSyncState('error', 'Sync failed - retrying');
+  }
+}
+
+function handleKey(e) { if (e.key === 'Enter') search(); }
 
 function search() {
   const q = document.getElementById('searchInput').value.trim().toLowerCase();
-  if(!q) return;
+  if (!q) return;
   const m = members.find(x => x.name.toLowerCase().startsWith(q));
   const wrap = document.getElementById('resultWrap');
-  if(!m) {
+  if (!m) {
     wrap.innerHTML = `<div class="r-card notfound"><div style="font-size:36px;margin-bottom:10px;">🤔</div><div style="font-size:17px;font-weight:700;color:#1a2240;margin-bottom:6px;">Not found</div><div style="font-size:14px;color:#888;line-height:1.6;">No member named "<strong>${q}</strong>" found.<br>Ask them to scan the QR code to sign up!</div></div>`;
     return;
   }
   const c = cfg[m.tier];
-  const active = m.status==='active';
+  const active = m.status === 'active';
   wrap.innerHTML = `
-    <div class="r-card ${active?'green':'red'}">
-      <div class="status-pill ${active?'active':'expired'}"><div class="s-dot ${active?'g':'r'}"></div>${active?'Active Member':'EXPIRED - Do not fill'}</div>
+    <div class="r-card ${active ? 'green' : 'red'}">
+      <div class="status-pill ${active ? 'active' : 'expired'}"><div class="s-dot ${active ? 'g' : 'r'}"></div>${active ? 'Active Member' : 'EXPIRED - Do not fill'}</div>
       <div class="r-name">${m.name}</div>
       <div class="r-tier">${c.label}</div>
       ${active ? `
@@ -142,8 +225,8 @@ function search() {
         <div class="fill-sub">Membership expired ${m.expires}. Ask them to renew.</div>
       </div>`}
       <div class="detail-grid">
-        <div class="d-box"><div class="d-lbl">Member since</div><div class="d-val">${m.since}</div></div>
-        <div class="d-box"><div class="d-lbl">${active?'Renews':'Expired'}</div><div class="d-val">${m.expires}</div></div>
+        <div class="d-box"><div class="d-lbl">Member since</div><div class="d-val">${m.since || '—'}</div></div>
+        <div class="d-box"><div class="d-lbl">${active ? 'Renews' : 'Expired'}</div><div class="d-val">${m.expires || '—'}</div></div>
         <div class="d-box"><div class="d-lbl">Fills this month</div><div class="d-val">${m.fills}</div></div>
         <div class="d-box"><div class="d-lbl">Their color</div><div class="d-val">${c.colorName}</div></div>
       </div>
@@ -152,10 +235,15 @@ function search() {
 }
 
 function logFill(name) {
-  document.getElementById('searchInput').value='';
-  document.getElementById('resultWrap').innerHTML='<div class="empty">✓ Fill confirmed for '+name+'!<br>Ready for next member.</div>';
+  // Visual confirmation only — this does not write back to the
+  // Sheet. Fill counts still come from whatever GHL/Sheet reports.
+  document.getElementById('searchInput').value = '';
+  document.getElementById('resultWrap').innerHTML = '<div class="empty">✓ Fill confirmed for ' + name + '!<br>Ready for next member.</div>';
   document.getElementById('searchInput').focus();
 }
+
+loadMembers();
+setInterval(loadMembers, REFRESH_MS);
 </script>
 </body>
 </html>

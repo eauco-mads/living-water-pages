@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>You're In - Living Water Project</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family:'Lato',sans-serif;
+  background:#0d1520;
+  color:white;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding: 40px 24px;
+}
+
+.bg-orb {
+  position:fixed; border-radius:50%; filter:blur(80px);
+  animation: pulse 4s ease-in-out infinite alternate;
+  pointer-events:none; z-index:0;
+}
+.bg-orb-1 { width:300px; height:300px; top:-80px; left:-80px; }
+.bg-orb-2 { width:250px; height:250px; bottom:-60px; right:-60px; animation-delay:2s; }
+@keyframes pulse { from { opacity:0.3; transform:scale(1); } to { opacity:0.6; transform:scale(1.1); } }
+
+.content { position:relative; z-index:1; width:100%; max-width:420px; text-align:center; }
+
+.badge {
+  width:84px; height:84px; border-radius:50%; margin:0 auto 24px;
+  display:flex; align-items:center; justify-content:center; font-size:38px;
+}
+
+.eyebrow {
+  font-size:11px; font-weight:700; letter-spacing:3px; text-transform:uppercase;
+  opacity:0.6; margin-bottom:14px;
+}
+h1 { font-size:30px; font-weight:900; margin-bottom:12px; line-height:1.2; }
+.sub { font-size:15px; opacity:0.65; line-height:1.6; margin-bottom:32px; }
+
+.panel {
+  border-radius:18px; padding:24px; margin-bottom:20px; text-align:left;
+}
+.panel-label {
+  font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase;
+  opacity:0.8; margin-bottom:10px;
+}
+.panel-title { font-size:19px; font-weight:900; margin-bottom:8px; }
+.panel-sub { font-size:13.5px; opacity:0.7; line-height:1.6; }
+
+.check-note {
+  background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12);
+  border-radius:14px; padding:18px 20px; font-size:14px; line-height:1.6; opacity:0.85;
+  margin-bottom:24px;
+}
+.check-note strong { display:block; margin-bottom:4px; opacity:1; }
+
+.footer-note { font-size:12px; opacity:0.4; line-height:1.7; }
+.footer-note a { color:inherit; }
+</style>
+</head>
+<body>
+
+<div class="bg-orb bg-orb-1" id="orb1"></div>
+<div class="bg-orb bg-orb-2" id="orb2"></div>
+
+<div class="content">
+  <div class="badge" id="badge">🎉</div>
+  <div class="eyebrow">The Living Water Project × Two Hounds Coffee</div>
+  <h1 id="headline">You're in!</h1>
+  <p class="sub" id="subline">Your membership is active.</p>
+
+  <div class="panel" id="tierPanel">
+    <div class="panel-label" id="panelLabel">Your plan</div>
+    <div class="panel-title" id="panelTitle">Membership</div>
+    <div class="panel-sub" id="panelSub"></div>
+  </div>
+
+  <div class="check-note">
+    <strong>📧 Check your email</strong>
+    Your personal Water Club card is on its way to your inbox now — show it at the counter for your fill. It usually lands within a minute or two.
+  </div>
+
+  <p class="footer-note">
+    Didn't get it? Check spam, or text Maddison at <a href="sms:+19075139717">(907) 513-9717</a>.<br>
+    The Living Water Project · <a href="https://eaucohub.com">Eau Co Hub</a>
+  </p>
+</div>
+
+<script>
+const tiers = {
+  teal: {
+    orb1: '#0adbd7', orb2: '#066664', badgeBg: 'radial-gradient(circle, #0adbd7, #066664)',
+    panelBg: 'linear-gradient(135deg, #001a1a 0%, #003d3d 50%, #001a1a 100%)',
+    panelBorder: 'rgba(10,219,215,0.35)',
+    label: 'Hydration Club', title: '$50/mo — All Drinking Water',
+    sub: 'Choose 8.5, 9.0, or 9.5 pH, any day. Bring your own jug or ask for a teal lid at the counter.'
+  },
+  purple: {
+    orb1: '#00cc88', orb2: '#066645', badgeBg: 'radial-gradient(circle, #00cc88, #066645)',
+    panelBg: 'linear-gradient(135deg, #001a0d 0%, #003d1a 50%, #001a0d 100%)',
+    panelBorder: 'rgba(0,204,136,0.35)',
+    label: 'Total Wellness Club', title: '$75/mo — Full Access',
+    sub: 'Drinking, cleaning, and beauty waters — all unlocked. Show your green card at the counter.'
+  }
+};
+
+function getParam(name, fallback) {
+  const v = new URLSearchParams(window.location.search).get(name);
+  return (v && v.trim()) ? v.trim() : fallback;
+}
+
+function bucketFromTier(raw) {
+  const t = raw.toLowerCase();
+  if (t.includes('75') || t.includes('wellness')) return 'purple';
+  return 'teal';
+}
+
+const tierRaw = getParam('tier', '50');
+const t = tiers[bucketFromTier(tierRaw)];
+
+document.getElementById('orb1').style.background = t.orb1;
+document.getElementById('orb2').style.background = t.orb2;
+document.getElementById('badge').style.background = t.badgeBg;
+document.getElementById('badge').style.boxShadow = '0 0 30px ' + t.orb1 + '80';
+
+const panel = document.getElementById('tierPanel');
+panel.style.background = t.panelBg;
+panel.style.border = '1px solid ' + t.panelBorder;
+
+document.getElementById('panelLabel').textContent = t.label;
+document.getElementById('panelLabel').style.color = t.orb1;
+document.getElementById('panelTitle').textContent = t.title;
+document.getElementById('panelSub').textContent = t.sub;
+document.getElementById('subline').textContent = 'Welcome to ' + t.label + '.';
+</script>
+</body>
+</html>

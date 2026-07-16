@@ -80,9 +80,14 @@ h1 { font-size:30px; font-weight:900; margin-bottom:12px; line-height:1.2; }
     <div class="panel-sub" id="panelSub"></div>
   </div>
 
+  <div class="check-note" id="windowNote" style="border-color:rgba(255,255,255,0.25);">
+    <strong>👋 At the counter right now?</strong>
+    Just show this screen to the team — that's all they need to start your fill.
+  </div>
+
   <div class="check-note">
-    <strong>📧 Check your email</strong>
-    Your personal Water Club card is on its way to your inbox now — show it at the counter for your fill. It usually lands within a minute or two.
+    <strong>📧 Also on its way to your inbox</strong>
+    Your personal Water Club card, for next time — just show it at the counter instead of this page. Usually lands within a minute or two.
   </div>
 
   <p class="footer-note">
@@ -93,6 +98,13 @@ h1 { font-size:30px; font-weight:900; margin-bottom:12px; line-height:1.2; }
 
 <script>
 const tiers = {
+  yellow: {
+    orb1: '#FFD700', orb2: '#FFA500', badgeBg: 'radial-gradient(circle, #FFD700, #FFA500)',
+    panelBg: 'linear-gradient(135deg, #1a1400 0%, #3d2e00 50%, #1a1400 100%)',
+    panelBorder: 'rgba(255,215,0,0.35)',
+    label: 'Water Share Member', title: 'Free — Unlimited Daily Fill-Ups',
+    sub: '9.0 pH structured alkaline water, every day. Bring any clean jar or ask for a yellow lid at the counter.'
+  },
   teal: {
     orb1: '#0adbd7', orb2: '#066664', badgeBg: 'radial-gradient(circle, #0adbd7, #066664)',
     panelBg: 'linear-gradient(135deg, #001a1a 0%, #003d3d 50%, #001a1a 100%)',
@@ -117,10 +129,12 @@ function getParam(name, fallback) {
 function bucketFromTier(raw) {
   const t = raw.toLowerCase();
   if (t.includes('75') || t.includes('wellness')) return 'purple';
-  return 'teal';
+  if (t.includes('50') || t.includes('hydration')) return 'teal';
+  return 'yellow';
 }
 
-const tierRaw = getParam('tier', '50');
+const tierRaw = getParam('tier', 'free');
+const name = getParam('name', '');
 const t = tiers[bucketFromTier(tierRaw)];
 
 document.getElementById('orb1').style.background = t.orb1;
@@ -136,6 +150,7 @@ document.getElementById('panelLabel').textContent = t.label;
 document.getElementById('panelLabel').style.color = t.orb1;
 document.getElementById('panelTitle').textContent = t.title;
 document.getElementById('panelSub').textContent = t.sub;
+document.getElementById('headline').textContent = name ? ('You\'re in, ' + name + '!') : 'You\'re in!';
 document.getElementById('subline').textContent = 'Welcome to ' + t.label + '.';
 </script>
 </body>

@@ -34,7 +34,7 @@ section{padding:72px 0}
 .nav a:hover{background:var(--mist)}
 .nav a[aria-current=page]{background:var(--teal);color:#fff}
 .menu-btn{display:none;background:none;border:1px solid var(--line);border-radius:10px;padding:8px 12px;font:700 .85rem var(--sans);color:var(--deep)}
-@media(max-width:760px){
+@media(max-width:960px){
   .menu-btn{display:block}
   .nav{display:none;position:absolute;top:68px;left:0;right:0;background:var(--paper);flex-direction:column;padding:10px 16px 16px;border-bottom:1px solid var(--line)}
   .nav.open{display:flex}

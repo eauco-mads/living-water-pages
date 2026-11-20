@@ -12,6 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Lato:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<script src="calc.js" defer></script>
 </head>
 <body>
 
@@ -33,7 +34,7 @@
     <p class="eyebrow">Your water</p>
     <h1>The biggest building block of your body.</h1>
     <p class="lead">You're about 60% water overall, and up to 90% in your blood plasma. It's what you put in your body most, every single day. That's why it was my first swap, and why I always suggest starting here.</p>
-    <div class="btn-row"><a class="btn btn-main" href="#whats-in-it">What's in my water?</a><a class="btn btn-ghost" href="#worth-it">Is it worth it?</a></div>
+    <div class="btn-row"><a class="btn btn-main" href="#whats-in-it">What's in my water?</a><a class="btn btn-ghost" href="#calculator">Bottled water calculator</a></div>
   </div>
 </section>
 
@@ -124,6 +125,55 @@
       </div>
     </div>
     <div><div class="video wide"><iframe src="https://www.youtube-nocookie.com/embed/CYlzPpI62BI" title="Ron Hicks on the Enagic machine" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div></div>
+  </div>
+</section>
+
+<!-- 5b. Calculator -->
+<section class="band-mist" id="calculator">
+  <div class="wrap">
+    <div class="center">
+      <p class="eyebrow">The true cost</p>
+      <h2>What is bottled water actually costing you?</h2>
+      <p class="lead">Most people have never added it up. Run your real numbers, it takes about 20 seconds.</p>
+    </div>
+    <div class="calc">
+      <div class="card">
+        <div class="field"><label for="cBrand">Which brand do you buy?</label>
+          <select id="cBrand">
+            <option value="">Select your brand</option>
+            <optgroup label="Budget"><option value="generic">Store brand / generic</option></optgroup>
+            <optgroup label="Filtered tap, bottled"><option value="aquafina">Aquafina</option><option value="dasani">Dasani</option><option value="nestle">Nestlé Pure Life</option></optgroup>
+            <optgroup label="Spring water"><option value="polandspring">Poland Spring</option><option value="deerpark">Deer Park / Ozarka / Arrowhead</option><option value="crystalgeyser">Crystal Geyser</option><option value="fiji">FIJI</option><option value="evian">Evian</option><option value="icelandic">Icelandic Glacial</option><option value="mountainvalley">Mountain Valley</option><option value="waiakea">Waiakea</option></optgroup>
+            <optgroup label="Premium"><option value="smartwater">Smartwater</option><option value="lifewtr">LIFEWTR</option><option value="liquideath">Liquid Death</option><option value="voss">Voss</option></optgroup>
+            <optgroup label="Alkaline"><option value="essentia">Essentia</option><option value="core">CORE</option><option value="evamor">Evamor</option></optgroup>
+          </select>
+        </div>
+        <div class="field"><label for="cPrice">Price per bottle</label>
+          <div class="price-row"><span>$</span><input id="cPrice" type="number" min="0" step="0.01" placeholder="0.00" inputmode="decimal"></div>
+          <p class="hint">Filled in with an average single-bottle price. Buy in bulk? Change it to what you actually pay.</p>
+        </div>
+        <div class="field"><label for="cBPD">Bottles per person, per day <output id="bpdOut">2</output></label><input id="cBPD" type="range" min="1" max="10" value="2"></div>
+        <div class="field"><label for="cPPL">People in your household <output id="pplOut">2</output></label><input id="cPPL" type="range" min="1" max="8" value="2"></div>
+        <div class="field" style="margin-bottom:0"><label for="cMachine">Optional: price of an at-home setup</label>
+          <div class="price-row"><span>$</span><input id="cMachine" type="number" min="0" step="1" placeholder="e.g. a filter or machine price" inputmode="numeric"></div>
+          <p class="hint">See how long it would take to pay for itself. <a href="https://maddiegalloway.buysite.cc" target="_blank" rel="noopener">Current Enagic pricing →</a></p>
+        </div>
+      </div>
+      <div>
+        <div class="card center"><div id="rYear" class="result-big empty">Pick your brand</div><p class="small-note" style="margin-top:6px">a year on bottled water</p><p id="rPayback" class="payback"></p></div>
+        <div class="result-grid">
+          <div class="card"><b id="rMonth">—</b><small>a month</small></div>
+          <div class="card"><b id="r5">—</b><small>over 5 years</small></div>
+          <div class="card"><b id="r10">—</b><small>over 10 years</small></div>
+          <div class="card"><b id="rBottles">—</b><small>plastic bottles a year</small></div>
+        </div>
+        <div class="card" style="margin-top:12px">
+          <p class="eyebrow" style="margin-bottom:6px">Your other options</p>
+          <p style="color:var(--muted);font-size:.95rem">🌱 <b>A local spring</b> is free if you have one nearby. 🫗 <b>A filter pitcher</b> runs about $80 a year in filters. 💧 <b>Upgrading at home</b> is a one-time setup that makes water for pennies a gallon.</p>
+          <div class="btn-row" style="margin-top:14px"><a class="btn btn-main" href="https://ig.me/m/h2eau.co" target="_blank" rel="noopener">Find what fits my budget</a></div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 

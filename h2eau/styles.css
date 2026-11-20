@@ -153,3 +153,15 @@ details p{margin-top:12px;color:var(--muted)}
 .result-grid b{display:block;font-size:1.35rem;color:var(--deep)}
 .result-grid small{color:var(--muted);font-size:.8rem}
 .payback{margin-top:14px;color:var(--deep);font-size:.98rem}
+
+/* click-to-play covers */
+.video.cover{cursor:pointer}
+.video.cover img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.video.cover .play{position:absolute;left:50%;top:50%;width:76px;height:76px;margin:-38px 0 0 -38px;border-radius:50%;background:rgba(6,102,100,.88);box-shadow:0 8px 24px rgba(0,0,0,.25);transition:transform .15s}
+.video.cover .play::after{content:'';position:absolute;left:31px;top:24px;border-style:solid;border-width:14px 0 14px 22px;border-color:transparent transparent transparent #fff}
+.video.cover:hover .play{transform:scale(1.08)}
+/* before / after */
+.ba figure{padding:14px;margin:0}
+.ba img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:12px}
+.ba figcaption{margin-top:12px;color:var(--muted);font-size:.95rem}
+.ba figcaption b{color:var(--deep)}

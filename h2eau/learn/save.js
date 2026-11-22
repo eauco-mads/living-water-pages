@@ -1,5 +1,5 @@
 // Paste the Google Apps Script web app URL here (ends in /exec). Until then, signups open a pre-written email to Maddie.
-var SUBSCRIBE_URL = '';
+var SUBSCRIBE_URL = 'https://script.google.com/macros/s/AKfycbzypiKu4i9EZmUjIr6ENoaAPHTk4wkh9y68FUV-vfqkUEpcNsd50qCD49e8dI6he5wN_g/exec';
 document.addEventListener('DOMContentLoaded', function () {
   var ua = navigator.userAgent, iOS = /iPhone|iPad|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1), android = /Android/.test(ua), mac = /Mac/.test(navigator.platform);
   var how = iOS ? 'On iPhone/iPad: tap the <b>Share</b> button (the square with the arrow) at the bottom of Safari, then tap <b>Add to Home Screen</b>. It will sit on your phone like an app.'

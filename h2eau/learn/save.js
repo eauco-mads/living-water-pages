@@ -1,4 +1,4 @@
-// Paste the email-service form URL here once it exists (MailerLite etc.). Until then, signups open a pre-written email to Maddie.
+// Paste the Google Apps Script web app URL here (ends in /exec). Until then, signups open a pre-written email to Maddie.
 var SUBSCRIBE_URL = '';
 document.addEventListener('DOMContentLoaded', function () {
   var ua = navigator.userAgent, iOS = /iPhone|iPad|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1), android = /Android/.test(ua), mac = /Mac/.test(navigator.platform);
@@ -15,9 +15,10 @@ document.addEventListener('DOMContentLoaded', function () {
     f.addEventListener('submit', function (e) {
       e.preventDefault();
       var email = f.querySelector('input[type=email]').value.trim(), done = f.parentNode.querySelector('.sub-done');
+      var hp = f.querySelector('input[name=website]');
       if (!email) return;
       if (SUBSCRIBE_URL) {
-        fetch(SUBSCRIBE_URL, { method: 'POST', mode: 'no-cors', body: new URLSearchParams({ email: email, 'fields[email]': email }) })
+        fetch(SUBSCRIBE_URL, { method: 'POST', mode: 'no-cors', body: new URLSearchParams({ email: email, page: document.title, interest: f.getAttribute('data-interest') || '', website: hp ? hp.value : '' }) })
           .finally(function () { f.style.display = 'none'; if (done) done.style.display = 'block'; });
       } else {
         location.href = 'mailto:maddie@elevatealign.com?subject=' + encodeURIComponent('Add me to Learn updates') + '&body=' + encodeURIComponent('Hi Maddie! Please add me to your Learn updates: ' + email);

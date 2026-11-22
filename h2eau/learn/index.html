@@ -12,6 +12,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../styles.css">
 
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<meta name="theme-color" content="#066664">
+<meta name="apple-mobile-web-app-title" content="H2Eau Learn">
+<script src="save.js" defer></script>
 </head>
 <body>
 
@@ -37,6 +42,15 @@
     <p class="lead">How your cells actually work, why water matters so much, and what published research has looked at, organized by what you care about most. Read at your own pace. No email needed.</p>
   </div>
 </section>
+<section style="padding-top:0;padding-bottom:0">
+  <div class="wrap">
+    <div class="save-strip">
+      <p><b>New research gets added here.</b> Save this page to your home screen so it's always easy to find, or subscribe so you don't miss an update.</p>
+      <div class="btn-row" style="margin-top:0"><button class="btn btn-ghost" type="button" data-save="howTop" style="background:none;cursor:pointer;font:inherit;font-weight:700">Save this page</button><a class="btn btn-main" href="#subscribe">Subscribe</a></div>
+    </div>
+    <div class="save-how" id="howTop"></div>
+  </div>
+</section>
 <section>
   <div class="wrap">
     <a class="card door" href="how-cells-work.html" style="border-top-color:var(--peach);padding:36px">
@@ -55,6 +69,25 @@
 <a class="card door" href="planet.html"><span class="icon">🌎</span><h3>Planet & Wallet</h3><p>What bottled water really costs the planet and your budget, and a better way.</p><span class="go">Read more →</span></a>
     </div>
     <p class="small-note center" style="margin-top:28px">Research summaries describe what studies looked at and found. They're not promises of results, and nothing here is medical advice.</p>
+  </div>
+</section>
+<section class="band-mist" id="subscribe">
+  <div class="wrap">
+    <div class="center"><p class="eyebrow">Keep this close</p><h2>Come back anytime. Nothing to miss.</h2></div>
+    <div class="save-box" style="margin-top:32px">
+      <div class="card" style="border-top:5px solid var(--peach)">
+        <h3>📲 Save it to your home screen</h3>
+        <p>Keep the Learn library one tap away on your phone, like an app, or bookmark it on your computer.</p>
+        <div class="btn-row" style="margin-top:18px"><button class="btn btn-warm" type="button" data-save="howBottom" style="border:0;cursor:pointer;font:inherit;font-weight:700">Show me how</button></div>
+        <div class="save-how" id="howBottom"></div>
+      </div>
+      <div class="card" style="border-top:5px solid var(--teal)">
+        <h3>💌 Get the updates</h3>
+        <p>When I add new research, a new topic or a new guide, you'll be the first to know. Gentle, occasional, and easy to unsubscribe.</p>
+        <form class="sub-form"><input type="email" required placeholder="Your email" aria-label="Your email" autocomplete="email"><button class="btn btn-main" type="submit">Subscribe</button></form>
+        <p class="sub-done">You're in. Thank you for being here. 💧</p>
+      </div>
+    </div>
   </div>
 </section>
 <section class="band-deep">

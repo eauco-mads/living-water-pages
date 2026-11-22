@@ -165,3 +165,19 @@ details p{margin-top:12px;color:var(--muted)}
 .ba img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:12px}
 .ba figcaption{margin-top:12px;color:var(--muted);font-size:.95rem}
 .ba figcaption b{color:var(--deep)}
+
+/* Save + subscribe (Learn) */
+.save-strip{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px 24px;background:var(--paper);border:1px solid var(--line);border-left:5px solid var(--peach);border-radius:var(--r);padding:18px 22px}
+.save-strip p{margin:0;color:var(--muted)}
+.save-strip b{color:var(--deep)}
+.save-strip .btn{padding:11px 20px;font-size:.92rem}
+.save-box{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.save-box .card{padding:30px}
+.save-how{display:none;margin-top:14px;font-size:.95rem;color:var(--ink,#21302f);background:var(--sand);border-radius:12px;padding:14px 16px;line-height:1.6}
+.save-how.show{display:block}
+.sub-form{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.sub-form input{flex:1 1 200px;min-width:0;font:inherit;padding:13px 16px;border:1.5px solid var(--line);border-radius:999px;background:#fff;color:#1c2b2a}
+.sub-form input:focus{outline:none;border-color:var(--teal)}
+.sub-form .btn{padding:13px 22px;border:0;cursor:pointer;font:inherit;font-weight:700}
+.sub-done{display:none;margin-top:14px;color:var(--teal);font-weight:700}
+@media (max-width:760px){.save-box{grid-template-columns:1fr}}
